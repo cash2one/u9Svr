@@ -1,0 +1,45 @@
+<fieldset>
+	<legend>添加用户</legend>
+
+	<form class="form-horizontal" method="post">
+	<table class="table table-form">
+		<tbody>
+		<tr>
+			<th class="span2">用户名：</th>
+			<td><input name="Name" value="{{.input.Name}}" class="input" type="text" /> <span class="text-error">{{.errMsg.Name}}</span></td>
+		</tr>
+		<tr>
+			<th>密码：</th>
+			<td><input name="Password1" value="{{.input.Password1}}" class="input" type="password" /> <span class="text-error">{{.errMsg.Password1}}</span></td>
+		</tr>
+		<tr>
+			<th>确认密码：</th>
+			<td><input name="Password2" value="{{.input.Password2}}" class="input" type="password" /> <span class="text-error">{{.errMsg.Password2}}</span></td>
+		</tr>
+		<tr>
+			<th>邮箱：</th>
+			<td><input name="Email" value="{{.input.Email}}" class="input" type="text" /> <span class="text-error">{{.errMsg.Email}}</span></td>
+		</tr>
+		</tr>
+		<tr>
+			<th>激活状态：</th>
+			<td>
+			<input type="radio" name="State" value="0" id="data_active_0" checked />
+			<label for="data_active_0" class="help-inline">未激活</label>&nbsp;&nbsp;
+			<input type="radio" name="State" value="1" id="data_active_1" />
+			<label for="data_active_1" class="help-inline">已激活</label>&nbsp;&nbsp;</td>
+		</tr>
+		</tbody>
+		<tfoot>
+			<tr>
+				<th></th>
+				<td>
+				<button type="submit" class="btn"><i class="icon-ok"></i> 保存</button>
+				<button type="button" class="btn" onclick="javascript:history.back();">取消</button>
+				</td>
+			</tr>
+		</tfoot>
+	</table>
+	</form>
+
+</fieldset>

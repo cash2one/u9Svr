@@ -1,0 +1,79 @@
+<fieldset>
+	<legend>添加打包</legend>
+	<div id="errMsg"  style="display:none;" class="alert alert-error">
+	请先选择相应选项.
+	</div>
+	<form id="queryForm" class="form-horizontal" method="post">
+	<table class="table table-form">
+		<tbody>
+		<tr>
+			<th class="span2">选择游戏</th>
+			<td>
+				<select id="product" name="Product" class="combobox">
+				  <option value="0">请选择</option>
+				  {{range $k, $v := .products}}
+				  	<option value="{{$v.Id}}">{{$v.Id}}-{{$v.Name}}</option>
+				  {{end}}
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<th class="span2">选择版本</th>
+			<td>
+				<select id="version" name="Version" class="combobox">
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<th class="span2">选择渠道</th>
+			<td>
+				<select id="channel" name="Channel" class="combobox">
+				</select>
+			</td>
+		</tr>
+		</tbody>
+		<tfoot>
+			<tr>
+				<th></th>
+				<td>
+				<button type="button" class="btn" id="submitBtn"><i class="icon-ok"></i> 保存</button>
+				<button type="button" class="btn" onclick="javascript:history.back();">取消</button>
+				</td>
+			</tr>
+		</tfoot>
+	</table>
+	</form>
+
+</fieldset>
+
+<script type="text/javascript">
+$(document).ready(function(){
+	$("#submitBtn").click(function(){
+		if ($("#version").val() != null && $("#channel").val() != null)
+		{
+			$('#queryForm').submit();
+		}
+		else
+		{
+			$("#errMsg").css('display','block')
+		}	  	
+	});
+
+	$("#product").change(function(){
+		$("#version option").each(function(){$(this).remove();});
+		$("#channel option").each(function(){$(this).remove();});
+	    $.getJSON("/cp/package/getVcParam?ProductId=" + $("#product").val() ,function(data){
+			$.each(data.version, function(i,item){
+				 $("#version").append("<option value=" + item.versionId + ">" + item.versionCode + "</option>"); 
+			});
+		  $.each(data.channel, function(i,item){
+		  	$("#channel").append("<option value=" + item.packageParamId + ">" + item.channelName + "</option>");
+		  });
+	    });
+	});
+});
+
+
+
+</script>
+

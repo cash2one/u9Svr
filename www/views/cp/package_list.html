@@ -1,0 +1,150 @@
+<fieldset>
+	<legend>打包列表</legend>
+	<form method="post" name="p">
+	<table class="table table-list">
+		<thead>
+			<tr>
+				<th width="30"><input type="checkbox" name="all" value="0" onclick="checkall('ids[]', this)" />
+				</th>
+				<th width="50">ID</th>
+				<th width="60">渠道</th>
+				<th width="60">游戏</th>
+				<th width="60">版本</th>
+				<th width="120">打包时间</th>
+				<th width="120">版本更新</th>
+				<th width="120">渠道更新</th>
+				<th width="50">状态</th>
+				<th width="130">操作</th>
+			</tr>
+		</thead>
+		<tbody>
+
+		{{range $k, $v := .list}}
+		<tr id="tr{{$v.Id}}">
+			<td><input type="checkbox" name="ids[]" value="{{$v.Id}}" /></td>
+			<td>{{$v.Id}}</td>
+			<td>{{$v.ChannelName}}</td>
+			<td>{{$v.ProductName}}</td>
+			<td>{{$v.VersionCode}}</td>
+			<td>{{date $v.PackageTime "Y-m-d H:i:s"}}</td>
+			<td>{{date $v.VersionUpdateTime "Y-m-d H:i:s"}}</td>
+			<td>{{date $v.ChannelUpdateTime "Y-m-d H:i:s"}}</td>
+			<td>			
+				{{if eq $v.State 1}}
+					<span id="state{{$v.Id}}" class="text-success">打包中</span>
+				{{else if eq $v.State 2}}
+					<span id="state{{$v.Id}}" class="text-error">成功</span>
+				{{else if eq $v.State 3}}
+					<span id="state{{$v.Id}}" class="text-error">失败</span>
+				{{else}}
+					<span id="state{{$v.Id}}" class="text-success">未打包</span>
+				{{end}}
+			</td>
+			<td>
+			{{if ne $v.State 1}}
+			<a name="package", value="{{$v.Id}}", href="javascript:void(0);">打包</a>
+			{{end}}
+			{{if eq $v.State 2}}
+			 | <a name="download", href="/cp/package/download?Id={{$v.Id}}" target="_blank">下载</a>
+			{{end}}
+			{{if ne $v.State 1}}
+			 | <a name="delete", value="{{$v.Id}}", href="javascript:void(0);">删除</a>
+			{{end}}
+			</td>
+		</tr>
+		{{end}}
+		</tbody>
+		<tfoot>
+			<tr>
+				<td colspan="20">
+					{{str2html .pagebar}}
+				</td>
+			</tr>
+		</tfoot>
+	</table>
+	</form>
+</fieldset>
+
+<script type="text/javascript">
+$(function() {
+	$("a[name='delete']").click(function(){
+	    ret = confirm('一旦删除将不可恢复，确定吗？');
+		if (ret == true)
+		{
+			id =$(this).attr("value")
+		    $.getJSON("/cp/package/delete?Id=" + id ,function(data){
+		    	if (data == "success") 
+		    	{
+		    		$("tr[id=tr" + id + "]").remove();
+		    	}
+		    });			
+			
+		}
+		return ret;
+	});
+
+	$("a[name='package']").click(function(){
+	    ret = confirm('确定要打包吗？');
+		if (ret == true)
+		{
+			var opts = {
+				  lines: 13 // The number of lines to draw
+				, length: 28 // The length of each line
+				, width: 14 // The line thickness
+				, radius: 42 // The radius of the inner circle
+				, scale: 0.1 // Scales overall size of the spinner
+				, corners: 1 // Corner roundness (0..1)
+				, color: '#000' // #rgb or #rrggbb or array of colors
+				, opacity: 0.25 // Opacity of the lines
+				, rotate: 0 // The rotation offset
+				, direction: 1 // 1: clockwise, -1: counterclockwise
+				, speed: 1 // Rounds per second
+				, trail: 60 // Afterglow percentage
+				, fps: 20 // Frames per second when using setTimeout() as a fallback for CSS
+				, zIndex: 2e9 // The z-index (defaults to 2000000000)
+				, className: 'spinner' // The CSS class to assign to the spinner
+				, top: "50%" // Top position relative to parent
+				, left: "50%" // Left position relative to parent
+				, shadow: false // Whether to render a shadow
+				, hwaccel: false // Whether to use hardware acceleration
+        	};
+        	var spinner = new Spinner(opts);
+
+			id = $(this).attr("value");
+			var target = $("span[id=state" + id + "]");
+
+			$.ajax({
+                type: "POST",
+                dataType: "json",
+                data:{Id:id},
+                timeout: 60000,
+                url: "/cp/package/package",
+                beforeSend: function () {
+                	target.text("打包中");
+                    target.get(0).style.position = "relative";
+                    spinner.spin(target.get(0));
+                },
+                success: function (data) {
+                    
+			    	if (data == "success") {
+			    		spinner.spin();
+			    		target.text("成功");
+			    	} else if (data == "wait") {
+			    		target.text("等待");
+			    	}
+			    	else {
+			    		spinner.spin();
+			    		target.text("失败");
+			    	}
+                },
+                error: function (e, jqxhr, settings, exception) {
+                	target.text("请求错误");
+                    spinner.spin();
+                }
+            });			
+		}
+		return ret;
+	});
+});
+
+</script>
