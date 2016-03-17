@@ -92,7 +92,7 @@ func (this *Dangle) CheckSign() (err error) {
 		}
 	}()
 
-	format := "order=%s&money=%s&mid=%s&time=%s&result=%d&ext=%s&key=%s"
+	format := "order=%s&money=%s&mid=%s&time=%s&result=%s&ext=%s&key=%s"
 	context := fmt.Sprintf(format,
 		this.channelOrderId, this.urlParams.Get("money"),
 		this.channelUserId, this.urlParams.Get("time"), this.urlParams.Get("result"),

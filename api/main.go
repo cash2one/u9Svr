@@ -8,7 +8,7 @@ import (
 
 func main() {
 	beego.Run()
-	beego.SetLevel(beego.LevelDebug)
-	beego.SetLogFuncCall(true)
-	beego.SetLogger("file", `{"filename":"logs/api.log"}`)
+	//beego.SetLevel(beego.LevelDebug)
+	//beego.SetLogFuncCall(true)
+	//beego.SetLogger("file", `{"filename":"api.log"}`)
 }

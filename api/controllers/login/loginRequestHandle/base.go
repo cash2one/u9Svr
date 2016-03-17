@@ -7,6 +7,7 @@ import (
 type LRHandle interface {
 	Handle() (ret string, err error)
 	Init(param *Param) (err error)
+	GetToken() (ret string)
 }
 
 type LRH struct {

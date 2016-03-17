@@ -25,6 +25,11 @@ func CallLoginRequest(channelId, productId int, channelUserId, token string) (re
 	var lr loginRequest.LoginRequest
 	switch channelId {
 	case 100: //test
+		fallthrough
+	case 122: //6YGame
+		fallthrough
+	case 123: //熊猫玩
+		beego.Trace(channelId)
 		ret.SetCode(0)
 		return
 	case 101:
@@ -49,10 +54,8 @@ func CallLoginRequest(channelId, productId int, channelUserId, token string) (re
 		lr = loginRequest.LrNewXiaomi(channelUserId, token, jsonParam)
 	case 120:
 		lr = loginRequest.LrNewAmigo(channelUserId, token, jsonParam)
-	case 122:
-		beego.Trace(122)
-		ret.SetCode(0)
-		return
+	case 125:
+		lr = loginRequest.LrNewHaiMaWan(channelUserId, token, jsonParam)
 	default:
 		ret.SetCode(3004)
 		return

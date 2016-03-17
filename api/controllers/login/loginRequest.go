@@ -40,6 +40,7 @@ func (this *LoginController) handleLrParam() (err error) {
 		if this.lrRet.Ext, err = lrh.Handle(); err != nil {
 			return
 		}
+		this.lrParam.Token = lrh.GetToken()
 		return
 	default:
 		if this.lrParam.ChannelUserId == "" {
@@ -70,6 +71,7 @@ func (this *LoginController) updateDB() (err error) {
 	create := false
 	if create, _, err = orm.NewOrm().ReadOrCreate(&lr,
 		"ChannelId", "ProductId", "ChannelUserid", "Userid"); err != nil {
+		beego.Error(lr)
 		return
 	}
 
@@ -77,6 +79,7 @@ func (this *LoginController) updateDB() (err error) {
 		lr.Token = this.lrParam.Token
 		lr.ChannelUsername = this.lrParam.ChannelUserName
 		if err = lr.Update("ChannelUsername", "Token", "IsDebug", "UpdateTime"); err != nil {
+			beego.Error(lr)
 			return
 		}
 	}
@@ -94,10 +97,12 @@ func (this *LoginController) LoginRequest() {
 
 	if err := this.handleLrParam(); err != nil {
 		beego.Error(err)
+		return
 	}
 
 	if err := this.updateDB(); err != nil {
 		beego.Error(err)
+		return
 	}
 
 	this.lrRet.SetCode(0)

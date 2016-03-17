@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"channel",
+				"channelOrderId	string ν"
+			],
+			[
+				"fo",
+				"format	 ν"
+			],
+			[
 				"AppEx",
 				"AppExt2	string ν"
 			],
@@ -26,10 +34,6 @@
 			[
 				"form",
 				"FormatInt	string ƒ"
-			],
-			[
-				"channel",
-				"channelRet	WandoujiaLrRet ν"
 			],
 			[
 				"channe",
@@ -331,38 +335,6 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "api/channel/notify/pay/xmw.go",
-			"settings":
-			{
-				"buffer_size": 2481,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "api/channel/api/api.go",
-			"settings":
-			{
-				"buffer_size": 3429,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "api/channel/api/createOrder/xmw.go",
-			"settings":
-			{
-				"buffer_size": 4545,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "api/channel/api/createOrder/meizu.go",
-			"settings":
-			{
-				"buffer_size": 2689,
-				"line_ending": "Windows"
-			}
-		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -410,14 +382,28 @@
 		"/D/go/src/u9/api/channel",
 		"/D/go/src/u9/api/channel/api",
 		"/D/go/src/u9/api/channel/api/createOrder",
+		"/D/go/src/u9/api/channel/api/loginRequest",
 		"/D/go/src/u9/api/channel/notify/pay",
-		"/D/go/src/u9/api/common",
 		"/D/go/src/u9/api/controllers",
-		"/D/go/src/u9/api/controllers/pay",
-		"/D/go/src/u9/api/routers"
+		"/D/go/src/u9/api/controllers/login",
+		"/D/go/src/u9/api/controllers/login/loginRequestHandle",
+		"/D/go/src/u9/test"
 	],
 	"file_history":
 	[
+		"/D/go/src/u9/api/channel/notify/pay/xmw.go",
+		"/D/go/src/u9/api/channel/notify/pay/pay.go",
+		"/d/go/src/u9/api/controllers/login/loginRequestHandle/xmw.go",
+		"/D/go/src/u9/api/channel/api/createOrder/xmw.go",
+		"/d/go/src/u9/api/channel/api/api.go",
+		"/d/go/src/github.com/beego/bee/g_model.go",
+		"/D/go/src/u9/api/channel/api/loginRequest/gfan.go",
+		"/D/go/src/u9/api/channel/api/api.go",
+		"/d/go/src/github.com/astaxie/beego/controller.go",
+		"/D/go/src/github.com/astaxie/beego/context/context.go",
+		"/C/Go/src/net/http/request.go",
+		"/d/go/src/u9/api/controllers/login/validateLogin.go",
+		"/d/go/src/github.com/astaxie/beego/utils/pagination/controller.go",
 		"/D/go/src/u9/api/routers/router.go",
 		"/D/go/src/u9/api/controllers/login/loginRequestHandle/xmw.go",
 		"/D/go/src/u9/api/controllers/login/loginRequest.go",
@@ -440,18 +426,14 @@
 		"/D/go/src/github.com/astaxie/beego/controller.go",
 		"/D/go/src/u9/api/controllers/login/loginRequest/loginRequest.go",
 		"/D/go/src/u9/api/controllers/login/loginRequestHandle/loginRequest.go",
-		"/D/go/src/u9/api/channel/notify/pay/pay.go",
 		"/D/go/src/u9/api/channel/notify/pay/xiaomi.go",
 		"/D/go/src/u9/api/channel/notify/pay/oppo.go",
 		"/D/go/src/u9/api/channel/notify/pay/cygame.go",
-		"/D/go/src/u9/api/channel/api/api.go",
 		"/D/go/src/u9/api/channel/notify/pay/ccpay.go",
 		"/D/go/src/u9/api/channel/notify/pay/amigo.go",
 		"/D/go/src/u9/api/channel/notify/pay/gfan.go",
-		"/D/go/src/u9/api/channel/api/loginRequest/gfan.go",
 		"/D/go/src/u9/api/channel/api/loginRequest/ccpay.go",
 		"/D/go/src/u9/api/controllers/pay/payRequest.go",
-		"/D/go/src/github.com/astaxie/beego/context/context.go",
 		"/D/go/src/u9/api/controllers/pay/channelPayNotify.go",
 		"/D/go/src/u9/api/channel/api/loginRequest/m4399.go",
 		"/C/Go/src/strconv/itoa.go",
@@ -536,16 +518,7 @@
 		"/d/go/src/github.com/astaxie/beego/beego.go",
 		"/d/go/src/github.com/astaxie/beego/error.go",
 		"/d/go/src/github.com/astaxie/beego/orm/models_fields.go",
-		"/D/go/src/u9/api/channel/notify/pay/m4399.go",
-		"/d/go/src/github.com/astaxie/beego/controller.go",
-		"/d/go/src/github.com/astaxie/beego/orm/orm_test.go",
-		"/d/go/src/github.com/astaxie/beego/orm/models_test.go",
-		"/d/go/src/u9/api/controllers/pay/payRequest.go",
-		"/d/go/src/u9/api/channel/api/api.go",
-		"/d/go/src/github.com/astaxie/beego/orm/orm.go",
-		"/d/go/src/github.com1/astaxie/beego/orm/orm_test.go",
-		"/d/go/src/github.com/astaxie/beego/context/output.go",
-		"/d/go/src/u9/api/controllers/login/loginRequest.go"
+		"/D/go/src/u9/api/channel/notify/pay/m4399.go"
 	],
 	"find":
 	{
@@ -556,6 +529,7 @@
 		"height": 127.0,
 		"where_history":
 		[
+			"d:\\go\\src\\",
 			"d:\\go\\src\\u9",
 			"d:\\go\\src\\",
 			"d:\\go\\src\\u9",
@@ -620,9 +594,39 @@
 	},
 	"find_state":
 	{
-		"case_sensitive": true,
+		"case_sensitive": false,
 		"find_history":
 		[
+			"fall",
+			"handleLrParam",
+			"getAccessToken",
+			"http://open.xmwan.com/v2/oauth2/access_token",
+			"NewXmw",
+			"parseAppSecret",
+			"orderId",
+			"app_user_id",
+			"err_xmwResultFailure",
+			"dangle",
+			"err_dangleResultFailure",
+			"channelOrderId",
+			"ChannelOrderId",
+			"Dangle",
+			"ParseForm",
+			"Ctx",
+			"Request",
+			"ParseForm()",
+			"ParseForm",
+			"Input()",
+			"Input",
+			"url.ParseQuery",
+			"CallLoginRequest",
+			"CallLoginRequest'",
+			"CallLoginRequest",
+			"token",
+			"Amount",
+			"CallCreateOrder",
+			"ChannelOrderId",
+			"app_subject",
 			"time.Now().Unix()",
 			"TotalPrice",
 			"ProductPerPrice",
@@ -720,37 +724,7 @@
 			"buildURL",
 			"params",
 			"CreatePart",
-			"files",
-			"NewWriter",
-			"bodyWriter",
-			"params",
-			"Req",
-			"Param",
-			"param",
-			"params",
-			"param",
-			"channelUserId",
-			"ChannelOrderId",
-			"notifyProductSvr",
-			"ChannelOrderId",
-			"parseUrlParam",
-			"parseOrderRequest",
-			"orderRequest",
-			"channelOrderId",
-			"parseUrlParam",
-			"CheckUrlParam",
-			"err_orderIsNotExist",
-			"channelRet",
-			"AmigoCoChannelRet",
-			"OrderNo",
-			"parseUrlParam",
-			"err_orderIsNotExist",
-			"ParseChannelRet",
-			"err_amigoParsePayKey",
-			"ParseChannelRet",
-			"NotifyUrl",
-			"NotifyUrl\n",
-			".string"
+			"files"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -758,6 +732,8 @@
 		"regex": false,
 		"replace_history":
 		[
+			"xmw",
+			"Xmw",
 			"xmw",
 			"Xmw",
 			"xmw",
@@ -883,150 +859,19 @@
 			"Name",
 			"errMsg",
 			"Cp",
-			"CpController",
-			"BaseController",
-			"ProfileController"
+			"CpController"
 		],
 		"reverse": false,
 		"show_context": false,
 		"use_buffer2": true,
 		"whole_word": false,
-		"wrap": false
+		"wrap": true
 	},
 	"groups":
 	[
 		{
-			"selected": 0,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "api/channel/notify/pay/xmw.go",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2481,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2135,
-								2135
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/GoSublime/syntax/GoSublime-Go.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "api/channel/api/api.go",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3429,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3288,
-								3288
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/GoSublime/syntax/GoSublime-Go.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 3586.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "api/channel/api/createOrder/xmw.go",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 4545,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2009,
-								2009
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/GoSublime/syntax/GoSublime-Go.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 1920.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "api/channel/api/createOrder/meizu.go",
-					"semi_transient": true,
-					"settings":
-					{
-						"buffer_size": 2689,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2379,
-								2379
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/GoSublime/syntax/GoSublime-Go.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 1950.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				}
 			]
 		}
 	],

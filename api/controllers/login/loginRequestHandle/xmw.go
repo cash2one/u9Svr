@@ -2,18 +2,22 @@ package loginRequestHandle
 
 import (
 	"encoding/json"
+	"errors"
+	"fmt"
 	"github.com/astaxie/beego"
 	"u9/models"
 )
 
 type XMWChannelRet struct {
-	AccessToken  string `json:"access_token"`
-	RefreshToken string `json:"refresh_token"`
-	ExpiresIn    int    `json:"expires_in"`
-	XmwOpenId    string `json:"xmw_open_id"`
-	Nickname     string `json:"nickname"`
-	Avatar       string `json:"avatar"`
-	Gender       int    `json:"gender"`
+	Error            string `json:"error"`
+	ErrorDescription string `json:"error_description"`
+	AccessToken      string `json:"access_token"`
+	RefreshToken     string `json:"refresh_token"`
+	ExpiresIn        int    `json:"expires_in"`
+	XmwOpenId        string `json:"xmw_open_id"`
+	Nickname         string `json:"nickname"`
+	Avatar           string `json:"avatar"`
+	Gender           int    `json:"gender"`
 }
 
 type XMW struct {
@@ -49,13 +53,9 @@ func (this *XMW) Init(param *Param) (err error) {
 
 func (this *XMW) getAccessToken() (err error) {
 	this.Method = "POST"
-	this.Url = "http://open.xmwan.com/v2/oauth2/access_token"
+	format := "http://open.xmwan.com/v2/oauth2/access_token?client_id=%s&client_secret=%s&grant_type=%s&code=%s"
+	this.Url = fmt.Sprintf(format, this.clientId, this.clientSecret, "authorization_code", this.param.Token)
 	this.LRH.InitParam()
-
-	this.Req.Param("client_id", this.clientId)
-	this.Req.Param("client_secret", this.clientSecret)
-	this.Req.Param("grant_type", "authorization_code")
-	this.Req.Param("code", this.param.Token)
 
 	if err = this.Response(); err != nil {
 		beego.Error(err)
@@ -67,6 +67,14 @@ func (this *XMW) getAccessToken() (err error) {
 		beego.Error(err)
 		return
 	}
+
+	if this.channelRet.Error != "" {
+		err = errors.New(this.channelRet.Error)
+		beego.Error(err)
+		return
+	}
+	this.channelRet.Error = ""
+
 	return
 }
 
@@ -86,6 +94,13 @@ func (this *XMW) getUserInfo() (err error) {
 		return
 	}
 
+	if this.channelRet.Error != "" {
+		err = errors.New(this.channelRet.Error)
+		beego.Error(err)
+		return
+	}
+	this.channelRet.Error = ""
+
 	this.param.ChannelUserId = this.channelRet.XmwOpenId
 	this.param.ChannelUserName = this.channelRet.Nickname
 	return
@@ -102,4 +117,8 @@ func (this *XMW) Handle() (ret string, err error) {
 	data, _ := json.Marshal(this.channelRet)
 	ret = string(data)
 	return
+}
+
+func (this *XMW) GetToken() (ret string) {
+	return this.channelRet.AccessToken
 }

@@ -48,7 +48,9 @@ func CallPayNotify(channelId, productId int, urlParams *url.Values, ctx *context
 	case 122:
 		pn = NewCYGame(channelId, productId, urlParams)
 	case 123:
-		pn = NewCYGame(channelId, productId, urlParams)
+		pn = NewXmw(channelId, productId, urlParams)
+	case 125:
+		pn = NewHaimawan(channelId, productId, urlParams)
 	default:
 		err = errors.New("channelId isn't exist.")
 		return

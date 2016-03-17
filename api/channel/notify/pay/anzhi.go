@@ -6,6 +6,7 @@ import (
 	"net/url"
 	"strconv"
 	// "u9/models"
+	"errors"
 	"u9/tool"
 )
 
@@ -13,6 +14,9 @@ var AnZhiUrlKeys []string = []string{"data"}
 
 const (
 	err_anzhiParseAppSecret = 10301
+	err_anzhiChannelOrderId = 10302
+	err_anzhiOrderFail      = 10303
+	err_anzhiRedBagMoney    = 10304
 )
 
 //安智
@@ -32,10 +36,11 @@ type anZhiData struct {
 	Memo         string `json:"memo"`         //备注
 	OrderAmount  string `json:"orderAmount"`  //订单金额
 	OrderAccount string `json:"orderAccount"` //订单数量
-	Code         string `json:"code"`         //订单状态
+	Code         int    `json:"code"`         //订单状态
 	OrderTime    string `json:"orderTime"`    //订单时间
 	Msg          string `json:"msg"`          //消息
 	OrderId      string `json:"orderId"`      //订单号
+	RedBagMoney  string `redBagMoney`         //礼券
 }
 
 func NewAnZhi(channelId, productId int, urlParams *url.Values) *AnZhi {
@@ -63,28 +68,58 @@ func (this *AnZhi) parseAppSecret() (err error) {
 }
 
 func (this *AnZhi) parseUrlParam() (err error) {
+	defer func() {
+		if err != nil {
+			beego.Trace(err)
+		}
+	}()
+
 	this.data = this.urlParams.Get("data")
 	beego.Trace(this.data)
-	ret, erro := tool.JavaDesDecyrpt(this.appSecret, this.data)
-	if erro != nil {
-		beego.Trace(erro)
+	ret := ""
+	if ret, err = tool.JavaDesDecyrpt(this.appSecret, this.data); err != nil {
+		this.callbackRet = err_parseUrlParam
+		return
 	}
 
 	beego.Trace(ret)
-	err = json.Unmarshal([]byte(ret), &this.anZhiJson)
-	if err != nil {
-		beego.Trace(err)
+	if err = json.Unmarshal([]byte(ret), &this.anZhiJson); err != nil {
+		this.callbackRet = err_parseUrlParam
+		return
 	}
+
 	this.orderId = this.anZhiJson.CpInfo
 	this.channelUserId = this.anZhiJson.Uid
+	if this.anZhiJson.OrderId == "" {
+		this.callbackRet = err_anzhiChannelOrderId
+		err = errors.New("err_anzhiChannelOrderId")
+		return
+	}
+	if this.anZhiJson.Code != 1 {
+		this.callbackRet = err_anzhiOrderFail
+		err = errors.New("err_anzhiOrderFail")
+		return
+	}
+
 	this.channelOrderId = this.anZhiJson.OrderId
 	beego.Trace(this.anZhiJson.OrderAmount)
 	payAmount := 0.0
 	if payAmount, err = strconv.ParseFloat(this.anZhiJson.OrderAmount, 64); err != nil {
-		beego.Trace(err)
-		return err
+		this.callbackRet = err_parseUrlParam
+		return
 	} else {
-		this.payAmount = int(payAmount)
+		if this.anZhiJson.RedBagMoney != "" {
+			payDiscount := 0.0
+			if payDiscount, err = strconv.ParseFloat(this.anZhiJson.RedBagMoney, 64); err != nil {
+				this.callbackRet = err_parseUrlParam
+				return
+			} else {
+				this.payAmount = int(payAmount) + int(payDiscount)
+			}
+		} else {
+			this.payAmount = int(payAmount)
+		}
+
 	}
 	return
 }
@@ -102,7 +137,26 @@ func (this *AnZhi) ParseParam() (err error) {
 	return
 }
 
-func (this *AnZhi) CheckSign() (err error) {
+func (this *AnZhi) handleOrder() (err error) {
+	if err = this.Base.handleOrder(); err != nil {
+		return
+	}
+
+	if this.anZhiJson.RedBagMoney != "" {
+		payDiscount := 0.0
+		if payDiscount, err = strconv.ParseFloat(this.anZhiJson.RedBagMoney, 64); err != nil {
+			beego.Trace(err)
+			return err
+		} else {
+			this.payOrder.PayDiscount = int(payDiscount)
+		}
+		if err = this.payOrder.Update("PayDiscount"); err != nil {
+			this.callbackRet = err_anzhiRedBagMoney
+			beego.Trace(err)
+			return
+		}
+	}
+
 	return
 }
 

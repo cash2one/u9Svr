@@ -3,7 +3,7 @@ package common
 import (
 	"bytes"
 	"crypto/tls"
-	//"github.com/astaxie/beego"
+	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/httplib"
 	"io"
 	"net/http"
@@ -40,10 +40,12 @@ func (this *Request) Response() (err error) {
 	var resp *http.Response
 	resp, err = this.Req.Response()
 	if err != nil {
+		beego.Error(err)
 		return
 	}
 	var buffer bytes.Buffer
 	if _, err = io.Copy(&buffer, resp.Body); err != nil {
+		beego.Error(err)
 		return
 	}
 	bytes := buffer.Bytes()

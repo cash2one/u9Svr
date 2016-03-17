@@ -296,7 +296,7 @@ func (this *Base) handleOrder() (err error) {
 	defer func() {
 		if err != nil {
 			this.callbackRet = err_handleOrder
-			beego.Trace(err)
+			//beego.Error(err)
 		}
 	}()
 
@@ -309,17 +309,19 @@ func (this *Base) handleOrder() (err error) {
 	created := false
 	this.payOrder = models.PayOrder{OrderId: this.orderId, ChannelOrderId: this.channelOrderId}
 	if created, _, err = orm.NewOrm().ReadOrCreate(&this.payOrder, "OrderId", "ChannelOrderId"); err != nil {
+		beego.Error(err, ":orderId(", this.orderId, ")channelOrderId(", this.channelOrderId, ")")
 		return
 	}
 
 	if !created {
-		err = errors.New("order is exist")
+		//err = errors.New("order is exist")
 		return
 	}
 
 	this.payOrder.PayAmount = this.payAmount
 	this.payOrder.PayTime = time.Now()
 	if err = this.payOrder.Update("PayAmount"); err != nil {
+		beego.Error(err, ":payAmount(", this.payAmount, ")")
 		return
 	}
 	return
