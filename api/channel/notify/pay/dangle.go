@@ -93,16 +93,18 @@ func (this *Dangle) CheckSign() (err error) {
 	}()
 
 	format := "order=%s&money=%s&mid=%s&time=%s&result=%s&ext=%s&key=%s"
-	context := fmt.Sprintf(format,
+	content := fmt.Sprintf(format,
 		this.channelOrderId, this.urlParams.Get("money"),
 		this.channelUserId, this.urlParams.Get("time"), this.urlParams.Get("result"),
 		this.urlParams.Get("ext"), this.payKey)
 
-	if sign := tool.Md5([]byte(context)); sign != this.urlParams.Get("signature") {
-		msg := fmt.Sprintf("Sign is invalid, context:%s, sign:%s", context, sign)
+	urlSign := this.urlParams.Get("signature")
+	if sign := tool.Md5([]byte(content)); sign != urlSign {
+		msg := fmt.Sprintf("Sign is invalid, content:%s, sign:%s, urlSign%s", content, sign, urlSign)
 		err = errors.New(msg)
 		return
 	}
+
 	return
 }
 

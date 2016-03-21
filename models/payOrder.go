@@ -10,6 +10,7 @@ type PayOrder struct {
 	OrderId        string //订单号
 	ChannelOrderId string
 	PayAmount      int
+	PayDiscount    int
 	PayTime        time.Time `orm:"auto_now;type(datatime)"`
 }
 

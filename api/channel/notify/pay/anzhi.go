@@ -137,6 +137,9 @@ func (this *AnZhi) ParseParam() (err error) {
 	return
 }
 
+func (this *AnZhi) CheckSign() (err error) {
+	return
+}
 func (this *AnZhi) handleOrder() (err error) {
 	if err = this.Base.handleOrder(); err != nil {
 		return

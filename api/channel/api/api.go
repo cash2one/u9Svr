@@ -28,6 +28,8 @@ func CallLoginRequest(channelId, productId int, channelUserId, token string) (re
 		fallthrough
 	case 122: //6YGame
 		fallthrough
+	case 127:
+		fallthrough
 	case 123: //熊猫玩
 		beego.Trace(channelId)
 		ret.SetCode(0)
@@ -56,6 +58,12 @@ func CallLoginRequest(channelId, productId int, channelUserId, token string) (re
 		lr = loginRequest.LrNewAmigo(channelUserId, token, jsonParam)
 	case 125:
 		lr = loginRequest.LrNewHaiMaWan(channelUserId, token, jsonParam)
+	case 126:
+		lr = loginRequest.LrNewLeTV(channelUserId, token, jsonParam)
+	case 128:
+		lr = loginRequest.LrNewZhuoYi(channelUserId, token, jsonParam)
+	case 129:
+		lr = loginRequest.LrNewShouMeng(channelUserId, token, jsonParam)
 	default:
 		ret.SetCode(3004)
 		return
@@ -94,6 +102,7 @@ func checkPackageParam(channelId, productId int) (jsonParam *map[string]interfac
 	}
 
 	jsonParam = new(map[string]interface{})
+	beego.Trace(pp.XmlParam)
 	if err = json.Unmarshal([]byte(pp.XmlParam), jsonParam); err != nil {
 		beego.Trace(err, ":", err.Error())
 		return nil, errors.New("9002")
