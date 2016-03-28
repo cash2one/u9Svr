@@ -3,8 +3,9 @@ package cp
 import (
 	"errors"
 	//"fmt"
-	//"github.com/astaxie/beego"
+	"github.com/astaxie/beego"
 	//"strings"
+	"os"
 	"time"
 	"u9/models"
 	"u9/www/android"
@@ -149,6 +150,9 @@ func (this *PackageController) Package() {
 		packageTask.State = 3
 		packageTask.Update("state")
 	} else {
+		if err := os.Remove(publishApk); err != nil {
+			beego.Warn(err)
+		}
 		packageTask.State = 2
 		packageTask.PublishApk = publishApk
 		packageTask.Update("state", "publishApk")
