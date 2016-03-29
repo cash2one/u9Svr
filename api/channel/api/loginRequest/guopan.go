@@ -2,7 +2,7 @@ package loginRequest
 
 import (
 	"fmt"
-	"github.com/astaxie/beego"
+	// "github.com/astaxie/beego"
 	"strconv"
 	"time"
 	"u9/tool"
