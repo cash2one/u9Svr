@@ -398,12 +398,12 @@
 	"expanded_folders":
 	[
 		"/D/go/src/u9",
-		"/D/go/src/u9/api/channel/notify",
-		"/D/go/src/u9/api/channel/notify/pay",
 		"/D/go/src/u9/tool"
 	],
 	"file_history":
 	[
+		"/C/Users/jacky/Desktop/拇指玩修改id脚本.lua",
+		"/C/Users/jacky/AppData/Roaming/Sublime Text 3/Packages/GoSublime/CHANGELOG.md",
 		"/D/go/src/u9/test/main.go",
 		"/D/go/src/code.google.com/p/graphics-go/graphics/scale.go",
 		"/D/go/src/github.com/BurntSushi/graphics-go/graphics/affine.go",
@@ -435,7 +435,6 @@
 		"/D/go/src/u9/tool/cmd.go",
 		"/D/go/src/u9/tool/android/apk.go",
 		"/D/go/src/u9/api/channel/notify/pay/dangle.go",
-		"/C/Users/jacky/Desktop/拇指玩修改id脚本.lua",
 		"/D/go/src/u9/api/channel/api/api.go",
 		"/D/go/src/u9/api/channel/api/loginRequest/zhuoyi.go",
 		"/C/Go/src/net/url/url.go",
@@ -530,8 +529,7 @@
 		"/C/Go/src/strconv/atoi.go",
 		"/D/go/src/u9/api/channel/api/loginRequest/base.go",
 		"/D/go/src/u9/api/channel/notify/pay/flyme.go",
-		"/D/go/src/u9/api/channel/api/createOrder/flyme.go",
-		"/D/go/src/u9/api/channel/api/createOrder/base.go"
+		"/D/go/src/u9/api/channel/api/createOrder/flyme.go"
 	],
 	"find":
 	{
@@ -905,8 +903,8 @@
 						"selection":
 						[
 							[
-								107,
-								107
+								488,
+								488
 							]
 						],
 						"settings":

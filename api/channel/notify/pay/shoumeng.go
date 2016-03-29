@@ -63,9 +63,9 @@ func (this *ShouMeng) parseUrlParam() (err error) {
 		}
 	}()
 
-	this.orderId = this.urlParams.Get("orderId")
+	this.orderId = this.urlParams.Get("coOrderId")
 	this.channelUserId = this.urlParams.Get("uid")
-	this.channelOrderId = this.urlParams.Get("coOrderId")
+	this.channelOrderId = this.urlParams.Get("orderId")
 
 	payAmount := 0.0
 	if payAmount, err = strconv.ParseFloat(this.urlParams.Get("amount"), 64); err != nil {
@@ -129,9 +129,9 @@ func (this *ShouMeng) CheckSign() (err error) {
 
 func (this *ShouMeng) GetResult() (ret string) {
 	if this.callbackRet == err_noerror {
-		ret = "success"
+		ret = "SUCCESS"
 	} else {
-		ret = "failure"
+		ret = "FAILURE"
 	}
 	return
 }

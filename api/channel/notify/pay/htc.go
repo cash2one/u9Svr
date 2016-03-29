@@ -4,32 +4,42 @@ import (
 	"crypto/rsa"
 	"encoding/json"
 	// "errors"
+	"bytes"
 	"fmt"
 	"github.com/astaxie/beego"
+	"github.com/astaxie/beego/context"
+	"io"
 	"net/url"
-	"strconv"
+	"strings"
 	"u9/tool"
 )
 
-var htcUrlKeys []string = []string{"order", "sign"}
+var htcUrlKeys []string = []string{"order", "sign", "sign_type"}
 
 const (
 	err_htcParsePayKey      = 12701
 	err_htcResultFailure    = 12702
 	err_htcInitRsaPublicKey = 12703
+	err_htcParseBody        = 12704
 )
 
 //HTC
 type HTC struct {
 	Base
-	order      string
 	payKey     string
+	response   Response
 	htc_result HTC_Result
+	ctx        *context.Context
+}
+type Response struct {
+	Order     string
+	Sign      string
+	Sign_type string
 }
 type HTC_Result struct {
-	Result_code   string `json:"result_code"`
+	Result_code   int    `json:"result_code"`
 	Gmt_create    string `json:"gmt_create"`
-	Real_amount   string `json:"real_amount"`
+	Real_amount   int    `json:"real_amount"`
 	Result_msg    string `json:"result_msg"`
 	Game_code     string `json:"game_code"`
 	Game_order_id string `json:"game_order_id"`
@@ -41,14 +51,15 @@ var (
 	htcRsaPublicKey *rsa.PublicKey
 )
 
-func NewHTC(channelId, productId int, urlParams *url.Values) *HTC {
+func NewHTC(channelId, productId int, urlParams *url.Values, ctx *context.Context) *HTC {
 	ret := new(HTC)
-	ret.Init(channelId, productId, urlParams)
+	ret.Init(channelId, productId, urlParams, ctx)
 	return ret
 }
 
-func (this *HTC) Init(channelId, productId int, urlParams *url.Values) {
+func (this *HTC) Init(channelId, productId int, urlParams *url.Values, ctx *context.Context) {
 	this.Base.Init(channelId, productId, urlParams, &htcUrlKeys)
+	this.ctx = ctx
 }
 
 func (this *HTC) parsePayKey() (err error) {
@@ -58,7 +69,11 @@ func (this *HTC) parsePayKey() (err error) {
 			beego.Trace(err)
 		}
 	}()
-	this.payKey, err = this.getPackageParam("HTC_PRIVATE_KEY")
+	this.payKey, err = this.getPackageParam("HTC_SDK_PUBLICKEY")
+	return
+}
+
+func (this *HTC) CheckUrlParam() (err error) {
 	return
 }
 
@@ -69,28 +84,57 @@ func (this *HTC) parseUrlParam() (err error) {
 			beego.Trace(err)
 		}
 	}()
-	this.order = url.QueryEscape(this.urlParams.Get("order"))
-	json.Unmarshal([]byte(this.order), &this.htc_result)
-	this.orderId = this.htc_result.Jolo_order_id
-	this.channelOrderId = this.htc_result.Game_order_id
+	// this.order = url.QueryEscape(this.response.Order)
 
-	payAmount := 0.0
-	if payAmount, err = strconv.ParseFloat(this.htc_result.Gmt_payment, 64); err != nil {
-		return err
-	} else {
-		this.payAmount = int(payAmount)
-	}
+	this.response.Order = strings.Replace(this.response.Order, "\"{", "{", 1)
+	this.response.Order = strings.Replace(this.response.Order, "}\"", "}", 1)
+	beego.Trace(this.response.Order)
+	json.Unmarshal([]byte(this.response.Order), &this.htc_result)
+	beego.Trace(this.htc_result)
+	this.orderId = this.htc_result.Game_order_id
+	this.channelOrderId = this.htc_result.Jolo_order_id
+	this.payAmount = this.htc_result.Real_amount
+
 	return
 }
 
 func (this *HTC) ParseChannelRet() (err error) {
-	if result := this.htc_result.Result_code; result != "1" {
+	if result := this.htc_result.Result_code; result != 1 {
 		this.callbackRet = err_htcResultFailure
 	}
 	return
 }
+func (this *HTC) parseBody() (err error) {
+	defer func() {
+		if err != nil {
+			this.callbackRet = err_htcParseBody
+			beego.Trace(err)
+		}
+	}()
+
+	var buffer bytes.Buffer
+	if _, err = io.Copy(&buffer, this.ctx.Request.Body); err != nil {
+		return
+	}
+	content := string(buffer.Bytes())
+	var newValues url.Values
+	if newValues, err = url.ParseQuery(content); err != nil {
+		return
+	}
+	this.response.Order = newValues.Get("order")
+	this.response.Sign = newValues.Get("sign")
+	this.response.Sign_type = newValues.Get("sign_type")
+	this.response.Sign = strings.Replace(this.response.Sign, "\"", "", 2)
+	beego.Trace(this.response.Order)
+	beego.Trace(this.response.Sign)
+	beego.Trace(this.response.Sign_type)
+	return
+}
 
 func (this *HTC) ParseParam() (err error) {
+	if err = this.parseBody(); err != nil {
+		return
+	}
 	if err = this.parseUrlParam(); err != nil {
 		return
 	}
@@ -120,6 +164,7 @@ func (this *HTC) initRsaPublicKey() (err error) {
 			return err
 		}
 	}
+	// beego.Trace(htcRsaPublicKey)
 	return nil
 }
 
@@ -136,9 +181,8 @@ func (this *HTC) CheckSign() (err error) {
 	// 	err = errors.New(msg)
 	// 	return
 	// }
-	sign := this.urlParams.Get("sign")
-	if err = tool.RsaVerifyPKCS1v15(htcRsaPublicKey, this.order, sign); err != nil {
-		msg := fmt.Sprintf("RsaVerifyPK CS1v15 exception: context:%s, sign:%s", this.order, sign)
+	if err = tool.RsaVerifyPKCS1v15(htcRsaPublicKey, this.response.Order, this.response.Sign); err != nil {
+		msg := fmt.Sprintf("RsaVerifyPK CS1v15 exception: context:%s, sign:%s", this.response.Order, this.response.Sign)
 		beego.Trace(msg)
 		return err
 	}

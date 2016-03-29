@@ -64,6 +64,8 @@ func CallLoginRequest(channelId, productId int, channelUserId, token string) (re
 		lr = loginRequest.LrNewZhuoYi(channelUserId, token, jsonParam)
 	case 129:
 		lr = loginRequest.LrNewShouMeng(channelUserId, token, jsonParam)
+	case 130:
+		lr = loginRequest.LrNewYYH(channelUserId, token, jsonParam)
 	default:
 		ret.SetCode(3004)
 		return

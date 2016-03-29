@@ -2,11 +2,11 @@ package channelPayNotify
 
 import (
 	"encoding/json"
-	"errors"
-	"fmt"
+	// "errors"
 	"github.com/astaxie/beego"
 	"net/url"
-	"strconv"
+	// "strconv"
+	"strings"
 	"u9/tool"
 )
 
@@ -27,14 +27,15 @@ type TransData struct {
 	Exorderno string `json:"exorderno"`
 	Transid   string `json:"transid"`
 	Appid     string `json:"appid"`
-	Waresid   string `json:"waresid"`
-	Feetype   string `json:"feetype"`
-	Money     string `json:"money"`
-	Count     string `json:"count"`
-	Result    string `json:"result"`
-	Transtype string `json:"transtype"`
+	Waresid   int    `json:"waresid"`
+	Feetype   int    `json:"feetype"`
+	Money     int    `json:"money"`
+	Count     int    `json:"count"`
+	Result    int    `json:"result`
+	Transtype int    `json:"transtype"`
 	Transtime string `json:"transtime"`
 	Cpprivate string `json:"cpprivate"`
+	PayType   string `json:"paytype"`
 }
 
 func NewYYH(channelId, productId int, urlParams *url.Values) *YYH {
@@ -54,7 +55,7 @@ func (this *YYH) parsePayKey() (err error) {
 			beego.Trace(err)
 		}
 	}()
-	this.payKey, err = this.getPackageParam("YYH_PAYMENT_KEY")
+	this.payKey, err = this.getPackageParam("YYH_APPKEY")
 	return
 }
 
@@ -65,23 +66,20 @@ func (this *YYH) parseUrlParam() (err error) {
 			beego.Trace(err)
 		}
 	}()
-	json.Unmarshal(this.urlParams.Get(transdata), &this.transData)
+	beego.Trace(this.urlParams)
+	json.Unmarshal([]byte(this.urlParams.Get("transdata")), &this.transData)
 	this.orderId = this.transData.Exorderno
-	this.channelUserId = this.urlParams.Get("mid")
 	this.channelOrderId = this.transData.Transid
+	this.payAmount = this.transData.Money
 
-	payAmount := 0.0
-	if payAmount, err = strconv.ParseFloat(this.transData.Money, 64); err != nil {
-		return err
-	} else {
-		this.payAmount = int(payAmount)
-	}
 	return
 }
 
 func (this *YYH) ParseChannelRet() (err error) {
-	if result := this.urlParams.Get("result"); result != "1" {
+	if result := this.transData.Result; result != 0 {
 		this.callbackRet = err_yyhResultFailure
+		beego.Trace(result)
+		return
 	}
 	return
 }
@@ -96,36 +94,33 @@ func (this *YYH) ParseParam() (err error) {
 	if err = this.Base.ParseParam(); err != nil {
 		return
 	}
+	this.channelUserId = this.loginRequest.ChannelUserid
 	return
 }
 
 func (this *YYH) CheckSign() (err error) {
-	defer func() {
-		if err != nil {
-			this.callbackRet = err_checkSign
-			beego.Trace(err)
-		}
-	}()
-
-	format := "order=%s&money=%s&mid=%s&time=%s&result=%s&ext=%s&key=%s"
-	context := fmt.Sprintf(format,
-		this.channelOrderId, this.urlParams.Get("money"),
-		this.channelUserId, this.urlParams.Get("time"), this.urlParams.Get("result"),
-		this.urlParams.Get("ext"), this.payKey)
-
-	if sign := tool.Md5([]byte(context)); sign != this.urlParams.Get("signature") {
-		msg := fmt.Sprintf("Sign is invalid, context:%s, sign:%s", context, sign)
-		err = errors.New(msg)
+	var result string
+	md5Sign := tool.Md5([]byte(this.urlParams.Get("transdata")))
+	if result, err = tool.YYHSign(md5Sign, this.urlParams.Get("sign"), this.payKey); err != nil {
+		beego.Trace(err)
 		return
 	}
+	result = strings.TrimSpace(result)
+	if result != "0" {
+		this.callbackRet = err_checkSign
+		beego.Trace("yyh check:", result, "transdata:", md5Sign, "sign:", this.urlParams.Get("sign"), "paykey:", this.payKey)
+	} else {
+		beego.Trace("yyh check:", result)
+	}
+
 	return
 }
 
 func (this *YYH) GetResult() (ret string) {
 	if this.callbackRet == err_noerror {
-		ret = "success"
+		ret = "true"
 	} else {
-		ret = "failure"
+		ret = "false"
 	}
 	return
 }

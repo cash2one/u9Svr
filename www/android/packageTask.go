@@ -16,13 +16,15 @@ type PackageTaskHandle struct {
 	channel        models.Channel
 	packageParam   models.PackageParam
 
-	apkName string
-
+	apkName  string
 	res      *Res
 	asset    *Asset
 	smali    *Smali
 	manifest *Manifest
 	publish  *Publish
+	icon     *Icon
+	lib      *Lib
+	buildId  *BuildId
 }
 
 func HandleTask(packageTaskId int) (publishApk string, err error) {
@@ -70,12 +72,16 @@ func (this *PackageTaskHandle) Init(packageTaskId int) {
 	this.apkName = GetApkName(&this.product, &this.productVersion)
 
 	this.res = NewRes(this.packageTask.Id, &this.product, &this.productVersion, &this.packageParam)
+	this.icon = NewIcon(this.packageTask.Id, &this.product, &this.channel, &this.productVersion, &this.packageParam)
+	this.lib = NewLib(this.packageTask.Id, &this.product, &this.productVersion)
 	this.asset = NewAsset(this.packageTask.Id, &this.product, &this.productVersion, &this.packageParam)
 	this.smali = NewSmali(this.packageTask.Id, &this.product, &this.productVersion)
 	this.manifest = NewManifest(this.packageTask.Id,
 		&this.product, &this.productVersion, &this.packageParam, &this.channel)
 	this.publish = NewPublish(this.packageTask.Id, &this.product, &this.productVersion,
 		&this.channel, &this.packageParam)
+	this.buildId = NewBuildId(this.packageTask.Id, &this.product, &this.productVersion)
+
 }
 
 func (this *PackageTaskHandle) Prepare() {
@@ -116,6 +122,12 @@ func (this *PackageTaskHandle) Handle() (publishApk string) {
 	beego.Trace("res handle...")
 	this.res.Handle()
 
+	beego.Trace("icon handle...")
+	this.icon.Handle()
+
+	beego.Trace("lib handle...")
+	this.lib.Handle()
+
 	beego.Trace("asset handle...")
 	this.asset.Handle()
 
@@ -124,6 +136,9 @@ func (this *PackageTaskHandle) Handle() (publishApk string) {
 
 	beego.Trace("manifest handle...")
 	this.manifest.Handle()
+
+	beego.Trace("buildId handle")
+	this.buildId.Handle()
 
 	beego.Trace("publishApk handle...")
 	publishApk = this.publish.Handle()

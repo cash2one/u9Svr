@@ -150,14 +150,15 @@ func (this *AnZhi) handleOrder() (err error) {
 		if payDiscount, err = strconv.ParseFloat(this.anZhiJson.RedBagMoney, 64); err != nil {
 			beego.Trace(err)
 			return err
-		} else {
-			this.payOrder.PayDiscount = int(payDiscount)
 		}
+		this.payOrder.PayDiscount = int(payDiscount)
 		if err = this.payOrder.Update("PayDiscount"); err != nil {
 			this.callbackRet = err_anzhiRedBagMoney
 			beego.Trace(err)
 			return
 		}
+	} else {
+		beego.Trace("anzhiRedBagMoney null")
 	}
 
 	return

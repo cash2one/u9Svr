@@ -2,14 +2,15 @@ package android
 
 import (
 	//"fmt"
-	//"github.com/astaxie/beego"
+	"github.com/astaxie/beego"
 	//"os"
 	"os/exec"
 )
 
 const (
-	apkTool  = "package/tools/apktool_2.0.2.jar"
-	signTool = "jarsigner"
+	apkTool   = "package/tools/apktool_2.0.2.jar"
+	signTool  = "jarsigner"
+	smaliTool = "package/tools/baksmali-1.2.6.jar"
 )
 
 //apk反编
@@ -63,6 +64,34 @@ func CompileApk(apkPath string, outApkFile string) (err error) {
 	//}
 
 	//fmt.Fprintf(os.Stdout, "Result: %s", buf)
+	return
+}
+
+//ant打包
+func Ant(projectName, method string) (err error) {
+	var args []string
+	args = make([]string, 3)
+	args[0] = "-f"
+	args[1] = projectName
+	args[2] = method
+	cmd := exec.Command("ant", args...)
+	_, err = cmd.Output()
+	return
+}
+
+//classes.dex反编译
+func UnCompileSmallDex(dexFile, putPath string) (err error) {
+	var args []string
+	args = make([]string, 5)
+
+	args[0] = "-jar"
+	args[1] = smaliTool
+	args[2] = dexFile
+	args[3] = "-o"
+	args[4] = putPath
+	cmd := exec.Command("java", args...)
+	_, err = cmd.Output()
+	beego.Trace("java", args)
 	return
 }
 

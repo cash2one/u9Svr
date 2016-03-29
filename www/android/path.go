@@ -10,6 +10,7 @@ const (
 	productRootPath = "package/game"
 	channelRootPath = "package/channel"
 	packageRootPath = "package/uncompile"
+	buildIdRootPath = "package/build_id"
 )
 
 func GetApkName(product *models.Product, productVersion *models.ProductVersion) string {
@@ -46,4 +47,32 @@ func GetPublishApk(product *models.Product, productVersion *models.ProductVersio
 
 	return publishPath + "/" + product.Code + "_" + channel.Type + "_" +
 		productVersion.VersionName + "_" + packageTime + ".apk"
+}
+
+func GetPackageIconPath(channel *models.Channel, packageParam *models.PackageParam, productVersion *models.ProductVersion) (channelRet string, gameRet string) {
+	iconType := packageParam.IconType
+	switch iconType {
+	case 1:
+		return "", productVersion.IconUrl
+	case 2:
+		return channel.IconLeftTop, productVersion.IconUrl
+	case 3:
+		return channel.IconLeftBottom, productVersion.IconUrl
+	case 4:
+		return channel.IconRightTop, productVersion.IconUrl
+	case 5:
+		return channel.IconRightBottom, productVersion.IconUrl
+	case 6:
+		return "", packageParam.PackageIcon
+	}
+	return
+}
+
+func GetBuildIdPath(packageTaskId int, project string) (ret string) {
+	if project == "" {
+		ret = buildIdRootPath + "/" + strconv.Itoa(packageTaskId)
+	} else {
+		ret = buildIdRootPath + "/" + strconv.Itoa(packageTaskId) + project
+	}
+	return
 }
