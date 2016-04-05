@@ -247,11 +247,12 @@ func (this *Base) notifyProductSvr() (err error) {
 		format := this.orderRequest.CallbackUrl + "/?" +
 			"UserId=%s" + "&" + "OrderId=%s" + "&" + "ChannelId=%d" + "&" + "ChannelOrderId=%s" + "&" +
 			"ChannelUserId=%s" + "&" + "ProductId=%d" + "&" + "ProductOrderId=%s" + "&" +
-			"ReqAmount=%d" + "&" + "PayAmount=%d" + "&" + "Sign=%s" + "&" + "Code=%d"
+			"ReqAmount=%d" + "&" + "AppExt=%s" + "&" + "PayAmount=%d" + "&" + "Sign=%s" + "&" + "Code=%d"
 		notifyUrl := fmt.Sprintf(format,
 			this.orderRequest.UserId, this.orderId, this.channelId, this.channelOrderId,
 			this.channelUserId, this.productId, this.orderRequest.ProductOrderId,
-			this.orderRequest.ReqAmount, this.payAmount, tool.Md5([]byte(signContext)), this.callbackRet)
+			this.orderRequest.ReqAmount, this.orderRequest.AppExt, this.payAmount,
+			tool.Md5([]byte(signContext)), this.callbackRet)
 
 		req := httplib.Get(notifyUrl)
 		if _, err = req.Response(); err != nil {

@@ -15,11 +15,12 @@ type OrderRequest struct {
 	ProductOrderId string    //产品订单号
 	ReqAmount      int       //请求订单金额
 	ReqTime        time.Time `orm:"auto_now_add;type(datatime)"` //请求时间
-	State          int       //0初始 1完成渠道API通知回调 2完成产品通知API调用
-	ProductCode    int       //产品通知API调用状态码  -1初始0成功1失败 ...
-	ProductMessage string    //产品通知API调用消息
-	ChannelLog     string    //渠道API通知回调日志
-	CallbackUrl    string    //游戏服务器支付回调地址
+	AppExt         string
+	State          int    //0初始 1完成渠道API通知回调 2完成产品通知API调用
+	ProductCode    int    //产品通知API调用状态码  -1初始0成功1失败 ...
+	ProductMessage string //产品通知API调用消息
+	ChannelLog     string //渠道API通知回调日志
+	CallbackUrl    string //游戏服务器支付回调地址
 }
 
 func (this *OrderRequest) Init() {
@@ -36,6 +37,7 @@ func (this *OrderRequest) Init() {
 	this.ProductMessage = ""
 	this.ChannelLog = ""
 	this.CallbackUrl = ""
+	this.AppExt = ""
 }
 
 func (m *OrderRequest) TableName() string {

@@ -24,7 +24,8 @@ type PayRequestParam struct {
 	ProductOrderId string `json:"ProductOrderId"`
 	Amount         int    `json:"Amount"`
 	CallbackUrl    string `json:"CallbackUrl"`
-	Ext            string `json:"Ext"`
+	ChannelExt     string `json:"Ext"`
+	AppExt         string `json:"AppExt"`
 }
 
 func (this *PayRequestParam) Valid(v *validation.Validation) {
@@ -86,11 +87,13 @@ func (this *PayController) PayRequest() {
 		ProductId:      lr.ProductId,
 		ProductOrderId: prp.ProductOrderId,
 		ReqAmount:      prp.Amount,
+		AppExt:         prp.AppExt,
 		ReqTime:        time.Now(),
 		State:          0,
 		CallbackUrl:    prp.CallbackUrl}
-	create, _, err := orm.NewOrm().ReadOrCreate(&or, "UserId", "ChannelId", "ProductId", "ProductOrderId",
-		"ReqAmount", "ReqTime", "State", "CallbackUrl")
+	create, _, err := orm.NewOrm().ReadOrCreate(&or,
+		"UserId", "ChannelId", "ProductId", "ProductOrderId", "ReqAmount", "AppExt",
+		"ReqTime", "State", "CallbackUrl")
 
 	if create {
 		or.OrderId = time.Now().Format(common.CommonTimeLayout) + strconv.Itoa(or.Id)
