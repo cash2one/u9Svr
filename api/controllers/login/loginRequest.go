@@ -13,9 +13,9 @@ import (
 
 type LoginRequestRet struct {
 	common.BasicRet
-	UserId    string `json:"UserId"`
-	TransType string `json:"TransType"`
-	Ext       string `json:"Ext"`
+	UserId     string `json:"UserId"`
+	TransType  string `json:"TransType"`
+	ChannelExt string `json:"Ext"`
 }
 
 func (this *LoginRequestRet) Init() *LoginRequestRet {
@@ -37,7 +37,7 @@ func (this *LoginController) handleLrParam() (err error) {
 		if err = lrh.Init(&this.lrParam); err != nil {
 			return
 		}
-		if this.lrRet.Ext, err = lrh.Handle(); err != nil {
+		if this.lrRet.ChannelExt, err = lrh.Handle(); err != nil {
 			return
 		}
 		this.lrParam.Token = lrh.GetToken()
@@ -65,6 +65,7 @@ func (this *LoginController) updateDB() (err error) {
 		Token:           this.lrParam.Token,
 		IsDebug:         this.lrParam.IsDebug,
 		ChannelUsername: this.lrParam.ChannelUserName,
+		Ext:             this.lrParam.Ext,
 		Userid:          userId,
 		UpdateTime:      time.Now()}
 
@@ -78,7 +79,9 @@ func (this *LoginController) updateDB() (err error) {
 	if !create {
 		lr.Token = this.lrParam.Token
 		lr.ChannelUsername = this.lrParam.ChannelUserName
-		if err = lr.Update("ChannelUsername", "Token", "IsDebug", "UpdateTime"); err != nil {
+		lr.Ext = this.lrParam.Ext
+		lr.UpdateTime = time.Now()
+		if err = lr.Update("ChannelUsername", "Token", "IsDebug", "UpdateTime", "Ext"); err != nil {
 			beego.Error(lr)
 			return
 		}

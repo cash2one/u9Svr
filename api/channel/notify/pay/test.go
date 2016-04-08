@@ -11,12 +11,13 @@ import (
 
 type Test struct {
 	Base
-	payKey string
+	
 }
 
 var testUrlKeys []string = []string{"result", "money", "order", "mid", "time", "ext", "signature"}
 
 const (
+	testChannelPayKey = "test"
 	err_testResultFailure = 10001
 )
 
@@ -77,11 +78,11 @@ func (this *Test) CheckSign() (err error) {
 		}
 	}()
 
-	format := "order=%s&money=%s&mid=%s&time=%s&result=%d&ext=%s&key=%s"
+	format := "order=%s&money=%s&mid=%s&time=%s&result=%s&ext=%s&key=%s"
 	context := fmt.Sprintf(format,
 		this.channelOrderId, this.urlParams.Get("money"),
 		this.channelUserId, this.urlParams.Get("time"), this.urlParams.Get("result"),
-		this.urlParams.Get("ext"), this.payKey)
+		this.urlParams.Get("ext"), testChannelPayKey)
 
 	if sign := tool.Md5([]byte(context)); sign != this.urlParams.Get("signature") {
 		msg := fmt.Sprintf("Sign is invalid, context:%s, sign:%s", context, sign)

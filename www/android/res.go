@@ -54,6 +54,11 @@ func (this *Res) clear() {
 		panic(err)
 	}
 
+	hygame_activityXml := this.packagePath + "/" + layoutPath + "hygame_activity.xml"
+	if err := os.RemoveAll(hygame_activityXml); err != nil {
+		beego.Trace(err)
+		panic(err)
+	}
 	//9 layout目录中相关的xml
 	demo_activityXml := this.packagePath + "/" + layoutPath + "/" + "hy_demo_activity.xml"
 	if err := os.RemoveAll(demo_activityXml); err != nil {

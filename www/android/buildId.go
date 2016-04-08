@@ -57,7 +57,11 @@ func (this *BuildId) init() {
 func (this *BuildId) ant() {
 	beego.Trace("buildIdPath:", this.buildIdPath)
 	beego.Trace("packagePath:", this.packagePath)
-	android.Ant(this.buildIdPath, "release")
+	if err := android.Ant(this.buildIdPath, "release"); err != nil {
+		beego.Trace("ant release err:", err)
+		panic(err)
+	}
+
 	if err := android.UnCompileSmallDex(this.buildIdPath+"/bin/classes.dex", this.packagePath+"/smali"); err != nil {
 		// "package/build_id/out"
 		beego.Trace("UnCompileSmallDex erro:", err)

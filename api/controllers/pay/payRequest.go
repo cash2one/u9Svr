@@ -24,7 +24,7 @@ type PayRequestParam struct {
 	ProductOrderId string `json:"ProductOrderId"`
 	Amount         int    `json:"Amount"`
 	CallbackUrl    string `json:"CallbackUrl"`
-	ChannelExt     string `json:"Ext"`
+	Ext            string `json:"Ext"` //channelExt
 	AppExt         string `json:"AppExt"`
 }
 
@@ -108,10 +108,12 @@ func (this *PayController) PayRequest() {
 		return
 	}
 
-	ext := ""
+	channelExt := ""
 	channelOrderId := ""
 	host := this.Ctx.Input.Host()
-	channelOrderId, ext, err = channelApi.CallCreateOrder(&lr, or.OrderId, host, prp.Ext)
+	beego.Trace(prp.Ext)
+	beego.Trace(prp.AppExt)
+	channelOrderId, channelExt, err = channelApi.CallCreateOrder(&lr, or.OrderId, host, prp.Ext)
 	if err != nil {
 		ret.SetCode(3002)
 		if err = or.Delete(); err != nil {
@@ -128,7 +130,7 @@ func (this *PayController) PayRequest() {
 	}
 
 	ret.SetCode(0)
-	ret.Ext = ext
+	ret.Ext = channelExt
 	ret.OrderId = or.OrderId
 }
 

@@ -1,8 +1,11 @@
 package login
 
 import (
+	"github.com/astaxie/beego"
+	"github.com/astaxie/beego/orm"
 	"github.com/astaxie/beego/validation"
 	"strings"
+	"time"
 	"u9/api/channel/api"
 	"u9/api/common"
 	"u9/models"
@@ -12,6 +15,7 @@ type ValidateLoginParam struct {
 	UserId string `json:"ChannelUserId"`
 	Token  string `json:"Token"`
 	lr     *models.LoginRequest
+	lrl    *models.LoginRequestLog
 }
 
 func (this *ValidateLoginParam) Valid(v *validation.Validation) {
@@ -34,6 +38,7 @@ func (this *ValidateLoginParam) Valid(v *validation.Validation) {
 		v.SetError("1003", "Record isn't exist in table:loginRequest with token:"+this.Token)
 		return
 	}
+
 }
 
 func (this *LoginController) ValidateLogin() {
@@ -49,6 +54,18 @@ func (this *LoginController) ValidateLogin() {
 		ret.SetCode(code)
 		return
 	}
-
 	ret = channelApi.CallLoginRequest(vlp.lr.ChannelId, vlp.lr.ProductId, vlp.lr.ChannelUserid, vlp.Token)
+	if ret.Code == 0 {
+		vlp.addDB()
+	}
+
+}
+
+func (this *ValidateLoginParam) addDB() {
+	lr := models.LoginRequestLog{
+		LoginRequestId: this.lr.Id,
+		LoginTime:      time.Now()}
+	if _, _, err := orm.NewOrm().ReadOrCreate(&lr, "LoginRequestId", "LoginTime"); err != nil {
+		beego.Trace(err)
+	}
 }

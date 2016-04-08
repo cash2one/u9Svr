@@ -13,8 +13,8 @@ var cygameUrlKeys []string = []string{"orderid", "username", "gameid", "paytype"
 	"amount", "paytime", "attach", "sign"}
 
 const (
-	err_cygameAppKey        = 10101
-	err_cygameResultFailure = 10102
+	err_cygameAppKey        = 12201
+	err_cygameResultFailure = 12202
 )
 
 type CYGame struct {

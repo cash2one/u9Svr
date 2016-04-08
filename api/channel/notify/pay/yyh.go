@@ -13,8 +13,8 @@ import (
 var yyhUrlKeys []string = []string{"transdata", "sign"}
 
 const (
-	err_yyhParsePayKey   = 10101
-	err_yyhResultFailure = 10102
+	err_yyhParsePayKey   = 13001
+	err_yyhResultFailure = 13002
 )
 
 //应用汇

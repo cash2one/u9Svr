@@ -6,11 +6,12 @@ import (
 )
 
 type Param struct {
+	ProductId       int    `json:"ProductId"`
 	ChannelId       int    `json:"ChannelId"`
 	ChannelUserId   string `json:"ChannelUserId"`
 	ChannelUserName string `json:"ChannelUserName"`
 	Token           string `json:"Token"`
-	ProductId       int    `json:"ProductId"`
+	Ext             string `json:"Ext"`
 	IsDebug         bool   `json:"IsDebug"`
 }
 

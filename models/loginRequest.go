@@ -16,6 +16,7 @@ type LoginRequest struct {
 	ProductId       int
 	IsDebug         bool
 	Userid          string
+	Ext             string
 	CreateTime      time.Time `orm:"auto_now_add;type(datatime)"`
 	UpdateTime      time.Time `orm:"auto_now;type(datatime)"`
 	//Channel         *Channel `orm:"rel(fk)"`

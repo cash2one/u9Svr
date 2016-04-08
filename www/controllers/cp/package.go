@@ -20,7 +20,7 @@ type PackageController struct {
 }
 
 func (this *PackageController) List() {
-	pageSize := 10
+	pageSize := 15
 	page, _ := this.GetInt("page", 1)
 	offset := (page - 1) * pageSize
 

@@ -13,8 +13,8 @@ import (
 var shoumengUrlKeys []string = []string{"orderId", "uid", "amount", "coOrderId", "success"}
 
 const (
-	err_shoumengParsePayKey   = 10101
-	err_shoumengResultFailure = 10102
+	err_shoumengParsePayKey   = 12901
+	err_shoumengResultFailure = 12902
 )
 
 //手盟

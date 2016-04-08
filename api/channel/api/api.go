@@ -12,6 +12,10 @@ import (
 	"u9/models"
 )
 
+const (
+	testChannelId = 100
+)
+
 func CallLoginRequest(channelId, productId int, channelUserId, token string) (ret *common.BasicRet) {
 	ret = new(common.BasicRet).Init()
 	beego.Trace("callLoginRequest")
@@ -24,11 +28,15 @@ func CallLoginRequest(channelId, productId int, channelUserId, token string) (re
 
 	var lr loginRequest.LoginRequest
 	switch channelId {
-	case 100: //test
+	case testChannelId: //test
 		fallthrough
 	case 122: //6YGame
 		fallthrough
 	case 127:
+		fallthrough
+	case 134:
+		fallthrough
+	case 136:
 		fallthrough
 	case 123: //熊猫玩
 		beego.Trace(channelId)
@@ -66,6 +74,12 @@ func CallLoginRequest(channelId, productId int, channelUserId, token string) (re
 		lr = loginRequest.LrNewShouMeng(channelUserId, token, jsonParam)
 	case 130:
 		lr = loginRequest.LrNewYYH(channelUserId, token, jsonParam)
+	// case 131:
+
+	case 132:
+		lr = loginRequest.LrNewYiJie(channelUserId, token, jsonParam)
+	case 133:
+		lr = loginRequest.LrNewYouLong(channelUserId, token, jsonParam)
 	default:
 		ret.SetCode(3004)
 		return
@@ -114,10 +128,11 @@ func checkPackageParam(channelId, productId int) (jsonParam *map[string]interfac
 
 func CallCreateOrder(lr *models.LoginRequest, orderId, host, ext string) (channelOrderId, ret string, err error) {
 	var jsonParam *map[string]interface{}
-
-	if jsonParam, err = checkPackageParam(lr.ChannelId, lr.ProductId); err != nil {
-		beego.Error(err)
-		return
+	if testChannelId != lr.ChannelId {
+		if jsonParam, err = checkPackageParam(lr.ChannelId, lr.ProductId); err != nil {
+			beego.Error(err)
+			return
+		}
 	}
 
 	var co createOrder.CreateOrder
@@ -128,6 +143,8 @@ func CallCreateOrder(lr *models.LoginRequest, orderId, host, ext string) (channe
 		co = createOrder.CoNewAmigo(lr, orderId, host, ext, jsonParam)
 	case 123: //熊猫玩
 		co = createOrder.CoNewXmw(lr, orderId, host, ext, jsonParam)
+	case 136:
+		co = createOrder.CoNewCaishen(lr, orderId, host, ext, jsonParam)
 	default:
 		return
 	}

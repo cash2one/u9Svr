@@ -14,8 +14,8 @@ var letvUrlKeys []string = []string{"app_id", "lepay_order_no", "letv_user_id", 
 	"cooperator_order_no"}
 
 const (
-	err_letvParsePayKey   = 10101
-	err_letvResultFailure = 10102
+	err_letvParsePayKey   = 12601
+	err_letvResultFailure = 12602
 )
 
 //乐视

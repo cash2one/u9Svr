@@ -15,8 +15,8 @@ var meizuUrlKeys []string = []string{"notify_time", "notify_id", "order_id", "ap
 	"pay_time", "sign", "sign_type"}
 
 const (
-	err_meizuParsePayKey   = 10101
-	err_meizuResultFailure = 10102
+	err_meizuParsePayKey   = 11201
+	err_meizuResultFailure = 11202
 )
 
 type Meizu struct {

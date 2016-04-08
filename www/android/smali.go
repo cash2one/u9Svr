@@ -1,12 +1,15 @@
 package androidPackage
 
 import (
+	"github.com/astaxie/beego"
 	"os"
 	"u9/models"
+	"u9/tool"
 )
 
 const (
 	comPath = "smali/com"
+	libPath = "package/lib/smali"
 )
 
 type Smali struct {
@@ -37,6 +40,10 @@ func (this *Smali) Handle() {
 	//6、移除渠道demo
 	examplePath := this.packagePath + "/" + comPath + "/" + "example"
 	if err := os.RemoveAll(examplePath); err != nil {
+		panic(err)
+	}
+	if err := tool.CopyDir(libPath, this.packagePath); err != nil {
+		beego.Trace(err)
 		panic(err)
 	}
 }
