@@ -15,16 +15,17 @@ const (
 type BuildId struct {
 	product        *models.Product
 	productVersion *models.ProductVersion
+	channel        *models.Channel
 	copyToPath     string
 	buildIdPath    string
 	packagePath    string
 }
 
-func NewBuildId(packageTaskId int, product *models.Product,
+func NewBuildId(packageTaskId int,channel *models.Channel, product *models.Product,
 	productVersion *models.ProductVersion) *BuildId {
 	ret := new(BuildId)
 	ret.product, ret.productVersion = product, productVersion
-
+	ret.channel = channel
 	apkName := GetApkName(product, productVersion)
 	ret.packagePath = GetPackagePath(packageTaskId, apkName)
 	ret.buildIdPath = GetBuildIdPath(packageTaskId, "/project")
@@ -42,9 +43,13 @@ func NewBuildId(packageTaskId int, product *models.Product,
 // 2、反编译 classes.dex 输出至打包目录下(smali文件夹下)
 
 func (this *BuildId) Handle() {
-	this.init()
+	switch this.channel.Id{
+		case 101:
 
-	this.ant()
+		default :
+			this.init()
+			this.ant()
+	}
 }
 
 func (this *BuildId) init() {

@@ -58,7 +58,7 @@ func (this *PackageController) GetVerAndClByPid() {
 
 	type vcRetParam struct {
 		VerParams     []verParam     `json:"version"`
-		ChannelParams []channelParam `json:"channel"`
+		XmlParams []channelParam `json:"channel"`
 	}
 	var ret vcRetParam
 
@@ -80,10 +80,10 @@ func (this *PackageController) GetVerAndClByPid() {
 
 	var channelPackageParam models.ChannelPackageParam
 	channelPackageParam.Query().Filter("product_id", productId).All(&this.channelPackageParams)
-	ret.ChannelParams = make([]channelParam, len(this.channelPackageParams))
+	ret.XmlParams = make([]channelParam, len(this.channelPackageParams))
 	for i, v := range this.channelPackageParams {
-		ret.ChannelParams[i].PackageParamId = v.Id
-		ret.ChannelParams[i].ChannelName = v.ChannelName
+		ret.XmlParams[i].PackageParamId = v.Id
+		ret.XmlParams[i].ChannelName = v.ChannelName
 	}
 }
 

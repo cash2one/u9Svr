@@ -78,9 +78,12 @@ func (this *PackageTaskHandle) Init(packageTaskId int) {
 	this.smali = NewSmali(this.packageTask.Id, &this.product, &this.productVersion)
 	this.manifest = NewManifest(this.packageTask.Id,
 		&this.product, &this.productVersion, &this.packageParam, &this.channel)
+	beego.Trace("Manifest")
 	this.publish = NewPublish(this.packageTask.Id, &this.product, &this.productVersion,
 		&this.channel, &this.packageParam)
-	this.buildId = NewBuildId(this.packageTask.Id, &this.product, &this.productVersion)
+	beego.Trace("Publish")
+	this.buildId = NewBuildId(this.packageTask.Id,&this.channel ,&this.product, &this.productVersion)
+	beego.Trace("BuildId")
 
 }
 

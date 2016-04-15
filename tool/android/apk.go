@@ -56,6 +56,9 @@ func CompileApk(apkPath string, outApkFile string) (err error) {
 	//buf, err = cmd.Output()
 
 	_, err = cmd.Output()
+	if err != nil{
+		beego.Trace(args)
+	}
 	//result = true
 	//if err != nil {
 	//beego.Trace(buf)

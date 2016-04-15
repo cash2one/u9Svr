@@ -39,6 +39,7 @@ type Manifest struct {
 	packageParam     *models.PackageParam
 	channel          *models.Channel
 	channelSdkParams map[string]string
+	cpSdkParams      map[string]string
 
 	productRootEl *android.Element
 	channelRootEl *android.Element
@@ -65,6 +66,9 @@ func (this *Manifest) Init(packageTaskId int,
 
 	this.packageParam, this.channel = packageParam, channel
 	if err := json.Unmarshal([]byte(this.packageParam.XmlParam), &this.channelSdkParams); err != nil {
+		panic(err)
+	}
+	if err := json.Unmarshal([]byte(this.packageParam.ExtParam), &this.cpSdkParams); err != nil {
 		panic(err)
 	}
 }
@@ -143,6 +147,22 @@ func (this *Manifest) setMeta() {
 			// beego.Trace(k, "#", v)
 		}
 	}
+	beego.Trace("channelParam is OK")
+	beego.Trace(this.cpSdkParams)
+	for k, v := range this.cpSdkParams {
+		beego.Trace("1")
+		cl := this.productAppEl.GetNodeByPathAndAttr("meta-data", "android:name", k)
+		if cl != nil {
+			cl.AddAttr("android:name", k)
+			cl.AddAttr("android:value", "\\0"+v)
+		}else{
+			clnew := android.NewElement("meta-data","")
+			clnew.AddAttr("android:name", k)
+			clnew.AddAttr("android:value", "\\0"+v)
+			this.productAppEl.AddNode(clnew)
+		}
+	}
+	beego.Trace("extParam is OK")
 }
 
 func (this *Manifest) setApp() {

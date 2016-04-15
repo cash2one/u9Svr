@@ -18,7 +18,8 @@ type PackageParam struct {
 	IconType    int8
 	PackageIcon string    `orm:"size(512)"`
 	JsonParam   string    `orm:"size(512)"`
-	XmlParam    string    `orm:"size(2048)"`
+	XmlParam  string   `orm:"size(2048)"`
+	ExtParam      string       `orm:"size(512)"`
 	UpdateTime  time.Time `orm:"auto_now_add;type(datatime)"`
 }
 

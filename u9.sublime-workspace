@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"pr",
+				"Println	n int, err error ƒ"
+			],
+			[
+				"ch",
+				"channelExt	 ν"
+			],
+			[
 				"a",
 				"AppExt	string ν"
 			],
@@ -16,10 +24,6 @@
 				"urlParams	*url.Values ν"
 			],
 			[
-				"ch",
-				"CheckChannelRet	bool ƒ"
-			],
-			[
 				"comp",
 				"compileApk	string ν"
 			],
@@ -30,10 +34,6 @@
 			[
 				"chan",
 				"channelUserId	string ν"
-			],
-			[
-				"pr",
-				"Println	n int, err error ƒ"
 			],
 			[
 				"ur",
@@ -355,6 +355,30 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "www/controllers/cp/package.go",
+			"settings":
+			{
+				"buffer_size": 4665,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "www/views/cp/package_add.html",
+			"settings":
+			{
+				"buffer_size": 1921,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "tool/android/xml_test.go",
+			"settings":
+			{
+				"buffer_size": 5122,
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -398,15 +422,36 @@
 	"expanded_folders":
 	[
 		"/D/go/src/u9",
-		"/D/go/src/u9/models",
-		"/D/go/src/u9/test"
+		"/D/go/src/u9/www",
+		"/D/go/src/u9/www/android",
+		"/D/go/src/u9/www/routers"
 	],
 	"file_history":
 	[
-		"/D/go/src/u9/api/controllers/pay/payRequest.go",
+		"/D/go/src/u9/www/main.go",
+		"/E/backup/android/tool/back/10014579_com.tencent.KiHan/AndroidManifest.xml",
+		"/E/backup/android/tool/back/10014579_com.tencent.tmgp.sgame/AndroidManifest.xml",
+		"/D/go/src/u9/tool/android/xml_Test.go",
+		"/D/go/src/u9/tool/android/xmlTest.go",
+		"/D/go/src/u9/dom/dom_test.go",
+		"/D/go/src/u9/dom/dom.go",
+		"/D/go/src/u9/www/routers/router.go",
+		"/D/go/src/u9/tool/android/xml.go",
+		"/D/go/src/u9/tool/android/dom_test.go",
+		"/D/go/src/u9/test/dom.go",
+		"/D/go/src/u9/test/dom_test.go",
+		"/D/go/src/u9/test/test.go",
+		"/D/go/src/u9/www/views/cp/layout.html",
+		"/C/Users/jacky/Desktop/test/helloworld.html",
+		"/C/Users/jacky/Desktop/helloworld.html",
+		"/C/Users/jacky/AppData/Roaming/Sublime Text 3/Packages/GoSublime/CHANGELOG.md",
+		"/D/go/src/u9/sftp-config.json",
 		"/D/go/src/u9/api/channel/notify/pay/base.go",
-		"/D/go/src/u9/api/common/common.go",
+		"/D/go/src/u9/api/controllers/pay/payRequest.go",
 		"/D/go/src/u9/api/channel/api/createOrder/amigo.go",
+		"/D/go/src/u9/api/channel/api/loginRequest/amigo.go",
+		"/D/go/src/u9/api/conf/app.conf",
+		"/D/go/src/u9/api/common/common.go",
 		"/D/go/src/u9/api/channel/api/api.go",
 		"/D/go/src/u9/models/orderRequest.go",
 		"/D/project/Android/hy_gametool_ylgame/assets/hy_game.json",
@@ -419,8 +464,6 @@
 		"/C/Users/jacky/Documents/Navicat/MySQL/servers/cdb_outerroot/u9/160330180232.psb",
 		"/D/go/src/u9/api/main.go",
 		"/C/Windows/System32/drivers/etc/hosts",
-		"/D/go/src/u9/www/main.go",
-		"/D/go/src/u9/api/conf/app.conf",
 		"/C/Users/jacky/Desktop/readme.txt",
 		"/D/go/src/github.com/astaxie/beego/log.go",
 		"/d/go/src/github.com/astaxie/beego/orm/orm_log.go",
@@ -444,10 +487,8 @@
 		"/d/go/src/github.com/astaxie/beego/logs/console_test.go",
 		"/d/go/src/github.com/astaxie/beego/logs/file.go",
 		"/D/go/src/github.com/astaxie/beego/logs/file.go",
-		"/D/go/src/u9/sftp-config.json",
 		"/D/go/src/u9/www/android/packageTask.go",
 		"/C/Users/jacky/Desktop/拇指玩修改id脚本.lua",
-		"/C/Users/jacky/AppData/Roaming/Sublime Text 3/Packages/GoSublime/CHANGELOG.md",
 		"/D/go/src/u9/test/main.go",
 		"/D/go/src/code.google.com/p/graphics-go/graphics/scale.go",
 		"/D/go/src/github.com/BurntSushi/graphics-go/graphics/affine.go",
@@ -460,7 +501,6 @@
 		"/c/go/src/os/file_plan9.go",
 		"/c/go/src/image/png/writer.go",
 		"/c/go/src/os/file.go",
-		"/D/go/src/u9/test/test.go",
 		"/c/go/src/image/format.go",
 		"/c/go/src/image/geom.go",
 		"/c/go/src/os/file_windows.go",
@@ -515,22 +555,7 @@
 		"/D/go/src/u9/api/controllers/pay/channelPayNotify.go",
 		"/c/go/src/net/http/transport.go",
 		"/D/go/src/u9/api/controllers/login/loginRequestHandle/xmw.go",
-		"/D/go/src/u9/api/controllers/login/loginRequestHandle/base.go",
-		"/d/go/src/u9/www/android/publish.go",
-		"/E/id重新编译/project/build.xml",
-		"/D/go/src/u9/www/android/path.go",
-		"/D/go/src/u9/api/controllers/login/validateLogin.go",
-		"/D/go/src/github.com/astaxie/beego/httplib/httplib.go",
-		"/C/Go/src/net/http/response.go",
-		"/C/Go/src/net/http/doc.go",
-		"/d/go/src/u9/api/controllers/login/loginRequestHandle/xmw.go",
-		"/d/go/src/u9/api/channel/api/api.go",
-		"/d/go/src/github.com/beego/bee/g_model.go",
-		"/D/go/src/u9/api/channel/api/loginRequest/gfan.go",
-		"/D/go/src/github.com/astaxie/beego/context/context.go",
-		"/C/Go/src/net/http/request.go",
-		"/d/go/src/u9/api/controllers/login/validateLogin.go",
-		"/d/go/src/github.com/astaxie/beego/utils/pagination/controller.go"
+		"/D/go/src/u9/api/controllers/login/loginRequestHandle/base.go"
 	],
 	"find":
 	{
@@ -617,9 +642,17 @@
 	},
 	"find_state":
 	{
-		"case_sensitive": true,
+		"case_sensitive": false,
 		"find_history":
 		[
+			"meta",
+			"RemoveNode",
+			"_string",
+			"RemoveNode",
+			"_string",
+			"productVersions",
+			"getVcParam",
+			"ChannelExt",
 			"url",
 			"AppExt",
 			"ProductRet",
@@ -739,15 +772,7 @@
 			"orderId",
 			"app_user_id",
 			"err_xmwResultFailure",
-			"dangle",
-			"err_dangleResultFailure",
-			"channelOrderId",
-			"ChannelOrderId",
-			"Dangle",
-			"ParseForm",
-			"Ctx",
-			"Request",
-			"ParseForm()"
+			"dangle"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -755,6 +780,7 @@
 		"regex": false,
 		"replace_history":
 		[
+			"RemoveNodes",
 			"zhuoyi",
 			"Zhuoyi",
 			"Haimawan",
@@ -881,20 +907,116 @@
 			"cp",
 			"Name",
 			"manager",
-			"showMsg",
-			"cp"
+			"showMsg"
 		],
 		"reverse": false,
 		"show_context": false,
 		"use_buffer2": true,
-		"whole_word": true,
+		"whole_word": false,
 		"wrap": true
 	},
 	"groups":
 	[
 		{
+			"selected": 2,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "www/controllers/cp/package.go",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4665,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								730,
+								730
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/GoSublime/syntax/GoSublime-Go.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 586.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "www/views/cp/package_add.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1921,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								956,
+								959
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 540.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "tool/android/xml_test.go",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5122,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								15,
+								15
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/GoSublime/syntax/GoSublime-Go.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -977,6 +1099,10 @@
 	{
 		"height": 178.0
 	},
+	"output.9o://D:\\go\\src\\u9\\dom":
+	{
+		"height": 352.0
+	},
 	"output.9o://D:\\go\\src\\u9\\test":
 	{
 		"height": 280.0
@@ -987,7 +1113,7 @@
 	},
 	"output.9o://D:\\go\\src\\u9\\tool\\android":
 	{
-		"height": 178.0
+		"height": 319.0
 	},
 	"output.9o://D:\\go\\src\\u9\\www":
 	{
@@ -1031,6 +1157,22 @@
 		"selected_items":
 		[
 			[
+				"base.go",
+				"api\\channel\\notify\\pay\\base.go"
+			],
+			[
+				"aamigo.go",
+				"api\\channel\\api\\createOrder\\amigo.go"
+			],
+			[
+				"amigo.go",
+				"api\\channel\\api\\loginRequest\\amigo.go"
+			],
+			[
+				"payrequ",
+				"api\\controllers\\pay\\payRequest.go"
+			],
+			[
 				"packagets",
 				"models\\packageTask.go"
 			],
@@ -1067,7 +1209,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 330.0,
+	"side_bar_width": 324.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

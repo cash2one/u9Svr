@@ -18,12 +18,12 @@ const (
 
 func CallLoginRequest(channelId, productId int, channelUserId, token string) (ret *common.BasicRet) {
 	ret = new(common.BasicRet).Init()
-	beego.Trace("callLoginRequest")
 	var jsonParam *map[string]interface{}
 	var err error
 	if jsonParam, err = checkPackageParam(channelId, productId); err != nil {
 		code, _ := strconv.Atoi(err.Error())
 		ret.SetCode(code)
+		return
 	}
 
 	var lr loginRequest.LoginRequest
@@ -58,6 +58,8 @@ func CallLoginRequest(channelId, productId int, channelUserId, token string) (re
 		lr = loginRequest.LrNewOppo(channelUserId, token, jsonParam)
 	case 112:
 		lr = loginRequest.LrNewMeiZu(channelUserId, token, jsonParam)
+	case 115:
+		lr = loginRequest.LrNewSogou(channelUserId, token, jsonParam)
 	case 117:
 		lr = loginRequest.LrNewWandoujia(channelUserId, token, jsonParam)
 	case 118:
@@ -80,6 +82,10 @@ func CallLoginRequest(channelId, productId int, channelUserId, token string) (re
 		lr = loginRequest.LrNewYiJie(channelUserId, token, jsonParam)
 	case 133:
 		lr = loginRequest.LrNewYouLong(channelUserId, token, jsonParam)
+	case 135:
+		lr = loginRequest.LrNewQikQik(channelUserId, token, jsonParam)
+	case 137:
+		lr = loginRequest.LrNewPPTV(channelUserId, token, jsonParam)
 	default:
 		ret.SetCode(3004)
 		return
@@ -111,18 +117,20 @@ func CallLoginRequest(channelId, productId int, channelUserId, token string) (re
 func checkPackageParam(channelId, productId int) (jsonParam *map[string]interface{}, err error) {
 	pp := new(models.PackageParam)
 	if err = pp.Query().Filter("channelId", channelId).Filter("productId", productId).One(pp); err != nil {
-		msg := fmt.Sprintf("channelId=%d and productId=%d", channelId, productId)
-		err = errors.New("1005")
-		beego.Trace(err, ":", msg)
+		msg := fmt.Sprintf("1005:channelId=%d and productId=%d", channelId, productId)
+		err = errors.New(msg)
+		beego.Error(err)
 		return nil, err
 	}
 
 	jsonParam = new(map[string]interface{})
 	beego.Trace(pp.XmlParam)
 	if err = json.Unmarshal([]byte(pp.XmlParam), jsonParam); err != nil {
-		beego.Trace(err, ":", err.Error())
+		beego.Error(err, ":", err.Error())
 		return nil, errors.New("9002")
 	}
+	beego.Trace(pp.XmlParam)
+	beego.Trace(jsonParam)
 	return jsonParam, nil
 }
 
@@ -150,17 +158,17 @@ func CallCreateOrder(lr *models.LoginRequest, orderId, host, ext string) (channe
 	}
 
 	if err = co.InitParam(); err != nil {
-		beego.Trace(err)
+		beego.Error(err)
 		return
 	}
 
 	if err = co.Response(); err != nil {
-		beego.Trace(err)
+		beego.Error(err)
 		return
 	}
 
 	if err = co.ParseChannelRet(); err != nil {
-		beego.Trace(err)
+		beego.Error(err)
 		return
 	}
 

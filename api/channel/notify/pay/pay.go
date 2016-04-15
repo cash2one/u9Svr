@@ -39,6 +39,8 @@ func CallPayNotify(channelId, productId int, urlParams *url.Values, ctx *context
 		pn = NewOppo(channelId, productId, urlParams)
 	case 112:
 		pn = NewMeizu(channelId, productId, urlParams)
+	case 115:
+		pn = NewSogou(channelId, productId, urlParams)
 	case 117:
 		pn = NewWandoujia(channelId, productId, urlParams)
 	case 118:
@@ -67,8 +69,12 @@ func CallPayNotify(channelId, productId int, urlParams *url.Values, ctx *context
 		pn = NewYouLong(channelId, productId, urlParams)
 	case 134:
 		pn = NewMango(channelId, productId, urlParams)
+	case 135:
+		pn = NewQikQik(channelId, productId, urlParams)
 	case 136:
 		pn = NewXcs(channelId, productId, urlParams)
+	case 137:
+		pn = NewPPTV(channelId, productId, urlParams)
 	default:
 		err = errors.New("channelId isn't exist.")
 		return

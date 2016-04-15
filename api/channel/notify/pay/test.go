@@ -32,7 +32,7 @@ func (this *Test) Init(channelId, productId int, urlParams *url.Values) {
 }
 
 func (this *Test) ParseChannelRet() (err error) {
-	if result := this.urlParams.Get("result"); result != "1" {
+	if result := this.urlParams.Get("result"); result != "0" {
 		this.callbackRet = err_testResultFailure
 	}
 	return
@@ -87,7 +87,7 @@ func (this *Test) CheckSign() (err error) {
 	if sign := tool.Md5([]byte(context)); sign != this.urlParams.Get("signature") {
 		msg := fmt.Sprintf("Sign is invalid, context:%s, sign:%s", context, sign)
 		err = errors.New(msg)
-		beego.Trace(err)
+		beego.Trace(this.urlParams.Get("signature"))
 		return
 	}
 	return
@@ -95,9 +95,9 @@ func (this *Test) CheckSign() (err error) {
 
 func (this *Test) GetResult() (ret string) {
 	if this.callbackRet == err_noerror {
-		ret = "success"
+		ret = "{\"code\":\"0\"}"
 	} else {
-		ret = "failure"
+		ret = "{\"code\":\"1\"}"
 	}
 	return
 }

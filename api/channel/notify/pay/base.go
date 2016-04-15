@@ -244,7 +244,7 @@ func (this *Base) notifyProductSvr() (err error) {
 		this.orderRequest.ProductOrderId, this.orderId, this.channelOrderId, this.productKey)
 
 	if this.orderRequest.CallbackUrl != "" {
-		format := this.orderRequest.CallbackUrl + "/?" +
+		format := this.orderRequest.CallbackUrl + "?" +
 			"UserId=%s" + "&" + "OrderId=%s" + "&" + "ChannelId=%d" + "&" + "ChannelOrderId=%s" + "&" +
 			"ChannelUserId=%s" + "&" + "ProductId=%d" + "&" + "ProductOrderId=%s" + "&" +
 			"ReqAmount=%d" + "&" + "AppExt=%s" + "&" + "PayAmount=%d" + "&" + "Sign=%s" + "&" + "Code=%d"
@@ -253,13 +253,14 @@ func (this *Base) notifyProductSvr() (err error) {
 			this.channelUserId, this.productId, this.orderRequest.ProductOrderId,
 			this.orderRequest.ReqAmount, this.orderRequest.AppExt, this.payAmount,
 			tool.Md5([]byte(signContext)), this.callbackRet)
-
+		beego.Trace(notifyUrl)
 		req := httplib.Get(notifyUrl)
 		if _, err = req.Response(); err != nil {
 			beego.Trace(notifyUrl)
 			return
 		}
 		err = req.ToJSON(&this.ProductRet)
+		// beego.Trace(this.ProductRet)
 		if err != nil {
 			beego.Trace(notifyUrl)
 			return
