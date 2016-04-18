@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/astaxie/beego"
+	"u9/models"
 	"u9/tool"
 )
 
@@ -23,19 +24,19 @@ type Dangle struct {
 	channelRet DangleChannelRet
 }
 
-func LrNewDangle(channelUserId, token string, args *map[string]interface{}) *Dangle {
+func LrNewDangle(mlr *models.LoginRequest, args *map[string]interface{}) *Dangle {
 	ret := new(Dangle)
-	ret.Init(channelUserId, token, args)
+	ret.Init(mlr, args)
 	return ret
 }
 
-func (this *Dangle) Init(channelUserId, token string, args *map[string]interface{}) {
-	this.Lr.Init(channelUserId, token)
+func (this *Dangle) Init(mlr *models.LoginRequest, args *map[string]interface{}) {
+	this.Lr.Init(mlr)
 	appid := (*args)["DANGLE_SDK_APPID"].(string)
 	appkey := (*args)["DANGLE_SDK_APPKEY"].(string)
-	sign := tool.Md5([]byte(appid + "|" + appkey + "|" + token + "|" + channelUserId))
+	sign := tool.Md5([]byte(appid + "|" + appkey + "|" + this.mlr.Token + "|" + mlr.ChannelUserid))
 	format := "http://ngsdk.d.cn/api/cp/checkToken?appid=%s&umid=%s&token=%s&sig=%s"
-	this.Url = fmt.Sprintf(format, appid, channelUserId, token, sign)
+	this.Url = fmt.Sprintf(format, appid, mlr, sign)
 }
 
 func (this *Dangle) ParseChannelRet() (err error) {

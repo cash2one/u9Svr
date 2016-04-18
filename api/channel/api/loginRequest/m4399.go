@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/astaxie/beego"
+	"u9/models"
 )
 
 type m4399ChannelRet struct {
@@ -21,16 +22,16 @@ type M4399 struct {
 	channelRet m4399ChannelRet
 }
 
-func LrNewM4399(channelUserId, token string, args *map[string]interface{}) *M4399 {
+func LrNewM4399(mlr *models.LoginRequest, args *map[string]interface{}) *M4399 {
 	ret := new(M4399)
-	ret.Init(channelUserId, token, args)
+	ret.Init(mlr, args)
 	return ret
 }
 
-func (this *M4399) Init(channelUserId, token string, args *map[string]interface{}) {
-	this.Lr.Init(channelUserId, token)
+func (this *M4399) Init(mlr *models.LoginRequest, args *map[string]interface{}) {
+	this.Lr.Init(mlr)
 	format := "http://m.4399api.com/openapi/oauth-check.html?state=%s&uid=%s"
-	this.Url = fmt.Sprintf(format, token, channelUserId)
+	this.Url = fmt.Sprintf(format, this.mlr.Token, this.mlr.ChannelUserid)
 }
 
 func (this *M4399) ParseChannelRet() (err error) {

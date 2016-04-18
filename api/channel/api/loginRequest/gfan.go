@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/astaxie/beego"
+	"u9/models"
 )
 
 //机锋网
@@ -19,16 +20,16 @@ type GFan struct {
 	args       *map[string]interface{}
 }
 
-func LrNewGFan(channelUserId, token string, args *map[string]interface{}) *GFan {
+func LrNewGFan(mlr *models.LoginRequest, args *map[string]interface{}) *GFan {
 	ret := new(GFan)
-	ret.Init(channelUserId, token, args)
+	ret.Init(mlr, args)
 	return ret
 }
 
-func (this *GFan) Init(channelUserId, token string, args *map[string]interface{}) {
-	this.Lr.Init(channelUserId, token)
+func (this *GFan) Init(mlr *models.LoginRequest, args *map[string]interface{}) {
+	this.Lr.Init(mlr)
 	format := "http://api.gfan.com/uc1/common/verify_token?token=%s"
-	this.Url = fmt.Sprintf(format, token)
+	this.Url = fmt.Sprintf(format, this.mlr.Token)
 	this.args = args
 }
 

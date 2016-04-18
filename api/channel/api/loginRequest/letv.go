@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/astaxie/beego"
+	"u9/models"
 	// "u9/tool"
 )
 
@@ -28,18 +29,18 @@ type LeTV struct {
 	channelRet LeTVChannelRet
 }
 
-func LrNewLeTV(channelUserId, token string, args *map[string]interface{}) *LeTV {
+func LrNewLeTV(mlr *models.LoginRequest, args *map[string]interface{}) *LeTV {
 	ret := new(LeTV)
-	ret.Init(channelUserId, token, args)
+	ret.Init(mlr, args)
 	return ret
 }
 
-func (this *LeTV) Init(channelUserId, token string, args *map[string]interface{}) {
-	this.Lr.Init(channelUserId, token)
+func (this *LeTV) Init(mlr *models.LoginRequest, args *map[string]interface{}) {
+	this.Lr.Init(mlr)
 	appid := (*args)["lepay_appid"].(string)
 	format := "https://sso.letv.com/oauthopen/userbasic?" +
 		"client_id=%s&uid=%s&access_token=%s"
-	this.Url = fmt.Sprintf(format, appid, channelUserId, token)
+	this.Url = fmt.Sprintf(format, appid, this.mlr.ChannelUserid, this.mlr.Token)
 	beego.Trace(this.Url)
 }
 

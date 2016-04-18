@@ -3,6 +3,7 @@ package loginRequest
 import (
 	"fmt"
 	"github.com/astaxie/beego"
+	"u9/models"
 )
 
 //虫虫
@@ -10,16 +11,16 @@ type CCPay struct {
 	Lr
 }
 
-func LrNewCCPay(channelUserId, token string, args *map[string]interface{}) *CCPay {
+func LrNewCCPay(mlr *models.LoginRequest, args *map[string]interface{}) *CCPay {
 	ret := new(CCPay)
-	ret.Init(channelUserId, token, args)
+	ret.Init(mlr, args)
 	return ret
 }
 
-func (this *CCPay) Init(channelUserId, token string, args *map[string]interface{}) {
-	this.Lr.Init(channelUserId, token)
+func (this *CCPay) Init(mlr *models.LoginRequest, args *map[string]interface{}) {
+	this.Lr.Init(mlr)
 	format := "http://android-api.ccplay.com.cn/api/v2/payment/checkUser?token=%s"
-	this.Url = fmt.Sprintf(format, token)
+	this.Url = fmt.Sprintf(format, this.mlr.Token)
 }
 
 func (this *CCPay) CheckChannelRet() bool {

@@ -16,18 +16,18 @@ const (
 	testChannelId = 100
 )
 
-func CallLoginRequest(channelId, productId int, channelUserId, token string) (ret *common.BasicRet) {
+func CallLoginRequest(mlr *models.LoginRequest) (ret *common.BasicRet) {
 	ret = new(common.BasicRet).Init()
 	var jsonParam *map[string]interface{}
 	var err error
-	if jsonParam, err = checkPackageParam(channelId, productId); err != nil {
+	if jsonParam, err = checkPackageParam(mlr); err != nil {
 		code, _ := strconv.Atoi(err.Error())
 		ret.SetCode(code)
 		return
 	}
 
-	var lr loginRequest.LoginRequest
-	switch channelId {
+	var llr loginRequest.LoginRequest
+	switch mlr.ChannelId {
 	case testChannelId: //test
 		fallthrough
 	case 122: //6YGame
@@ -39,120 +39,119 @@ func CallLoginRequest(channelId, productId int, channelUserId, token string) (re
 	case 136:
 		fallthrough
 	case 123: //熊猫玩
-		beego.Trace(channelId)
+		beego.Trace(mlr.ChannelId)
 		ret.SetCode(0)
 		return
 	case 101:
-		lr = loginRequest.LrNewDangle(channelUserId, token, jsonParam)
+		llr = loginRequest.LrNewDangle(mlr, jsonParam)
 	case 103:
-		lr = loginRequest.LrNewAnZhi(channelUserId, token, jsonParam)
+		llr = loginRequest.LrNewAnZhi(mlr, jsonParam)
 	case 104:
-		lr = loginRequest.LrNewCCPay(channelUserId, token, jsonParam)
+		llr = loginRequest.LrNewCCPay(mlr, jsonParam)
 	case 106:
-		lr = loginRequest.LrNewGFan(channelUserId, token, jsonParam)
+		llr = loginRequest.LrNewGFan(mlr, jsonParam)
 	case 107:
-		lr = loginRequest.LrNewGuopan(channelUserId, token, jsonParam)
+		llr = loginRequest.LrNewGuopan(mlr, jsonParam)
 	case 109:
-		lr = loginRequest.LrNewM4399(channelUserId, token, jsonParam)
+		llr = loginRequest.LrNewM4399(mlr, jsonParam)
 	case 110:
-		lr = loginRequest.LrNewOppo(channelUserId, token, jsonParam)
+		llr = loginRequest.LrNewOppo(mlr, jsonParam)
 	case 112:
-		lr = loginRequest.LrNewMeiZu(channelUserId, token, jsonParam)
+		llr = loginRequest.LrNewMeiZu(mlr, jsonParam)
 	case 115:
-		lr = loginRequest.LrNewSogou(channelUserId, token, jsonParam)
+		llr = loginRequest.LrNewSogou(mlr, jsonParam)
 	case 117:
-		lr = loginRequest.LrNewWandoujia(channelUserId, token, jsonParam)
+		llr = loginRequest.LrNewWandoujia(mlr, jsonParam)
 	case 118:
-		lr = loginRequest.LrNewXiaomi(channelUserId, token, jsonParam)
+		llr = loginRequest.LrNewXiaomi(mlr, jsonParam)
 	case 120:
-		lr = loginRequest.LrNewAmigo(channelUserId, token, jsonParam)
+		llr = loginRequest.LrNewAmigo(mlr, jsonParam)
 	case 125:
-		lr = loginRequest.LrNewHaiMaWan(channelUserId, token, jsonParam)
+		llr = loginRequest.LrNewHaiMaWan(mlr, jsonParam)
 	case 126:
-		lr = loginRequest.LrNewLeTV(channelUserId, token, jsonParam)
+		llr = loginRequest.LrNewLeTV(mlr, jsonParam)
 	case 128:
-		lr = loginRequest.LrNewZhuoYi(channelUserId, token, jsonParam)
+		llr = loginRequest.LrNewZhuoYi(mlr, jsonParam)
 	case 129:
-		lr = loginRequest.LrNewShouMeng(channelUserId, token, jsonParam)
+		llr = loginRequest.LrNewShouMeng(mlr, jsonParam)
 	case 130:
-		lr = loginRequest.LrNewYYH(channelUserId, token, jsonParam)
+		llr = loginRequest.LrNewYYH(mlr, jsonParam)
 	// case 131:
 
 	case 132:
-		lr = loginRequest.LrNewYiJie(channelUserId, token, jsonParam)
+		llr = loginRequest.LrNewYiJie(mlr, jsonParam)
 	case 133:
-		lr = loginRequest.LrNewYouLong(channelUserId, token, jsonParam)
+		llr = loginRequest.LrNewYouLong(mlr, jsonParam)
 	case 135:
-		lr = loginRequest.LrNewQikQik(channelUserId, token, jsonParam)
+		llr = loginRequest.LrNewQikQik(mlr, jsonParam)
 	case 137:
-		lr = loginRequest.LrNewPPTV(channelUserId, token, jsonParam)
+		llr = loginRequest.LrNewPPTV(mlr, jsonParam)
 	default:
 		ret.SetCode(3004)
 		return
 	}
 
-	lr.InitParam()
+	llr.InitParam()
 
-	if err := lr.Response(); err != nil {
+	if err := llr.Response(); err != nil {
 		beego.Trace(err)
-		ret = lr.SetCode(3002)
+		ret = llr.SetCode(3002)
 		return
 	}
 
-	if err := lr.ParseChannelRet(); err != nil {
+	if err := llr.ParseChannelRet(); err != nil {
 		beego.Trace(err)
-		ret = lr.SetCode(9002)
+		ret = llr.SetCode(9002)
 		return
 	}
 
-	if !lr.CheckChannelRet() {
+	if !llr.CheckChannelRet() {
 		beego.Trace(errors.New("channelRet code is fail."))
-		ret = lr.SetCode(3003)
+		ret = llr.SetCode(3003)
 		return
 	}
-	ret = lr.SetCode(0)
+	ret = llr.SetCode(0)
 	return
 }
 
-func checkPackageParam(channelId, productId int) (jsonParam *map[string]interface{}, err error) {
+func checkPackageParam(mlr *models.LoginRequest) (jsonParam *map[string]interface{}, err error) {
 	pp := new(models.PackageParam)
-	if err = pp.Query().Filter("channelId", channelId).Filter("productId", productId).One(pp); err != nil {
-		msg := fmt.Sprintf("1005:channelId=%d and productId=%d", channelId, productId)
+	if err = pp.Query().Filter("channelId", mlr.ChannelId).Filter("productId", mlr.ProductId).One(pp); err != nil {
+		msg := fmt.Sprintf("1005:channelId=%d and productId=%d", mlr.ChannelId, mlr.ProductId)
 		err = errors.New(msg)
 		beego.Error(err)
 		return nil, err
 	}
 
 	jsonParam = new(map[string]interface{})
-	beego.Trace(pp.XmlParam)
 	if err = json.Unmarshal([]byte(pp.XmlParam), jsonParam); err != nil {
-		beego.Error(err, ":", err.Error())
+		beego.Error(err)
 		return nil, errors.New("9002")
 	}
-	beego.Trace(pp.XmlParam)
-	beego.Trace(jsonParam)
+	//beego.Trace(pp.XmlParam)
+	//beego.Trace(jsonParam)
 	return jsonParam, nil
 }
 
-func CallCreateOrder(lr *models.LoginRequest, orderId, host, ext string) (channelOrderId, ret string, err error) {
+func CallCreateOrder(mlr *models.LoginRequest, orderId, host, ext string) (channelOrderId, ret string, err error) {
 	var jsonParam *map[string]interface{}
-	if testChannelId != lr.ChannelId {
-		if jsonParam, err = checkPackageParam(lr.ChannelId, lr.ProductId); err != nil {
+	if testChannelId != mlr.ChannelId {
+		if jsonParam, err = checkPackageParam(mlr); err != nil {
 			beego.Error(err)
 			return
 		}
 	}
 
 	var co createOrder.CreateOrder
-	switch lr.ChannelId {
+	switch mlr.ChannelId {
 	case 112:
-		co = createOrder.CoNewMeizu(lr, orderId, host, ext, jsonParam)
+		co = createOrder.CoNewMeizu(mlr, orderId, host, ext, jsonParam)
 	case 120:
-		co = createOrder.CoNewAmigo(lr, orderId, host, ext, jsonParam)
+		co = createOrder.CoNewAmigo(mlr, orderId, host, ext, jsonParam)
 	case 123: //熊猫玩
-		co = createOrder.CoNewXmw(lr, orderId, host, ext, jsonParam)
+		co = createOrder.CoNewXmw(mlr, orderId, host, ext, jsonParam)
 	case 136:
-		co = createOrder.CoNewCaishen(lr, orderId, host, ext, jsonParam)
+		co = createOrder.CoNewCaishen(mlr, orderId, host, ext, jsonParam)
 	default:
 		return
 	}

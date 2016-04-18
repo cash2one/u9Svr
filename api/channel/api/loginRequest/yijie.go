@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"github.com/astaxie/beego"
 	"strings"
+	"u9/models"
 )
 
 //易接
@@ -13,18 +14,18 @@ type YiJie struct {
 	channelRet int
 }
 
-func LrNewYiJie(channelUserId, token string, args *map[string]interface{}) *YiJie {
+func LrNewYiJie(mlr *models.LoginRequest, args *map[string]interface{}) *YiJie {
 	ret := new(YiJie)
-	ret.Init(channelUserId, token, args)
+	ret.Init(mlr, args)
 	return ret
 }
 
-func (this *YiJie) Init(channelUserId, token string, args *map[string]interface{}) {
-	this.Lr.Init(channelUserId, token)
+func (this *YiJie) Init(mlr *models.LoginRequest, args *map[string]interface{}) {
+	this.Lr.Init(mlr)
 	appid := replaceSDKParam((*args)["com.snowfish.appid"].(string))
 	channleid := replaceSDKParam((*args)["com.snowfish.channelid"].(string))
 	format := "http://sync.1sdk.cn/login/check.html?sdk=%s&app=%s&uin=%s&sess=%s"
-	this.Url = fmt.Sprintf(format, channleid, appid, channelUserId, token)
+	this.Url = fmt.Sprintf(format, channleid, appid, this.mlr.ChannelUserid, this.mlr.Token)
 }
 
 func (this *YiJie) ParseChannelRet() (err error) {

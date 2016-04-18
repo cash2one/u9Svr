@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"github.com/astaxie/beego"
 	// "u9/tool"
+	"u9/models"
 )
 
 //应用汇
@@ -34,18 +35,18 @@ type YYH struct {
 	channelRet YYHChannelRet
 }
 
-func LrNewYYH(channelUserId, token string, args *map[string]interface{}) *YYH {
+func LrNewYYH(mlr *models.LoginRequest, args *map[string]interface{}) *YYH {
 	ret := new(YYH)
-	ret.Init(channelUserId, token, args)
+	ret.Init(mlr, args)
 	return ret
 }
 
-func (this *YYH) Init(channelUserId, token string, args *map[string]interface{}) {
-	this.Lr.Init(channelUserId, token)
+func (this *YYH) Init(mlr *models.LoginRequest, args *map[string]interface{}) {
+	this.Lr.Init(mlr)
 	loginId := (*args)["YYH_LOGINID"].(string)
 	loginKey := (*args)["YYH_LOGINKEY"].(string)
 	format := "http://api.appchina.com/appchina-usersdk/user/v2/get.json?login_id=%s&login_key=%s&ticket=%s"
-	this.Url = fmt.Sprintf(format, loginId, loginKey, token)
+	this.Url = fmt.Sprintf(format, loginId, loginKey, this.mlr.Token)
 }
 
 func (this *YYH) ParseChannelRet() (err error) {

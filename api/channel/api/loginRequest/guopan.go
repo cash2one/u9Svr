@@ -5,6 +5,7 @@ import (
 	// "github.com/astaxie/beego"
 	"strconv"
 	"time"
+	"u9/models"
 	"u9/tool"
 )
 
@@ -14,21 +15,21 @@ type Guopan struct {
 	Lr
 }
 
-func LrNewGuopan(channelUserId, token string, args *map[string]interface{}) *Guopan {
+func LrNewGuopan(mlr *models.LoginRequest, args *map[string]interface{}) *Guopan {
 	ret := new(Guopan)
-	ret.Init(channelUserId, token, args)
+	ret.Init(mlr, args)
 	return ret
 }
 
-func (this *Guopan) Init(channelUserId, token string, args *map[string]interface{}) {
-	this.Lr.Init(channelUserId, token)
+func (this *Guopan) Init(mlr *models.LoginRequest, args *map[string]interface{}) {
+	this.Lr.Init(mlr)
 	appid := (*args)["GUOPAN_APPID"].(string)
 	secretKey := (*args)["GUOPAN_SERVER_SECRETKEY"].(string)
 	t := strconv.FormatInt(time.Now().Unix(), 10)
-	context := channelUserId + appid + t + secretKey
+	context := this.mlr.ChannelUserid + appid + t + secretKey
 	sign := tool.Md5([]byte(context))
 	format := "http://userapi.guopan.cn/gamesdk/verify?game_uin=%s&appid=%s&token=%s&t=%s&sign=%s"
-	this.Url = fmt.Sprintf(format, channelUserId, appid, token, t, sign)
+	this.Url = fmt.Sprintf(format, this.mlr.ChannelUserid, appid, this.mlr.Token, t, sign)
 }
 
 func (this *Guopan) CheckChannelRet() bool {

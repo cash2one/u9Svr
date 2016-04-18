@@ -7,6 +7,7 @@ import (
 	"github.com/astaxie/beego"
 	"strings"
 	"time"
+	"u9/models"
 )
 
 //安智
@@ -24,23 +25,23 @@ type AnZhi struct {
 	channelRet AnZhiChannelRet
 }
 
-func LrNewAnZhi(channelUserId, token string, args *map[string]interface{}) *AnZhi {
+func LrNewAnZhi(mlr *models.LoginRequest, args *map[string]interface{}) *AnZhi {
 	ret := new(AnZhi)
-	ret.Init(channelUserId, token, args)
+	ret.Init(mlr, args)
 	return ret
 }
 
-func (this *AnZhi) Init(channelUserId, token string, args *map[string]interface{}) {
-	this.Lr.Init(channelUserId, token)
+func (this *AnZhi) Init(mlr *models.LoginRequest, args *map[string]interface{}) {
+	this.Lr.Init(mlr)
 	this.Method = "POST"
 	appkey := (*args)["ANZHI_APPKEY"].(string)
 	appSecret := (*args)["ANZHI_APPSECRET"].(string)
 	var time string = time.Unix(time.Now().Unix(), 0).Format("20060102150405025")
-	baseStr := []byte(appkey + this.token + appSecret)
+	baseStr := []byte(appkey + this.mlr.Token + appSecret)
 	sign := base64.StdEncoding.EncodeToString(baseStr)
 
 	format := "http://user.anzhi.com/web/api/sdk/third/1/queryislogin?time=%s&appkey=%s&sid=%s&sign=%s"
-	this.Url = fmt.Sprintf(format, time, appkey, token, sign)
+	this.Url = fmt.Sprintf(format, time, appkey, this.mlr.Token, sign)
 }
 
 func (this *AnZhi) ParseChannelRet() (err error) {

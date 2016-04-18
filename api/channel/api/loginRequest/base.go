@@ -2,6 +2,7 @@ package loginRequest
 
 import (
 	"u9/api/common"
+	"u9/models"
 )
 
 type LoginRequest interface {
@@ -14,16 +15,14 @@ type LoginRequest interface {
 
 type Lr struct {
 	common.Request
-	ret           common.BasicRet
-	channelUserId string
-	token         string
+	ret common.BasicRet
+	mlr *models.LoginRequest
 }
 
-func (this *Lr) Init(channelUserId, token string) {
+func (this *Lr) Init(mlr *models.LoginRequest) {
 	this.Request.Init()
 	this.ret.Init()
-	this.channelUserId = channelUserId
-	this.token = token
+	this.mlr = mlr
 }
 
 func (this *Lr) SetCode(code int) *common.BasicRet {

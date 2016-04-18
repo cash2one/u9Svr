@@ -3,6 +3,7 @@ package loginRequest
 import (
 	"encoding/json"
 	"github.com/astaxie/beego"
+	"u9/models"
 )
 
 //手盟
@@ -23,24 +24,24 @@ type ShouMeng struct {
 	channelRet ShouMengChannelRet
 }
 
-func LrNewShouMeng(channelUserId, token string, args *map[string]interface{}) *ShouMeng {
+func LrNewShouMeng(mlr *models.LoginRequest, args *map[string]interface{}) *ShouMeng {
 	ret := new(ShouMeng)
-	ret.Init(channelUserId, token, args)
+	ret.Init(mlr, args)
 	return ret
 }
 
-func (this *ShouMeng) Init(channelUserId, token string, args *map[string]interface{}) {
-	this.Lr.Init(channelUserId, token)
+func (this *ShouMeng) Init(mlr *models.LoginRequest, args *map[string]interface{}) {
+	this.Lr.Init(mlr)
 	this.Method = "POST"
 	// appid := (*args)["DANGLE_SDK_APPID"].(string)
 	// appkey := (*args)["DANGLE_SDK_APPKEY"].(string)
-	json.Unmarshal([]byte(token), &this.tokenJson)
+	json.Unmarshal([]byte(this.mlr.Token), &this.tokenJson)
 	this.Url = "http://www.19meng.com/api/v1/verify_session_id"
 	beego.Trace(this.Url)
 }
 func (this *ShouMeng) InitParam() {
 	this.Lr.InitParam()
-	this.Req.Param("user_id", this.channelUserId)
+	this.Req.Param("user_id", this.mlr.ChannelUserid)
 	this.Req.Param("login_account", this.tokenJson.Login_account)
 	this.Req.Param("session_id", this.tokenJson.Session_id)
 }

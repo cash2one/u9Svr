@@ -4,13 +4,14 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/astaxie/beego"
+	"u9/models"
 	"u9/tool"
 )
 
 //搜狗
 
 type SogouChannelRet struct {
-	Result    bool  `json:"result"`
+	Result bool `json:"result"`
 	// Error     ErrorJson   `json:"error"`
 }
 
@@ -21,23 +22,22 @@ type SogouChannelRet struct {
 
 type Sogou struct {
 	Lr
-	args *map[string]interface{}
+	args       *map[string]interface{}
 	channelRet SogouChannelRet
 }
 
-func LrNewSogou(channelUserId, token string, args *map[string]interface{}) *Sogou {
+func LrNewSogou(mlr *models.LoginRequest, args *map[string]interface{}) *Sogou {
 	ret := new(Sogou)
-	ret.Init(channelUserId, token, args)
+	ret.Init(mlr, args)
 	return ret
 }
 
-func (this *Sogou) Init(channelUserId, token string, args *map[string]interface{}) {
-	this.Lr.Init(channelUserId, token)
+func (this *Sogou) Init(mlr *models.LoginRequest, args *map[string]interface{}) {
+	this.Lr.Init(mlr)
 	this.args = args
 	this.Method = "POST"
 	this.Url = "http://dev.app.wan.sogou.com/api/v1/login/verify"
 }
-	
 
 func (this *Sogou) InitParam() {
 	this.Lr.InitParam()
@@ -45,12 +45,12 @@ func (this *Sogou) InitParam() {
 	gid := (*this.args)["SOGOU_GAMEID"].(string)
 	appSecret := (*this.args)["SOGOU_APPSECRET"].(string)
 	singContext := "gid=%s&session_key=%s&user_id=%s&%s"
-	singContext = fmt.Sprintf(singContext,gid,this.token,this.channelUserId,appSecret)
+	singContext = fmt.Sprintf(singContext, gid, this.mlr.Token, this.mlr.ChannelUserid, appSecret)
 	sign := tool.Md5([]byte(singContext))
 
 	this.Req.Param("gid", gid)
-	this.Req.Param("user_id",this.channelUserId)
-	this.Req.Param("session_key", this.token)
+	this.Req.Param("user_id", this.mlr.ChannelUserid)
+	this.Req.Param("session_key", this.mlr.Token)
 	this.Req.Param("auth", sign)
 }
 func (this *Sogou) ParseChannelRet() (err error) {

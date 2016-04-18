@@ -9,6 +9,7 @@ import (
 	"net/url"
 	"strconv"
 	"time"
+	"u9/models"
 	"u9/tool"
 )
 
@@ -32,20 +33,20 @@ type Oppo struct {
 	sign       string
 }
 
-func LrNewOppo(channelUserId, token string, args *map[string]interface{}) *Oppo {
+func LrNewOppo(mlr *models.LoginRequest, args *map[string]interface{}) *Oppo {
 	ret := new(Oppo)
-	ret.Init(channelUserId, token, args)
+	ret.Init(mlr, args)
 	return ret
 }
 
-func (this *Oppo) Init(channelUserId, token string, args *map[string]interface{}) {
-	this.Lr.Init(channelUserId, token)
+func (this *Oppo) Init(mlr *models.LoginRequest, args *map[string]interface{}) {
+	this.Lr.Init(mlr)
 
 	appSecret := (*args)["OPPO_APPSECRET"].(string)
 	appkey := (*args)["OPPO_APPKEY"].(string)
-	escapeToken := url.QueryEscape(token)
+	escapeToken := url.QueryEscape(this.mlr.Token)
 	format := "http://i.open.game.oppomobile.com/gameopen/user/fileIdInfo?fileId=%s&token=%s"
-	this.Url = fmt.Sprintf(format, channelUserId, escapeToken)
+	this.Url = fmt.Sprintf(format, this.mlr.ChannelUserid, escapeToken)
 
 	timeStamp := strconv.FormatInt(time.Now().Unix(), 10)
 	r := rand.New(rand.NewSource(time.Now().UnixNano()))
@@ -69,5 +70,5 @@ func (this *Oppo) ParseChannelRet() (err error) {
 }
 
 func (this *Oppo) CheckChannelRet() bool {
-	return this.channelRet.Ssoid == this.channelUserId
+	return this.channelRet.Ssoid == this.mlr.ChannelUserid
 }

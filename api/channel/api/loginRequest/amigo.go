@@ -7,6 +7,7 @@ import (
 	"github.com/astaxie/beego"
 	"strconv"
 	"time"
+	"u9/models"
 	"u9/tool"
 )
 
@@ -23,14 +24,14 @@ type Amigo struct {
 	args       *map[string]interface{}
 }
 
-func LrNewAmigo(channelUserId, token string, args *map[string]interface{}) *Amigo {
+func LrNewAmigo(mlr *models.LoginRequest, args *map[string]interface{}) *Amigo {
 	ret := new(Amigo)
-	ret.Init(channelUserId, token, args)
+	ret.Init(mlr, args)
 	return ret
 }
 
-func (this *Amigo) Init(channelUserId, token string, args *map[string]interface{}) {
-	this.Lr.Init(channelUserId, token)
+func (this *Amigo) Init(mlr *models.LoginRequest, args *map[string]interface{}) {
+	this.Lr.Init(mlr)
 
 	this.args = args
 
@@ -61,7 +62,7 @@ func (this *Amigo) InitParam() {
 
 	this.Req.Header("Content-Type", "application/json")
 	this.Req.Header("Authorization", authorization)
-	this.Req.Body(this.token)
+	this.Req.Body(this.mlr.Token)
 }
 
 func (this *Amigo) ParseChannelRet() (err error) {

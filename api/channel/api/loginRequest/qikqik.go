@@ -4,14 +4,15 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/astaxie/beego"
+	"u9/models"
 	"u9/tool"
 )
 
 //7k7k
 
 type QikQikChannelRet struct {
-	Status    int `json:"status"`
-	Msg     string   `json:"msg"`
+	Status int    `json:"status"`
+	Msg    string `json:"msg"`
 }
 
 type QikQik struct {
@@ -19,22 +20,22 @@ type QikQik struct {
 	channelRet QikQikChannelRet
 }
 
-func LrNewQikQik(channelUserId, token string, args *map[string]interface{}) *QikQik {
+func LrNewQikQik(mlr *models.LoginRequest, args *map[string]interface{}) *QikQik {
 	ret := new(QikQik)
-	ret.Init(channelUserId, token, args)
+	ret.Init(mlr, args)
 	return ret
 }
 
-func (this *QikQik) Init(channelUserId, token string, args *map[string]interface{}) {
-	this.Lr.Init(channelUserId, token)
+func (this *QikQik) Init(mlr *models.LoginRequest, args *map[string]interface{}) {
+	this.Lr.Init(mlr)
 	appid := (*args)["APPID"].(string)
 	appsecret := (*args)["APP_SECRET"].(string)
-	signContest := channelUserId + token  + appid + appsecret
+	signContest := this.mlr.ChannelUserid + this.mlr.Token + appid + appsecret
 	beego.Trace(signContest)
 	sign := tool.Md5([]byte(signContest))
 	format := "http://api.sy.7k7k.com/index.php/user/checkUser/uid/%s/vkey/%s/appid/%s/sign/%s"
-	this.Url = fmt.Sprintf(format, channelUserId, token, appid, sign)
-	beego.Trace(fmt.Sprintf(format, channelUserId, token, appid, sign))
+	this.Url = fmt.Sprintf(format, this.mlr.ChannelUserid, this.mlr.Token, appid, sign)
+	beego.Trace(fmt.Sprintf(format, this.mlr.ChannelUserid, this.mlr.Token, appid, sign))
 }
 
 func (this *QikQik) ParseChannelRet() (err error) {

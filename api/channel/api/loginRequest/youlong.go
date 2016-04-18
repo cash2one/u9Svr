@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/astaxie/beego"
+	"u9/models"
 )
 
 //游龙
@@ -20,18 +21,18 @@ type YouLong struct {
 	channelRet YouLongChannelRet
 }
 
-func LrNewYouLong(channelUserId, token string, args *map[string]interface{}) *YouLong {
+func LrNewYouLong(mlr *models.LoginRequest, args *map[string]interface{}) *YouLong {
 	ret := new(YouLong)
-	ret.Init(channelUserId, token, args)
+	ret.Init(mlr, args)
 	return ret
 }
 
-func (this *YouLong) Init(channelUserId, token string, args *map[string]interface{}) {
-	this.Lr.Init(channelUserId, token)
+func (this *YouLong) Init(mlr *models.LoginRequest, args *map[string]interface{}) {
+	this.Lr.Init(mlr)
 	this.Method = "POST"
 	appid := (*args)["PID"].(string)
 	format := "http://ucapi.411game.com/Api/checkToken?token=%s&pid=%s&ip=%s"
-	this.Url = fmt.Sprintf(format, token, appid, channelUserId)
+	this.Url = fmt.Sprintf(format, this.mlr.Token, appid, this.mlr.ChannelUserid)
 }
 
 func (this *YouLong) ParseChannelRet() (err error) {
