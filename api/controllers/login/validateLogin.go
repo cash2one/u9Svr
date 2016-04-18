@@ -54,7 +54,7 @@ func (this *LoginController) ValidateLogin() {
 		ret.SetCode(code)
 		return
 	}
-	ret = channelApi.CallLoginRequest(vlp.lr.ChannelId, vlp.lr.ProductId, vlp.lr.ChannelUserid, vlp.Token)
+	ret = channelApi.CallLoginRequest(vlp.lr)
 	if ret.Code == 0 {
 		vlp.addDB()
 	}

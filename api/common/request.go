@@ -19,6 +19,7 @@ type Request struct {
 
 func (this *Request) Init() {
 	this.Method = "GET"
+	this.IsHttps = false
 }
 
 func (this *Request) InitParam() {

@@ -111,8 +111,8 @@ func (this *PayController) PayRequest() {
 	channelExt := ""
 	channelOrderId := ""
 	host := this.Ctx.Input.Host()
-	beego.Trace(prp.Ext)
-	beego.Trace(prp.AppExt)
+	//beego.Trace(prp.Ext)
+	//beego.Trace(prp.AppExt)
 	channelOrderId, channelExt, err = channelApi.CallCreateOrder(&lr, or.OrderId, host, prp.Ext)
 	if err != nil {
 		ret.SetCode(3002)
