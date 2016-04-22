@@ -44,11 +44,21 @@ func NewBuildId(packageTaskId int,channel *models.Channel, product *models.Produ
 
 func (this *BuildId) Handle() {
 	switch this.channel.Id{
-		case 101:
-
-		default :
+		case 106:
+			fallthrough
+		case 107:
+			fallthrough
+		case 122:
+ 			fallthrough
+ 		case 130:
+ 			fallthrough
+ 		case 136:
+ 			fallthrough
+ 		case 126:
 			this.init()
 			this.ant()
+		default :
+			
 	}
 }
 

@@ -36,7 +36,8 @@ func (this *Dangle) Init(mlr *models.LoginRequest, args *map[string]interface{})
 	appkey := (*args)["DANGLE_SDK_APPKEY"].(string)
 	sign := tool.Md5([]byte(appid + "|" + appkey + "|" + this.mlr.Token + "|" + mlr.ChannelUserid))
 	format := "http://ngsdk.d.cn/api/cp/checkToken?appid=%s&umid=%s&token=%s&sig=%s"
-	this.Url = fmt.Sprintf(format, appid, mlr, sign)
+	this.Url = fmt.Sprintf(format, appid, mlr.ChannelUserid,mlr.Token, sign)
+ 	beego.Trace(this.Url)
 }
 
 func (this *Dangle) ParseChannelRet() (err error) {

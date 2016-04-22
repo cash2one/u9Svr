@@ -151,7 +151,7 @@ func (this *PackageController) Package() {
 		packageTask.Update("state")
 	} else {
 		if packageTask.PublishApk != "" {
-			if err := os.Remove(publishApk); err != nil {
+			if err := os.Remove(packageTask.PublishApk); err != nil {
 				beego.Warn(err)
 			}
 		}

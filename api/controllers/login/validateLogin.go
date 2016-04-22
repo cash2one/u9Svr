@@ -4,6 +4,7 @@ import (
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/orm"
 	"github.com/astaxie/beego/validation"
+	"net/url"
 	"strings"
 	"time"
 	"u9/api/channel/api"
@@ -16,6 +17,13 @@ type ValidateLoginParam struct {
 	Token  string `json:"Token"`
 	lr     *models.LoginRequest
 	lrl    *models.LoginRequestLog
+}
+
+func (this *ValidateLoginParam) handleSpecialToken() {
+	//暴走水浒 and 芒果玩
+	if this.lr.ChannelId == 134 && this.lr.ProductId == 1002 {
+		this.Token = strings.Replace(this.Token, `"`, ``, -1)
+	}
 }
 
 func (this *ValidateLoginParam) Valid(v *validation.Validation) {
@@ -31,11 +39,18 @@ func (this *ValidateLoginParam) Valid(v *validation.Validation) {
 	this.lr = new(models.LoginRequest)
 	qs := this.lr.Query().Filter("userId", this.UserId)
 	if err := qs.One(this.lr); err != nil {
+		//beego.Error(this.Input())
 		v.SetError("1004", "Record isn't exist in table:loginRequest with UserId="+this.UserId)
 		return
 	}
+
+	this.handleSpecialToken()
 	if qs.Filter("token", this.Token).Exist() == false {
-		v.SetError("1003", "Record isn't exist in table:loginRequest with token:"+this.Token)
+		this.Token, _ = url.QueryUnescape(this.Token)
+		if qs.Filter("token", this.Token).Exist() == false {
+			//beego.Error(this.Input())
+			v.SetError("1003", "Record isn't exist in table:loginRequest with token:"+this.Token)
+		}
 		return
 	}
 

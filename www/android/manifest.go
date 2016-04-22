@@ -68,8 +68,10 @@ func (this *Manifest) Init(packageTaskId int,
 	if err := json.Unmarshal([]byte(this.packageParam.XmlParam), &this.channelSdkParams); err != nil {
 		panic(err)
 	}
-	if err := json.Unmarshal([]byte(this.packageParam.ExtParam), &this.cpSdkParams); err != nil {
-		panic(err)
+	if (this.packageParam.ExtParam!=""){
+		if err := json.Unmarshal([]byte(this.packageParam.ExtParam), &this.cpSdkParams); err != nil {
+			panic(err)
+		}
 	}
 }
 
@@ -123,21 +125,37 @@ func (this *Manifest) setMeta() {
 	//根据产品ID/渠道ID/渠道类型设置相应meta-data
 	ptMetaEl := this.productAppEl.GetNodeByPathAndAttr("meta-data", "android:name", "HY_GAME_ID")
 	if ptMetaEl == nil {
-		panic("Manifest:setMetaData:ptMetaEl is nil.")
+		// panic("Manifest:setMetaData:ptMetaEl is nil.")
+			ptMetaElnew := android.NewElement("meta-data","")
+			ptMetaElnew.AddAttr("android:name", "HY_GAME_ID")
+			ptMetaElnew.AddAttr("android:value", strconv.Itoa(this.packageParam.ProductId))
+			this.productAppEl.AddNode(ptMetaElnew)
+	}else{
+		ptMetaEl.AddAttr("android:value", strconv.Itoa(this.packageParam.ProductId))
 	}
-	ptMetaEl.AddAttr("android:value", strconv.Itoa(this.packageParam.ProductId))
 
 	clMetaEl := this.productAppEl.GetNodeByPathAndAttr("meta-data", "android:name", "HY_CHANNEL_CODE")
 	if clMetaEl == nil {
-		panic("Manifest:setMetaData:clMetaEl is nil.")
+		// panic("Manifest:setMetaData:clMetaEl is nil.")
+			clMetaElnew := android.NewElement("meta-data","")
+			clMetaElnew.AddAttr("android:name", "HY_CHANNEL_CODE")
+			clMetaElnew.AddAttr("android:value", strconv.Itoa(this.packageParam.ChannelId))
+			this.productAppEl.AddNode(clMetaElnew)
+	}else{
+		clMetaEl.AddAttr("android:value", strconv.Itoa(this.packageParam.ChannelId))
 	}
-	clMetaEl.AddAttr("android:value", strconv.Itoa(this.packageParam.ChannelId))
 
 	ctMetaEl := this.productAppEl.GetNodeByPathAndAttr("meta-data", "android:name", "HY_CHANNEL_TYPE")
 	if ctMetaEl == nil {
-		panic("Manifest:setMetaData:ctMetaEl is nil.")
+		// panic("Manifest:setMetaData:ctMetaEl is nil.")
+			ctMetaElnew := android.NewElement("meta-data","")
+			ctMetaElnew.AddAttr("android:name", "HY_CHANNEL_TYPE")
+			ctMetaElnew.AddAttr("android:value", this.channel.Type)
+			this.productAppEl.AddNode(ctMetaElnew)
+	}else{
+		ctMetaEl.AddAttr("android:value", this.channel.Type)
 	}
-	ctMetaEl.AddAttr("android:value", this.channel.Type)
+	
 
 	for k, v := range this.channelSdkParams {
 		el := this.productAppEl.GetNodeByPathAndAttr("meta-data", "android:name", k)
@@ -149,6 +167,7 @@ func (this *Manifest) setMeta() {
 	}
 	beego.Trace("channelParam is OK")
 	beego.Trace(this.cpSdkParams)
+	if(this.cpSdkParams != nil){
 	for k, v := range this.cpSdkParams {
 		beego.Trace("1")
 		cl := this.productAppEl.GetNodeByPathAndAttr("meta-data", "android:name", k)
@@ -163,6 +182,7 @@ func (this *Manifest) setMeta() {
 		}
 	}
 	beego.Trace("extParam is OK")
+}
 }
 
 func (this *Manifest) setApp() {

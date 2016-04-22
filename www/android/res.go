@@ -54,7 +54,8 @@ func (this *Res) clear() {
 		panic(err)
 	}
 
-	hygame_activityXml := this.packagePath + "/" + layoutPath + "hygame_activity.xml"
+	hygame_activityXml := this.packagePath + "/" + layoutPath +"/"+ "hygame_activity.xml"
+	// beego.Trace(hygame_activityXml)
 	if err := os.RemoveAll(hygame_activityXml); err != nil {
 		beego.Trace(err)
 		panic(err)

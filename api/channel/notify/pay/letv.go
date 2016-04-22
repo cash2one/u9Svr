@@ -95,20 +95,40 @@ func (this *LeTV) CheckSign() (err error) {
 			beego.Trace(err)
 		}
 	}()
+ switch this.productId{
+ 	//破阵无双SDK 老版本  其他均为新版本
+ 	case 1001:
+		format := "app_id=%s&lepay_order_no=%s&letv_user_id=%s&out_trade_no=%s&pay_time=%s&price=%s&product_id=%s&sign_type=%s&trade_result=%s&version=%s&key=%s"
+		context := fmt.Sprintf(format,
+			this.appid, this.urlParams.Get("lepay_order_no"),
+			this.channelUserId, this.channelOrderId, this.urlParams.Get("pay_time"),
+			this.urlParams.Get("price"), this.urlParams.Get("product_id"), "MD5",
+			this.urlParams.Get("trade_result"), this.urlParams.Get("version"), this.payKey)
 
-	format := "app_id=%s&lepay_order_no=%s&letv_user_id=%s&out_trade_no=%s&pay_time=%s&price=%s&product_id=%s&sign_type=%s&trade_result=%s&version=%s&key=%s"
-	context := fmt.Sprintf(format,
-		this.appid, this.urlParams.Get("lepay_order_no"),
-		this.channelUserId, this.channelOrderId, this.urlParams.Get("pay_time"),
-		this.urlParams.Get("price"), this.urlParams.Get("product_id"), "MD5",
-		this.urlParams.Get("trade_result"), this.urlParams.Get("version"), this.payKey)
+		if sign := tool.Md5([]byte(context)); sign != this.urlParams.Get("sign") {
+			msg := fmt.Sprintf("Sign is invalid, context:%s, sign:%s", context, sign)
+			err = errors.New(msg)
+			return
+		}
+		return
 
-	if sign := tool.Md5([]byte(context)); sign != this.urlParams.Get("sign") {
-		msg := fmt.Sprintf("Sign is invalid, context:%s, sign:%s", context, sign)
-		err = errors.New(msg)
+	default :
+		format := "app_id=%s&lepay_order_no=%s&letv_user_id=%s&out_trade_no=%s&pay_time=%s&price=%s&product_id=%s&sign_type=%s&trade_result=%s&version=%s&cooperator_order_no=%s&extra_info=%s&original_price=%s&key=%s"
+		context := fmt.Sprintf(format,
+			this.appid, this.urlParams.Get("lepay_order_no"),
+			this.channelUserId, this.channelOrderId, this.urlParams.Get("pay_time"),
+			this.urlParams.Get("price"), this.urlParams.Get("product_id"), "MD5",
+			this.urlParams.Get("trade_result"), this.urlParams.Get("version"),this.orderId,
+			this.urlParams.Get("extra_info"),this.urlParams.Get("original_price"),this.payKey)
+
+		if sign := tool.Md5([]byte(context)); sign != this.urlParams.Get("sign") {
+			msg := fmt.Sprintf("Sign is invalid, context:%s, sign:%s", context, sign)
+			err = errors.New(msg)
+			return
+		}
 		return
 	}
-	return
+
 }
 
 func (this *LeTV) GetResult() (ret string) {

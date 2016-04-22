@@ -38,7 +38,7 @@ func (this *Smali) Prepare() {
 
 func (this *Smali) Handle() {
 	//6、移除渠道demo
-	examplePath := this.packagePath + "/" + comPath + "/" + "example"
+	examplePath := this.packagePath + "/" + comPath + "/" + "example/test"
 	if err := os.RemoveAll(examplePath); err != nil {
 		panic(err)
 	}

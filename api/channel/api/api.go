@@ -30,6 +30,8 @@ func CallLoginRequest(mlr *models.LoginRequest) (ret *common.BasicRet) {
 	switch mlr.ChannelId {
 	case testChannelId: //test
 		fallthrough
+	case 113:
+		fallthrough
 	case 122: //6YGame
 		fallthrough
 	case 127:
@@ -52,10 +54,14 @@ func CallLoginRequest(mlr *models.LoginRequest) (ret *common.BasicRet) {
 		llr = loginRequest.LrNewGFan(mlr, jsonParam)
 	case 107:
 		llr = loginRequest.LrNewGuopan(mlr, jsonParam)
+	case 108:
+		llr = loginRequest.LrNewKaoPu(mlr,jsonParam)
 	case 109:
 		llr = loginRequest.LrNewM4399(mlr, jsonParam)
 	case 110:
 		llr = loginRequest.LrNewOppo(mlr, jsonParam)
+	case 111:
+		llr = loginRequest.LrNewMuMaYi(mlr, jsonParam)
 	case 112:
 		llr = loginRequest.LrNewMeiZu(mlr, jsonParam)
 	case 115:

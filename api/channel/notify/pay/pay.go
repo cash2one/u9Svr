@@ -33,12 +33,18 @@ func CallPayNotify(channelId, productId int, urlParams *url.Values, ctx *context
 		pn = NewGFan(channelId, productId, urlParams, ctx)
 	case 107:
 		pn = NewGuopan(channelId, productId, urlParams)
+	case 108:
+		pn = NewKaoPu(channelId, productId, urlParams)
 	case 109:
 		pn = NewM4399(channelId, productId, urlParams)
 	case 110:
 		pn = NewOppo(channelId, productId, urlParams)
+	case 111:
+		pn = NewMuMaYi(channelId, productId, urlParams)
 	case 112:
 		pn = NewMeizu(channelId, productId, urlParams)
+	case 113:
+		pn = NewMZW(channelId, productId, urlParams)
 	case 115:
 		pn = NewSogou(channelId, productId, urlParams)
 	case 117:

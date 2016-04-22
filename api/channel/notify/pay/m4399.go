@@ -87,7 +87,7 @@ func (this *M4399) CheckSign() (err error) {
 	}()
 
 	context := fmt.Sprintf("%s%s%s%s", this.channelOrderId,
-		this.channelId, this.urlParams.Get("money"), this.urlParams.Get("gamemoney"))
+		this.channelUserId, this.urlParams.Get("money"), this.urlParams.Get("gamemoney"))
 	if this.urlParams.Get("serverid") != "" {
 		context = context + this.urlParams.Get("serverid")
 	}
@@ -118,8 +118,8 @@ func (this *M4399) GetResult() (ret string) {
 	jsonRet := m4399Ret{
 		Status:    1,
 		Code:      "",
-		Money:     "0",
-		Gamemoney: "0",
+		Money:     this.urlParams.Get("money"),
+		Gamemoney: this.urlParams.Get("gamemoney"),
 		Msg:       "",
 	}
 

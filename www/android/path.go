@@ -11,6 +11,7 @@ const (
 	channelRootPath = "package/channel"
 	packageRootPath = "package/uncompile"
 	buildIdRootPath = "package/build_id"
+	u9sdkFile = "package/sdk/1.1/u9.tar"
 )
 
 func GetApkName(product *models.Product, productVersion *models.ProductVersion) string {
@@ -75,4 +76,8 @@ func GetBuildIdPath(packageTaskId int, project string) (ret string) {
 		ret = buildIdRootPath + "/" + strconv.Itoa(packageTaskId) + project
 	}
 	return
+}
+
+func GetU9SDKFile() (ret string){
+	return u9sdkFile
 }

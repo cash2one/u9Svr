@@ -117,8 +117,13 @@ func (this *PackageTaskHandle) Handle() (publishApk string) {
 	channelPath := GetChannelPath(&this.channel)
 	packagePath := GetPackagePath(this.packageTask.Id, this.apkName)
 	channelTar := channelPath + "/" + this.channel.Type + ".tar"
+	u9sdkTar := GetU9SDKFile()
 	beego.Trace("unTar:", packagePath, channelTar)
 	if err := tool.UnTar(channelTar, packagePath); err != nil {
+		panic(err)
+	}
+	beego.Trace("unTar:", u9sdkTar, packagePath)
+	if err := tool.UnTar(u9sdkTar, packagePath); err != nil {
 		panic(err)
 	}
 
