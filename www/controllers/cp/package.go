@@ -57,7 +57,7 @@ func (this *PackageController) GetVerAndClByPid() {
 	}
 
 	type vcRetParam struct {
-		VerParams     []verParam     `json:"version"`
+		VerParams []verParam     `json:"version"`
 		XmlParams []channelParam `json:"channel"`
 	}
 	var ret vcRetParam
@@ -158,7 +158,8 @@ func (this *PackageController) Package() {
 
 		packageTask.State = 2
 		packageTask.PublishApk = publishApk
-		packageTask.Update("state", "publishApk")
+		packageTask.PackageTime = time.Now()
+		packageTask.Update("state", "publishApk", "packageTime")
 		ret = "success"
 	}
 }
