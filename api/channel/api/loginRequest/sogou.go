@@ -36,7 +36,7 @@ func (this *Sogou) Init(mlr *models.LoginRequest, args *map[string]interface{}) 
 	this.Lr.Init(mlr)
 	this.args = args
 	this.Method = "POST"
-	this.Url = "http://dev.app.wan.sogou.com/api/v1/login/verify"
+	this.Url = "http://api.app.wan.sogou.com/api/v1/login/verify"
 }
 
 func (this *Sogou) InitParam() {

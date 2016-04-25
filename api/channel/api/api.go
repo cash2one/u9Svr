@@ -22,6 +22,7 @@ func CallLoginRequest(mlr *models.LoginRequest) (ret *common.BasicRet) {
 	var err error
 	if jsonParam, err = checkPackageParam(mlr); err != nil {
 		code, _ := strconv.Atoi(err.Error())
+		beego.Error(err)
 		ret.SetCode(code)
 		return
 	}
@@ -82,8 +83,8 @@ func CallLoginRequest(mlr *models.LoginRequest) (ret *common.BasicRet) {
 		llr = loginRequest.LrNewShouMeng(mlr, jsonParam)
 	case 130:
 		llr = loginRequest.LrNewYYH(mlr, jsonParam)
-	// case 131:
-
+	case 131:
+		llr = loginRequest.LrNewSnail(mlr, jsonParam)
 	case 132:
 		llr = loginRequest.LrNewYiJie(mlr, jsonParam)
 	case 133:
@@ -92,6 +93,8 @@ func CallLoginRequest(mlr *models.LoginRequest) (ret *common.BasicRet) {
 		llr = loginRequest.LrNewQikQik(mlr, jsonParam)
 	case 137:
 		llr = loginRequest.LrNewPPTV(mlr, jsonParam)
+	case 140:
+		llr = loginRequest.LrNewTT(mlr, jsonParam)
 	default:
 		ret.SetCode(3004)
 		return
@@ -124,9 +127,8 @@ func checkPackageParam(mlr *models.LoginRequest) (jsonParam *map[string]interfac
 	pp := new(models.PackageParam)
 	if err = pp.Query().Filter("channelId", mlr.ChannelId).Filter("productId", mlr.ProductId).One(pp); err != nil {
 		msg := fmt.Sprintf("1005:channelId=%d and productId=%d", mlr.ChannelId, mlr.ProductId)
-		err = errors.New(msg)
-		beego.Error(err)
-		return nil, err
+		beego.Error(msg)
+		return nil, errors.New("1005")
 	}
 
 	jsonParam = new(map[string]interface{})
@@ -143,7 +145,7 @@ func CallCreateOrder(mlr *models.LoginRequest, orderId, host, ext string) (chann
 	var jsonParam *map[string]interface{}
 	if testChannelId != mlr.ChannelId {
 		if jsonParam, err = checkPackageParam(mlr); err != nil {
-			beego.Error(err)
+			beego.Error("checkPackageParam is error.")
 			return
 		}
 	}

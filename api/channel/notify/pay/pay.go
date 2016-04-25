@@ -69,6 +69,8 @@ func CallPayNotify(channelId, productId int, urlParams *url.Values, ctx *context
 		pn = NewShouMeng(channelId, productId, urlParams)
 	case 130:
 		pn = NewYYH(channelId, productId, urlParams)
+	case 131:
+		pn = NewSnail(channelId, productId, urlParams)
 	case 132:
 		pn = NewYiJie(channelId, productId, urlParams)
 	case 133:

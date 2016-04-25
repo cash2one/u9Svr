@@ -10,7 +10,7 @@ import (
 	"strings"
 )
 
-var mumayiUrlKeys []string = []string{"uid", "orderID", "payType", "productPrice", "orderTime", "tradeSign", "tradeState"}
+var mumayiUrlKeys []string = []string{"uid", "orderID", "productPrice", "orderTime", "tradeSign", "tradeState"}
 
 const (
 	err_mumayiParsePayKey   = 10101
@@ -40,7 +40,7 @@ func (this *MuMaYi) parsePayKey() (err error) {
 			beego.Trace(err)
 		}
 	}()
-	this.payKey, err = this.getPackageParam("MuMaYi_PAYMENT_KEY")
+	this.payKey, err = this.getPackageParam("MUMAYI_APPKEY")
 	return
 }
 

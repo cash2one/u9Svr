@@ -2,7 +2,7 @@ package loginRequest
 
 import (
 	"encoding/json"
-	// "fmt"
+	"fmt"
 	"u9/models"
 	"github.com/astaxie/beego"
 	// "u9/tool"
@@ -37,6 +37,7 @@ func LrNewTT(mlr *models.LoginRequest, args *map[string]interface{}) *TT {
 
 func (this *TT) Init(mlr *models.LoginRequest, args *map[string]interface{}) {
 	this.Lr.Init(mlr)
+	this.args = args
 	this.channelUserId = this.mlr.ChannelUserid
 	this.token = this.mlr.Token
 	this.Method = "POST"
@@ -45,13 +46,16 @@ func (this *TT) Init(mlr *models.LoginRequest, args *map[string]interface{}) {
 
 func (this *TT) InitParam() {
 	this.Lr.InitParam()
-	gameId := (*this.args)["TT_SDK_APPID"].(string)
+	gameId := (*this.args)["TT_SDK_GAMEID"].(string)
 	// context := `{"uid":"%d","gameId":"%d"}`
 	// sign := base64.StdEncoding.EncodeToString(tool.Md5([]byte(context)))
 
 	this.Req.Header("sid", this.token)
-	this.Req.Param("uid", this.channelUserId)
-	this.Req.Param("gameId", gameId)
+	beego.Trace("sid:",this.token)
+	bodyJson := `{"uid":"%s","gameId":"%s"}`
+	bodyJson = fmt.Sprintf(bodyJson,this.channelUserId,gameId)
+	beego.Trace(bodyJson)
+	this.Req.Body(bodyJson)
 
 }
 

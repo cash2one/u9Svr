@@ -367,6 +367,15 @@
 				"line_ending": "Windows",
 				"name": "https://ysdk.qq.com/mpay/buy_goods_m"
 			}
+		},
+		{
+			"contents": "<activity\nandroid:name=\"sy07073.mobile.game.sdk.activity.LoadPage\"\nandroid:theme=\"@style/CY_DialogTheme\"\nandroid:screenOrientation =\"landscape\"\nandroid:windowSoftInputMode=\"stateHidden|adjustResize\"\nandroid:configChanges=\"keyboardHidden|orientation|screenSize\" >\n</activity>\n<activity\nandroid:name=\"com.alipay.sdk.app.H5PayActivity\"\nandroid:configChanges=\"orientation|keyboardHidden|navigation\"\nandroid:exported=\"false\"\nandroid:screenOrientation=\"behind\" >\n</activity>\n<activity\nandroid:name=\"com.alipay.sdk.auth.AuthActivity\"\nandroid:configChanges=\"orientation|keyboardHidden|navigation\"\nandroid:exported=\"false\"\nandroid:screenOrientation=\"behind\" >\n</activity>\n<activity\nandroid:name=\"sy07073.mobile.game.sdk.wxpay.paytendWXEntryActivity\"\nandroid:exported=\"true\"\nandroid:screenOrientation =\"landscape\"\nandroid:launchMode=\"singleTop\" />\n<receiver android:name=\"sy07073.mobile.game.sdk.wxpay.AppReciver2\" >\n<intent-filter>\n<action android:name=\"com.paytend.wxpay.plugin.recive\" />\n</intent-filter>\n</receiver>",
+			"settings":
+			{
+				"buffer_size": 1009,
+				"line_ending": "Windows",
+				"name": "<activity"
+			}
 		}
 	],
 	"build_system": "",
@@ -410,17 +419,14 @@
 	},
 	"expanded_folders":
 	[
-		"/D/go/src/u9",
-		"/D/go/src/u9/api",
-		"/D/go/src/u9/api/channel/api",
-		"/D/go/src/u9/api/channel/notify",
-		"/D/go/src/u9/api/channel/notify/pay",
-		"/D/go/src/u9/api/controllers",
-		"/D/go/src/u9/api/controllers/login",
-		"/D/go/src/u9/api/routers"
+		"/D/go/src/u9"
 	],
 	"file_history":
 	[
+		"/D/go/src/u9/www/controllers/cp/package.go",
+		"/D/go/src/u9/sftp-config.json",
+		"/D/go/src/u9/models/packageTask.go",
+		"/D/go/src/u9/api/channel/api/loginRequest/sogou.go",
 		"/c/go/src/net/http/request.go",
 		"/D/go/src/github.com/astaxie/beego/context/context.go",
 		"/c/go/src/net/url/url.go",
@@ -432,7 +438,6 @@
 		"/D/go/src/u9/api/controllers/base.go",
 		"/D/go/src/github.com/astaxie/beego/context/input.go",
 		"/D/go/src/u9/api/channel/notify/pay/m4399.go",
-		"/D/go/src/u9/sftp-config.json",
 		"/D/go/src/u9/api/channel/api/loginRequest/mumayi.go",
 		"/D/go/src/u9/tool/log.go",
 		"/D/go/src/u9/api/main.go",
@@ -453,7 +458,6 @@
 		"/D/go/src/u9/api/channel/api/loginRequest/anzhi.go",
 		"/c/go/src/encoding/json/decode.go",
 		"/c/go/src/builtin/builtin.go",
-		"/D/go/src/u9/api/channel/api/loginRequest/sogou.go",
 		"/D/go/src/u9/api/channel/api/loginRequest/wandoujia.go",
 		"/D/go/src/u9/api/channel/api/loginRequest/xiaomi.go",
 		"/D/go/src/u9/api/channel/api/loginRequest/youlong.go",
@@ -476,7 +480,6 @@
 		"/C/Users/jacky/Desktop/YSDK_PHP_V1.0.0/ysdks/lib/SnsSigCheck.php",
 		"/C/Users/jacky/Desktop/YSDK_PHP_V1.0.0/ysdks/Payments.php",
 		"/C/Users/jacky/Desktop/YSDK_PHP_V1.0.0/ysdks/Ysdk.php",
-		"/D/go/src/u9/www/controllers/cp/package.go",
 		"/D/go/src/u9/www/views/cp/package_add.html",
 		"/D/go/src/u9/tool/android/xml_test.go",
 		"/C/Users/jacky/Desktop/YSDK_PHP_V1.0.0/samples/Sample.php",
@@ -547,8 +550,7 @@
 		"/c/go/src/image/png/writer.go",
 		"/c/go/src/os/file.go",
 		"/c/go/src/image/format.go",
-		"/c/go/src/image/geom.go",
-		"/c/go/src/os/file_windows.go"
+		"/c/go/src/image/geom.go"
 	],
 	"find":
 	{
@@ -916,7 +918,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -939,6 +941,35 @@
 						"settings":
 						{
 							"auto_name": "https://ysdk.qq.com/mpay/buy_goods_m",
+							"incomplete_sync": null,
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1009,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1009,
+								0
+							]
+						],
+						"settings":
+						{
+							"auto_name": "<activity",
 							"incomplete_sync": null,
 							"syntax": "Packages/Text/Plain text.tmLanguage"
 						},
@@ -1088,6 +1119,10 @@
 		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"sougo",
+				"api\\channel\\api\\loginRequest\\sogou.go"
+			],
 			[
 				"yijie",
 				"api\\channel\\api\\loginRequest\\yijie.go"

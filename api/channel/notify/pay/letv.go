@@ -10,8 +10,7 @@ import (
 )
 
 var letvUrlKeys []string = []string{"app_id", "lepay_order_no", "letv_user_id", "out_trade_no",
-	"pay_time", "price", "product_id", "sign", "sign_type", "trade_result", "version",
-	"cooperator_order_no"}
+	"pay_time", "price", "product_id", "sign", "sign_type", "trade_result", "version"}
 
 const (
 	err_letvParsePayKey   = 12601
@@ -113,13 +112,12 @@ func (this *LeTV) CheckSign() (err error) {
 		return
 
 	default :
-		format := "app_id=%s&lepay_order_no=%s&letv_user_id=%s&out_trade_no=%s&pay_time=%s&price=%s&product_id=%s&sign_type=%s&trade_result=%s&version=%s&cooperator_order_no=%s&extra_info=%s&original_price=%s&key=%s"
+		format := "app_id=%s&cooperator_order_no=%s&extra_info=%s&lepay_order_no=%s&letv_user_id=%s&original_price=%s&out_trade_no=%s&pay_time=%s&price=%s&product_id=%s&sign_type=%s&trade_result=%s&version=%s&key=%s"
 		context := fmt.Sprintf(format,
-			this.appid, this.urlParams.Get("lepay_order_no"),
-			this.channelUserId, this.channelOrderId, this.urlParams.Get("pay_time"),
-			this.urlParams.Get("price"), this.urlParams.Get("product_id"), "MD5",
-			this.urlParams.Get("trade_result"), this.urlParams.Get("version"),this.orderId,
-			this.urlParams.Get("extra_info"),this.urlParams.Get("original_price"),this.payKey)
+			this.appid, this.orderId,this.urlParams.Get("extra_info"),this.urlParams.Get("lepay_order_no"),
+			this.channelUserId,this.urlParams.Get("original_price"),this.urlParams.Get("out_trade_no"),this.urlParams.Get("pay_time"),
+			this.urlParams.Get("price"),this.urlParams.Get("product_id"),this.urlParams.Get("sign_type"),this.urlParams.Get("trade_result"),
+			this.urlParams.Get("version"),this.payKey)
 
 		if sign := tool.Md5([]byte(context)); sign != this.urlParams.Get("sign") {
 			msg := fmt.Sprintf("Sign is invalid, context:%s, sign:%s", context, sign)
