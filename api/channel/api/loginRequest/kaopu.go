@@ -40,7 +40,10 @@ func (this *KaoPu) Init(mlr *models.LoginRequest, args *map[string]interface{}) 
 	this.mlr.Ext = strings.Replace(this.mlr.Ext, ",", "&", -1)
 	json.Unmarshal([]byte(this.mlr.Ext), &this.kaopuCheckUrl)
 	beego.Trace(this.mlr.Ext)
-	this.Url = "http://121.201.26.35:8081/Api/CheckUserValidate?"+this.kaopuCheckUrl.CheckUrl
+	checkUrl := this.kaopuCheckUrl.CheckUrl
+	checkUrl = strings.Replace(checkUrl,"\\","",-1)
+	this.Url = checkUrl
+	// this.Url = "http://121.201.26.35:8081/Api/CheckUserValidate?"+this.kaopuCheckUrl.CheckUrl
 	beego.Trace(this.Url)
 
 }
