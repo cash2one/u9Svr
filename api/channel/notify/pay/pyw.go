@@ -14,21 +14,21 @@ import (
 	"u9/tool"
 )
 
-var ttUrlKeys []string = []string{"order", "sign", "sign_type"}
+var pywUrlKeys []string = []string{"order", "sign", "sign_type"}
 
 const (
-	err_ttParsePayKey      = 12701
-	err_ttResultFailure    = 12702
-	err_ttInitRsaPublicKey = 12703
-	err_ttParseBody        = 12704
+	err_PYWParsePayKey      = 12701
+	err_PYWResultFailure    = 12702
+	err_PYWInitRsaPublicKey = 12703
+	err_PYWParseBody        = 12704
 )
 
-//tt
-type TT struct {
+//PYW
+type PYW struct {
 	Base
 	payKey     string
 	response   Response
-	tt_result TT_Result
+	PYW_result PYW_Result
 	ctx        *context.Context
 }
 type Response struct {
@@ -36,48 +36,48 @@ type Response struct {
 	Sign      string
 	Sign_type string
 }
-type TT_Result struct {
-	Uid   		 string     `json:"uid"`
-	GameId     	 string 	`json:"gameId"`
-	SDKOrderId   string     `json:"sdkOrderId"`
-	CpOrderId    string 	`json:"cpOrderId"`
-	PayFee     	 string 	`json:"payFee"`
-	PayResult 	 string 	`json:"payResult"`
-	PayDate 	 string 	`json:"payDate"`
-	ExInfo   	 string 	`json:"exInfo"`
+type PYW_Result struct {
+	Result_code   int    `json:"result_code"`
+	Gmt_create    string `json:"gmt_create"`
+	Real_amount   int    `json:"real_amount"`
+	Result_msg    string `json:"result_msg"`
+	Game_code     string `json:"game_code"`
+	Game_order_id string `json:"game_order_id"`
+	Jolo_order_id string `json:"jolo_order_id"`
+	Gmt_payment   string `json:"gmt_payment"`
 }
 
 var (
-	ttRsaPublicKey *rsa.PublicKey
+	PYWRsaPublicKey *rsa.PublicKey
 )
 
-func NewTT(channelId, productId int, urlParams *url.Values, ctx *context.Context) *TT {
-	ret := new(TT)
+func NewPYW(channelId, productId int, urlParams *url.Values, ctx *context.Context) *PYW {
+	ret := new(PYW)
 	ret.Init(channelId, productId, urlParams, ctx)
 	return ret
 }
 
-func (this *TT) Init(channelId, productId int, urlParams *url.Values, ctx *context.Context) {
-	this.Base.Init(channelId, productId, urlParams, &ttUrlKeys)
+func (this *PYW) Init(channelId, productId int, urlParams *url.Values, ctx *context.Context) {
+	this.Base.Init(channelId, productId, urlParams, &pywUrlKeys)
 	this.ctx = ctx
 }
 
-func (this *TT) parsePayKey() (err error) {
+func (this *PYW) parsePayKey() (err error) {
 	defer func() {
 		if err != nil {
-			this.callbackRet = err_ttParsePayKey
+			this.callbackRet = err_PYWParsePayKey
 			beego.Trace(err)
 		}
 	}()
-	this.payKey, err = this.getPackageParam("TT_SDK_PUBLICKEY")
+	this.payKey, err = this.getPackageParam("PYW_SDK_PUBLICKEY")
 	return
 }
 
-func (this *TT) CheckUrlParam() (err error) {
+func (this *PYW) CheckUrlParam() (err error) {
 	return
 }
 
-func (this *TT) parseUrlParam() (err error) {
+func (this *PYW) parseUrlParam() (err error) {
 	defer func() {
 		if err != nil {
 			this.callbackRet = err_parseUrlParam
@@ -86,26 +86,28 @@ func (this *TT) parseUrlParam() (err error) {
 	}()
 	// this.order = url.QueryEscape(this.response.Order)
 
+	this.response.Order = strings.Replace(this.response.Order, "\"{", "{", 1)
+	this.response.Order = strings.Replace(this.response.Order, "}\"", "}", 1)
 	beego.Trace(this.response.Order)
-	json.Unmarshal([]byte(this.response.Order), &this.tt_result)
-	beego.Trace(this.tt_result)
-	this.orderId = this.tt_result.Game_order_id
-	this.channelOrderId = this.tt_result.Jolo_order_id
-	this.payAmount = this.tt_result.Real_amount
+	json.Unmarshal([]byte(this.response.Order), &this.PYW_result)
+	beego.Trace(this.PYW_result)
+	this.orderId = this.PYW_result.Game_order_id
+	this.channelOrderId = this.PYW_result.Jolo_order_id
+	this.payAmount = this.PYW_result.Real_amount
 
 	return
 }
 
-func (this *TT) ParseChannelRet() (err error) {
-	if result := this.tt_result.Result_code; result != 1 {
-		this.callbackRet = err_ttResultFailure
+func (this *PYW) ParseChannelRet() (err error) {
+	if result := this.PYW_result.Result_code; result != 1 {
+		this.callbackRet = err_PYWResultFailure
 	}
 	return
 }
-func (this *TT) parseBody() (err error) {
+func (this *PYW) parseBody() (err error) {
 	defer func() {
 		if err != nil {
-			this.callbackRet = err_ttParseBody
+			this.callbackRet = err_PYWParseBody
 			beego.Trace(err)
 		}
 	}()
@@ -129,7 +131,7 @@ func (this *TT) parseBody() (err error) {
 	return
 }
 
-func (this *TT) ParseParam() (err error) {
+func (this *PYW) ParseParam() (err error) {
 	if err = this.parseBody(); err != nil {
 		return
 	}
@@ -147,26 +149,26 @@ func (this *TT) ParseParam() (err error) {
 	return
 }
 
-func (this *TT) initRsaPublicKey() (err error) {
+func (this *PYW) initRsaPublicKey() (err error) {
 	defer func() {
 		if err != nil {
-			this.callbackRet = err_ttInitRsaPublicKey
+			this.callbackRet = err_PYWInitRsaPublicKey
 			beego.Trace(err)
 		}
 	}()
 
-	if ttRsaPublicKey == nil {
-		ttRsaPublicKey, err = tool.ParsePKIXPublicKeyWithStr(this.payKey)
+	if PYWRsaPublicKey == nil {
+		PYWRsaPublicKey, err = tool.ParsePKIXPublicKeyWithStr(this.payKey)
 		if err != nil {
 			beego.Error(err)
 			return err
 		}
 	}
-	// beego.Trace(TTRsaPublicKey)
+	// beego.Trace(PYWRsaPublicKey)
 	return nil
 }
 
-func (this *TT) CheckSign() (err error) {
+func (this *PYW) CheckSign() (err error) {
 	defer func() {
 		if err != nil {
 			this.callbackRet = err_checkSign
@@ -174,12 +176,12 @@ func (this *TT) CheckSign() (err error) {
 		}
 	}()
 
-	// if sign := tool.RsaVerifyPKCS1v15(TTRsaPublicKey, this.order); sign != this.urlParams.Get("signature") {
+	// if sign := tool.RsaVerifyPKCS1v15(PYWRsaPublicKey, this.order); sign != this.urlParams.Get("signature") {
 	// 	msg := fmt.Sprintf("Sign is invalid, context:%s, sign:%s", context, sign)
 	// 	err = errors.New(msg)
 	// 	return
 	// }
-	if err = tool.RsaVerifyPKCS1v15(ttRsaPublicKey, this.response.Order, this.response.Sign); err != nil {
+	if err = tool.RsaVerifyPKCS1v15(PYWRsaPublicKey, this.response.Order, this.response.Sign); err != nil {
 		msg := fmt.Sprintf("RsaVerifyPK CS1v15 exception: context:%s, sign:%s", this.response.Order, this.response.Sign)
 		beego.Trace(msg)
 		return err
@@ -187,11 +189,11 @@ func (this *TT) CheckSign() (err error) {
 	return
 }
 
-func (this *TT) GetResult() (ret string) {
+func (this *PYW) GetResult() (ret string) {
 	if this.callbackRet == err_noerror {
-		ret = `{"head":{"result":"0","message":"成功"}}`
+		ret = "success"
 	} else {
-		ret = `{"head":{"result":"1","message":"失败"}}`
+		ret = "failure"
 	}
 	return
 }

@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"ch",
+				"ChannelUsername	string ν"
+			],
+			[
 				"pr",
 				"Println	n int, err error ƒ"
 			],
@@ -14,10 +18,6 @@
 			[
 				"a",
 				"appId	string ν"
-			],
-			[
-				"ch",
-				"channelExt	 ν"
 			],
 			[
 				"rm",
@@ -360,21 +360,59 @@
 	"buffers":
 	[
 		{
-			"file": "test/reference.txt",
+			"file": "api/channel/notify/pay/c07073.go",
 			"settings":
 			{
-				"buffer_size": 356,
-				"line_ending": "Windows",
-				"name": "https://ysdk.qq.com/mpay/buy_goods_m"
+				"buffer_size": 2878,
+				"line_ending": "Windows"
 			}
 		},
 		{
-			"contents": "<activity\nandroid:name=\"sy07073.mobile.game.sdk.activity.LoadPage\"\nandroid:theme=\"@style/CY_DialogTheme\"\nandroid:screenOrientation =\"landscape\"\nandroid:windowSoftInputMode=\"stateHidden|adjustResize\"\nandroid:configChanges=\"keyboardHidden|orientation|screenSize\" >\n</activity>\n<activity\nandroid:name=\"com.alipay.sdk.app.H5PayActivity\"\nandroid:configChanges=\"orientation|keyboardHidden|navigation\"\nandroid:exported=\"false\"\nandroid:screenOrientation=\"behind\" >\n</activity>\n<activity\nandroid:name=\"com.alipay.sdk.auth.AuthActivity\"\nandroid:configChanges=\"orientation|keyboardHidden|navigation\"\nandroid:exported=\"false\"\nandroid:screenOrientation=\"behind\" >\n</activity>\n<activity\nandroid:name=\"sy07073.mobile.game.sdk.wxpay.paytendWXEntryActivity\"\nandroid:exported=\"true\"\nandroid:screenOrientation =\"landscape\"\nandroid:launchMode=\"singleTop\" />\n<receiver android:name=\"sy07073.mobile.game.sdk.wxpay.AppReciver2\" >\n<intent-filter>\n<action android:name=\"com.paytend.wxpay.plugin.recive\" />\n</intent-filter>\n</receiver>",
+			"file": "api/channel/notify/pay/caishen.go",
 			"settings":
 			{
-				"buffer_size": 1009,
-				"line_ending": "Windows",
-				"name": "<activity"
+				"buffer_size": 3159,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "api/channel/notify/pay/ccpay.go",
+			"settings":
+			{
+				"buffer_size": 2756,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "api/channel/notify/pay/pay.go",
+			"settings":
+			{
+				"buffer_size": 2851,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "sftp-config.json",
+			"settings":
+			{
+				"buffer_size": 1460,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "api/channel/notify/pay/base.go",
+			"settings":
+			{
+				"buffer_size": 8054,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "api/channel/notify/pay/amigo.go",
+			"settings":
+			{
+				"buffer_size": 3551,
+				"line_ending": "Windows"
 			}
 		}
 	],
@@ -419,20 +457,34 @@
 	},
 	"expanded_folders":
 	[
-		"/D/go/src/u9"
+		"/D/go/src/u9",
+		"/D/go/src/u9/api",
+		"/D/go/src/u9/api/channel/api",
+		"/D/go/src/u9/api/channel/notify",
+		"/D/go/src/u9/api/channel/notify/pay",
+		"/D/go/src/u9/api/controllers",
+		"/D/go/src/u9/api/controllers/login",
+		"/D/go/src/u9/api/controllers/login/loginRequestHandle"
 	],
 	"file_history":
 	[
-		"/D/go/src/u9/www/controllers/cp/package.go",
+		"/D/go/src/u9/api/channel/notify/pay/pay.go",
+		"/D/go/src/u9/api/controllers/login/validateLogin.go",
+		"/D/go/src/u9/api/channel/notify/pay/mumayi.go",
+		"/D/go/src/u9/api/channel/api/api.go",
+		"/D/go/src/u9/api/channel/api/loginRequest/c07073.go",
+		"/D/go/src/u9/api/channel/api/loginRequest/ccpay.go",
 		"/D/go/src/u9/sftp-config.json",
-		"/D/go/src/u9/models/packageTask.go",
+		"/D/go/src/u9/test/reference.txt",
+		"/D/go/src/u9/api/channel/api/loginRequest/kaopu.go",
 		"/D/go/src/u9/api/channel/api/loginRequest/sogou.go",
+		"/D/go/src/u9/www/controllers/cp/package.go",
+		"/D/go/src/u9/models/packageTask.go",
 		"/c/go/src/net/http/request.go",
 		"/D/go/src/github.com/astaxie/beego/context/context.go",
 		"/c/go/src/net/url/url.go",
 		"/D/go/src/github.com/astaxie/beego/controller.go",
 		"/D/go/src/u9/api/controllers/login/loginRequest.go",
-		"/D/go/src/u9/api/controllers/login/validateLogin.go",
 		"/D/go/src/u9/api/channel/api/loginRequest/yijie.go",
 		"/D/go/src/u9/test/test.go",
 		"/D/go/src/u9/api/controllers/base.go",
@@ -444,7 +496,6 @@
 		"/D/go/src/github.com/astaxie/beego/log.go",
 		"/D/go/src/github.com/astaxie/beego/logs/log.go",
 		"/D/go/src/u9/api/routers/router.go",
-		"/D/go/src/u9/api/channel/api/api.go",
 		"/D/go/src/u9/api/controllers/pay/payRequest.go",
 		"/C/Users/jacky/Desktop/PHP_SDK_V3.0.9/Cpay_for_CEE_V2.php",
 		"/C/Users/jacky/Desktop/PHP_SDK_V3.0.9/OpenApiV3.php",
@@ -453,7 +504,6 @@
 		"/D/go/src/u9/api/channel/api/loginRequest/amigo.go",
 		"/c/go/src/encoding/base64/base64.go",
 		"/D/go/src/u9/api/channel/api/loginRequest/tencent.go",
-		"/D/go/src/u9/api/channel/api/loginRequest/ccpay.go",
 		"/D/go/src/u9/api/common/request.go",
 		"/D/go/src/u9/api/channel/api/loginRequest/anzhi.go",
 		"/c/go/src/encoding/json/decode.go",
@@ -545,12 +595,7 @@
 		"/c/go/src/image/draw/draw.go",
 		"/c/go/src/image/image.go",
 		"/c/go/src/io/io.go",
-		"/c/go/src/os/file_unix.go",
-		"/c/go/src/os/file_plan9.go",
-		"/c/go/src/image/png/writer.go",
-		"/c/go/src/os/file.go",
-		"/c/go/src/image/format.go",
-		"/c/go/src/image/geom.go"
+		"/c/go/src/os/file_unix.go"
 	],
 	"find":
 	{
@@ -645,6 +690,27 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"QueryUnescape",
+			"payResult",
+			"handleOrder",
+			"ParseParam",
+			"parseOrderRequest",
+			"ParseChannelRet",
+			"orderId",
+			"ParseChannelRet",
+			"ParseChannelRet.",
+			"ParseChannelRet",
+			"err_cygameAppKey",
+			"paySuccess",
+			"appSecret",
+			"ParseParam",
+			"parseAppKey",
+			"data",
+			"anZhi",
+			"anzhi",
+			"AnZhi",
+			"Amigo",
+			"CallLoginRequest",
 			"ParseForm",
 			"Validate",
 			"Record isn't exist in table",
@@ -751,28 +817,7 @@
 			"ma",
 			"Scale",
 			"graphics",
-			"ImageRGBA",
-			"graphics",
-			"tool",
-			"CheckSign",
-			"\"\n",
-			"dangle",
-			"Dangle",
-			"SetLogger",
-			"beego.go",
-			"19",
-			"8080",
-			"SetLogger",
-			"channelUserId",
-			"orderId",
-			"Dangle",
-			"dangle",
-			"InitParam",
-			"appid",
-			"appkey",
-			"dangle",
-			"Dangle",
-			"app_subject"
+			"ImageRGBA"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -780,6 +825,8 @@
 		"regex": false,
 		"replace_history":
 		[
+			"c07073",
+			"C07073",
 			"openKey",
 			"this.mlr.ChannelUserid",
 			"this.mlr.Token",
@@ -905,79 +952,243 @@
 			"extName",
 			"ext",
 			"path",
-			"pageSize",
-			"channelPackageParam",
-			"ChannelPackageParam"
+			"pageSize"
 		],
 		"reverse": false,
 		"show_context": false,
 		"use_buffer2": true,
-		"whole_word": true,
+		"whole_word": false,
 		"wrap": true
 	},
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 4,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "test/reference.txt",
+					"file": "api/channel/notify/pay/c07073.go",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 356,
+						"buffer_size": 2878,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								356,
-								356
+								2473,
+								2473
 							]
 						],
 						"settings":
 						{
-							"auto_name": "https://ysdk.qq.com/mpay/buy_goods_m",
 							"incomplete_sync": null,
-							"syntax": "Packages/Text/Plain text.tmLanguage"
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/GoSublime/syntax/GoSublime-Go.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 2536.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "api/channel/notify/pay/caishen.go",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3159,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2033,
+								2046
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/GoSublime/syntax/GoSublime-Go.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 2626.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "api/channel/notify/pay/ccpay.go",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2756,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2756,
+								2756
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/GoSublime/syntax/GoSublime-Go.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 3120.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "api/channel/notify/pay/pay.go",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2851,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2321,
+								2323
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/GoSublime/syntax/GoSublime-Go.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 2160.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
 					"type": "text"
 				},
 				{
-					"buffer": 1,
+					"buffer": 4,
+					"file": "sftp-config.json",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1009,
+						"buffer_size": 1460,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1009,
-								0
+								611,
+								611
 							]
 						],
 						"settings":
 						{
-							"auto_name": "<activity",
 							"incomplete_sync": null,
-							"syntax": "Packages/Text/Plain text.tmLanguage"
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/JavaScript/JSON.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 270.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "api/channel/notify/pay/base.go",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 8054,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4700,
+								4700
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/GoSublime/syntax/GoSublime-Go.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 6316.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "api/channel/notify/pay/amigo.go",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3551,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2142,
+								2151
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/GoSublime/syntax/GoSublime-Go.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 3346.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
 					"type": "text"
 				}
 			]
@@ -1120,6 +1331,14 @@
 		"selected_items":
 		[
 			[
+				"kaopu",
+				"api\\channel\\api\\loginRequest\\kaopu.go"
+			],
+			[
+				"kaou",
+				"api\\channel\\api\\loginRequest\\kaopu.go"
+			],
+			[
 				"sougo",
 				"api\\channel\\api\\loginRequest\\sogou.go"
 			],
@@ -1184,7 +1403,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 303.0,
+	"side_bar_width": 318.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

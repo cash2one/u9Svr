@@ -36,6 +36,7 @@ func (this *MuMaYi) ParseChannelRet() (err error) {
 }
 
 func (this *MuMaYi) CheckChannelRet() bool {
-	// string(this.Request) == "success"
-	return true
+	 // var a bool= this.Result == "success"
+	// beego.Trace(a)
+	return this.Result == "success"
 }

@@ -41,6 +41,8 @@ func CallLoginRequest(mlr *models.LoginRequest) (ret *common.BasicRet) {
 		fallthrough
 	case 136:
 		fallthrough
+	case 142:
+		fallthrough
 	case 123: //熊猫玩
 		beego.Trace(mlr.ChannelId)
 		ret.SetCode(0)
@@ -95,6 +97,8 @@ func CallLoginRequest(mlr *models.LoginRequest) (ret *common.BasicRet) {
 		llr = loginRequest.LrNewPPTV(mlr, jsonParam)
 	case 140:
 		llr = loginRequest.LrNewTT(mlr, jsonParam)
+	case 141:
+		llr = loginRequest.LrNewC07073(mlr,jsonParam)
 	default:
 		ret.SetCode(3004)
 		return
