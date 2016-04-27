@@ -83,6 +83,8 @@ func CallPayNotify(channelId, productId int, urlParams *url.Values, ctx *context
 		pn = NewXcs(channelId, productId, urlParams)
 	case 137:
 		pn = NewPPTV(channelId, productId, urlParams)
+	case 140:
+		pn = NewTT(channelId, productId, urlParams, ctx)
 	case 141:
 		pn = NewC07073(channelId, productId, urlParams)
 	default:

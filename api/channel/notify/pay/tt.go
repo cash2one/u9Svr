@@ -3,18 +3,18 @@ package channelPayNotify
 import (
 	"crypto/rsa"
 	"encoding/json"
-	// "errors"
+	"errors"
 	"bytes"
 	"fmt"
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/context"
+	"strconv"
 	"io"
-	"net/url"
-	"strings"
 	"u9/tool"
+	"net/url"
 )
 
-var ttUrlKeys []string = []string{"order", "sign", "sign_type"}
+var ttUrlKeys []string = []string{}
 
 const (
 	err_ttParsePayKey      = 12701
@@ -27,18 +27,15 @@ const (
 type TT struct {
 	Base
 	payKey     string
-	response   Response
+	tt_Sign    string
 	tt_result TT_Result
+	tt_contentBody string
 	ctx        *context.Context
 }
-type Response struct {
-	Order     string
-	Sign      string
-	Sign_type string
-}
+
 type TT_Result struct {
-	Uid   		 string     `json:"uid"`
-	GameId     	 string 	`json:"gameId"`
+	Uid   		 int      `json:"uid"`
+	GameId     	 int 	   `json:"gameId"`
 	SDKOrderId   string     `json:"sdkOrderId"`
 	CpOrderId    string 	`json:"cpOrderId"`
 	PayFee     	 string 	`json:"payFee"`
@@ -69,7 +66,7 @@ func (this *TT) parsePayKey() (err error) {
 			beego.Trace(err)
 		}
 	}()
-	this.payKey, err = this.getPackageParam("TT_SDK_PUBLICKEY")
+	this.payKey, err = this.getPackageParam("TT_SDK_PAYKEY")
 	return
 }
 
@@ -84,28 +81,31 @@ func (this *TT) parseUrlParam() (err error) {
 			beego.Trace(err)
 		}
 	}()
-	// this.order = url.QueryEscape(this.response.Order)
 
-	beego.Trace(this.response.Order)
-	json.Unmarshal([]byte(this.response.Order), &this.tt_result)
+	// beego.Trace(this.response.Order)
 	beego.Trace(this.tt_result)
-	this.orderId = this.tt_result.Game_order_id
-	this.channelOrderId = this.tt_result.Jolo_order_id
-	this.payAmount = this.tt_result.Real_amount
-
+	this.orderId = this.tt_result.CpOrderId
+	this.channelOrderId = this.tt_result.SDKOrderId
+	payAmount := 0.0
+	if payAmount, err = strconv.ParseFloat(this.tt_result.PayFee, 64); err != nil {
+		return err
+	} else {
+		this.payAmount = int(payAmount * 100)
+	}
 	return
 }
 
 func (this *TT) ParseChannelRet() (err error) {
-	if result := this.tt_result.Result_code; result != 1 {
+	if result := this.tt_result.PayResult; result != "1" {
 		this.callbackRet = err_ttResultFailure
 	}
 	return
 }
+
 func (this *TT) parseBody() (err error) {
 	defer func() {
 		if err != nil {
-			this.callbackRet = err_ttParseBody
+			this.callbackRet = err_htcParseBody
 			beego.Trace(err)
 		}
 	}()
@@ -114,18 +114,24 @@ func (this *TT) parseBody() (err error) {
 	if _, err = io.Copy(&buffer, this.ctx.Request.Body); err != nil {
 		return
 	}
-	content := string(buffer.Bytes())
-	var newValues url.Values
-	if newValues, err = url.ParseQuery(content); err != nil {
-		return
+	contentBody := string(buffer.Bytes())
+	// contentBody = string(url.QueryUnescape(contentBody))
+	beego.Trace(contentBody)
+	this.tt_contentBody,_ = url.QueryUnescape(contentBody)
+	beego.Trace(this.tt_contentBody)
+	if err = json.Unmarshal([]byte(this.tt_contentBody), &this.tt_result);err != nil{
+		beego.Error(err)
+		return err
 	}
-	this.response.Order = newValues.Get("order")
-	this.response.Sign = newValues.Get("sign")
-	this.response.Sign_type = newValues.Get("sign_type")
-	this.response.Sign = strings.Replace(this.response.Sign, "\"", "", 2)
-	beego.Trace(this.response.Order)
-	beego.Trace(this.response.Sign)
-	beego.Trace(this.response.Sign_type)
+	
+	// beego.Trace(this.ctx.Request)
+	// if _, err = io.Copy(&buffer,this.ctx.Request.Head); err != nil {
+	// 	return
+	// }
+	
+// string(buffer.Bytes())
+	this.tt_Sign = this.ctx.Request.Header.Get("Sign")
+	beego.Trace("head OK:"+ this.tt_Sign)
 	return
 }
 
@@ -142,29 +148,9 @@ func (this *TT) ParseParam() (err error) {
 	if err = this.Base.ParseParam(); err != nil {
 		return
 	}
-	this.channelUserId = this.loginRequest.ChannelUserid
-	this.initRsaPublicKey()
 	return
 }
 
-func (this *TT) initRsaPublicKey() (err error) {
-	defer func() {
-		if err != nil {
-			this.callbackRet = err_ttInitRsaPublicKey
-			beego.Trace(err)
-		}
-	}()
-
-	if ttRsaPublicKey == nil {
-		ttRsaPublicKey, err = tool.ParsePKIXPublicKeyWithStr(this.payKey)
-		if err != nil {
-			beego.Error(err)
-			return err
-		}
-	}
-	// beego.Trace(TTRsaPublicKey)
-	return nil
-}
 
 func (this *TT) CheckSign() (err error) {
 	defer func() {
@@ -173,16 +159,31 @@ func (this *TT) CheckSign() (err error) {
 			beego.Trace(err)
 		}
 	}()
+	// jsonResult,_ := json.Marshal(this.tt_result)
+	// format := string(jsonResult)
 
-	// if sign := tool.RsaVerifyPKCS1v15(TTRsaPublicKey, this.order); sign != this.urlParams.Get("signature") {
-	// 	msg := fmt.Sprintf("Sign is invalid, context:%s, sign:%s", context, sign)
-	// 	err = errors.New(msg)
-	// 	return
-	// }
-	if err = tool.RsaVerifyPKCS1v15(ttRsaPublicKey, this.response.Order, this.response.Sign); err != nil {
-		msg := fmt.Sprintf("RsaVerifyPK CS1v15 exception: context:%s, sign:%s", this.response.Order, this.response.Sign)
-		beego.Trace(msg)
-		return err
+	content := fmt.Sprintf("%s%s",this.tt_contentBody,this.payKey)
+	beego.Trace("content:"+content)
+	var result string
+	if result,err = tool.TTSign(content);err != nil {
+		beego.Error(err)
+	}
+
+	// signMd5 := tool.Md5([]byte(content))
+
+	// beego.Trace(signMd5)
+	// signMd5 = Substr(signMd5,8,16)
+	
+	// beego.Trace("md5:",signMd5)
+
+    // sign := base64.StdEncoding.EncodeToString([]byte(signMd5))
+
+    // beego.Trace("sign:",sign)
+    // beego.Trace(this.tt_Sign)
+    if result != this.tt_Sign{
+		msg := fmt.Sprintf("Sign is invalid, sign:%s, urlSign:%s", result, this.tt_Sign)
+		err = errors.New(msg)
+		return
 	}
 	return
 }
@@ -196,15 +197,31 @@ func (this *TT) GetResult() (ret string) {
 	return
 }
 
-/*
-  signature rule: md5("order=xxxx&money=xxxx&mid=xxxx&time=xxxx&result=x&ext=xxx&key=xxxx")
-  test url:
-  http://192.168.0.185/api/channelPayNotify/1000/101/?
-  order=test20160116172500359&
-  money=100.00&
-  mid=test10086001&
-  time=20160116172500&
-  result=1&
-  ext=game20160116175128772&
-  signature=8f00a109716e819bfe0afb695c1addf1
-*/
+func Substr(str string, start, length int) string {
+    rs := []rune(str)
+    rl := len(rs)
+    end := 0
+        
+    if start < 0 {
+        start = rl - 1 + start
+    }
+    end = start + length
+    
+    if start > end {
+        start, end = end, start
+    }
+    
+    if start < 0 {
+        start = 0
+    }
+    if start > rl {
+        start = rl
+    }
+    if end < 0 {
+        end = 0
+    }
+    if end > rl {
+        end = rl
+    }
+    return string(rs[start:end])
+}

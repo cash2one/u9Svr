@@ -41,7 +41,7 @@ func (this *TT) Init(mlr *models.LoginRequest, args *map[string]interface{}) {
 	this.channelUserId = this.mlr.ChannelUserid
 	this.token = this.mlr.Token
 	this.Method = "POST"
-	this.Url = "http://120.132.68.148:18081/sdk.server/rest/user/loginstatus.view"
+	this.Url = "http://sdk.52tt.com/sdk.server/rest/user/loginstatus.view"
 }
 
 func (this *TT) InitParam() {
