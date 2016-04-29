@@ -81,7 +81,7 @@ func (this *HTC) parseUrlParam() (err error) {
 	defer func() {
 		if err != nil {
 			this.callbackRet = err_parseUrlParam
-			beego.Trace(err)
+			beego.Error(err)
 		}
 	}()
 	// this.order = url.QueryEscape(this.response.Order)
@@ -108,7 +108,7 @@ func (this *HTC) parseBody() (err error) {
 	defer func() {
 		if err != nil {
 			this.callbackRet = err_htcParseBody
-			beego.Trace(err)
+			beego.Error(err)
 		}
 	}()
 

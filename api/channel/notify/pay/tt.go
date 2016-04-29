@@ -1,47 +1,46 @@
 package channelPayNotify
 
 import (
+	"bytes"
 	"crypto/rsa"
 	"encoding/json"
 	"errors"
-	"bytes"
 	"fmt"
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/context"
-	"strconv"
 	"io"
-	"u9/tool"
 	"net/url"
+	"strconv"
+	"u9/tool"
 )
 
 var ttUrlKeys []string = []string{}
 
 const (
-	err_ttParsePayKey      = 12701
-	err_ttResultFailure    = 12702
-	err_ttInitRsaPublicKey = 12703
-	err_ttParseBody        = 12704
+	err_ttParsePayKey   = 14001
+	err_ttResultFailure = 14002
+	err_ttParseBody     = 14003
 )
 
 //tt
 type TT struct {
 	Base
-	payKey     string
-	tt_Sign    string
-	tt_result TT_Result
+	payKey         string
+	tt_Sign        string
+	tt_result      TT_Result
 	tt_contentBody string
-	ctx        *context.Context
+	ctx            *context.Context
 }
 
 type TT_Result struct {
-	Uid   		 int      `json:"uid"`
-	GameId     	 int 	   `json:"gameId"`
-	SDKOrderId   string     `json:"sdkOrderId"`
-	CpOrderId    string 	`json:"cpOrderId"`
-	PayFee     	 string 	`json:"payFee"`
-	PayResult 	 string 	`json:"payResult"`
-	PayDate 	 string 	`json:"payDate"`
-	ExInfo   	 string 	`json:"exInfo"`
+	Uid        int    `json:"uid"`
+	GameId     int    `json:"gameId"`
+	SDKOrderId string `json:"sdkOrderId"`
+	CpOrderId  string `json:"cpOrderId"`
+	PayFee     string `json:"payFee"`
+	PayResult  string `json:"payResult"`
+	PayDate    string `json:"payDate"`
+	ExInfo     string `json:"exInfo"`
 }
 
 var (
@@ -63,14 +62,10 @@ func (this *TT) parsePayKey() (err error) {
 	defer func() {
 		if err != nil {
 			this.callbackRet = err_ttParsePayKey
-			beego.Trace(err)
+			beego.Error(err)
 		}
 	}()
 	this.payKey, err = this.getPackageParam("TT_SDK_PAYKEY")
-	return
-}
-
-func (this *TT) CheckUrlParam() (err error) {
 	return
 }
 
@@ -78,11 +73,10 @@ func (this *TT) parseUrlParam() (err error) {
 	defer func() {
 		if err != nil {
 			this.callbackRet = err_parseUrlParam
-			beego.Trace(err)
+			beego.Error(err)
 		}
 	}()
 
-	// beego.Trace(this.response.Order)
 	beego.Trace(this.tt_result)
 	this.orderId = this.tt_result.CpOrderId
 	this.channelOrderId = this.tt_result.SDKOrderId
@@ -105,8 +99,8 @@ func (this *TT) ParseChannelRet() (err error) {
 func (this *TT) parseBody() (err error) {
 	defer func() {
 		if err != nil {
-			this.callbackRet = err_htcParseBody
-			beego.Trace(err)
+			this.callbackRet = err_ttParseBody
+			beego.Error(err)
 		}
 	}()
 
@@ -115,23 +109,17 @@ func (this *TT) parseBody() (err error) {
 		return
 	}
 	contentBody := string(buffer.Bytes())
-	// contentBody = string(url.QueryUnescape(contentBody))
+
 	beego.Trace(contentBody)
-	this.tt_contentBody,_ = url.QueryUnescape(contentBody)
+	this.tt_contentBody, _ = url.QueryUnescape(contentBody)
 	beego.Trace(this.tt_contentBody)
-	if err = json.Unmarshal([]byte(this.tt_contentBody), &this.tt_result);err != nil{
+	if err = json.Unmarshal([]byte(this.tt_contentBody), &this.tt_result); err != nil {
 		beego.Error(err)
 		return err
 	}
-	
-	// beego.Trace(this.ctx.Request)
-	// if _, err = io.Copy(&buffer,this.ctx.Request.Head); err != nil {
-	// 	return
-	// }
-	
-// string(buffer.Bytes())
+
 	this.tt_Sign = this.ctx.Request.Header.Get("Sign")
-	beego.Trace("head OK:"+ this.tt_Sign)
+	beego.Trace("head OK:" + this.tt_Sign)
 	return
 }
 
@@ -151,36 +139,22 @@ func (this *TT) ParseParam() (err error) {
 	return
 }
 
-
 func (this *TT) CheckSign() (err error) {
 	defer func() {
 		if err != nil {
 			this.callbackRet = err_checkSign
-			beego.Trace(err)
+			beego.Error(err)
 		}
 	}()
-	// jsonResult,_ := json.Marshal(this.tt_result)
-	// format := string(jsonResult)
 
-	content := fmt.Sprintf("%s%s",this.tt_contentBody,this.payKey)
-	beego.Trace("content:"+content)
+	content := fmt.Sprintf("%s%s", this.tt_contentBody, this.payKey)
+	beego.Trace("content:" + content)
 	var result string
-	if result,err = tool.TTSign(content);err != nil {
+	if result, err = tool.TTSign(content); err != nil {
 		beego.Error(err)
 	}
 
-	// signMd5 := tool.Md5([]byte(content))
-
-	// beego.Trace(signMd5)
-	// signMd5 = Substr(signMd5,8,16)
-	
-	// beego.Trace("md5:",signMd5)
-
-    // sign := base64.StdEncoding.EncodeToString([]byte(signMd5))
-
-    // beego.Trace("sign:",sign)
-    // beego.Trace(this.tt_Sign)
-    if result != this.tt_Sign{
+	if result != this.tt_Sign {
 		msg := fmt.Sprintf("Sign is invalid, sign:%s, urlSign:%s", result, this.tt_Sign)
 		err = errors.New(msg)
 		return
@@ -195,33 +169,4 @@ func (this *TT) GetResult() (ret string) {
 		ret = `{"head":{"result":"1","message":"失败"}}`
 	}
 	return
-}
-
-func Substr(str string, start, length int) string {
-    rs := []rune(str)
-    rl := len(rs)
-    end := 0
-        
-    if start < 0 {
-        start = rl - 1 + start
-    }
-    end = start + length
-    
-    if start > end {
-        start, end = end, start
-    }
-    
-    if start < 0 {
-        start = 0
-    }
-    if start > rl {
-        start = rl
-    }
-    if end < 0 {
-        end = 0
-    }
-    if end > rl {
-        end = rl
-    }
-    return string(rs[start:end])
 }

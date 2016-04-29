@@ -95,7 +95,7 @@ func (this *Base) getPackageParam(key string) (ret string, err error) {
 	defer func() {
 		if err != nil {
 			this.callbackRet = err_getPackageParam
-			beego.Trace(err)
+			beego.Error(err)
 		}
 	}()
 
@@ -123,7 +123,7 @@ func (this *Base) parseProductKey() (err error) {
 	defer func() {
 		if err != nil {
 			this.callbackRet = err_parseProductKey
-			beego.Trace(err)
+			beego.Error(err)
 		}
 	}()
 
@@ -145,7 +145,7 @@ func (this *Base) parseOrderRequest() (err error) {
 	defer func() {
 		if err != nil {
 			this.callbackRet = err_parseOrderRequest
-			beego.Trace(err)
+			beego.Error(err)
 		}
 	}()
 
@@ -176,7 +176,7 @@ func (this *Base) parseLoginRequest() (err error) {
 	err = this.loginRequest.Query().Filter("Userid", this.orderRequest.UserId).One(&this.loginRequest)
 	if err != nil {
 		this.callbackRet = err_parseLoginRequest
-		beego.Trace(err)
+		beego.Error(err)
 		return
 	}
 	return
@@ -236,7 +236,7 @@ func (this *Base) notifyProductSvr() (err error) {
 	defer func() {
 		if err != nil {
 			this.callbackRet = err_notifyProductSvr
-			beego.Trace(err)
+			beego.Error(err)
 		}
 	}()
 
@@ -260,7 +260,7 @@ func (this *Base) notifyProductSvr() (err error) {
 			return
 		}
 		err = req.ToJSON(&this.ProductRet)
-		// beego.Trace(this.ProductRet)
+
 		if err != nil {
 			beego.Trace(notifyUrl)
 			return

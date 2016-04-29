@@ -13,7 +13,7 @@ import (
 var C07073UrlKeys []string = []string{"data"}
 
 const (
-	err_c07073ParseAppSecret = 10301
+	err_c07073ParseAppSecret = 14101
 )
 
 type C07073 struct {
