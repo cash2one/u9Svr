@@ -101,7 +101,7 @@ func (this *YiJie) CheckSign() (err error) {
 	format := "app=%s&cbi=%s&ct=%s&fee=%s&pt=%s&sdk=%s&ssid=%s&st=%s&tcd=%s&uid=%s&ver=%s%s"
 	content := fmt.Sprintf(format,
 		strings.ToLower(this.yijie_appId), this.orderId, this.urlParams.Get("ct"),
-		this.urlParams.Get("fee"), this.urlParams.Get("pt"), strings.ToLower(this.yijie_channelId),
+		this.urlParams.Get("fee"), this.urlParams.Get("pt"), this.urlParams.Get("sdk"),
 		this.urlParams.Get("ssid"), this.urlParams.Get("st"), this.channelOrderId,
 		this.channelUserId, this.urlParams.Get("ver"), this.yijie_payKey)
 

@@ -43,7 +43,7 @@ func CallLoginRequest(mlr *models.LoginRequest) (ret *common.BasicRet) {
 		fallthrough
 	case 142:
 		fallthrough
-	case 143:
+	case 143: //全民游戏
 		fallthrough
 	case 123: //熊猫玩
 		beego.Trace(mlr.ChannelId)
@@ -131,16 +131,18 @@ func CallLoginRequest(mlr *models.LoginRequest) (ret *common.BasicRet) {
 
 func checkPackageParam(mlr *models.LoginRequest) (jsonParam *map[string]interface{}, err error) {
 	pp := new(models.PackageParam)
-	if err = pp.Query().Filter("channelId", mlr.ChannelId).Filter("productId", mlr.ProductId).One(pp); err != nil {
-		msg := fmt.Sprintf("1005:channelId=%d and productId=%d", mlr.ChannelId, mlr.ProductId)
-		beego.Error(msg)
-		return nil, errors.New("1005")
-	}
+	if mlr.ChannelId != testChannelId {
+		if err = pp.Query().Filter("channelId", mlr.ChannelId).Filter("productId", mlr.ProductId).One(pp); err != nil {
+			msg := fmt.Sprintf("1005:channelId=%d and productId=%d", mlr.ChannelId, mlr.ProductId)
+			beego.Error(msg)
+			return nil, errors.New("1005")
+		}
 
-	jsonParam = new(map[string]interface{})
-	if err = json.Unmarshal([]byte(pp.XmlParam), jsonParam); err != nil {
-		beego.Error(err)
-		return nil, errors.New("9002")
+		jsonParam = new(map[string]interface{})
+		if err = json.Unmarshal([]byte(pp.XmlParam), jsonParam); err != nil {
+			beego.Error(err)
+			return nil, errors.New("9002")
+		}
 	}
 	//beego.Trace(pp.XmlParam)
 	//beego.Trace(jsonParam)
