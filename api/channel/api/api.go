@@ -69,6 +69,8 @@ func CallLoginRequest(mlr *models.LoginRequest) (ret *common.BasicRet) {
 		llr = loginRequest.LrNewMuMaYi(mlr, jsonParam)
 	case 112:
 		llr = loginRequest.LrNewMeiZu(mlr, jsonParam)
+	case 114:
+		llr = loginRequest.LrNewJiuYou(mlr, jsonParam)
 	case 115:
 		llr = loginRequest.LrNewSogou(mlr, jsonParam)
 	case 117:

@@ -6,6 +6,7 @@ import (
 	"errors"
 	"fmt"
 	"github.com/astaxie/beego"
+	"github.com/astaxie/beego/context"
 	"github.com/astaxie/beego/httplib"
 	"github.com/astaxie/beego/orm"
 	"io"
@@ -26,23 +27,37 @@ type PayNotify interface {
 	GetResult() (ret string)
 }
 
+var emptyUrlKeys []string = []string{}
+
 const (
 	err_noerror = iota
 	err_checkUrlParam
 	err_getPackageParam
 	err_parseProductKey
+	err_parseChannelGameId
+	err_parseChannelGameKey
+	err_parseChannelPayKey
 	err_parseOrderRequest
 	err_parseLoginRequest
 	err_checkSign
 	err_parseUrlParam
+	err_parseBody
 	err_handleOrder
 	err_notifyProductSvr
 	err_orderIsNotExist
 	err_channelUserIsNotExist
 	err_payAmountError
+	err_callbackFail
 )
 
 type Base struct {
+	ctx *context.Context
+
+	data           interface{} //渠道请求数据
+	channelGameId  string
+	channelGameKey string
+	channelPayKey  string
+
 	ProductRet common.BasicRet
 	channelId  int
 	productId  int
@@ -72,6 +87,11 @@ func (this *Base) Init(channelId, productId int, urlParams *url.Values, urlKeys 
 	this.urlKeys = urlKeys
 
 	this.callbackRet = err_noerror
+}
+
+func (this *Base) InitWithCtx(channelId, productId int, urlParams *url.Values, urlKeys *[]string, ctx *context.Context) {
+	this.Init(channelId, productId, urlParams, urlKeys)
+	this.ctx = ctx
 }
 
 func (this *Base) CheckUrlParam() (err error) {
@@ -116,6 +136,39 @@ func (this *Base) getPackageParam(key string) (ret string, err error) {
 		err = errors.New(msg)
 		return
 	}
+	return
+}
+
+func (this *Base) parseChannelGameKey(gameKey string) (err error) {
+	defer func() {
+		if err != nil {
+			this.callbackRet = err_parseChannelGameKey
+			beego.Error(err)
+		}
+	}()
+	this.channelGameKey, err = this.getPackageParam(gameKey)
+	return
+}
+
+func (this *Base) parseChannelGameID(gameId string) (err error) {
+	defer func() {
+		if err != nil {
+			this.callbackRet = err_parseChannelGameId
+			beego.Error(err)
+		}
+	}()
+	this.channelGameId, err = this.getPackageParam(gameId)
+	return
+}
+
+func (this *Base) parseChannelPayKey(payKey string) (err error) {
+	defer func() {
+		if err != nil {
+			this.callbackRet = err_parseChannelPayKey
+			beego.Error(err)
+		}
+	}()
+	this.channelPayKey, err = this.getPackageParam(payKey)
 	return
 }
 
@@ -216,6 +269,11 @@ func (this *Base) CheckSign() (err error) {
 
 func (this *Base) parseUrlParam() (err error) {
 	this.callbackRet = err_parseUrlParam
+	return
+}
+
+func (this *Base) parseBody() (err error) {
+	this.callbackRet = err_parseBody
 	return
 }
 
