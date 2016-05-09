@@ -125,7 +125,7 @@ func (this *Qmyx) CheckSign() (err error) {
 	defer func() {
 		if err != nil {
 			this.callbackRet = err_checkSign
-			beego.Trace(err)
+			beego.Error(err)
 		}
 	}()
 
