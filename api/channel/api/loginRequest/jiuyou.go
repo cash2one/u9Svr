@@ -10,38 +10,38 @@ import (
 
 //UC九游
 
-type reqData struct {
+type jiuyouReqData struct {
 	Sid string `json:"sid"`
 }
-type reqGame struct {
+type jiuyouReqGame struct {
 	GameId string `json:"gameId"`
 }
-type channelReq struct {
-	Id   int64   `json:"id"`
-	Data reqData `json:"data"`
-	Game reqGame `json:"game"`
-	Sign string  `json:"sign"`
+type jiuyouChannelReq struct {
+	Id   int64         `json:"id"`
+	Data jiuyouReqData `json:"data"`
+	Game jiuyouReqGame `json:"game"`
+	Sign string        `json:"sign"`
 }
 
-type retState struct {
+type jiuyouRetState struct {
 	Code int    `json:"code"`
 	Msg  string `json:"msg"`
 }
-type retData struct {
+type jiuyouRetData struct {
 	AccountId string `json:"accountId"`
 	Creator   string `json:"creator"`
 	NickName  string `json:"nickName"`
 }
-type channelRet struct {
-	Id    uint64   `json:"id"`
-	State retState `json:"state"`
-	Data  retData  `json:"data"`
+type jiuyouChannelRet struct {
+	Id    uint64         `json:"id"`
+	State jiuyouRetState `json:"state"`
+	Data  jiuyouRetData  `json:"data"`
 }
 
 type JiuYou struct {
 	Lr
-	channelReq channelReq
-	channelRet channelRet
+	channelReq jiuyouChannelReq
+	channelRet jiuyouChannelRet
 	args       *map[string]interface{}
 }
 

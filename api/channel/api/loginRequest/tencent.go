@@ -44,9 +44,9 @@ func (this *Tencent) Init(mlr *models.LoginRequest, args *map[string]interface{}
 
 	if extParam.LoginType == "QQ" {
 		if extParam.Debug {
-			this.Url = "http://ysdk.qq.com/auth/qq_check_token"
-		} else {
 			this.Url = "http://ysdktest.qq.com/auth/qq_check_token"
+		} else {
+			this.Url = "http://ysdk.qq.com/auth/qq_check_token"
 		}
 		this.appId = (*this.args)["QQ_APP_ID"].(string)
 		this.appKey = (*this.args)["QQ_APP_KEY"].(string)
@@ -54,23 +54,21 @@ func (this *Tencent) Init(mlr *models.LoginRequest, args *map[string]interface{}
 		if extParam.Debug {
 			this.Url = "http://ysdktest.qq.com/auth/wx_check_token"
 		} else {
-			this.Url = "ysdk.qq.com/auth/wx_check_token"
+			this.Url = "http://ysdk.qq.com/auth/wx_check_token"
 		}
 		this.appId = (*this.args)["WX_APP_ID"].(string)
 		this.appKey = (*this.args)["WX_APP_KEY"].(string)
 	} else {
 		beego.Error(errors.New("login type is error, must in (QQ, WEIXIN)"))
+		beego.Error(extParam)
 	}
-}
-
-func (this *Tencent) InitParam() {
-	this.Lr.InitParam()
 
 	timestamp := strconv.FormatInt(time.Now().Unix(), 10)
 	sig := tool.Md5([]byte(this.appKey + timestamp))
 	format := "?timestamp=%s&appid=%s&sig=%s&openid=%s&openkey=%s"
 	context := fmt.Sprintf(format, timestamp, this.appId, sig, this.mlr.ChannelUserid, this.mlr.Token)
 	this.Url = this.Url + context
+	//beego.Trace(this.Url)
 }
 
 func (this *Tencent) ParseChannelRet() (err error) {

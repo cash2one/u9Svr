@@ -1,7 +1,6 @@
 package channelPayNotify
 
 import (
-	//"encoding/json"
 	"bytes"
 	"encoding/xml"
 	"errors"
@@ -12,12 +11,6 @@ import (
 	"net/url"
 	"strconv"
 	"u9/tool"
-)
-
-const (
-	err_jiuyouParseGameKey  = 11401
-	err_jiuyouParseBody     = 11402
-	err_jiuyouResultFailure = 11403
 )
 
 type Jiuyou struct {

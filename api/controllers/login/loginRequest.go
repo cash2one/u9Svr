@@ -53,7 +53,6 @@ func (this *LoginController) handleLrParam() (err error) {
 }
 
 func (this *LoginController) updateDB() (err error) {
-	beego.Trace("loginUrlExt:",this.lrParam.Ext)
 	userId := models.GenerateUserId(
 		this.lrParam.ChannelId,
 		this.lrParam.ProductId,
@@ -81,7 +80,7 @@ func (this *LoginController) updateDB() (err error) {
 		lr.Token = this.lrParam.Token
 		lr.ChannelUsername = this.lrParam.ChannelUserName
 		lr.Ext = this.lrParam.Ext
-		beego.Trace(lr.Ext)
+		//beego.Trace("loginUrlExt:", lr.Ext)
 		lr.UpdateTime = time.Now()
 		if err = lr.Update("ChannelUsername", "Token", "IsDebug", "UpdateTime", "Ext"); err != nil {
 			beego.Error(lr)

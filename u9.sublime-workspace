@@ -4,16 +4,56 @@
 		"selected_items":
 		[
 			[
+				"str",
+				"strlen	int ν"
+			],
+			[
+				"pr",
+				"Println	n int, err error ƒ"
+			],
+			[
+				"fo",
+				"FormatFloat	string ƒ"
+			],
+			[
+				"Cp",
+				"CPOrderid	string ν"
+			],
+			[
 				"channel",
-				"channelGameId	string ν"
+				"testChannelPayKey	 Ɩ"
+			],
+			[
+				"err_parseChannel",
+				"err_parseChannelGameKey	 Ɩ"
+			],
+			[
+				"parse",
+				"ParseChannelRet	err error ƒ"
+			],
+			[
+				"channelG",
+				"parseChannelGameKey	err error ƒ"
+			],
+			[
+				"parseChannelGa",
+				"parseChannelGameKey	err error ƒ"
+			],
+			[
+				"or",
+				"OrderStatus	string ν"
+			],
+			[
+				"a",
+				"AccountId	string ν"
+			],
+			[
+				"c",
+				"CpOrderId	int ν"
 			],
 			[
 				"channe",
 				"channelGameKey	string ν"
-			],
-			[
-				"pr",
-				"Printf	n int, err error ƒ"
 			],
 			[
 				"http",
@@ -22,10 +62,6 @@
 			[
 				"qm",
 				"QmyxData	struct ʈ"
-			],
-			[
-				"a",
-				"Amount	string ν"
 			],
 			[
 				"ch",
@@ -38,10 +74,6 @@
 			[
 				"pay",
 				"payKey	string ν"
-			],
-			[
-				"c",
-				"c07073Data	C07073Data ν"
 			],
 			[
 				"A",
@@ -74,10 +106,6 @@
 			[
 				"err",
 				"errors	 package ρ"
-			],
-			[
-				"fo",
-				"format	 ν"
 			],
 			[
 				"AppEx",
@@ -170,10 +198,6 @@
 			[
 				"Ser",
 				"ServeJson	 ƒ"
-			],
-			[
-				"parse",
-				"ParseParam	err error ƒ"
 			],
 			[
 				"Chan",
@@ -372,62 +396,35 @@
 	"buffers":
 	[
 		{
-			"file": "api/channel/notify/pay/base.go",
+			"file": "api/channel/api/api.go",
 			"settings":
 			{
-				"buffer_size": 9107,
+				"buffer_size": 4652,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "api/channel/notify/pay/htc.go",
+			"file": "api/channel/notify/pay/pengyouwan.go",
 			"settings":
 			{
-				"buffer_size": 5014,
+				"buffer_size": 3392,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "test/test/test.go",
+			"file": "/c/go/src/net/url/url.go",
 			"settings":
 			{
-				"buffer_size": 330,
+				"buffer_size": 23013,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "\n&map[\n		{\n			\"tid\":\"8e15cc5b-bcf9-4f\",\n			\"sign\":\"3c0d565839a8f5834241f1a0ea989001\",\n			\"gamekey\":\"6ec5a407\",\n			\"channel\":\"PYW\",\n			\"cp_orderid\":\"201605061039495213\",\n			\"ch_orderid\":\"K1605066N2325445\",\n			\"amount\":\"1.00\",\n			\"cp_param\":\n				\"{	\\\"order_id\\\":\\\"201605061039495213\\\",\n					\\\"product_id\\\":9,\n					\\\"product_desc\\\":\\\"\\u5546\\u54c1\\u63cf\\u8ff0\\\"\n				}\"\n		}\n		:\n		[]\n\n]\n",
+			"settings":
+			{
+				"buffer_size": 381,
 				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "api/channel/notify/pay/jiuyou.go",
-			"settings":
-			{
-				"buffer_size": 3059,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "api/channel/notify/pay/pay.go",
-			"settings":
-			{
-				"buffer_size": 3108,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"contents": "Searching 89 files for \"this.gameId\"\n\nD:\\go\\src\\u9\\api\\channel\\notify\\pay\\base.go:\n  149: 	this.gameId, err = this.getPackageParam(gameId)\n\nD:\\go\\src\\u9\\api\\channel\\notify\\pay\\jiuyou.go:\n   87: 	//if this.data.GameId != this.gameId {\n\nD:\\go\\src\\u9\\api\\channel\\notify\\pay\\qmyx.go:\n   54: 	this.gameId, err = this.getPackageParam(\"GAME_ID\")\n  101: 	if this.qmyxData.GameId != this.gameId {\n\nD:\\go\\src\\u9\\api\\channel\\notify\\pay\\shoumeng.go:\n   52: 	// this.gameId, err = this.getPackageParam(\"SHOUMENG_GAME_ID\")\n  114: 	// 	this.channelUserId, this.tokenJson.Login_account, this.gameId, this.packetId, this.urlParams.Get(\"serverId\"),\n\n6 matches across 4 files\n",
-			"settings":
-			{
-				"buffer_size": 657,
-				"line_ending": "Windows",
-				"name": "Find Results",
-				"scratch": true
-			}
-		},
-		{
-			"contents": "key=56abfbcd12fe46f5ad85ad9f12345678&\nsource=GET&\n%2Fv3%2Fpay%2Fpay&\namt%3D10%26appid%3D15499%26openid%3D00000000000000000000000014BDF6E4%26openkey%3DAB43BF3DC5C3C79D358CC5318E41CF59%26payitem%3Did%2Aname%2Adesc%26pf%3Dqzone%26pfkey%3DCA641BC173479B8C0B35BC84873B3DB9%26ts%3D1340880299%26userip%3D112.90.139.30\n\nkey=56abfbcd12fe46f5ad85ad9f12345678&\nsource=GET&\n/v3/pay/pay&\namt=10&\nappid=15499&\nopenid=00000000000000000000000014BDF6E4&\nopenkey=AB43BF3DC5C3C79D358CC5318E41CF59&\npayitem=id*name*desc&\npf=qzone&\npfkey=CA641BC173479B8C0B35BC84873B3DB9&\nts=1340880299&\nuserip=112.90.139.30\n\n\n",
-			"settings":
-			{
-				"buffer_size": 589,
-				"line_ending": "Windows",
-				"name": "key=56abfbcd12fe46f5ad85ad9f12345678&"
 			}
 		}
 	],
@@ -438,20 +435,28 @@
 	"build_varint": "",
 	"command_palette":
 	{
-		"height": 104.0,
-		"last_filter": "",
+		"height": 129.0,
+		"last_filter": "remove",
 		"selected_items":
 		[
 			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
 				"install",
 				"Package Control: Install Package"
+			],
+			[
+				"gosublime",
+				"GoSublime: Activate 9o"
 			],
 			[
 				"inst",
 				"Package Control: Install Package"
 			]
 		],
-		"width": 416.0
+		"width": 571.0
 	},
 	"console":
 	{
@@ -475,42 +480,55 @@
 		"/D/go/src/u9",
 		"/D/go/src/u9/api",
 		"/D/go/src/u9/api/channel",
-		"/D/go/src/u9/api/channel/api",
 		"/D/go/src/u9/api/channel/notify",
-		"/D/go/src/u9/api/channel/notify/pay",
+		"/D/go/src/u9/api/conf",
 		"/D/go/src/u9/test",
-		"/D/go/src/u9/test/test"
+		"/D/go/src/u9/tool"
 	],
 	"file_history":
 	[
-		"/D/go/src/u9/api/channel/notify/pay/shoumeng.go",
-		"/D/go/src/u9/api/channel/notify/pay/qmyx.go",
-		"/D/go/src/u9/api/channel/api/loginRequest/jiuyou.go",
-		"/D/go/src/u9/api/channel/api/createOrder/xcs.go",
+		"/C/Users/jacky/AppData/Roaming/Sublime Text 3/Packages/GoSublime/CHANGELOG.md",
+		"/D/go/src/u9/tool/url.go",
+		"/D/go/src/u9/test/test.go",
+		"/c/go/src/strings/strings.go",
+		"/D/go/src/u9/sftp-config.json",
+		"/D/go/src/u9/api/channel/api/loginRequest/yijie.go",
+		"/c/go/src/unicode/utf8/utf8.go",
 		"/D/go/src/u9/test/test/test.go",
-		"/D/go/src/u9/api/channel/api/loginRequest/ccpay.go",
-		"/D/go/src/u9/api/channel/notify/pay/kaopu.go",
+		"/D/go/src/u9/api/channel/notify/pay/jiuyou.go",
 		"/D/go/src/u9/api/channel/notify/pay/pengyouwan.go",
 		"/D/go/src/u9/api/channel/notify/pay/base.go",
-		"/c/go/src/time/time.go",
 		"/c/go/src/strconv/itoa.go",
-		"/D/go/src/u9/test/test.go",
+		"/c/go/src/strconv/ftoa.go",
+		"/D/go/src/u9/api/channel/api/loginRequest/jiuyou.go",
+		"/D/go/src/u9/api/channel/api/loginRequest/base.go",
+		"/D/go/src/u9/api/channel/api/api.go",
+		"/D/go/src/u9/api/channel/notify/pay/pay.go",
+		"/D/go/src/u9/api/controllers/login/base.go",
+		"/D/go/src/u9/api/controllers/login/loginRequest.go",
+		"/C/Users/jacky/Desktop/key=56abfbcd12fe46f5ad85ad9f12345678.txt",
+		"/D/go/src/u9/api/common/common.go",
+		"/D/go/src/u9/api/common/request.go",
+		"/D/go/src/u9/api/channel/notify/pay/gfan.go",
+		"/c/go/src/strconv/atoi.go",
+		"/D/go/src/u9/api/channel/notify/pay/htc.go",
+		"/D/go/src/u9/api/channel/notify/pay/shoumeng.go",
+		"/D/go/src/u9/api/channel/notify/pay/qmyx.go",
+		"/D/go/src/u9/api/channel/api/createOrder/xcs.go",
+		"/D/go/src/u9/api/channel/api/loginRequest/ccpay.go",
+		"/D/go/src/u9/api/channel/notify/pay/kaopu.go",
+		"/c/go/src/time/time.go",
 		"/D/go/src/u9/test/test/test1.go",
 		"/D/go/src/u9/test/test1.go",
 		"/c/go/src/encoding/json/decode.go",
 		"/C/go/src/encoding/json/encode.go",
 		"/D/go/src/u9/api/channel/api/loginRequest/amigo.go",
-		"/D/go/src/u9/api/channel/api/api.go",
-		"/D/go/src/u9/sftp-config.json",
 		"/D/go/src/github.com/astaxie/beego/httplib/httplib.go",
-		"/D/go/src/u9/api/common/request.go",
-		"/D/go/src/u9/api/channel/notify/pay/pay.go",
 		"/D/go/src/u9/test/regexp.go",
 		"/D/go/src/u9/api/channel/notify/pay/amigo.go",
 		"/D/go/src/u9/api/channel/notify/pay/tt.go",
 		"/D/project/Android/hy_gametool_pengyouwan/.project",
 		"/D/go/src/u9/api/channel/notify/pay/c07073.go",
-		"/D/go/src/u9/api/channel/notify/pay/htc.go",
 		"/D/go/src/u9/api/channel/api/loginRequest/c07073.go",
 		"/E/backup/android/tool/back/qnxy-ahy/AndroidManifest.xml",
 		"/E/backup/android/tool/back/hy_gametool_c07073/AndroidManifest.xml",
@@ -529,8 +547,6 @@
 		"/D/go/src/github.com/astaxie/beego/context/context.go",
 		"/c/go/src/net/url/url.go",
 		"/D/go/src/github.com/astaxie/beego/controller.go",
-		"/D/go/src/u9/api/controllers/login/loginRequest.go",
-		"/D/go/src/u9/api/channel/api/loginRequest/yijie.go",
 		"/D/go/src/u9/api/controllers/base.go",
 		"/D/go/src/github.com/astaxie/beego/context/input.go",
 		"/D/go/src/u9/api/channel/notify/pay/m4399.go",
@@ -565,7 +581,6 @@
 		"/D/go/src/u9/api/channel/api/loginRequest/pptv.go",
 		"/D/go/src/u9/api/channel/api/loginRequest/qikqik.go",
 		"/D/go/src/u9/api/channel/api/loginRequest/shoumeng.go",
-		"/D/go/src/u9/api/channel/api/loginRequest/base.go",
 		"/C/Users/jacky/Desktop/YSDK_PHP_V1.0.0/ysdks/Api.php",
 		"/C/Users/jacky/Desktop/YSDK_PHP_V1.0.0/ysdks/lib/SnsNetwork.php",
 		"/C/Users/jacky/Desktop/YSDK_PHP_V1.0.0/ysdks/lib/SnsSigCheck.php",
@@ -592,25 +607,14 @@
 		"/D/go/src/u9/www/views/cp/layout.html",
 		"/C/Users/jacky/Desktop/test/helloworld.html",
 		"/C/Users/jacky/Desktop/helloworld.html",
-		"/C/Users/jacky/AppData/Roaming/Sublime Text 3/Packages/GoSublime/CHANGELOG.md",
 		"/D/go/src/u9/api/channel/api/createOrder/amigo.go",
-		"/D/go/src/u9/api/common/common.go",
 		"/D/go/src/u9/models/orderRequest.go",
 		"/D/project/Android/hy_gametool_ylgame/assets/hy_game.json",
 		"/D/project/Android/hy_gametool_ylgame/AndroidManifest.xml",
 		"/D/project/Android/hy_gametool_ylgame/proguard-project.txt",
 		"/D/project/Android/hy_gametool_ylgame/project.properties",
 		"/D/project/Android/hy_gametool_ylgame/.project",
-		"/C/Users/jacky/Documents/Navicat/MySQL/servers/cdb_outerroot/u9/statUserLoginReqest.sql",
-		"/C/Users/jacky/Documents/Navicat/MySQL/servers/cdb_outerroot/u9/160330180232.psc",
-		"/C/Users/jacky/Documents/Navicat/MySQL/servers/cdb_outerroot/u9/160330180232.psb",
-		"/C/Windows/System32/drivers/etc/hosts",
-		"/C/Users/jacky/Desktop/readme.txt",
-		"/d/go/src/github.com/astaxie/beego/orm/orm_log.go",
-		"/D/go/src/u9/models/loginRequest.go",
-		"/d/go/src/github.com/astaxie/beego/orm/orm.go",
-		"/D/go/src/github.com/astaxie/beego/router.go",
-		"/D/go/src/github.com/astaxie/beego/logs/conn.go"
+		"/C/Users/jacky/Documents/Navicat/MySQL/servers/cdb_outerroot/u9/statUserLoginReqest.sql"
 	],
 	"find":
 	{
@@ -704,9 +708,50 @@
 	},
 	"find_state":
 	{
-		"case_sensitive": false,
+		"case_sensitive": true,
 		"find_history":
 		[
+			"strings",
+			"Replace",
+			"replace",
+			"ChannelPayKey",
+			"\"\n",
+			"channelGameKey",
+			"CpOrderId",
+			"pengyouwanData",
+			"gameKey",
+			"payKey",
+			"parseGameKey",
+			"gameKey",
+			"err_jiuyouResultFailure",
+			"err_jiuyouParseBody",
+			"err_jiuyouParseGameKey",
+			"http",
+			"channelReq",
+			"+",
+			"channelRet",
+			"channelReq",
+			"channelRet",
+			"channelReq",
+			"State",
+			"updateDB",
+			"updateDB\n",
+			"lrParam",
+			"param",
+			"Param",
+			"lrParam",
+			"Ext",
+			"updateDB",
+			"handleLrParam",
+			"updateDB",
+			"handleLrParam",
+			"updateDB",
+			"Cost",
+			"payAmount",
+			"CpOrderId",
+			".string",
+			"parseBody",
+			"err_parseBody",
 			"this.gameId",
 			"if this.data.GameId != this.gameId",
 			"parseBodyParam",
@@ -793,48 +838,7 @@
 			"paySuccess",
 			"appSecret",
 			"ParseParam",
-			"parseAppKey",
-			"data",
-			"anZhi",
-			"anzhi",
-			"AnZhi",
-			"Amigo",
-			"CallLoginRequest",
-			"ParseForm",
-			"Validate",
-			"Record isn't exist in table",
-			"Record isn't exist in table:loginRequest with token:",
-			" Record isn't exist in table:loginRequest with token:",
-			"Encode()",
-			"Encode",
-			"Decode",
-			"Info",
-			"Informational",
-			"Error",
-			"DEBUG",
-			"Debug",
-			"BeeLogger.Debug",
-			"\"\n",
-			"base64",
-			"raw",
-			"encodeQueryComponent",
-			"shouldEscape",
-			"escape",
-			"QueryEscape",
-			"m",
-			"Values",
-			"Add",
-			"url.QueryEscape",
-			"billno",
-			"pubacct_payamt_coins",
-			"CallCreateOrder",
-			"errors",
-			"timestamp",
-			"token",
-			"appKey",
-			"channelUserId",
-			"token",
-			"channelUserId"
+			"parseAppKey"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -842,6 +846,8 @@
 		"regex": false,
 		"replace_history":
 		[
+			"jiuyouChannelRet",
+			"jiuyouChannelReq",
 			"Jiuyou",
 			"data",
 			"jiuyou",
@@ -967,37 +973,35 @@
 			"channelFiles",
 			"productFiles",
 			"packagePath",
-			"channelPath",
-			"productPath",
-			"productPackagePath"
+			"channelPath"
 		],
 		"reverse": false,
 		"show_context": false,
 		"use_buffer2": true,
-		"whole_word": false,
+		"whole_word": true,
 		"wrap": true
 	},
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 1,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "api/channel/notify/pay/base.go",
+					"file": "api/channel/api/api.go",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 9107,
+						"buffer_size": 4652,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1625,
-								1625
+								1793,
+								1793
 							]
 						],
 						"settings":
@@ -1005,63 +1009,31 @@
 							"incomplete_sync": null,
 							"remote_loading": false,
 							"synced": false,
-							"syntax": "Packages/GoSublime/syntax/GoSublime-Go.tmLanguage",
+							"syntax": "Packages/Text/Plain text.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 2046.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "api/channel/notify/pay/htc.go",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 5014,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								158,
-								124
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/GoSublime/syntax/GoSublime-Go.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 217.0,
+						"translation.y": 3255.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "test/test/test.go",
-					"semi_transient": true,
+					"buffer": 1,
+					"file": "api/channel/notify/pay/pengyouwan.go",
+					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 330,
+						"buffer_size": 3392,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								135,
-								135
+								278,
+								278
 							]
 						],
 						"settings":
@@ -1069,175 +1041,75 @@
 							"incomplete_sync": null,
 							"remote_loading": false,
 							"synced": false,
-							"syntax": "Packages/GoSublime/syntax/GoSublime-Go.tmLanguage"
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 403.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
 					"type": "text"
 				},
 				{
+					"buffer": 2,
+					"file": "/c/go/src/net/url/url.go",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 23013,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								17748,
+								17748
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 19999.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
 					"buffer": 3,
-					"file": "api/channel/notify/pay/jiuyou.go",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3059,
+						"buffer_size": 381,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								906,
-								897
+								375,
+								375
 							]
 						],
 						"settings":
 						{
+							"auto_name": "",
 							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/GoSublime/syntax/GoSublime-Go.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 744.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "api/channel/notify/pay/pay.go",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3108,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1734,
-								1734
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/GoSublime/syntax/GoSublime-Go.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 1581.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 657,
-						"regions":
-						{
-							"match":
-							{
-								"flags": 112,
-								"regions":
-								[
-									[
-										91,
-										102
-									],
-									[
-										220,
-										231
-									],
-									[
-										288,
-										299
-									],
-									[
-										374,
-										385
-									],
-									[
-										449,
-										460
-									],
-									[
-										571,
-										582
-									]
-								],
-								"scope": ""
-							}
-						},
-						"selection":
-						[
-							[
-								537,
-								537
-							]
-						],
-						"settings":
-						{
-							"detect_indentation": false,
-							"incomplete_sync": null,
-							"line_numbers": false,
-							"output_tag": 1,
-							"result_base_dir": "",
-							"result_file_regex": "^([^ 	].*):$",
-							"result_line_regex": "^ +([0-9]+):",
-							"scroll_past_end": true,
-							"syntax": "Packages/Default/Find Results.hidden-tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 589,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								500,
-								500
-							]
-						],
-						"settings":
-						{
-							"auto_name": "key=56abfbcd12fe46f5ad85ad9f12345678&",
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
 							"syntax": "Packages/Text/Plain text.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 3,
 					"type": "text"
 				}
 			]
@@ -1306,6 +1178,10 @@
 	{
 		"height": 172.0
 	},
+	"output.9o://D:\\go\\src\\u9\\api\\channel\\api":
+	{
+		"height": 196.0
+	},
 	"output.9o://D:\\go\\src\\u9\\api\\channel\\notify\\pay":
 	{
 		"height": 124.0
@@ -1328,7 +1204,7 @@
 	},
 	"output.9o://D:\\go\\src\\u9\\test":
 	{
-		"height": 220.0
+		"height": 305.0
 	},
 	"output.9o://D:\\go\\src\\u9\\test\\test":
 	{
@@ -1383,6 +1259,22 @@
 		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"loginrequest.go",
+				"api\\controllers\\login\\loginRequest.go"
+			],
+			[
+				"apigo",
+				"api\\channel\\api\\api.go"
+			],
+			[
+				"jiuyou",
+				"api\\channel\\api\\loginRequest\\jiuyou.go"
+			],
+			[
+				"request",
+				"api\\common\\request.go"
+			],
 			[
 				"kao",
 				"api\\channel\\notify\\pay\\kaopu.go"
@@ -1460,7 +1352,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 388.0,
+	"side_bar_width": 467.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

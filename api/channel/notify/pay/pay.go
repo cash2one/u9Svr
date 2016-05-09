@@ -90,7 +90,7 @@ func CallPayNotify(channelId, productId int, urlParams *url.Values, ctx *context
 	case 141:
 		pn = NewC07073(channelId, productId, urlParams)
 	case 142:
-		pn = NewPengyouwan(channelId, productId, urlParams, ctx)
+		pn = NewPengyouwan(channelId, productId, urlParams)
 	case 143:
 		pn = NewQmyx(channelId, productId, urlParams)
 	default:

@@ -41,12 +41,12 @@ func CallLoginRequest(mlr *models.LoginRequest) (ret *common.BasicRet) {
 		fallthrough
 	case 136:
 		fallthrough
-	case 142:
+	case 142: //朋友玩
 		fallthrough
 	case 143: //全民游戏
 		fallthrough
 	case 123: //熊猫玩
-		beego.Trace(mlr.ChannelId)
+		beego.Trace(fmt.Sprintf("channelId:%d", mlr.ChannelId))
 		ret.SetCode(0)
 		return
 	case 101:
@@ -99,6 +99,8 @@ func CallLoginRequest(mlr *models.LoginRequest) (ret *common.BasicRet) {
 		llr = loginRequest.LrNewQikQik(mlr, jsonParam)
 	case 137:
 		llr = loginRequest.LrNewPPTV(mlr, jsonParam)
+	case 139:
+		llr = loginRequest.LrNewTencent(mlr, jsonParam)
 	case 140:
 		llr = loginRequest.LrNewTT(mlr, jsonParam)
 	case 141:
@@ -111,19 +113,19 @@ func CallLoginRequest(mlr *models.LoginRequest) (ret *common.BasicRet) {
 	llr.InitParam()
 
 	if err := llr.Response(); err != nil {
-		beego.Trace(err)
+		beego.Error(err)
 		ret = llr.SetCode(3002)
 		return
 	}
 
 	if err := llr.ParseChannelRet(); err != nil {
-		beego.Trace(err)
+		beego.Error(err)
 		ret = llr.SetCode(9002)
 		return
 	}
 
 	if !llr.CheckChannelRet() {
-		beego.Trace(errors.New("channelRet code is fail."))
+		beego.Error(errors.New("channelRet code is fail."))
 		ret = llr.SetCode(3003)
 		return
 	}

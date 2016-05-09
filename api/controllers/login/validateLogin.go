@@ -16,7 +16,6 @@ type ValidateLoginParam struct {
 	UserId string `json:"ChannelUserId"`
 	Token  string `json:"Token"`
 	lr     *models.LoginRequest
-	lrl    *models.LoginRequestLog
 }
 
 func (this *ValidateLoginParam) handleSpecialToken() {
@@ -77,10 +76,10 @@ func (this *LoginController) ValidateLogin() {
 }
 
 func (this *ValidateLoginParam) addDB() {
-	lr := models.LoginRequestLog{
+	lrl := models.LoginRequestLog{
 		LoginRequestId: this.lr.Id,
 		LoginTime:      time.Now()}
-	if _, _, err := orm.NewOrm().ReadOrCreate(&lr, "LoginRequestId", "LoginTime"); err != nil {
-		beego.Trace(err)
+	if _, _, err := orm.NewOrm().ReadOrCreate(&lrl, "LoginRequestId", "LoginTime"); err != nil {
+		beego.Warn(err)
 	}
 }
