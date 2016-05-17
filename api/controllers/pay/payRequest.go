@@ -1,6 +1,7 @@
 package pay
 
 import (
+	"fmt"
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/orm"
 	"github.com/astaxie/beego/validation"
@@ -68,7 +69,10 @@ func (this *PayController) PayRequest() {
 
 	defer func() {
 		this.Data["json"] = ret
-		beego.Trace(ret)
+		if ret.Code != 0 {
+			warnInfo := fmt.Sprintf("LoginRequestUrl:%v", this.Ctx.Request.PostForm)
+			beego.Warn(warnInfo)
+		}
 		this.ServeJSON(true)
 	}()
 
@@ -103,17 +107,14 @@ func (this *PayController) PayRequest() {
 			return
 		}
 	} else {
-		beego.Error(err)
+		beego.Warn(err)
 		ret.SetCode(2005)
 		return
 	}
 
 	channelExt := ""
 	channelOrderId := ""
-	host := this.Ctx.Input.Host()
-	//beego.Trace(prp.Ext)
-	//beego.Trace(prp.AppExt)
-	channelOrderId, channelExt, err = channelApi.CallCreateOrder(&lr, or.OrderId, host, prp.Ext)
+	channelOrderId, channelExt, err = channelApi.CallCreateOrder(&lr, or.OrderId, prp.Ext, this.Ctx)
 	if err != nil {
 		ret.SetCode(3002)
 		if err = or.Delete(); err != nil {

@@ -10,22 +10,12 @@ import (
 	"u9/tool"
 )
 
-var qmyxUrlKeys []string = []string{}
-
-const (
-	err_qmyxParseGameKey  = 14301
-	err_qmyxParseBody     = 14302
-	err_qmyxResultFailure = 14303
-)
-
 type Qmyx struct {
 	Base
-	gameId   string
-	gameKey  string
-	qmyxData QmyxData
+	gameId string
 }
 
-type QmyxData struct {
+type qmyxData struct {
 	ChannelOrderId string `json:"pay_order_code"`
 	GameId         string `json:"game_id"`
 	ServerId       string `json:"server_id"`
@@ -41,64 +31,41 @@ func NewQmyx(channelId, productId int, urlParams *url.Values) *Qmyx {
 }
 
 func (this *Qmyx) Init(channelId, productId int, urlParams *url.Values) {
-	this.Base.Init(channelId, productId, urlParams, &qmyxUrlKeys)
-}
-
-func (this *Qmyx) parseGameID() (err error) {
-	defer func() {
-		if err != nil {
-			this.callbackRet = err_parseProductKey
-			beego.Trace(err)
-		}
-	}()
-	this.gameId, err = this.getPackageParam("GAME_ID")
-	return
-}
-
-func (this *Qmyx) parseGameKey() (err error) {
-	defer func() {
-		if err != nil {
-			this.callbackRet = err_qmyxParseGameKey
-			beego.Trace(err)
-		}
-	}()
-	this.gameKey, err = this.getPackageParam("GAME_KEY")
-	return
+	this.Base.Init(channelId, productId, urlParams, &emptyUrlKeys)
+	this.data = new(qmyxData)
 }
 
 func (this *Qmyx) parseUrlParam() (err error) {
 	defer func() {
 		if err != nil {
-			this.callbackRet = err_qmyxParseBody
+			this.callbackRet = err_parseUrlParam
 			beego.Error(err)
 			beego.Error(this.urlParams)
 		}
 	}()
 
-	data := this.urlParams.Get("data")
-	if err = json.Unmarshal([]byte(data), &this.qmyxData); err != nil {
+	param := this.urlParams.Get("data")
+	if err = json.Unmarshal([]byte(param), &this.data); err != nil {
 		return err
 	}
 
-	this.orderId = this.qmyxData.Ext
-	this.channelOrderId = this.qmyxData.ChannelOrderId
-	this.channelUserId = this.qmyxData.UserKey
-	this.payAmount = this.qmyxData.Amount
+	data := this.data.(*qmyxData)
+
+	this.orderId = data.Ext
+	this.channelOrderId = data.ChannelOrderId
+	this.channelUserId = data.UserKey
+	this.payAmount = data.Amount
 	return
 }
 
 func (this *Qmyx) ParseChannelRet() (err error) {
-	if this.orderId != this.orderRequest.OrderId {
-		this.callbackRet = err_orderIsNotExist
+	if err = this.Base.ParseChannelRet(); err != nil {
+		this.callbackRet = err_parseChannelRet
 		return
 	}
 
-	if this.orderRequest.ReqAmount != this.payAmount {
-		this.callbackRet = err_payAmountError
-		return
-	}
-
-	if this.qmyxData.GameId != this.gameId {
+	data := this.data.(*qmyxData)
+	if data.GameId != this.channelGameId {
 		this.callbackRet = err_parseProductKey
 		return
 	}
@@ -109,10 +76,10 @@ func (this *Qmyx) ParseParam() (err error) {
 	if err = this.parseUrlParam(); err != nil {
 		return
 	}
-	if err = this.parseGameID(); err != nil {
+	if err = this.parseChannelGameID("GAME_ID"); err != nil {
 		return
 	}
-	if err = this.parseGameKey(); err != nil {
+	if err = this.parseChannelGameKey("GAME_KEY"); err != nil {
 		return
 	}
 	if err = this.Base.ParseParam(); err != nil {
@@ -129,9 +96,9 @@ func (this *Qmyx) CheckSign() (err error) {
 		}
 	}()
 
-	content := this.qmyxData.ChannelOrderId + this.qmyxData.GameId +
-		this.qmyxData.ServerId + this.qmyxData.UserKey +
-		strconv.Itoa(this.qmyxData.Amount) + this.qmyxData.Ext + this.gameKey
+	data := this.data.(*qmyxData)
+	content := data.ChannelOrderId + data.GameId + data.ServerId + data.UserKey +
+		strconv.Itoa(data.Amount) + data.Ext + this.channelGameKey
 
 	urlSign := this.urlParams.Get("sign")
 	if sign := tool.Md5([]byte(content)); sign != urlSign {

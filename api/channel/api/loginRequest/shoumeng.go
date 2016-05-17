@@ -39,11 +39,14 @@ func (this *ShouMeng) Init(mlr *models.LoginRequest, args *map[string]interface{
 	this.Url = "http://www.19meng.com/api/v1/verify_session_id"
 	beego.Trace(this.Url)
 }
-func (this *ShouMeng) InitParam() {
-	this.Lr.InitParam()
+func (this *ShouMeng) InitParam() (err error) {
+	if err = this.Lr.InitParam(); err != nil {
+		return
+	}
 	this.Req.Param("user_id", this.mlr.ChannelUserid)
 	this.Req.Param("login_account", this.tokenJson.Login_account)
 	this.Req.Param("session_id", this.tokenJson.Session_id)
+	return
 }
 func (this *ShouMeng) ParseChannelRet() (err error) {
 	beego.Trace(this.Result)

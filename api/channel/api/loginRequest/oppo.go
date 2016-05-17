@@ -58,10 +58,13 @@ func (this *Oppo) Init(mlr *models.LoginRequest, args *map[string]interface{}) {
 	this.sign = base64.StdEncoding.EncodeToString(tool.HmacSHA1Encrypt(this.baseStr, appSecret+"&"))
 }
 
-func (this *Oppo) InitParam() {
-	this.Lr.InitParam()
+func (this *Oppo) InitParam() (err error) {
+	if err = this.Lr.InitParam(); err != nil {
+		return
+	}
 	this.Req.Header("param", this.baseStr)
 	this.Req.Header("oauthsignature", this.sign)
+	return
 }
 
 func (this *Oppo) ParseChannelRet() (err error) {

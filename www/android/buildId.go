@@ -52,9 +52,9 @@ func (this *BuildId) Handle() {
  			fallthrough
  		case 130:
  			fallthrough
+ 		// case 126:
+ 		// 	fallthrough
  		case 136:
- 			fallthrough
- 		case 126:
 			this.init()
 			this.ant()
 		default :

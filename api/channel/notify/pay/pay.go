@@ -14,8 +14,11 @@ func CallPayNotify(channelId, productId int, urlParams *url.Values, ctx *context
 	defer func() {
 		if pn != nil {
 			ret = pn.GetResult()
+			//warnInfo := fmt.Sprintf("LoginRequestUrl:%v", this.Ctx.Request.PostForm)
+			//beego.Warn(warnInfo)
 		} else {
 			ret = "failure"
+
 		}
 		beego.Trace("GetResult:", ret)
 	}()
@@ -85,6 +88,8 @@ func CallPayNotify(channelId, productId int, urlParams *url.Values, ctx *context
 		pn = NewXcs(channelId, productId, urlParams)
 	case 137:
 		pn = NewPPTV(channelId, productId, urlParams)
+	case 139:
+		pn = NewTencent(channelId, productId, urlParams)
 	case 140:
 		pn = NewTT(channelId, productId, urlParams, ctx)
 	case 141:

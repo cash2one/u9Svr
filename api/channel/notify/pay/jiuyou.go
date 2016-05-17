@@ -103,7 +103,7 @@ func (this *Jiuyou) CheckSign() (err error) {
 	defer func() {
 		if err != nil {
 			this.callbackRet = err_checkSign
-			beego.Trace(err)
+			beego.Error(err)
 		}
 	}()
 
@@ -131,7 +131,7 @@ func (this *Jiuyou) CheckSign() (err error) {
 }
 
 func (this *Jiuyou) GetResult() (ret string) {
-	beego.Trace(this.callbackRet)
+	beego.Trace("callbackRet:" + strconv.Itoa(this.callbackRet))
 	if this.callbackRet == err_noerror {
 		ret = `SUCCESS`
 	} else {

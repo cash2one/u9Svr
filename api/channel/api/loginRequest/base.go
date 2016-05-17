@@ -6,8 +6,8 @@ import (
 )
 
 type LoginRequest interface {
-	InitParam()
-	Response() (err error)
+	InitParam() (err error)
+	GetResponse() (err error)
 	ParseChannelRet() (err error)
 	CheckChannelRet() bool
 	SetCode(code int) *common.BasicRet

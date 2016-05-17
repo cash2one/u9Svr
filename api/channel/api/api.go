@@ -5,6 +5,7 @@ import (
 	"errors"
 	"fmt"
 	"github.com/astaxie/beego"
+	"github.com/astaxie/beego/context"
 	"strconv"
 	"u9/api/channel/api/createOrder"
 	"u9/api/channel/api/loginRequest"
@@ -31,15 +32,15 @@ func CallLoginRequest(mlr *models.LoginRequest) (ret *common.BasicRet) {
 	switch mlr.ChannelId {
 	case testChannelId: //test
 		fallthrough
-	case 113:
+	case 113: //拇指玩
 		fallthrough
 	case 122: //6YGame
 		fallthrough
-	case 127:
+	case 127: //htc
 		fallthrough
-	case 134:
+	case 134: //芒果玩
 		fallthrough
-	case 136:
+	case 136: //小财神
 		fallthrough
 	case 142: //朋友玩
 		fallthrough
@@ -49,11 +50,11 @@ func CallLoginRequest(mlr *models.LoginRequest) (ret *common.BasicRet) {
 		beego.Trace(fmt.Sprintf("channelId:%d", mlr.ChannelId))
 		ret.SetCode(0)
 		return
-	case 101:
+	case 101: //当乐
 		llr = loginRequest.LrNewDangle(mlr, jsonParam)
-	case 103:
+	case 103: //安智
 		llr = loginRequest.LrNewAnZhi(mlr, jsonParam)
-	case 104:
+	case 104: //虫虫
 		llr = loginRequest.LrNewCCPay(mlr, jsonParam)
 	case 106:
 		llr = loginRequest.LrNewGFan(mlr, jsonParam)
@@ -110,9 +111,13 @@ func CallLoginRequest(mlr *models.LoginRequest) (ret *common.BasicRet) {
 		return
 	}
 
-	llr.InitParam()
+	if err := llr.InitParam(); err != nil {
+		beego.Error(err)
+		ret = llr.SetCode(9001)
+		return
+	}
 
-	if err := llr.Response(); err != nil {
+	if err := llr.GetResponse(); err != nil {
 		beego.Error(err)
 		ret = llr.SetCode(3002)
 		return
@@ -153,10 +158,11 @@ func checkPackageParam(mlr *models.LoginRequest) (jsonParam *map[string]interfac
 	return jsonParam, nil
 }
 
-func CallCreateOrder(mlr *models.LoginRequest, orderId, host, ext string) (channelOrderId, ret string, err error) {
-	var jsonParam *map[string]interface{}
+func CallCreateOrder(mlr *models.LoginRequest, orderId,
+	extParamStr string, ctx *context.Context) (channelOrderId, ret string, err error) {
+	var channelParams *map[string]interface{}
 	if testChannelId != mlr.ChannelId {
-		if jsonParam, err = checkPackageParam(mlr); err != nil {
+		if channelParams, err = checkPackageParam(mlr); err != nil {
 			beego.Error("checkPackageParam is error.")
 			return
 		}
@@ -164,33 +170,46 @@ func CallCreateOrder(mlr *models.LoginRequest, orderId, host, ext string) (chann
 
 	var co createOrder.CreateOrder
 	switch mlr.ChannelId {
-	case 112:
-		co = createOrder.CoNewMeizu(mlr, orderId, host, ext, jsonParam)
-	case 120:
-		co = createOrder.CoNewAmigo(mlr, orderId, host, ext, jsonParam)
+	case 112: //魅族游戏
+		co = new(createOrder.Meizu)
+		//co = createOrder.CoNewMeizu(mlr, orderId, extParamStr, channelParams, ctx)
+	case 120: //金立
+		co = new(createOrder.Amigo)
+		//co = createOrder.CoNewAmigo(mlr, orderId, extParamStr, channelParams, ctx)
 	case 123: //熊猫玩
-		co = createOrder.CoNewXmw(mlr, orderId, host, ext, jsonParam)
-	case 136:
-		co = createOrder.CoNewCaishen(mlr, orderId, host, ext, jsonParam)
+		co = new(createOrder.Xmw)
+		//co = createOrder.CoNewXmw(mlr, orderId, extParamStr, channelParams, ctx)
+	case 136: //小财神
+		co = new(createOrder.Caishen)
+		//co = createOrder.CoNewCaishen(mlr, orderId, extParamStr, channelParams, ctx)
+	case 139: //tencent
+		co = new(createOrder.Tencent)
+		//co = createOrder.CoNewTencent(mlr, orderId, extParamStr, channelParams, ctx)
 	default:
 		return
 	}
 
+	beego.Trace("1:Prepare")
+	if err = co.Prepare(mlr, orderId, extParamStr, channelParams, ctx); err != nil {
+		return
+	}
+
+	beego.Trace("2:InitParam")
 	if err = co.InitParam(); err != nil {
-		beego.Error(err)
 		return
 	}
 
-	if err = co.Response(); err != nil {
-		beego.Error(err)
+	beego.Trace("3:Response")
+	if err = co.GetResponse(); err != nil {
 		return
 	}
 
+	beego.Trace("4:ParseChannelRet")
 	if err = co.ParseChannelRet(); err != nil {
-		beego.Error(err)
 		return
 	}
 
+	beego.Trace("5:GetResult")
 	ret = co.GetResult()
 	channelOrderId = co.GetChannelOrderId()
 	return

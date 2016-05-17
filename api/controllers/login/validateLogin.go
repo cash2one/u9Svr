@@ -1,6 +1,7 @@
 package login
 
 import (
+	"fmt"
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/orm"
 	"github.com/astaxie/beego/validation"
@@ -60,6 +61,10 @@ func (this *LoginController) ValidateLogin() {
 
 	defer func() {
 		this.Data["json"] = ret
+		if ret.Code != 0 {
+			warnInfo := fmt.Sprintf("LoginRequestUrl:%v", this.Ctx.Request.PostForm)
+			beego.Warn(warnInfo)
+		}
 		this.ServeJSON(true)
 	}()
 

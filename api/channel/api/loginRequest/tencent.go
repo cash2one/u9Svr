@@ -68,7 +68,7 @@ func (this *Tencent) Init(mlr *models.LoginRequest, args *map[string]interface{}
 	format := "?timestamp=%s&appid=%s&sig=%s&openid=%s&openkey=%s"
 	context := fmt.Sprintf(format, timestamp, this.appId, sig, this.mlr.ChannelUserid, this.mlr.Token)
 	this.Url = this.Url + context
-	//beego.Trace(this.Url)
+	beego.Trace(this.Url)
 }
 
 func (this *Tencent) ParseChannelRet() (err error) {

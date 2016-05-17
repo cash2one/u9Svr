@@ -41,8 +41,10 @@ func (this *Amigo) Init(mlr *models.LoginRequest, args *map[string]interface{}) 
 	this.Url = "https://id.gionee.com/account/verify.do"
 }
 
-func (this *Amigo) InitParam() {
-	this.Lr.InitParam()
+func (this *Amigo) InitParam() (err error) {
+	if err = this.Lr.InitParam(); err != nil {
+		return
+	}
 
 	apiKey := (*this.args)["AMIGO_APIKEY"].(string)
 	secretKey := (*this.args)["AMIGO_SECRETKEY"].(string)
@@ -63,6 +65,7 @@ func (this *Amigo) InitParam() {
 	this.Req.Header("Content-Type", "application/json")
 	this.Req.Header("Authorization", authorization)
 	this.Req.Body(this.mlr.Token)
+	return
 }
 
 func (this *Amigo) ParseChannelRet() (err error) {

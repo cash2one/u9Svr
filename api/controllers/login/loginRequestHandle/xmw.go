@@ -57,7 +57,7 @@ func (this *XMW) getAccessToken() (err error) {
 	this.Url = fmt.Sprintf(format, this.clientId, this.clientSecret, "authorization_code", this.param.Token)
 	this.LRH.InitParam()
 
-	if err = this.Response(); err != nil {
+	if err = this.GetResponse(); err != nil {
 		beego.Error(err)
 		return
 	}
@@ -83,7 +83,7 @@ func (this *XMW) getUserInfo() (err error) {
 	this.Url = "http://open.xmwan.com/v2/users/me?access_token=" + this.channelRet.AccessToken
 	this.LRH.InitParam()
 
-	if err = this.Response(); err != nil {
+	if err = this.GetResponse(); err != nil {
 		beego.Error(err)
 		return
 	}

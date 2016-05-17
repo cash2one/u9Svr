@@ -39,8 +39,10 @@ func (this *Sogou) Init(mlr *models.LoginRequest, args *map[string]interface{}) 
 	this.Url = "http://api.app.wan.sogou.com/api/v1/login/verify"
 }
 
-func (this *Sogou) InitParam() {
-	this.Lr.InitParam()
+func (this *Sogou) InitParam() (err error) {
+	if err = this.Lr.InitParam(); err != nil {
+		return
+	}
 
 	gid := (*this.args)["SOGOU_GAMEID"].(string)
 	appSecret := (*this.args)["SOGOU_APPSECRET"].(string)
@@ -52,6 +54,8 @@ func (this *Sogou) InitParam() {
 	this.Req.Param("user_id", this.mlr.ChannelUserid)
 	this.Req.Param("session_key", this.mlr.Token)
 	this.Req.Param("auth", sign)
+
+	return
 }
 func (this *Sogou) ParseChannelRet() (err error) {
 	// json.Unmarshal([]byte(this.Result), &this.channelRet)

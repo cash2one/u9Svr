@@ -2,9 +2,9 @@ package login
 
 import (
 	"errors"
+	"fmt"
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/orm"
-
 	"time"
 	"u9/api/common"
 	"u9/api/controllers/login/loginRequestHandle"
@@ -96,6 +96,10 @@ func (this *LoginController) LoginRequest() {
 
 	defer func() {
 		this.Data["json"] = this.lrRet
+		if this.lrRet.Code != 0 {
+			warnInfo := fmt.Sprintf("LoginRequestUrl:%v", this.Ctx.Request.PostForm)
+			beego.Warn(warnInfo)
+		}
 		this.ServeJSON(true)
 	}()
 

@@ -1,16 +1,14 @@
 package createOrder
 
 import (
-	"encoding/json"
 	"fmt"
 	"github.com/astaxie/beego"
-	// "strconv"
-	// "time"
+	"github.com/astaxie/beego/context"
 	"u9/models"
 	"u9/tool"
 )
 
-type CaishenUrlParam struct {
+type caishenExtParam struct {
 	ProductId string `json:"product_id"`
 	Price     int    `json:"price"`
 	GameUid   string `json:"game_uid"`
@@ -20,47 +18,39 @@ type CaishenUrlParam struct {
 
 type Caishen struct {
 	Cr
-	channelParams *map[string]interface{}
-	urlParam      CaishenUrlParam
-	appSecret     string
 }
 
-func CoNewCaishen(lr *models.LoginRequest, orderId, host, urlJsonParam string, channelParams *map[string]interface{}) *Caishen {
-	ret := new(Caishen)
-	ret.Init(lr, orderId, host, urlJsonParam, channelParams)
-	return ret
-}
+func (this *Caishen) Prepare(lr *models.LoginRequest, orderId, extParamStr string,
+	channelParams *map[string]interface{}, ctx *context.Context) (err error) {
 
-func (this *Caishen) Init(lr *models.LoginRequest, orderId, host, urlJsonParam string, channelParams *map[string]interface{}) {
-	this.Cr.Init(lr, orderId, host, urlJsonParam)
-	this.channelParams = channelParams
+	if err = this.Cr.Initial(lr, orderId, nil, new(xmwExtParam),
+		extParamStr, channelParams, ctx); err != nil {
+		beego.Error(err)
+		return err
+	}
+	this.parseAppKey("PAYKEY")
+	return nil
 }
 
 func (this *Caishen) InitParam() (err error) {
-	if err = json.Unmarshal([]byte(this.urlJsonParam), &this.urlParam); err != nil {
-		beego.Trace(err, ":", this.urlJsonParam)
-		return
-	}
+	return nil
+}
 
-	this.appSecret = (*this.channelParams)["PAYKEY"].(string)
-
-	return
+func (this *Caishen) GetResponse() (err error) {
+	return nil
 }
 
 func (this *Caishen) ParseChannelRet() (err error) {
-	return
-}
-
-func (this *Caishen) Response() (err error) {
-	return
+	return nil
 }
 
 func (this *Caishen) GetResult() (ret string) {
 
 	format := `%s_%s_%d_%s_%s_%s_%s`
 
-	context := fmt.Sprintf(format, this.orderId, this.urlParam.ProductId, this.urlParam.Price,
-		this.urlParam.GameUid, this.urlParam.UId, this.urlParam.GameId, this.appSecret)
+	extParam := this.extParam.(*caishenExtParam)
+	context := fmt.Sprintf(format, this.orderId, extParam.ProductId, extParam.Price,
+		extParam.GameUid, extParam.UId, extParam.GameId, this.appKey)
 
 	sign := tool.Md5([]byte(context))
 

@@ -1,7 +1,6 @@
 package channelPayNotify
 
 import (
-	"bytes"
 	"encoding/json"
 	"errors"
 	"fmt"
@@ -9,9 +8,8 @@ import (
 	"github.com/astaxie/beego/context"
 	"github.com/astaxie/beego/httplib"
 	"github.com/astaxie/beego/orm"
-	"io"
-	"net/http"
 	"net/url"
+	"strconv"
 	"time"
 	"u9/api/common"
 	"u9/models"
@@ -31,6 +29,7 @@ var emptyUrlKeys []string = []string{}
 
 const (
 	err_noerror = iota
+	err_initParam
 	err_checkUrlParam
 	err_getPackageParam
 	err_parseProductKey
@@ -39,6 +38,7 @@ const (
 	err_parseChannelPayKey
 	err_parseOrderRequest
 	err_parseLoginRequest
+	err_parseChannelRet
 	err_checkSign
 	err_parseUrlParam
 	err_parseBody
@@ -236,9 +236,18 @@ func (this *Base) parseLoginRequest() (err error) {
 }
 
 func (this *Base) ParseChannelRet() (err error) {
+	beego.Trace("callbackRet:" + strconv.Itoa(this.callbackRet))
+	if this.callbackRet == err_callbackFail {
+		msg := fmt.Sprintf("gameServer return:(%v) failure", this.ProductRet)
+		beego.Error(msg)
+		err = errors.New(msg)
+		return
+	}
+
 	if this.orderId != this.orderRequest.OrderId {
 		this.callbackRet = err_orderIsNotExist
-		msg := fmt.Sprintf("order is invalid, db(%s), url(%s)", this.orderRequest.OrderId, this.orderId)
+		msg := fmt.Sprintf("order is invalid, db:(%s), url:(%s)",
+			this.orderRequest.OrderId, this.orderId)
 		beego.Error(msg)
 		err = errors.New(msg)
 		return
@@ -246,7 +255,8 @@ func (this *Base) ParseChannelRet() (err error) {
 
 	if this.orderRequest.ReqAmount != this.payAmount {
 		this.callbackRet = err_payAmountError
-		msg := fmt.Sprintf("payAmount is invalid, db(%d), url(%d)", this.orderRequest.ReqAmount, this.payAmount)
+		msg := fmt.Sprintf("payAmount is invalid, db:(%d), url:(%d)",
+			this.orderRequest.ReqAmount, this.payAmount)
 		beego.Error(msg)
 		err = errors.New(msg)
 		return
@@ -254,7 +264,8 @@ func (this *Base) ParseChannelRet() (err error) {
 
 	if this.channelUserId != this.loginRequest.ChannelUserid {
 		this.callbackRet = err_channelUserIsNotExist
-		msg := fmt.Sprintf("channelUserId is invalid, db(%s), url(%s)", this.loginRequest.ChannelUserid, this.channelUserId)
+		msg := fmt.Sprintf("channelUserId is invalid, db(%s), url(%s)",
+			this.loginRequest.ChannelUserid, this.channelUserId)
 		beego.Error(msg)
 		err = errors.New(msg)
 		return
@@ -314,13 +325,9 @@ func (this *Base) notifyProductSvr() (err error) {
 		beego.Trace(notifyUrl)
 		req := httplib.Get(notifyUrl)
 		if _, err = req.Response(); err != nil {
-			beego.Trace(notifyUrl)
 			return
 		}
-		err = req.ToJSON(&this.ProductRet)
-
-		if err != nil {
-			beego.Trace(notifyUrl)
+		if err = req.ToJSON(&this.ProductRet); err != nil {
 			return
 		}
 	} else {
@@ -329,34 +336,22 @@ func (this *Base) notifyProductSvr() (err error) {
 
 	this.orderRequest.ProductCode = this.ProductRet.Code
 	this.orderRequest.ProductMessage = this.ProductRet.Message
+	this.orderRequest.Update("State", "ProductMessage", "ProductCode")
+
 	if this.ProductRet.Code == 0 {
 		this.orderRequest.State = 2
+	} else {
+		this.callbackRet = err_callbackFail
+		return
 	}
-	this.orderRequest.Update("State", "ProductMessage", "ProductCode")
 	return
-}
-
-func (this *Base) request(url string) (ret string, err error) {
-	req := httplib.Get(url)
-	var resp *http.Response
-	resp, err = req.Response()
-	if resp, err = req.Response(); err != nil {
-		return
-	}
-
-	var buffer bytes.Buffer
-	if _, err = io.Copy(&buffer, resp.Body); err != nil {
-		return
-	}
-	bytes := buffer.Bytes()
-	return string(bytes), nil
 }
 
 func (this *Base) handleOrder() (err error) {
 	defer func() {
 		if err != nil {
 			this.callbackRet = err_handleOrder
-			//beego.Error(err)
+			beego.Error(err)
 		}
 	}()
 
@@ -399,7 +394,9 @@ func (this *Base) Handle() (err error) {
 	case 2:
 		return nil
 	default:
-		return errors.New("It isn't exist orderRequest state")
+		err = errors.New("It isn't exist orderRequest state")
+		beego.Error(err)
+		return err
 	}
 	return
 }

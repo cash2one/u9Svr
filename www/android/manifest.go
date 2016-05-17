@@ -35,6 +35,7 @@ type Manifest struct {
 	productPath string
 	channelPath string
 	packagePath string
+	channelId int
 
 	packageParam     *models.PackageParam
 	channel          *models.Channel
@@ -63,7 +64,7 @@ func (this *Manifest) Init(packageTaskId int,
 	this.channelPath = GetChannelPath(channel)
 	this.productPath = GetProductPath(product, apkName)
 	this.packagePath = GetPackagePath(packageTaskId, apkName)
-
+	this.channelId = channel.Id
 	this.packageParam, this.channel = packageParam, channel
 	if err := json.Unmarshal([]byte(this.packageParam.XmlParam), &this.channelSdkParams); err != nil {
 		panic(err)
@@ -82,7 +83,12 @@ func (this *Manifest) Handle() (err error) {
 	this.setPack()
 	this.merge()
 	this.setMeta()
-
+	switch this.channelId{
+	case 139:
+		beego.Trace(8)
+		this.setTencent()
+		beego.Trace(9)
+	}
 	ioutil.WriteFile(this.packagePath+"/"+amName, []byte(this.productRootEl.SyncToXml()), 0666)
 	return
 }
@@ -160,16 +166,25 @@ func (this *Manifest) setMeta() {
 	for k, v := range this.channelSdkParams {
 		el := this.productAppEl.GetNodeByPathAndAttr("meta-data", "android:name", k)
 		if el != nil {
-			el.AddAttr("android:name", k)
-			el.AddAttr("android:value", "\\0"+v)
+			switch this.channelId{
+			case 126://乐视
+				fallthrough
+			case 143://全民游戏
+				el.AddAttr("android:name", k)
+				el.AddAttr("android:value",v)
+			default:
+				el.AddAttr("android:name", k)
+				el.AddAttr("android:value", "\\0"+v)
+			}
 			// beego.Trace(k, "#", v)
 		}
 	}
+
 	beego.Trace("channelParam is OK")
 	beego.Trace(this.cpSdkParams)
 	if(this.cpSdkParams != nil){
 	for k, v := range this.cpSdkParams {
-		beego.Trace("1")
+		// beego.Trace("1")
 		cl := this.productAppEl.GetNodeByPathAndAttr("meta-data", "android:name", k)
 		if cl != nil {
 			cl.AddAttr("android:name", k)
@@ -208,8 +223,35 @@ func (this *Manifest) setPack() {
 			packageName = productPackage + "." + packages[len(packages)-2] + "." + packages[len(packages)-1]
 		} else { //默认
 			packageName = productPackage + "." + packages[len(packages)-1]
+
 		}
 	}
 	beego.Trace("packageName:", packageName)
 	this.productAppEl.Parent().AddAttr("package", packageName)
+}
+
+func (this *Manifest) setTencent() {
+	jsonParam := new(map[string]interface{})
+		if err := json.Unmarshal([]byte(this.packageParam.XmlParam), jsonParam); err != nil {
+			beego.Error(err)
+		}
+	beego.Trace(jsonParam)
+	ptAppElAcQQ := this.productAppEl.GetNodeByPathAndAttr("activity", "android:name","com.tencent.tauth.AuthActivity")
+	beego.Trace(ptAppElAcQQ)
+	ptAppElIfQQ := ptAppElAcQQ.GetNodeByPath("intent-filter")
+	beego.Trace(ptAppElIfQQ)
+
+	
+	valueQQ := (*jsonParam)["QQ_APP_ID"].(string)
+	beego.Trace(valueQQ)
+	var qq_appid string = "tencent" + valueQQ
+	beego.Trace(qq_appid)
+	// ptAppElIfQQ.GetNodeByPathAndAttr("data","android:scheme",qq_appid)
+
+	ptAppElAcWX := this.productAppEl.GetNodeByPathAndAttr("activity", "android:name", "com.tencent.tmgp.game79.mw.nlhj.wxapi.WXEntryActivity")
+	ptAppElIfWX := ptAppElAcWX.GetNodeByPath("intent-filter")
+	valueWX := (*jsonParam)["WX_APP_ID"].(string)
+	beego.Trace(valueWX)
+	ptAppElIfWX.GetNodeByPathAndAttr("data","android:scheme",valueWX)
+
 }

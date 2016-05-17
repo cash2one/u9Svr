@@ -24,12 +24,15 @@ func (this *HaiMaWan) Init(mlr *models.LoginRequest, args *map[string]interface{
 	this.Url = "http://api.haimawan.com/index.php?m=api&a=validate_token"
 }
 
-func (this *HaiMaWan) InitParam() {
-	this.Lr.InitParam()
+func (this *HaiMaWan) InitParam() (err error) {
+	if err = this.Lr.InitParam(); err != nil {
+		return
+	}
 	appId := (*this.args)["HMKey"].(string)
 	this.Req.Param("appid", appId)
 	this.Req.Param("t", this.mlr.Token)
 	this.Req.Param("uid", this.mlr.ChannelUserid)
+	return
 }
 
 func (this *HaiMaWan) CheckChannelRet() bool {

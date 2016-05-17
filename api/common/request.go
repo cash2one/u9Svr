@@ -22,11 +22,7 @@ func (this *Request) Init() {
 	this.IsHttps = false
 }
 
-func (this *Request) InitParam() {
-	this.initRequest()
-}
-
-func (this *Request) initRequest() {
+func (this *Request) InitParam() (err error) {
 	if this.Method == "GET" {
 		this.Req = httplib.Get(this.Url)
 	} else if this.Method == "POST" {
@@ -35,13 +31,17 @@ func (this *Request) initRequest() {
 	if this.IsHttps {
 		this.Req.SetTLSClientConfig(&tls.Config{InsecureSkipVerify: true})
 	}
+	beego.Trace(this.Url)
+	return nil
 }
 
-func (this *Request) Response() (err error) {
+func (this *Request) GetResponse() (err error) {
+
 	var resp *http.Response
 	resp, err = this.Req.Response()
 	if err != nil {
 		beego.Error(err)
+		beego.Trace("ResponseErr")
 		return
 	}
 	var buffer bytes.Buffer
@@ -51,5 +51,6 @@ func (this *Request) Response() (err error) {
 	}
 	bytes := buffer.Bytes()
 	this.Result = string(bytes)
+	beego.Trace("this.Result:" + this.Result)
 	return
 }

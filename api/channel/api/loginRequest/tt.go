@@ -3,31 +3,29 @@ package loginRequest
 import (
 	"encoding/json"
 	"fmt"
-	"u9/models"
 	"github.com/astaxie/beego"
+	"u9/models"
 	// "u9/tool"
 )
 
 //TT语言
 
 type TTChannelRet struct {
-	Head    HeadJson `json:"head"`
+	Head HeadJson `json:"head"`
 }
 
-type HeadJson struct{
-	Result    string `json:"result"`
-	Message   string  `json:"message"`
+type HeadJson struct {
+	Result  string `json:"result"`
+	Message string `json:"message"`
 }
 
 type TT struct {
 	Lr
-	channelRet TTChannelRet
-	channelUserId string 
-	token string
-	args       *map[string]interface{}
+	channelRet    TTChannelRet
+	channelUserId string
+	token         string
+	args          *map[string]interface{}
 }
-
- 
 
 func LrNewTT(mlr *models.LoginRequest, args *map[string]interface{}) *TT {
 	ret := new(TT)
@@ -44,19 +42,22 @@ func (this *TT) Init(mlr *models.LoginRequest, args *map[string]interface{}) {
 	this.Url = "http://sdk.52tt.com/sdk.server/rest/user/loginstatus.view"
 }
 
-func (this *TT) InitParam() {
-	this.Lr.InitParam()
+func (this *TT) InitParam() (err error) {
+	if err = this.Lr.InitParam(); err != nil {
+		return
+	}
 	gameId := (*this.args)["TT_SDK_GAMEID"].(string)
 	// context := `{"uid":"%d","gameId":"%d"}`
 	// sign := base64.StdEncoding.EncodeToString(tool.Md5([]byte(context)))
 
 	this.Req.Header("sid", this.token)
-	beego.Trace("sid:",this.token)
+	beego.Trace("sid:", this.token)
 	bodyJson := `{"uid":"%s","gameId":"%s"}`
-	bodyJson = fmt.Sprintf(bodyJson,this.channelUserId,gameId)
+	bodyJson = fmt.Sprintf(bodyJson, this.channelUserId, gameId)
 	beego.Trace(bodyJson)
 	this.Req.Body(bodyJson)
 
+	return
 }
 
 func (this *TT) ParseChannelRet() (err error) {

@@ -33,10 +33,13 @@ func (this *GFan) Init(mlr *models.LoginRequest, args *map[string]interface{}) {
 	this.args = args
 }
 
-func (this *GFan) InitParam() {
-	this.Lr.InitParam()
+func (this *GFan) InitParam() (err error) {
+	if err = this.Lr.InitParam(); err != nil {
+		return
+	}
 	uid := (*this.args)["GFAN_UID"].(string)
 	this.Req.Header("channelID", uid)
+	return
 }
 
 func (this *GFan) ParseChannelRet() (err error) {

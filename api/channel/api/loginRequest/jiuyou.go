@@ -58,8 +58,10 @@ func (this *JiuYou) Init(mlr *models.LoginRequest, args *map[string]interface{})
 	this.args = args
 }
 
-func (this *JiuYou) InitParam() {
-	this.Lr.InitParam()
+func (this *JiuYou) InitParam() (err error) {
+	if err = this.Lr.InitParam(); err != nil {
+		return
+	}
 
 	appKey := (*this.args)["UC_APPKEY"].(string)
 
@@ -71,6 +73,7 @@ func (this *JiuYou) InitParam() {
 	body, _ := json.Marshal(&this.channelReq)
 	beego.Trace(string(body))
 	this.Req.Body(string(body))
+	return
 }
 
 func (this *JiuYou) ParseChannelRet() (err error) {

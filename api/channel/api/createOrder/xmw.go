@@ -1,17 +1,17 @@
 package createOrder
 
 import (
-	"encoding/json"
 	"errors"
 	"fmt"
 	"github.com/astaxie/beego"
+	"github.com/astaxie/beego/context"
 	"strconv"
 	"time"
 	"u9/models"
 	"u9/tool"
 )
 
-type XmwCoChannelRet struct {
+type xmwChannelRet struct {
 	Error            string `json:"error"`
 	ErrorDescription string `json:"error_description"`
 	Serial           string `json:"serial"`
@@ -26,7 +26,7 @@ type XmwCoChannelRet struct {
 	AppExt2          string `json:"app_ext2"`
 }
 
-type XmwUrlParam struct {
+type xmwExtParam struct {
 	AccessToken    string `json:"access_token"`
 	ClientId       string `json:"client_id"`
 	ClientSecret   string `json:"client_secret"`
@@ -44,64 +44,52 @@ type XmwUrlParam struct {
 
 type Xmw struct {
 	Cr
-	channelParams *map[string]interface{}
-	urlParam      XmwUrlParam
-	channelRet    XmwCoChannelRet
 }
 
-func CoNewXmw(lr *models.LoginRequest, orderId, host, urlJsonParam string, channelParams *map[string]interface{}) *Xmw {
-	ret := new(Xmw)
-	ret.Init(lr, orderId, host, urlJsonParam, channelParams)
-	return ret
-}
+func (this *Xmw) Prepare(lr *models.LoginRequest, orderId, extParamStr string,
+	channelParams *map[string]interface{}, ctx *context.Context) (err error) {
 
-func (this *Xmw) Init(lr *models.LoginRequest, orderId, host, urlJsonParam string, channelParams *map[string]interface{}) {
-	this.Cr.Init(lr, orderId, host, urlJsonParam)
-	this.Method = "POST"
-	this.channelParams = channelParams
-}
-
-func (this *Xmw) InitParam() (err error) {
-	if err = json.Unmarshal([]byte(this.urlJsonParam), &this.urlParam); err != nil {
-		beego.Trace(err, ":", this.urlJsonParam)
+	if err = this.Cr.Initial(lr, orderId, new(xmwChannelRet), new(xmwExtParam),
+		extParamStr, channelParams, ctx); err != nil {
+		beego.Error(err)
+		return err
 	}
+
+	this.Method = "POST"
 
 	tiemStamp := strconv.FormatInt(time.Now().Unix(), 10)
 	clientSecret := (*this.channelParams)["XMWAPPSECRET"].(string)
-	clientId := (*this.channelParams)["XMWAPPID"].(string)
 
+	extParam := this.extParam.(*xmwExtParam)
 	format := "amount=%s&app_order_id=%s&app_user_id=%s&notify_url=%s&timestamp=%s&client_secret=%s"
-	content := fmt.Sprintf(format,
-		this.urlParam.Amount, this.orderId,
-		this.urlParam.AppUserId, this.urlParam.NotifyUrl, tiemStamp, clientSecret)
-	beego.Trace(content)
+	content := fmt.Sprintf(format, extParam.Amount, this.orderId, extParam.AppUserId,
+		extParam.NotifyUrl, tiemStamp, clientSecret)
+	//beego.Trace(content)
 	sign := tool.Md5([]byte(content))
 
-	format = "http://open.xmwan.com/v2/purchases?" +
-		"amount=%s&app_order_id=%s&app_user_id=%s" +
+	format = "http://open.xmwan.com/v2/purchases?" + "amount=%s&app_order_id=%s&app_user_id=%s" +
 		"&notify_url=%s&timestamp=%s&sign=%s&access_token=%s&client_id=%s&client_secret=%s"
-	this.Url = fmt.Sprintf(format,
-		this.urlParam.Amount, this.orderId,
-		this.urlParam.AppUserId, this.urlParam.NotifyUrl,
-		tiemStamp, sign, this.urlParam.AccessToken, clientId, clientSecret)
-	beego.Trace(this.Url)
+	clientId := (*this.channelParams)["XMWAPPID"].(string)
+	this.Url = fmt.Sprintf(format, extParam.Amount, this.orderId, extParam.AppUserId,
+		extParam.NotifyUrl, tiemStamp, sign, extParam.AccessToken, clientId, clientSecret)
+	//beego.Trace(this.Url)
 
-	this.Cr.InitParam()
-	return
+	return nil
 }
 
 func (this *Xmw) ParseChannelRet() (err error) {
-	beego.Trace(this.Result)
-	if err = json.Unmarshal([]byte(this.Result), &this.channelRet); err != nil {
+	if err = this.Cr.ParseChannelRet(); err != nil {
 		beego.Error(err)
 		return
 	}
-	if this.channelRet.Error != "" {
-		err = errors.New(this.channelRet.Error)
+
+	channelRet := this.channelRet.(*xmwChannelRet)
+	if channelRet.Error != "" {
+		err = errors.New(channelRet.Error)
 		beego.Error(err)
 		return
 	}
-	this.ChannelOrderId = this.channelRet.Serial
+	this.channelOrderId = channelRet.Serial
 	return
 }
 

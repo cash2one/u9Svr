@@ -1,10 +1,10 @@
 package androidPackage
 
 import (
-	"github.com/astaxie/beego"
+	// "github.com/astaxie/beego"
 	"os"
 	"u9/models"
-	"u9/tool"
+	// "u9/tool"
 )
 
 const (
@@ -42,8 +42,8 @@ func (this *Smali) Handle() {
 	if err := os.RemoveAll(examplePath); err != nil {
 		panic(err)
 	}
-	if err := tool.CopyDir(libPath, this.packagePath); err != nil {
-		beego.Trace(err)
-		panic(err)
-	}
+	// if err := tool.CopyDir(libPath, this.packagePath); err != nil {
+	// 	beego.Trace(err)
+	// 	panic(err)
+	// }
 }
