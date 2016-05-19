@@ -50,7 +50,7 @@ func (this *Tencent) Init(mlr *models.LoginRequest, args *map[string]interface{}
 		}
 		this.appId = (*this.args)["QQ_APP_ID"].(string)
 		this.appKey = (*this.args)["QQ_APP_KEY"].(string)
-	} else if extParam.LoginType == "WEIXIN" {
+	} else if extParam.LoginType == "WX" {
 		if extParam.Debug {
 			this.Url = "http://ysdktest.qq.com/auth/wx_check_token"
 		} else {
@@ -59,7 +59,7 @@ func (this *Tencent) Init(mlr *models.LoginRequest, args *map[string]interface{}
 		this.appId = (*this.args)["WX_APP_ID"].(string)
 		this.appKey = (*this.args)["WX_APP_KEY"].(string)
 	} else {
-		beego.Error(errors.New("login type is error, must in (QQ, WEIXIN)"))
+		beego.Error(errors.New("login type is error, must in (QQ, WX)"))
 		beego.Error(extParam)
 	}
 

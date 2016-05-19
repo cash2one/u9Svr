@@ -62,7 +62,7 @@ func GetTencentPayQueryUrl(debug bool,
 
 	content = content + "&sig=" + encodeSign
 	ret = ret + content
-	beego.Trace(payKey + `&`)
+
 	beego.Trace(ret)
 	return
 }
@@ -71,16 +71,31 @@ func GetTencentPayQueryCookie(loginType string) (ret string, err error) {
 	ret = ""
 	if loginType == "QQ" {
 		ret = "session_id=openid;session_type=kp_actoken"
-	} else if loginType == "WEIXIN" {
+	} else if loginType == "WX" {
 		ret = "session_id=hy_gameid;session_type=wc_actoken"
 	} else {
-		err = errors.New("login type is error, must in (QQ, WEIXIN)")
+		err = errors.New("login type is error, must in (QQ, WX)")
 		beego.Error(err)
 		return
 	}
 	ret = ret + ";" + TencentPayQueryOrgLoc
 	beego.Trace(ret)
 	return ret, nil
+}
+
+func GetTencentPayParamName(loginType string) (appId, appKey, payKey string, err error) {
+	if loginType == "QQ" {
+		appKey = "QQ_APP_KEY"
+	} else if loginType == "WX" {
+		appKey = "WX_APP_KEY"
+	} else {
+		err = errors.New("login type is error, must in (QQ, WX)")
+		beego.Error(err)
+		return
+	}
+	appId = "QQ_APP_ID"
+	payKey = "PAY_KEY"
+	return
 }
 
 func (this *Tencent) Prepare(lr *models.LoginRequest, orderId, extParamStr string,
@@ -95,18 +110,14 @@ func (this *Tencent) Prepare(lr *models.LoginRequest, orderId, extParamStr strin
 	this.IsHttps = true
 	extParam := this.extParam.(*TencentExtParam)
 
-	if extParam.LoginType == "QQ" {
-		this.parseAppId("QQ_APP_ID")
-		this.parseAppKey("QQ_APP_KEY")
-	} else if extParam.LoginType == "WEIXIN" {
-		this.parseAppId("WX_APP_ID")
-		this.parseAppKey("WX_APP_KEY")
-	} else {
-		beego.Error(errors.New("login type is error, must in (QQ, WEIXIN)"))
-		beego.Error("extParamStr" + extParamStr)
+	var appId, appKey, payKey string
+	if appId, appKey, payKey, err = GetTencentPayParamName(extParam.LoginType); err != nil {
+		beego.Error("extParamStr:" + extParamStr)
 		return
 	}
-	this.parsePayKey("PAY_KEY")
+	this.parseAppId(appId)
+	this.parseAppKey(appKey)
+	this.parsePayKey(payKey)
 
 	this.Url = GetTencentPayQueryUrl(extParam.Debug,
 		extParam.OpenId, extParam.OpenKey, extParam.PayToken, extParam.Pf,

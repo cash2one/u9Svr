@@ -15,6 +15,7 @@ func init() {
 	//pay api
 	beego.Router("/api/gamePayRequest", &pay.PayController{}, "*:PayRequest")
 	beego.Router("/api/channelPayNotify/?:productId/?:channelId", &pay.PayController{}, "*:ChannelPayNotify")
+	beego.Router("/api/getNewChannel/?:productId/?:channelId", &pay.PayController{}, "*:GetNewChannel")
 
 	//test
 	beego.Router("/test", &test.Test{}, "*:Test1")

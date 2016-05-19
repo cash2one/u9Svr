@@ -2,8 +2,6 @@ package channelPayNotify
 
 import (
 	"encoding/json"
-	"errors"
-	"fmt"
 	"github.com/astaxie/beego"
 	"net/url"
 	"strconv"
@@ -63,7 +61,7 @@ func (this *Tencent) parseUrlParam() (err error) {
 	}
 
 	data := this.data.(*tencentResData)
-	beego.Trace(fmt.Sprintf("data:%v", data))
+	//beego.Trace(fmt.Sprintf("data:%v", data))
 
 	if err = json.Unmarshal([]byte(data.ChannelRet), &this.clientChannelRet); err != nil {
 		return
@@ -75,14 +73,8 @@ func (this *Tencent) parseUrlParam() (err error) {
 	}
 	//beego.Trace(fmt.Sprintf("clientExtParam:%v", this.clientExtParam))
 
-	if this.clientExtParam.LoginType == "QQ" {
-		this.gameIdKeyName = "QQ_APP_ID"
-		this.gameKeyKeyName = "QQ_APP_KEY"
-	} else if this.clientExtParam.LoginType == "WEIXIN" {
-		this.gameIdKeyName = "WX_APP_ID"
-		this.gameKeyKeyName = "WX_APP_KEY"
-	} else {
-		err = errors.New("login type is error, must in (QQ, WEIXIN)")
+	if this.gameIdKeyName, this.gameKeyKeyName, _, err =
+		createOrder.GetTencentPayParamName(this.clientExtParam.LoginType); err != nil {
 		return
 	}
 
@@ -106,6 +98,7 @@ func (this *Tencent) ParseParam() (err error) {
 	if err = this.parseChannelGameID(this.gameIdKeyName); err != nil {
 		return
 	}
+
 	if err = this.parseChannelGameKey(this.gameKeyKeyName); err != nil {
 		return
 	}
