@@ -229,3 +229,11 @@ func (this *Res) setStringsXml() {
 		panic(err)
 	}
 }
+
+func (this *Res) setChannel(){
+
+}
+
+func (this *Res) setTencent(){
+	
+}

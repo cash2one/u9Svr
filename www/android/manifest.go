@@ -162,7 +162,7 @@ func (this *Manifest) setMeta() {
 		ctMetaEl.AddAttr("android:value", this.channel.Type)
 	}
 	
-
+	//特殊渠道meta-data 不加 \0
 	for k, v := range this.channelSdkParams {
 		el := this.productAppEl.GetNodeByPathAndAttr("meta-data", "android:name", k)
 		if el != nil {
@@ -231,27 +231,30 @@ func (this *Manifest) setPack() {
 }
 
 func (this *Manifest) setTencent() {
+	//获取参数
 	jsonParam := new(map[string]interface{})
 		if err := json.Unmarshal([]byte(this.packageParam.XmlParam), jsonParam); err != nil {
 			beego.Error(err)
 		}
-	beego.Trace(jsonParam)
+	//修改QQ相关参数
 	ptAppElAcQQ := this.productAppEl.GetNodeByPathAndAttr("activity", "android:name","com.tencent.tauth.AuthActivity")
-	beego.Trace(ptAppElAcQQ)
-	ptAppElIfQQ := ptAppElAcQQ.GetNodeByPath("intent-filter")
-	beego.Trace(ptAppElIfQQ)
-
-	
+	ptAppElIfQQ := ptAppElAcQQ.Node("intent-filter")
 	valueQQ := (*jsonParam)["QQ_APP_ID"].(string)
-	beego.Trace(valueQQ)
 	var qq_appid string = "tencent" + valueQQ
-	beego.Trace(qq_appid)
-	// ptAppElIfQQ.GetNodeByPathAndAttr("data","android:scheme",qq_appid)
-
-	ptAppElAcWX := this.productAppEl.GetNodeByPathAndAttr("activity", "android:name", "com.tencent.tmgp.game79.mw.nlhj.wxapi.WXEntryActivity")
-	ptAppElIfWX := ptAppElAcWX.GetNodeByPath("intent-filter")
+	vqq := ptAppElIfQQ.GetNodeByPathAndAttr("data","android:scheme","tencent1105310119")
+	vqq.AddAttr("android:scheme",qq_appid)
+	//修改微信相关参数
+	ptAppElAcWX := this.productAppEl.GetNodeByPathAndAttr("activity", "android:name", "com.tencent.tmgp.cqwz.wxapi.WXEntryActivity")
+	ptAppElAcWX.AddAttr("android:taskAffinity",this.packageParam.PackageName+".diff")
+	ptAppElAcWX.AddAttr("android:name",this.packageParam.PackageName+".wxapi.WXEntryActivity")
+	ptAppElIfWX := ptAppElAcWX.Node("intent-filter")
 	valueWX := (*jsonParam)["WX_APP_ID"].(string)
 	beego.Trace(valueWX)
-	ptAppElIfWX.GetNodeByPathAndAttr("data","android:scheme",valueWX)
+	vwx := ptAppElIfWX.GetNodeByPathAndAttr("data","android:scheme","wxa87b932b65d13d54")
+	vwx.AddAttr("android:scheme",valueWX)
+	
+	mainActivity := (*jsonParam)["MainActivity"].(string)
+	ptAppElMain := this.productAppEl.GetNodeByPathAndAttr("activity","android:name",mainActivity)
+	ptAppElMain.RemoveNodes("intent-filter")
 
 }

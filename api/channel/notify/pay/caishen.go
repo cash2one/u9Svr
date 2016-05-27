@@ -34,7 +34,6 @@ func NewXcs(channelId, productId int, urlParams *url.Values) *Xcs {
 
 func (this *Xcs) Init(channelId, productId int, urlParams *url.Values) {
 	this.Base.Init(channelId, productId, urlParams, &caishenUrlKeys)
-	this.payKey = err_caishenGetUrlParam
 }
 
 func (this *Xcs) parsePayKey() (err error) {

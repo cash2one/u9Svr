@@ -56,6 +56,7 @@ func NewTT(channelId, productId int, urlParams *url.Values, ctx *context.Context
 func (this *TT) Init(channelId, productId int, urlParams *url.Values, ctx *context.Context) {
 	this.Base.Init(channelId, productId, urlParams, &ttUrlKeys)
 	this.ctx = ctx
+	this.existChannelUserId = false
 }
 
 func (this *TT) parsePayKey() (err error) {

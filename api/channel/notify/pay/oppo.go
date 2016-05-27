@@ -33,6 +33,7 @@ func NewOppo(channelId, productId int, urlParams *url.Values) *Oppo {
 
 func (this *Oppo) Init(channelId, productId int, urlParams *url.Values) {
 	this.Base.Init(channelId, productId, urlParams, &oppoUrlKeys)
+	this.existChannelUserId = false
 	this.initRsaPublicKey()
 }
 

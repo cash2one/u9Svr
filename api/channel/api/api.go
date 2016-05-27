@@ -46,6 +46,8 @@ func CallLoginRequest(mlr *models.LoginRequest) (ret *common.BasicRet) {
 		fallthrough
 	case 143: //全民游戏
 		fallthrough
+	case 145: //全民游戏
+		fallthrough
 	case 123: //熊猫玩
 		beego.Trace(fmt.Sprintf("channelId:%d", mlr.ChannelId))
 		ret.SetCode(0)
@@ -106,6 +108,8 @@ func CallLoginRequest(mlr *models.LoginRequest) (ret *common.BasicRet) {
 		llr = loginRequest.LrNewTT(mlr, jsonParam)
 	case 141:
 		llr = loginRequest.LrNewC07073(mlr, jsonParam)
+	case 144:
+		llr = loginRequest.LrNewVivo(mlr, jsonParam)
 	default:
 		ret.SetCode(3004)
 		return
@@ -167,24 +171,22 @@ func CallCreateOrder(mlr *models.LoginRequest, orderId,
 			return
 		}
 	}
-
 	var co createOrder.CreateOrder
 	switch mlr.ChannelId {
 	case 112: //魅族游戏
 		co = new(createOrder.Meizu)
-		//co = createOrder.CoNewMeizu(mlr, orderId, extParamStr, channelParams, ctx)
 	case 120: //金立
 		co = new(createOrder.Amigo)
-		//co = createOrder.CoNewAmigo(mlr, orderId, extParamStr, channelParams, ctx)
 	case 123: //熊猫玩
 		co = new(createOrder.Xmw)
-		//co = createOrder.CoNewXmw(mlr, orderId, extParamStr, channelParams, ctx)
 	case 136: //小财神
 		co = new(createOrder.Caishen)
-		//co = createOrder.CoNewCaishen(mlr, orderId, extParamStr, channelParams, ctx)
 	case 139: //tencent
 		co = new(createOrder.Tencent)
-		//co = createOrder.CoNewTencent(mlr, orderId, extParamStr, channelParams, ctx)
+	case 144: //vivo
+		co = new(createOrder.Vivo)
+	case 145: //huawei
+		co = new(createOrder.Huawei)
 	default:
 		return
 	}

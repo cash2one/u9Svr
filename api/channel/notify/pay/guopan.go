@@ -52,7 +52,7 @@ func (this *Guopan) parseUrlParam() (err error) {
 
 	this.orderId = this.urlParams.Get("serialNumber")
 	this.channelOrderId = this.urlParams.Get("trade_no")
-	// this.channelUserId = this.
+
 	payAmount := 0.0
 	if payAmount, err = strconv.ParseFloat(this.urlParams.Get("money"), 64); err != nil {
 		return err

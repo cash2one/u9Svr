@@ -98,6 +98,10 @@ func CallPayNotify(channelId, productId int, urlParams *url.Values, ctx *context
 		pn = NewPengyouwan(channelId, productId, urlParams)
 	case 143:
 		pn = NewQmyx(channelId, productId, urlParams)
+	case 144:
+		pn = NewVivo(channelId, productId, urlParams, ctx)
+	case 145:
+		pn = NewHuawei(channelId, productId, urlParams, ctx)
 	default:
 		err = errors.New("channelId isn't exist.")
 		return

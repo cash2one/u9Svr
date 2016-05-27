@@ -82,7 +82,7 @@ func (this *PackageTaskHandle) Init(packageTaskId int) {
 	this.publish = NewPublish(this.packageTask.Id, &this.product, &this.productVersion,
 		&this.channel, &this.packageParam)
 	beego.Trace("Publish")
-	this.buildId = NewBuildId(this.packageTask.Id,&this.channel ,&this.product, &this.productVersion)
+	this.buildId = NewBuildId(this.packageTask.Id,&this.channel ,&this.product, &this.productVersion,&this.packageParam)
 	beego.Trace("BuildId")
 
 }

@@ -23,7 +23,7 @@ type Caishen struct {
 func (this *Caishen) Prepare(lr *models.LoginRequest, orderId, extParamStr string,
 	channelParams *map[string]interface{}, ctx *context.Context) (err error) {
 
-	if err = this.Cr.Initial(lr, orderId, nil, new(xmwExtParam),
+	if err = this.Cr.Initial(lr, orderId, nil, new(caishenExtParam),
 		extParamStr, channelParams, ctx); err != nil {
 		beego.Error(err)
 		return err

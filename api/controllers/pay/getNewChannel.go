@@ -27,7 +27,7 @@ func (this *PayController) GetNewChannel() {
 	var pp models.PackageParam
 	err = pp.Query().Filter("channelId", channelId).Filter("productId", productId).One(&pp)
 	if err != nil {
-		format := "packageParam exception: channelId=(%s),productId=(%s)"
+		format := "packageParam exception: channelId=(%d),productId=(%d)"
 		ret.Code = 1
 		ret.Message = fmt.Sprintf(format, channelId, productId)
 		return
@@ -48,4 +48,6 @@ func (this *PayController) GetNewChannel() {
 		err = errors.New(ret.Message)
 		return
 	}
+	ret.SetCode(0)
+
 }

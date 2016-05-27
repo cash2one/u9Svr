@@ -47,3 +47,11 @@ func (this *Smali) Handle() {
 	// 	panic(err)
 	// }
 }
+
+func (this *Smali) Channel(){
+
+}
+
+func (this *Smali) setTencent(){
+	
+}

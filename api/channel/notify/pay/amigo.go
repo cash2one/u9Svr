@@ -13,10 +13,9 @@ var amigoUrlKeys []string = []string{"api_key", "close_time", "create_time", "de
 	"pay_channel", "submit_time", "user_id", "sign"}
 
 const (
-	err_amigoParseApiKey      = 12001
-	err_amigoResultFailure    = 12002
-	err_amigoInitRsaPublicKey = 12003
-	amigoRsaPublicKeyStr      = `MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCkdZLJ5OCrpxM9EdfTUPA/kM95dgcf7pNMvLmdSbXO9U/LVlhNg1q1EBABXzddK5kURM3vNShsfuAichOVJj+0rV3iYcdym9ZJA6cbRhwBWY76PMmfl9ysj+2g7DxIpNrA7mx0XEEC5++67meSO77qafnSRa884BHEBJF/RoGSBwIDAQAB`
+	err_amigoParseApiKey   = 12001
+	err_amigoResultFailure = 12002
+	amigoRsaPublicKeyStr   = `MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCkdZLJ5OCrpxM9EdfTUPA/kM95dgcf7pNMvLmdSbXO9U/LVlhNg1q1EBABXzddK5kURM3vNShsfuAichOVJj+0rV3iYcdym9ZJA6cbRhwBWY76PMmfl9ysj+2g7DxIpNrA7mx0XEEC5++67meSO77qafnSRa884BHEBJF/RoGSBwIDAQAB`
 )
 
 var (
@@ -42,7 +41,7 @@ func (this *Amigo) initRsaPublicKey() (err error) {
 	if amigoRsaPublicKey == nil {
 		amigoRsaPublicKey, err = tool.ParsePKIXPublicKeyWithStr(amigoRsaPublicKeyStr)
 		if err != nil {
-			this.callbackRet = err_amigoInitRsaPublicKey
+			this.callbackRet = err_parseRsaPublicKey
 			beego.Error(err)
 			return err
 		}

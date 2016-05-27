@@ -78,7 +78,9 @@ func Ant(projectName, method string) (err error) {
 	args[1] = projectName
 	args[2] = method
 	cmd := exec.Command("ant", args...)
-	_, err = cmd.Output()
+	if _, err = cmd.Output();err != nil{
+		beego.Trace("ant",args)
+	}
 	return
 }
 

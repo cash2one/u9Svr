@@ -39,3 +39,4 @@ func CopyFile(srcName, dstName string) (int64, error) {
 	defer dst.Close()
 	return io.Copy(dst, src)
 }
+

@@ -25,6 +25,7 @@ type CYGame struct {
 func NewCYGame(channelId, productId int, urlParams *url.Values) *CYGame {
 	ret := new(CYGame)
 	ret.Init(channelId, productId, urlParams)
+
 	return ret
 }
 

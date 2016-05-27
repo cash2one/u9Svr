@@ -36,6 +36,7 @@ const (
 	err_parseChannelGameId
 	err_parseChannelGameKey
 	err_parseChannelPayKey
+	err_parseRsaPublicKey
 	err_parseOrderRequest
 	err_parseLoginRequest
 	err_parseChannelRet
@@ -74,7 +75,8 @@ type Base struct {
 	payAmount      int
 	productKey     string
 
-	callbackRet int //0:success 1:failure
+	callbackRet        int //0:success 1:failure
+	existChannelUserId bool
 }
 
 func (this *Base) Init(channelId, productId int, urlParams *url.Values, urlKeys *[]string) {
@@ -87,6 +89,7 @@ func (this *Base) Init(channelId, productId int, urlParams *url.Values, urlKeys 
 	this.urlKeys = urlKeys
 
 	this.callbackRet = err_noerror
+	this.existChannelUserId = true
 }
 
 func (this *Base) InitWithCtx(channelId, productId int, urlParams *url.Values, urlKeys *[]string, ctx *context.Context) {
@@ -262,7 +265,7 @@ func (this *Base) ParseChannelRet() (err error) {
 		return
 	}
 
-	if this.channelUserId != this.loginRequest.ChannelUserid {
+	if this.existChannelUserId && this.channelUserId != this.loginRequest.ChannelUserid {
 		this.callbackRet = err_channelUserIsNotExist
 		msg := fmt.Sprintf("channelUserId is invalid, db(%s), url(%s)",
 			this.loginRequest.ChannelUserid, this.channelUserId)
@@ -302,10 +305,14 @@ func (this *Base) ParseParam() (err error) {
 }
 
 func (this *Base) notifyProductSvr() (err error) {
+	gameServerRet := ""
 	defer func() {
 		if err != nil {
 			this.callbackRet = err_notifyProductSvr
 			beego.Error(err)
+			format := "this.orderRequest:%+v"
+			beego.Error(fmt.Sprintf(format, this.orderRequest))
+			beego.Error("gameServerRet:" + gameServerRet)
 		}
 	}()
 
@@ -327,6 +334,8 @@ func (this *Base) notifyProductSvr() (err error) {
 		if _, err = req.Response(); err != nil {
 			return
 		}
+
+		gameServerRet, _ = req.String()
 		if err = req.ToJSON(&this.ProductRet); err != nil {
 			return
 		}
@@ -336,13 +345,11 @@ func (this *Base) notifyProductSvr() (err error) {
 
 	this.orderRequest.ProductCode = this.ProductRet.Code
 	this.orderRequest.ProductMessage = this.ProductRet.Message
+	this.orderRequest.State = 2
 	this.orderRequest.Update("State", "ProductMessage", "ProductCode")
 
-	if this.ProductRet.Code == 0 {
-		this.orderRequest.State = 2
-	} else {
+	if this.ProductRet.Code != 0 {
 		this.callbackRet = err_callbackFail
-		return
 	}
 	return
 }

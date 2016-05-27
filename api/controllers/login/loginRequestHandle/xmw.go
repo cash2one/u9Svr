@@ -8,7 +8,7 @@ import (
 	"u9/models"
 )
 
-type XMWChannelRet struct {
+type xmwChannelRet struct {
 	Error            string `json:"error"`
 	ErrorDescription string `json:"error_description"`
 	AccessToken      string `json:"access_token"`
@@ -22,10 +22,10 @@ type XMWChannelRet struct {
 
 type XMW struct {
 	LRH
+	channelRet        xmwChannelRet
 	authorizationCode string
 	clientId          string
 	clientSecret      string
-	channelRet        XMWChannelRet
 }
 
 func NewXMW() *XMW {
@@ -73,8 +73,8 @@ func (this *XMW) getAccessToken() (err error) {
 		beego.Error(err)
 		return
 	}
-	this.channelRet.Error = ""
-
+	//this.channelRet.Error = ""
+	this.param.Token = this.channelRet.AccessToken
 	return
 }
 
@@ -99,7 +99,7 @@ func (this *XMW) getUserInfo() (err error) {
 		beego.Error(err)
 		return
 	}
-	this.channelRet.Error = ""
+	//this.channelRet.Error = ""
 
 	this.param.ChannelUserId = this.channelRet.XmwOpenId
 	this.param.ChannelUserName = this.channelRet.Nickname
@@ -119,6 +119,7 @@ func (this *XMW) Handle() (ret string, err error) {
 	return
 }
 
-func (this *XMW) GetToken() (ret string) {
-	return this.channelRet.AccessToken
-}
+// func (this *XMW) GetChannelResult() (ret interface{}) {
+// 	//return this.channelRet.AccessToken
+// 	return this.channelRet
+// }

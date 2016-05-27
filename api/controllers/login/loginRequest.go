@@ -40,7 +40,18 @@ func (this *LoginController) handleLrParam() (err error) {
 		if this.lrRet.ChannelExt, err = lrh.Handle(); err != nil {
 			return
 		}
-		this.lrParam.Token = lrh.GetToken()
+		//channelResult := lrh.GetChannelResult().(loginRequestHandle.XMWChannelRet)
+		//this.lrParam.Token = channelResult.AccessToken //lrh.GetToken()
+		return
+	case 145: //huawei
+		var lrh loginRequestHandle.LRHandle
+		lrh = loginRequestHandle.NewHuawei()
+		if err = lrh.Init(&this.lrParam); err != nil {
+			return
+		}
+		if this.lrRet.ChannelExt, err = lrh.Handle(); err != nil {
+			return
+		}
 		return
 	default:
 		if this.lrParam.ChannelUserId == "" {
