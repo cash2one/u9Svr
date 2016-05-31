@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/orm"
 	"time"
 )
@@ -18,8 +19,8 @@ type PackageParam struct {
 	IconType    int8
 	PackageIcon string    `orm:"size(512)"`
 	JsonParam   string    `orm:"size(512)"`
-	XmlParam  string   `orm:"size(2048)"`
-	ExtParam      string       `orm:"size(512)"`
+	XmlParam    string    `orm:"size(2048)"`
+	ExtParam    string    `orm:"size(512)"`
 	UpdateTime  time.Time `orm:"auto_now_add;type(datatime)"`
 }
 
@@ -67,6 +68,7 @@ func (m *PackageParam) GetXmlParam(channelId, productId int, key string) (ret st
 
 	args := new(map[string]string)
 	if err = json.Unmarshal([]byte(m.XmlParam), args); err != nil {
+		beego.Error(m.XmlParam)
 		return
 	}
 

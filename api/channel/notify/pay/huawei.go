@@ -123,12 +123,13 @@ func (this *Huawei) CheckSign() (err error) {
 	excludeItems := []string{"sign"}
 	sorter := tool.NewUrlValuesSorter(this.urlParams, &excludeItems)
 	sort.Sort(sorter)
-	content := sorter.Body()
+	content := sorter.DefaultBody()
 	beego.Trace(content)
 	urlSign := this.urlParams.Get("sign")
 	if err = tool.RsaVerifyPKCS1v15(huaweiRsaPublicKey, content, urlSign); err != nil {
 		msg := fmt.Sprintf("Sign is invalid, content:%s, urlSign:%s", content, urlSign)
 		err = errors.New(msg)
+		return
 	}
 
 	return

@@ -30,35 +30,29 @@ func (this *LoginController) handleLrParam() (err error) {
 		err = errors.New("loginRequest' param parse error.")
 		return
 	}
+	var lrh loginRequestHandle.LRHandle
 	switch this.lrParam.ChannelId {
 	case 123: //熊猫玩
-		var lrh loginRequestHandle.LRHandle
 		lrh = loginRequestHandle.NewXMW()
-		if err = lrh.Init(&this.lrParam); err != nil {
-			return
-		}
-		if this.lrRet.ChannelExt, err = lrh.Handle(); err != nil {
-			return
-		}
-		//channelResult := lrh.GetChannelResult().(loginRequestHandle.XMWChannelRet)
-		//this.lrParam.Token = channelResult.AccessToken //lrh.GetToken()
-		return
 	case 145: //huawei
-		var lrh loginRequestHandle.LRHandle
 		lrh = loginRequestHandle.NewHuawei()
-		if err = lrh.Init(&this.lrParam); err != nil {
-			return
-		}
-		if this.lrRet.ChannelExt, err = lrh.Handle(); err != nil {
-			return
-		}
-		return
+	case 146: //lenovo
+		lrh = loginRequestHandle.NewLenovo()
+	case 147: //qihoo360
+		lrh = loginRequestHandle.NewQihoo360()
 	default:
 		if this.lrParam.ChannelUserId == "" {
 			this.lrRet.SetCode(1001)
 			err = errors.New("Require channelUserId.")
 			return
 		}
+	}
+
+	if err = lrh.Init(&this.lrParam); err != nil {
+		return
+	}
+	if this.lrRet.ChannelExt, err = lrh.Handle(); err != nil {
+		return
 	}
 	return
 }

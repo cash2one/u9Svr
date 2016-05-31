@@ -37,6 +37,7 @@ const (
 	err_parseChannelGameKey
 	err_parseChannelPayKey
 	err_parseRsaPublicKey
+	err_parseRsaPrivateKey
 	err_parseOrderRequest
 	err_parseLoginRequest
 	err_parseChannelRet
@@ -365,6 +366,7 @@ func (this *Base) handleOrder() (err error) {
 	this.orderRequest.State = 1
 	err = this.orderRequest.Update("State")
 	if err != nil {
+		beego.Error("orderRequest:update state fail.")
 		return
 	}
 
@@ -376,7 +378,7 @@ func (this *Base) handleOrder() (err error) {
 	}
 
 	if !created {
-		//err = errors.New("order is exist")
+		beego.Warn("PayOrder:order is exist.")
 		return
 	}
 

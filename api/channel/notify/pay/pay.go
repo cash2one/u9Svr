@@ -28,6 +28,8 @@ func CallPayNotify(channelId, productId int, urlParams *url.Values, ctx *context
 		pn = NewTest(channelId, productId, urlParams)
 	case 101:
 		pn = NewDangle(channelId, productId, urlParams)
+	case 102:
+		pn = NewQihoo360(channelId, productId, urlParams, ctx)
 	case 103:
 		pn = NewAnZhi(channelId, productId, urlParams)
 	case 104:
@@ -102,6 +104,8 @@ func CallPayNotify(channelId, productId int, urlParams *url.Values, ctx *context
 		pn = NewVivo(channelId, productId, urlParams, ctx)
 	case 145:
 		pn = NewHuawei(channelId, productId, urlParams, ctx)
+	case 146:
+		pn = NewLenovo(channelId, productId, urlParams, ctx)
 	default:
 		err = errors.New("channelId isn't exist.")
 		return

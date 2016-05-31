@@ -32,9 +32,13 @@ func CallLoginRequest(mlr *models.LoginRequest) (ret *common.BasicRet) {
 	switch mlr.ChannelId {
 	case testChannelId: //test
 		fallthrough
+	case 102: //qihoo360
+		fallthrough
 	case 113: //拇指玩
 		fallthrough
 	case 122: //6YGame
+		fallthrough
+	case 123: //熊猫玩
 		fallthrough
 	case 127: //htc
 		fallthrough
@@ -46,9 +50,9 @@ func CallLoginRequest(mlr *models.LoginRequest) (ret *common.BasicRet) {
 		fallthrough
 	case 143: //全民游戏
 		fallthrough
-	case 145: //全民游戏
+	case 145: //huawei
 		fallthrough
-	case 123: //熊猫玩
+	case 146: //lenovo
 		beego.Trace(fmt.Sprintf("channelId:%d", mlr.ChannelId))
 		ret.SetCode(0)
 		return

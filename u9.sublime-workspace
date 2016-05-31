@@ -4,16 +4,56 @@
 		"selected_items":
 		[
 			[
+				"conte",
+				"content	 ν"
+			],
+			[
+				"q",
+				"QueryEscape	string ƒ"
+			],
+			[
+				"cont",
+				"content	 ν"
+			],
+			[
+				"ga",
+				"channelGameKey	string ν"
+			],
+			[
+				"t",
+				"token	string ν"
+			],
+			[
+				"e",
+				"ErrorDescription	string ν"
+			],
+			[
+				"err_channel",
+				"err_parseChannelPayKey	 Ɩ"
+			],
+			[
+				"err_fail",
+				"err_callbackFail	 Ɩ"
+			],
+			[
+				"Newh",
+				"NewHuawei	*Huawei ƒ"
+			],
+			[
+				"pr",
+				"Println	n int, err error ƒ"
+			],
+			[
+				"or",
+				"CpOrderNumber	string ν"
+			],
+			[
 				"Res",
 				"RespMsg	string ν"
 			],
 			[
 				"p",
 				"Printf	n int, err error ƒ"
-			],
-			[
-				"pr",
-				"Print	n int, err error ƒ"
 			],
 			[
 				"cp",
@@ -164,10 +204,6 @@
 				"parseAppKey	key string ƒ"
 			],
 			[
-				"q",
-				"QueryUnescape	string, error ƒ"
-			],
-			[
 				"str",
 				"strlen	int ν"
 			],
@@ -190,10 +226,6 @@
 			[
 				"parseChannelGa",
 				"parseChannelGameKey	err error ƒ"
-			],
-			[
-				"or",
-				"OrderStatus	string ν"
 			],
 			[
 				"a",
@@ -290,10 +322,6 @@
 			[
 				"n",
 				"UnixNano	int64 ƒ"
-			],
-			[
-				"e",
-				"ext	 ν"
 			],
 			[
 				"ca",
@@ -486,68 +514,42 @@
 			[
 				"spr",
 				"Sprintf	string ƒ"
-			],
-			[
-				"Parse",
-				"ParseInt	i int64, err error ƒ"
-			],
-			[
-				"sp",
-				"Sprintf	string ƒ"
-			],
-			[
-				"chann",
-				"channelUserName	string ν"
-			],
-			[
-				"ex",
-				"Exist	bool ƒ"
-			],
-			[
-				"imp",
-				"import	import (...) ʂ"
 			]
 		]
 	},
 	"buffers":
 	[
 		{
-			"file": "api/channel/api/loginRequest/vivo.go",
+			"file": "api/channel/api/loginRequest/lenovo.go",
 			"settings":
 			{
-				"buffer_size": 1239,
+				"buffer_size": 1119,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "api/channel/api/api.go",
+			"contents": "Searching 102 files for \"\"encoding/xml\"\" (case sensitive)\n\nd:\\go\\src\\u9\\api\\channel\\notify\\pay\\gfan.go:\n    3  import (\n    4  	\"bytes\"\n    5: 	\"encoding/xml\"\n    6  	\"errors\"\n    7  	\"fmt\"\n\nd:\\go\\src\\u9\\api\\channel\\notify\\pay\\jiuyou.go:\n    3  import (\n    4  	\"bytes\"\n    5: 	\"encoding/xml\"\n    6  	\"errors\"\n    7  	\"fmt\"\n\n2 matches across 2 files\n\n\nSearching 102 files for \"ioutil\" (case sensitive)\n\nd:\\go\\src\\u9\\api\\debug:\n    <binary>\n\n191 matches in 1 file\n\n\nSearching 7369 files for \"ioutil\" (case sensitive)\n\nd:\\go\\src\\9fans.net\\go\\acme\\acme.go:\n   11  	\"errors\"\n   12  	\"fmt\"\n   13: 	\"io/ioutil\"\n   14  	\"strconv\"\n   15  	\"strings\"\n   ..\n  139  	}\n  140  	defer index.Close()\n  141: 	data, err := ioutil.ReadAll(index)\n  142  	if err != nil {\n  143  		return nil, err\n  ...\n  279  		return nil, err\n  280  	}\n  281: 	return ioutil.ReadAll(f)\n  282  }\n  283  \n\nd:\\go\\src\\9fans.net\\go\\acme\\acmego\\main.go:\n   13  	\"flag\"\n   14  	\"fmt\"\n   15: 	\"io/ioutil\"\n   16  	\"log\"\n   17  	\"os\"\n   ..\n   52  	defer w.CloseFiles()\n   53  \n   54: 	old, err := ioutil.ReadFile(name)\n   55  	if err != nil {\n   56  		//log.Print(err)\n   ..\n  101  	}\n  102  \n  103: 	f, err := ioutil.TempFile(\"\", \"acmego\")\n  104  	if err != nil {\n  105  		log.Print(err)\n\nd:\\go\\src\\9fans.net\\go\\acme\\acmego\\read.go:\n  188  }\n  189  \n  190: // readComments is like ioutil.ReadAll, except that it only reads the leading\n  191  // block of comments in the file.\n  192  func readComments(f io.Reader) ([]byte, error) {\n  ...\n  200  }\n  201  \n  202: // readImports is like ioutil.ReadAll, except that it expects a Go file as input\n  203  // and stops reading the input once the imports have completed.\n  204  func readImports(f io.Reader, reportSyntaxError bool) ([]byte, error) {\n\nd:\\go\\src\\9fans.net\\go\\draw\\getsubfont.go:\n    5  	\"fmt\"\n    6  	\"image\"\n    7: 	\"io/ioutil\"\n    8  	\"log\"\n    9  	\"os\"\n   ..\n   13  func getsubfont(d *Display, name string) (*Subfont, error) {\n   14  	scale, fname := parsefontscale(name)\n   15: 	data, err := ioutil.ReadFile(fname)\n   16  	if err != nil && strings.HasPrefix(fname, \"/mnt/font/\") {\n   17  		data1, err1 := fontPipe(fname[len(\"/mnt/font/\"):])\n\nd:\\go\\src\\9fans.net\\go\\draw\\openfont.go:\n    4  	\"bytes\"\n    5  	\"fmt\"\n    6: 	\"io/ioutil\"\n    7  	\"log\"\n    8  	\"os\"\n    .\n   40  	scale, fname := parsefontscale(name)\n   41  \n   42: 	data, err := ioutil.ReadFile(fname)\n   43  \n   44  	if err != nil && strings.HasPrefix(fname, \"/lib/font/bit/\") {\n   ..\n   48  		}\n   49  		name1 := root + \"/font/\" + fname[len(\"/lib/font/bit/\"):]\n   50: 		data1, err1 := ioutil.ReadFile(name1)\n   51  		fname, data, err = name1, data1, err1\n   52  		if scale > 1 {\n\nd:\\go\\src\\9fans.net\\go\\plan9\\client\\fid.go:\n    3  import (\n    4  	\"io\"\n    5: 	\"io/ioutil\"\n    6  	\"os\"\n    7  	\"strings\"\n    .\n   53  \n   54  func (fid *Fid) Dirreadall() ([]*plan9.Dir, error) {\n   55: 	buf, err := ioutil.ReadAll(fid)\n   56  	if len(buf) == 0 {\n   57  		return nil, err\n\nd:\\go\\src\\code.google.com\\p\\graphics-go\\graphics\\detect\\opencv_parser.go:\n   12  	\"image\"\n   13  	\"io\"\n   14: 	\"io/ioutil\"\n   15  	\"strconv\"\n   16  	\"strings\"\n   ..\n  110  func ParseOpenCV(r io.Reader) (cascade *Cascade, name string, err error) {\n  111  	// BUG(crawshaw): tag-based parsing doesn't seem to work with <_>\n  112: 	buf, err := ioutil.ReadAll(r)\n  113  	if err != nil {\n  114  		return\n\nd:\\go\\src\\fragmenta\\assets\\assets.go:\n    8  	\"encoding/json\"\n    9  	\"fmt\"\n   10: 	\"io/ioutil\"\n   11  	\"path\"\n   12  	\"path/filepath\"\n   ..\n   98  \n   99  	// Write our assets json file to the path\n  100: 	err = ioutil.WriteFile(c.path, data, 0644)\n  101  	if err != nil {\n  102  		return fmt.Errorf(\"Error writing assets file %s %v\", c.path, err)\n  ...\n  114  \n  115  	// Read our assets json file from the path\n  116: 	file, err := ioutil.ReadFile(c.path)\n  117  	if err != nil {\n  118  		return fmt.Errorf(\"Error opening assets file %s %v\", c.path, err)\n\nd:\\go\\src\\fragmenta\\assets\\file.go:\n    4  	\"bytes\"\n    5  	\"fmt\"\n    6: 	\"io/ioutil\"\n    7  	\"os\"\n    8  	\"path\"\n    .\n   24  \n   25  	// Load file from path to get bytes\n   26: 	bytes, err := ioutil.ReadFile(p)\n   27  	if err != nil {\n   28  		return &File{}, err\n   ..\n   88  // Copy our bytes to dstpath\n   89  func (f *File) Copy(dst string) error {\n   90: 	err := ioutil.WriteFile(dst, f.bytes, permissions)\n   91  	if err != nil {\n   92  		return err\n\nd:\\go\\src\\fragmenta\\assets\\group.go:\n    6  	\"github.com/fragmenta/assets/internal/cssmin\"\n    7  	\"github.com/fragmenta/assets/internal/jsmin\"\n    8: 	\"io/ioutil\"\n    9  	\"os\"\n   10  	\"path\"\n   ..\n  125  	// Minify CSS\n  126  	miniCSS := cssmin.Minify(styleWriter.Bytes())\n  127: 	err = ioutil.WriteFile(g.StylePath(dst), miniCSS, permissions)\n  128  	if err != nil {\n  129  		return err\n  ...\n  136  	}\n  137  \n  138: 	err = ioutil.WriteFile(g.ScriptPath(dst), minijs, permissions)\n  139  	if err != nil {\n  140  		return err\n\nd:\\go\\src\\fragmenta\\fragmenta-cms\\src\\app\\bootstrap.go:\n    7  	\"fmt\"\n    8  	\"io\"\n    9: 	\"io/ioutil\"\n   10  	\"log\"\n   11  	\"os\"\n   ..\n  140  \n  141  	// Write the config json file\n  142: 	err = ioutil.WriteFile(configPath, configJSON, permissions)\n  143  	if err != nil {\n  144  		log.Printf(\"Error writing config %s %v\", configPath, err)\n  ...\n  161  	// Generate a migration to create db with today's date\n  162  	file := migrationPath(projectPath, createDatabaseMigrationName)\n  163: 	err := ioutil.WriteFile(file, []byte(sql), 0744)\n  164  	if err != nil {\n  165  		return err\n  ...\n  169  	createTablesPath := path.Join(projectPath, \"db\", \"migrate\", createTablesMigrationName+\".sql.tmpl\")\n  170  	if fileExists(createTablesPath) {\n  171: 		sql, err := ioutil.ReadFile(createTablesPath)\n  172  		if err != nil {\n  173  			return err\n  ...\n  178  \n  179  		file = migrationPath(projectPath, createTablesMigrationName)\n  180: 		err = ioutil.WriteFile(file, []byte(sqlString), 0744)\n  181  		if err != nil {\n  182  			return err\n\nd:\\go\\src\\fragmenta\\fragmenta-cms\\src\\pages\\actions\\setup.go:\n    3  import (\n    4  	\"fmt\"\n    5: 	\"io/ioutil\"\n    6  \n    7  	\"strings\"\n    .\n   70  	// and put it into the text field of a new page with id 1\n   71  \n   72: 	welcomeText, err := ioutil.ReadFile(\"src/pages/views/welcome.html.got\")\n   73  	if err != nil {\n   74  		return router.InternalError(err)\n\nd:\\go\\src\\fragmenta\\fragmenta\\fragmenta.go:\n    9  	\"fmt\"\n   10  	\"io\"\n   11: 	\"io/ioutil\"\n   12  	\"log\"\n   13  	\"os\"\n   ..\n  282  \n  283  	// Read the config json file\n  284: 	file, err := ioutil.ReadFile(configPath)\n  285  	if err != nil {\n  286  		log.Printf(\"Error opening config %s %v\", configPath, err)\n\nd:\\go\\src\\fragmenta\\fragmenta\\generate.go:\n    4  	\"bytes\"\n    5  	\"fmt\"\n    6: 	\"io/ioutil\"\n    7  	\"log\"\n    8  	\"os\"\n    .\n  131  \n  132  	routesPath := appRoutesFilePath()\n  133: 	data, err := ioutil.ReadFile(routesPath)\n  134  	if err != nil {\n  135  		fmt.Printf(\"#error Error reading routes at:%s :%s\", routesPath, err)\n  ...\n  153  	routes = strings.Replace(routes, importStart, importStart+resourceImport, 1)\n  154  \n  155: 	err = ioutil.WriteFile(routesPath, []byte(routes), permissions)\n  156  	if err != nil {\n  157  		fmt.Println(\"Error writing routes file: \", routesPath)\n  ...\n  335  \n  336  	// Read the file\n  337: 	template, err := ioutil.ReadFile(srcPath)\n  338  	if err != nil {\n  339  		log.Fatal(\"Error reading file \", srcPath)\n  ...\n  347  \n  348  	// Now write out again at same path\n  349: 	err = ioutil.WriteFile(dstPath, []byte(output), permissions)\n  350  	if err != nil {\n  351  		log.Fatal(\"Error writing file \", dstPath)\n  ...\n  613  	fmt.Println(\"Generating migration: \", name)\n  614  \n  615: 	err := ioutil.WriteFile(path, []byte(content), 0744)\n  616  	if err != nil {\n  617  		fmt.Println(\"Error writing migration file: \", path)\n\nd:\\go\\src\\fragmenta\\fragmenta\\new.go:\n    7  	\"fmt\"\n    8  	\"io\"\n    9: 	\"io/ioutil\"\n   10  	\"log\"\n   11  	\"os\"\n   ..\n  156  	for _, f := range files {\n  157  		// Load the file, if it contains refs to goprojectpath, replace them with relative project path imports\n  158: 		data, err := ioutil.ReadFile(f)\n  159  		if err != nil {\n  160  			return err\n  ...\n  167  		}\n  168  \n  169: 		err = ioutil.WriteFile(f, []byte(fileString), permissions)\n  170  		if err != nil {\n  171  			return err\n  ...\n  203  	// Generate a migration to create db with today's date\n  204  	file := migrationPath(projectPath, createDatabaseMigrationName)\n  205: 	err := ioutil.WriteFile(file, []byte(sql), 0744)\n  206  	if err != nil {\n  207  		return err\n  ...\n  211  	createTablesPath := path.Join(projectPath, \"db\", \"migrate\", createTablesMigrationName+\".sql.tmpl\")\n  212  	if fileExists(createTablesPath) {\n  213: 		sql, err := ioutil.ReadFile(createTablesPath)\n  214  		if err != nil {\n  215  			return err\n  ...\n  220  \n  221  		file = migrationPath(projectPath, createTablesMigrationName)\n  222: 		err = ioutil.WriteFile(file, []byte(sqlString), 0744)\n  223  		if err != nil {\n  224  			return err\n  ...\n  290  \n  291  	// Write the config json file\n  292: 	err = ioutil.WriteFile(configPath, configJSON, permissions)\n  293  	if err != nil {\n  294  		log.Printf(\"Error writing config %s %v\", configPath, err)\n\nd:\\go\\src\\fragmenta\\query\\query_test.go:\n    4  	\"fmt\"\n    5  	\"io\"\n    6: 	\"io/ioutil\"\n    7  	\"os\"\n    8  	\"os/exec\"\n    .\n  435  \n  436  	// read whole the file\n  437: 	bytes, err := ioutil.ReadFile(\"./tests/query_test_mysql.sql\")\n  438  	if err != nil {\n  439  		t.Fatalf(\"MYSQL DB ERROR: %s\", err)\n\nd:\\go\\src\\fragmenta\\server\\config.go:\n    5  	\"flag\"\n    6  	\"fmt\"\n    7: 	\"io/ioutil\"\n    8  	\"strconv\"\n    9  )\n   ..\n   70  \n   71  	// Read the config json file\n   72: 	file, err := ioutil.ReadFile(path)\n   73  	if err != nil {\n   74  		return fmt.Errorf(\"Error opening config %s %v\", path, err)\n\nd:\\go\\src\\fragmenta\\view\\parser\\template.go:\n    5  	\"fmt\"\n    6  	\"io\"\n    7: 	\"io/ioutil\"\n    8  	\"regexp\"\n    9  )\n   ..\n  158  // Utility method to read files into a string\n  159  func (t *BaseTemplate) readFile(path string) (string, error) {\n  160: 	fileBytes, err := ioutil.ReadFile(path)\n  161  	if err != nil {\n  162  		println(\"Error reading template file at path \", path)\n\nd:\\go\\src\\fragmenta\\view\\translation\\translation.go:\n    5  	\"encoding/json\"\n    6  	\"fmt\"\n    7: 	\"io/ioutil\"\n    8  	\"os\"\n    9  	\"path\"\n   ..\n   65  	// For each file, load all strings in the json file,\n   66  	//  and add them to our list of translations\n   67: 	file, err := ioutil.ReadFile(p)\n   68  	if err != nil {\n   69  		return fmt.Errorf(\"Error opening file %s %v\", p, err)\n\nd:\\go\\src\\github.com\\astaxie\\beego\\config\\ini.go:\n   21  	\"fmt\"\n   22  	\"io\"\n   23: 	\"io/ioutil\"\n   24  	\"os\"\n   25  	\"path\"\n   ..\n  177  	tmpName := path.Join(os.TempDir(), \"beego\", fmt.Sprintf(\"%d\", time.Now().Nanosecond()))\n  178  	os.MkdirAll(path.Dir(tmpName), os.ModePerm)\n  179: 	if err := ioutil.WriteFile(tmpName, data, 0655); err != nil {\n  180  		return nil, err\n  181  	}\n\nd:\\go\\src\\github.com\\astaxie\\beego\\config\\json.go:\n   18  	\"encoding/json\"\n   19  	\"errors\"\n   20: 	\"io/ioutil\"\n   21  	\"os\"\n   22  	\"strings\"\n   ..\n   35  	}\n   36  	defer file.Close()\n   37: 	content, err := ioutil.ReadAll(file)\n   38  	if err != nil {\n   39  		return nil, err\n\nd:\\go\\src\\github.com\\astaxie\\beego\\config\\xml\\xml.go:\n   34  	\"errors\"\n   35  	\"fmt\"\n   36: 	\"io/ioutil\"\n   37  	\"os\"\n   38  	\"path\"\n   ..\n   60  \n   61  	x := &ConfigContainer{data: make(map[string]interface{})}\n   62: 	content, err := ioutil.ReadAll(file)\n   63  	if err != nil {\n   64  		return nil, err\n   ..\n   79  	tmpName := path.Join(os.TempDir(), \"beego\", fmt.Sprintf(\"%d\", time.Now().Nanosecond()))\n   80  	os.MkdirAll(path.Dir(tmpName), os.ModePerm)\n   81: 	if err := ioutil.WriteFile(tmpName, data, 0655); err != nil {\n   82  		return nil, err\n   83  	}\n\nd:\\go\\src\\github.com\\astaxie\\beego\\config\\yaml\\yaml.go:\n   35  	\"errors\"\n   36  	\"fmt\"\n   37: 	\"io/ioutil\"\n   38  	\"log\"\n   39  	\"os\"\n   ..\n   67  	tmpName := path.Join(os.TempDir(), \"beego\", fmt.Sprintf(\"%d\", time.Now().Nanosecond()))\n   68  	os.MkdirAll(path.Dir(tmpName), os.ModePerm)\n   69: 	if err := ioutil.WriteFile(tmpName, data, 0655); err != nil {\n   70  		return nil, err\n   71  	}\n   ..\n   82  	defer f.Close()\n   83  \n   84: 	buf, err := ioutil.ReadAll(f)\n   85  	if err != nil || len(buf) < 3 {\n   86  		return\n\nd:\\go\\src\\github.com\\astaxie\\beego\\context\\input.go:\n   19  	\"errors\"\n   20  	\"io\"\n   21: 	\"io/ioutil\"\n   22  	\"net/url\"\n   23  	\"reflect\"\n   ..\n  328  func (input *BeegoInput) CopyBody(MaxMemory int64) []byte {\n  329  	safe := &io.LimitedReader{R: input.Context.Request.Body, N: MaxMemory}\n  330: 	requestbody, _ := ioutil.ReadAll(safe)\n  331  	input.Context.Request.Body.Close()\n  332  	bf := bytes.NewBuffer(requestbody)\n  333: 	input.Context.Request.Body = ioutil.NopCloser(bf)\n  334  	input.RequestBody = requestbody\n  335  	return requestbody\n\nd:\\go\\src\\github.com\\astaxie\\beego\\httplib\\httplib.go:\n   39  	\"encoding/xml\"\n   40  	\"io\"\n   41: 	\"io/ioutil\"\n   42  	\"log\"\n   43  	\"mime/multipart\"\n   ..\n  289  	case string:\n  290  		bf := bytes.NewBufferString(t)\n  291: 		b.req.Body = ioutil.NopCloser(bf)\n  292  		b.req.ContentLength = int64(len(t))\n  293  	case []byte:\n  294  		bf := bytes.NewBuffer(t)\n  295: 		b.req.Body = ioutil.NopCloser(bf)\n  296  		b.req.ContentLength = int64(len(t))\n  297  	}\n  ...\n  307  			return b, err\n  308  		}\n  309: 		b.req.Body = ioutil.NopCloser(buf)\n  310  		b.req.ContentLength = int64(buf.Len())\n  311  		b.req.Header.Set(\"Content-Type\", \"application/json\")\n  ...\n  357  			}()\n  358  			b.Header(\"Content-Type\", bodyWriter.FormDataContentType())\n  359: 			b.req.Body = ioutil.NopCloser(pr)\n  360  			return\n  361  		}\n  ...\n  487  			return nil, err\n  488  		}\n  489: 		b.body, err = ioutil.ReadAll(reader)\n  490  	} else {\n  491: 		b.body, err = ioutil.ReadAll(resp.Body)\n  492  	}\n  493  	return b.body, err\n\nd:\\go\\src\\github.com\\astaxie\\beego\\httplib\\httplib_test.go:\n   16  \n   17  import (\n   18: 	\"io/ioutil\"\n   19  	\"os\"\n   20  	\"strings\"\n   ..\n  202  	}\n  203  	defer os.Remove(f)\n  204: 	b, err := ioutil.ReadFile(f)\n  205  	if n := strings.Index(string(b), \"origin\"); n == -1 {\n  206  		t.Fatal(err)\n\nd:\\go\\src\\github.com\\astaxie\\beego\\orm\\orm_test.go:\n   19  	\"database/sql\"\n   20  	\"fmt\"\n   21: 	\"io/ioutil\"\n   22  	\"os\"\n   23  	\"path/filepath\"\n   ..\n  109  	fun := runtime.FuncForPC(pc)\n  110  	_, fn := filepath.Split(file)\n  111: 	data, err := ioutil.ReadFile(file)\n  112  	var codes []string\n  113  	if err == nil {\n\nd:\\go\\src\\github.com\\astaxie\\beego\\parser.go:\n   22  	\"go/parser\"\n   23  	\"go/token\"\n   24: 	\"io/ioutil\"\n   25  	\"os\"\n   26  	\"path\"\n   ..\n  187  	}\n  188  	if utils.FileExists(lastupdateFilename) {\n  189: 		content, err := ioutil.ReadFile(lastupdateFilename)\n  190  		if err != nil {\n  191  			return true\n  ...\n  215  		return\n  216  	}\n  217: 	ioutil.WriteFile(lastupdateFilename, d, os.ModePerm)\n  218  }\n  219  \n  220  func getpathTime(pkgRealpath string) (lastupdate int64, err error) {\n  221: 	fl, err := ioutil.ReadDir(pkgRealpath)\n  222  	if err != nil {\n  223  		return lastupdate, err\n\nd:\\go\\src\\github.com\\astaxie\\beego\\session\\sess_file.go:\n   19  	\"fmt\"\n   20  	\"io\"\n   21: 	\"io/ioutil\"\n   22  	\"net/http\"\n   23  	\"os\"\n   ..\n  137  	os.Chtimes(path.Join(fp.savePath, string(sid[0]), string(sid[1]), sid), time.Now(), time.Now())\n  138  	var kv map[interface{}]interface{}\n  139: 	b, err := ioutil.ReadAll(f)\n  140  	if err != nil {\n  141  		return nil, err\n  ...\n  234  	os.Chtimes(path.Join(fp.savePath, string(sid[0]), string(sid[1]), sid), time.Now(), time.Now())\n  235  	var kv map[interface{}]interface{}\n  236: 	b, err := ioutil.ReadAll(newf)\n  237  	if err != nil {\n  238  		return nil, err\n\nd:\\go\\src\\github.com\\astaxie\\beego\\staticfile_test.go:\n    6  	\"compress/zlib\"\n    7  	\"io\"\n    8: 	\"io/ioutil\"\n    9  	\"os\"\n   10  	\"testing\"\n   ..\n   27  func TestOpenStaticFile_1(t *testing.T) {\n   28  	file, _ := os.Open(licenseFile)\n   29: 	content, _ := ioutil.ReadAll(file)\n   30  	testOpenFile(\"\", content, t)\n   31  }\n   ..\n   37  	io.Copy(fileWriter, file)\n   38  	fileWriter.Close()\n   39: 	content, _ := ioutil.ReadAll(&zipBuf)\n   40  \n   41  	testOpenFile(\"gzip\", content, t)\n   ..\n   47  	io.Copy(fileWriter, file)\n   48  	fileWriter.Close()\n   49: 	content, _ := ioutil.ReadAll(&zipBuf)\n   50  \n   51  	testOpenFile(\"deflate\", content, t)\n   ..\n   58  		t.Fail()\n   59  	}\n   60: 	bs, _ := ioutil.ReadAll(sch)\n   61  	for i, v := range content {\n   62  		if v != bs[i] {\n\nd:\\go\\src\\github.com\\astaxie\\beego\\template.go:\n   19  	\"fmt\"\n   20  	\"html/template\"\n   21: 	\"io/ioutil\"\n   22  	\"os\"\n   23  	\"path/filepath\"\n   ..\n  169  		panic(\"can't find template file:\" + file)\n  170  	}\n  171: 	data, err := ioutil.ReadFile(fileabspath)\n  172  	if err != nil {\n  173  		return nil, [][]string{}, err\n  ...\n  236  			for _, otherfile := range others {\n  237  				fileabspath := filepath.Join(root, otherfile)\n  238: 				data, err := ioutil.ReadFile(fileabspath)\n  239  				if err != nil {\n  240  					continue\n\nd:\\go\\src\\github.com\\beego\\bee\\autorouter.go:\n   25  	\"go/token\"\n   26  	\"io\"\n   27: 	\"io/ioutil\"\n   28  	\"os\"\n   29  	\"path\"\n   ..\n  251  	if strings.HasPrefix(path, w.pdoc.ImportPath+\"/\") {\n  252  		if src, ok := w.srcs[path[len(w.pdoc.ImportPath)+1:]]; ok {\n  253: 			return ioutil.NopCloser(bytes.NewReader(src.data)), nil\n  254  		}\n  255  	}\n\nd:\\go\\src\\github.com\\beego\\bee\\fix.go:\n    4  	\"go/parser\"\n    5  	\"go/token\"\n    6: 	\"io/ioutil\"\n    7  	\"os\"\n    8  	\"path/filepath\"\n    .\n  157  func fixFile(file string) error {\n  158  	rp := strings.NewReplacer(rules...)\n  159: 	content, err := ioutil.ReadFile(file)\n  160  	if err != nil {\n  161  		return err\n  ...\n  215  		return err\n  216  	}\n  217: 	return ioutil.WriteFile(file, []byte(fixed), 0666)\n  218  }\n  219  \n\nd:\\go\\src\\github.com\\beego\\bee\\pack.go:\n   22  	\"fmt\"\n   23  	\"io\"\n   24: 	\"io/ioutil\"\n   25  	\"os\"\n   26  	\"os/exec\"\n   ..\n  460  	for _, fi := range fis {\n  461  		if fi.IsDir() == false && strings.HasSuffix(fi.Name(), \".go\") {\n  462: 			data, err := ioutil.ReadFile(path.Join(thePath, fi.Name()))\n  463  			if err != nil {\n  464  				continue\n\nd:\\go\\src\\github.com\\beego\\bee\\run.go:\n   17  import (\n   18  	\"fmt\"\n   19: 	\"io/ioutil\"\n   20  	\"log\"\n   21  	\"os\"\n   ..\n  138  \n  139  func readAppDirectories(directory string, paths *[]string) {\n  140: 	fileInfos, err := ioutil.ReadDir(directory)\n  141  	if err != nil {\n  142  		return\n\nd:\\go\\src\\github.com\\BurntSushi\\graphics-go\\graphics\\detect\\opencv_parser.go:\n   12  	\"image\"\n   13  	\"io\"\n   14: 	\"io/ioutil\"\n   15  	\"strconv\"\n   16  	\"strings\"\n   ..\n  110  func ParseOpenCV(r io.Reader) (cascade *Cascade, name string, err error) {\n  111  	// BUG(crawshaw): tag-based parsing doesn't seem to work with <_>\n  112: 	buf, err := ioutil.ReadAll(r)\n  113  	if err != nil {\n  114  		return\n\nd:\\go\\src\\github.com\\derekparker\\delve\\_fixtures\\locationsprog.go:\n    3  import (\n    4  	\"fmt\"\n    5: 	\"io/ioutil\"\n    6  )\n    7  \n    .\n   34  	a.SomeFunction()\n   35  	anotherFunction()\n   36: 	ioutil.ReadFile(\"nonexistent.file.txt\")\n   37  }\n   38  \n\nd:\\go\\src\\github.com\\derekparker\\delve\\config\\config.go:\n    3  import (\n    4  	\"fmt\"\n    5: 	\"io/ioutil\"\n    6  	\"os\"\n    7  	\"os/user\"\n    .\n   46  	}()\n   47  \n   48: 	data, err := ioutil.ReadAll(f)\n   49  	if err != nil {\n   50  		fmt.Printf(\"Unable to read config data: %v.\", err)\n\nd:\\go\\src\\github.com\\derekparker\\delve\\dwarf\\frame\\entries_test.go:\n    3  import (\n    4  	\"encoding/binary\"\n    5: 	\"io/ioutil\"\n    6  	\"os\"\n    7  	\"testing\"\n    .\n   37  	defer f.Close()\n   38  \n   39: 	data, err := ioutil.ReadAll(f)\n   40  	if err != nil {\n   41  		b.Fatal(err)\n\nd:\\go\\src\\github.com\\derekparker\\delve\\dwarf\\frame\\parser_test.go:\n    3  import (\n    4  	\"encoding/binary\"\n    5: 	\"io/ioutil\"\n    6  	\"os\"\n    7  	\"testing\"\n    .\n   19  	defer f.Close()\n   20  \n   21: 	data, err := ioutil.ReadAll(f)\n   22  	if err != nil {\n   23  		b.Fatal(err)\n\nd:\\go\\src\\github.com\\derekparker\\delve\\proc\\proc_linux.go:\n    5  	\"errors\"\n    6  	\"fmt\"\n    7: 	\"io/ioutil\"\n    8  	\"os\"\n    9  	\"os/exec\"\n   ..\n  338  	defer wg.Done()\n  339  \n  340: 	comm, err := ioutil.ReadFile(fmt.Sprintf(\"/proc/%d/comm\", dbp.Pid))\n  341  	if err != nil {\n  342  		fmt.Printf(\"Could not read process comm name: %v\\n\", err)\n\nd:\\go\\src\\github.com\\derekparker\\delve\\service\\debugger\\debugger_linux.go:\n    4  	\"fmt\"\n    5  	sys \"golang.org/x/sys/unix\"\n    6: 	\"io/ioutil\"\n    7  	\"os\"\n    8  	\"syscall\"\n    .\n   14  		switch serr {\n   15  		case syscall.EPERM:\n   16: 			bs, err := ioutil.ReadFile(\"/proc/sys/kernel/yama/ptrace_scope\")\n   17  			if err == nil && len(bs) >= 1 && bs[0] != '0' {\n   18  				// Yama documentation: https://www.kernel.org/doc/Documentation/security/Yama.txt\n\nd:\\go\\src\\github.com\\derekparker\\delve\\service\\rpc1\\server.go:\n    4  	\"errors\"\n    5  	\"fmt\"\n    6: 	\"io/ioutil\"\n    7  	\"log\"\n    8  	\"net\"\n    .\n   37  	log.SetFlags(log.Ldate | log.Ltime | log.Lshortfile)\n   38  	if !logEnabled {\n   39: 		log.SetOutput(ioutil.Discard)\n   40  	}\n   41  	log.Printf(\"Using API v1\")\n\nd:\\go\\src\\github.com\\derekparker\\delve\\service\\rpc2\\server.go:\n    4  	\"errors\"\n    5  	\"fmt\"\n    6: 	\"io/ioutil\"\n    7  	\"log\"\n    8  	\"net\"\n    .\n   34  	log.SetFlags(log.Ldate | log.Ltime | log.Lshortfile)\n   35  	if !logEnabled {\n   36: 		log.SetOutput(ioutil.Discard)\n   37  	}\n   38  \n\nd:\\go\\src\\github.com\\derekparker\\delve\\service\\test\\integration1_test.go:\n  570  \n  571  		// Issue #275\n  572: 		readfile := findLocationHelper(t, c, \"io/ioutil.ReadFile\", false, 1, 0)[0]\n  573  \n  574  		// Issue #296\n  575: 		findLocationHelper(t, c, \"/io/ioutil.ReadFile\", false, 1, readfile)\n  576: 		findLocationHelper(t, c, \"ioutil.ReadFile\", false, 1, readfile)\n  577  \n  578  		stringAddrs := findLocationHelper(t, c, \"/^main.*Type.*String$/\", false, 2, 0)\n\nd:\\go\\src\\github.com\\derekparker\\delve\\service\\test\\integration2_test.go:\n  577  \n  578  		// Issue #275\n  579: 		readfile := findLocationHelper(t, c, \"io/ioutil.ReadFile\", false, 1, 0)[0]\n  580  \n  581  		// Issue #296\n  582: 		findLocationHelper(t, c, \"/io/ioutil.ReadFile\", false, 1, readfile)\n  583: 		findLocationHelper(t, c, \"ioutil.ReadFile\", false, 1, readfile)\n  584  \n  585  		stringAddrs := findLocationHelper(t, c, \"/^main.*Type.*String$/\", false, 2, 0)\n\nd:\\go\\src\\github.com\\derekparker\\delve\\terminal\\command_test.go:\n    3  import (\n    4  	\"fmt\"\n    5: 	\"io/ioutil\"\n    6  	\"net\"\n    7  	\"os\"\n    .\n   25  	cmdstr, args := parseCommand(cmdstr)\n   26  \n   27: 	outfh, err := ioutil.TempFile(\"\", \"cmdtestout\")\n   28  	if err != nil {\n   29  		ft.t.Fatalf(\"could not create temporary file: %v\", err)\n   ..\n   35  		os.Stdout, os.Stderr = stdout, stderr\n   36  		outfh.Close()\n   37: 		outbs, err1 := ioutil.ReadFile(outfh.Name())\n   38  		if err1 != nil {\n   39  			ft.t.Fatalf(\"could not read temporary output file: %v\", err)\n\nd:\\go\\src\\github.com\\derekparker\\delve\\vendor\\github.com\\davecheney\\profile\\profile.go:\n    4  \n    5  import (\n    6: 	\"io/ioutil\"\n    7  	\"log\"\n    8  	\"os\"\n    .\n   33  	// ProfilePath controls the base path where various profiling\n   34  	// files are written. If blank, the base path will be generated\n   35: 	// by ioutil.TempDir.\n   36  	ProfilePath string\n   37  \n   ..\n   90  	var err error\n   91  	if path == \"\" {\n   92: 		path, err = ioutil.TempDir(\"\", \"profile\")\n   93  	} else {\n   94  		err = os.MkdirAll(path, 0777)\n\nd:\\go\\src\\github.com\\derekparker\\delve\\vendor\\github.com\\spf13\\cobra\\bash_completions.md:\n    7  \n    8  import (\n    9:         \"io/ioutil\"\n   10          \"os\"\n   11  \n   ..\n   14  \n   15  func main() {\n   16:         kubectl := cmd.NewFactory(nil).NewKubectlCommand(os.Stdin, ioutil.Discard, ioutil.Discard)\n   17          kubectl.GenBashCompletionFile(\"out.sh\")\n   18  }\n\nd:\\go\\src\\github.com\\derekparker\\delve\\vendor\\github.com\\spf13\\cobra\\doc\\md_docs.md:\n   30  \n   31  import (\n   32: 	\"io/ioutil\"\n   33  	\"os\"\n   34  \n   ..\n   40  \n   41  func main() {\n   42: 	cmd := kubectlcmd.NewKubectlCommand(cmdutil.NewFactory(nil), os.Stdin, ioutil.Discard, ioutil.Discard)\n   43  	doc.GenMarkdownTree(cmd, \"./\")\n   44  }\n\nd:\\go\\src\\github.com\\fragmenta\\assets\\assets.go:\n    8  	\"encoding/json\"\n    9  	\"fmt\"\n   10: 	\"io/ioutil\"\n   11  	\"path\"\n   12  	\"path/filepath\"\n   ..\n   98  \n   99  	// Write our assets json file to the path\n  100: 	err = ioutil.WriteFile(c.path, data, 0644)\n  101  	if err != nil {\n  102  		return fmt.Errorf(\"Error writing assets file %s %v\", c.path, err)\n  ...\n  114  \n  115  	// Read our assets json file from the path\n  116: 	file, err := ioutil.ReadFile(c.path)\n  117  	if err != nil {\n  118  		return fmt.Errorf(\"Error opening assets file %s %v\", c.path, err)\n\nd:\\go\\src\\github.com\\fragmenta\\assets\\file.go:\n    4  	\"bytes\"\n    5  	\"fmt\"\n    6: 	\"io/ioutil\"\n    7  	\"os\"\n    8  	\"path\"\n    .\n   24  \n   25  	// Load file from path to get bytes\n   26: 	bytes, err := ioutil.ReadFile(p)\n   27  	if err != nil {\n   28  		return &File{}, err\n   ..\n   88  // Copy our bytes to dstpath\n   89  func (f *File) Copy(dst string) error {\n   90: 	err := ioutil.WriteFile(dst, f.bytes, permissions)\n   91  	if err != nil {\n   92  		return err\n\nd:\\go\\src\\github.com\\fragmenta\\assets\\group.go:\n    6  	\"github.com/fragmenta/assets/internal/cssmin\"\n    7  	\"github.com/fragmenta/assets/internal/jsmin\"\n    8: 	\"io/ioutil\"\n    9  	\"os\"\n   10  	\"path\"\n   ..\n  125  	// Minify CSS\n  126  	miniCSS := cssmin.Minify(styleWriter.Bytes())\n  127: 	err = ioutil.WriteFile(g.StylePath(dst), miniCSS, permissions)\n  128  	if err != nil {\n  129  		return err\n  ...\n  136  	}\n  137  \n  138: 	err = ioutil.WriteFile(g.ScriptPath(dst), minijs, permissions)\n  139  	if err != nil {\n  140  		return err\n\nd:\\go\\src\\github.com\\fragmenta\\fragmenta\\fragmenta.go:\n    9  	\"fmt\"\n   10  	\"io\"\n   11: 	\"io/ioutil\"\n   12  	\"log\"\n   13  	\"os\"\n   ..\n  282  \n  283  	// Read the config json file\n  284: 	file, err := ioutil.ReadFile(configPath)\n  285  	if err != nil {\n  286  		log.Printf(\"Error opening config %s %v\", configPath, err)\n\nd:\\go\\src\\github.com\\fragmenta\\fragmenta\\generate.go:\n    4  	\"bytes\"\n    5  	\"fmt\"\n    6: 	\"io/ioutil\"\n    7  	\"log\"\n    8  	\"os\"\n    .\n  131  \n  132  	routesPath := appRoutesFilePath()\n  133: 	data, err := ioutil.ReadFile(routesPath)\n  134  	if err != nil {\n  135  		fmt.Printf(\"#error Error reading routes at:%s :%s\", routesPath, err)\n  ...\n  153  	routes = strings.Replace(routes, importStart, importStart+resourceImport, 1)\n  154  \n  155: 	err = ioutil.WriteFile(routesPath, []byte(routes), permissions)\n  156  	if err != nil {\n  157  		fmt.Println(\"Error writing routes file: \", routesPath)\n  ...\n  335  \n  336  	// Read the file\n  337: 	template, err := ioutil.ReadFile(srcPath)\n  338  	if err != nil {\n  339  		log.Fatal(\"Error reading file \", srcPath)\n  ...\n  347  \n  348  	// Now write out again at same path\n  349: 	err = ioutil.WriteFile(dstPath, []byte(output), permissions)\n  350  	if err != nil {\n  351  		log.Fatal(\"Error writing file \", dstPath)\n  ...\n  613  	fmt.Println(\"Generating migration: \", name)\n  614  \n  615: 	err := ioutil.WriteFile(path, []byte(content), 0744)\n  616  	if err != nil {\n  617  		fmt.Println(\"Error writing migration file: \", path)\n\nd:\\go\\src\\github.com\\fragmenta\\fragmenta\\new.go:\n    7  	\"fmt\"\n    8  	\"io\"\n    9: 	\"io/ioutil\"\n   10  	\"log\"\n   11  	\"os\"\n   ..\n  156  	for _, f := range files {\n  157  		// Load the file, if it contains refs to goprojectpath, replace them with relative project path imports\n  158: 		data, err := ioutil.ReadFile(f)\n  159  		if err != nil {\n  160  			return err\n  ...\n  167  		}\n  168  \n  169: 		err = ioutil.WriteFile(f, []byte(fileString), permissions)\n  170  		if err != nil {\n  171  			return err\n  ...\n  203  	// Generate a migration to create db with today's date\n  204  	file := migrationPath(projectPath, createDatabaseMigrationName)\n  205: 	err := ioutil.WriteFile(file, []byte(sql), 0744)\n  206  	if err != nil {\n  207  		return err\n  ...\n  211  	createTablesPath := path.Join(projectPath, \"db\", \"migrate\", createTablesMigrationName+\".sql.tmpl\")\n  212  	if fileExists(createTablesPath) {\n  213: 		sql, err := ioutil.ReadFile(createTablesPath)\n  214  		if err != nil {\n  215  			return err\n  ...\n  220  \n  221  		file = migrationPath(projectPath, createTablesMigrationName)\n  222: 		err = ioutil.WriteFile(file, []byte(sqlString), 0744)\n  223  		if err != nil {\n  224  			return err\n  ...\n  290  \n  291  	// Write the config json file\n  292: 	err = ioutil.WriteFile(configPath, configJSON, permissions)\n  293  	if err != nil {\n  294  		log.Printf(\"Error writing config %s %v\", configPath, err)\n\nd:\\go\\src\\github.com\\fragmenta\\query\\query_test.go:\n    4  	\"fmt\"\n    5  	\"io\"\n    6: 	\"io/ioutil\"\n    7  	\"os\"\n    8  	\"os/exec\"\n    .\n  435  \n  436  	// read whole the file\n  437: 	bytes, err := ioutil.ReadFile(\"./tests/query_test_mysql.sql\")\n  438  	if err != nil {\n  439  		t.Fatalf(\"MYSQL DB ERROR: %s\", err)\n\nd:\\go\\src\\github.com\\fragmenta1\\assets\\assets.go:\n    8  	\"encoding/json\"\n    9  	\"fmt\"\n   10: 	\"io/ioutil\"\n   11  	\"path\"\n   12  	\"path/filepath\"\n   ..\n   98  \n   99  	// Write our assets json file to the path\n  100: 	err = ioutil.WriteFile(c.path, data, 0644)\n  101  	if err != nil {\n  102  		return fmt.Errorf(\"Error writing assets file %s %v\", c.path, err)\n  ...\n  114  \n  115  	// Read our assets json file from the path\n  116: 	file, err := ioutil.ReadFile(c.path)\n  117  	if err != nil {\n  118  		return fmt.Errorf(\"Error opening assets file %s %v\", c.path, err)\n\nd:\\go\\src\\github.com\\fragmenta1\\assets\\file.go:\n    4  	\"bytes\"\n    5  	\"fmt\"\n    6: 	\"io/ioutil\"\n    7  	\"os\"\n    8  	\"path\"\n    .\n   24  \n   25  	// Load file from path to get bytes\n   26: 	bytes, err := ioutil.ReadFile(p)\n   27  	if err != nil {\n   28  		return &File{}, err\n   ..\n   88  // Copy our bytes to dstpath\n   89  func (f *File) Copy(dst string) error {\n   90: 	err := ioutil.WriteFile(dst, f.bytes, permissions)\n   91  	if err != nil {\n   92  		return err\n\nd:\\go\\src\\github.com\\fragmenta1\\assets\\group.go:\n    6  	\"github.com/fragmenta/assets/internal/cssmin\"\n    7  	\"github.com/fragmenta/assets/internal/jsmin\"\n    8: 	\"io/ioutil\"\n    9  	\"os\"\n   10  	\"path\"\n   ..\n  125  	// Minify CSS\n  126  	miniCSS := cssmin.Minify(styleWriter.Bytes())\n  127: 	err = ioutil.WriteFile(g.StylePath(dst), miniCSS, permissions)\n  128  	if err != nil {\n  129  		return err\n  ...\n  136  	}\n  137  \n  138: 	err = ioutil.WriteFile(g.ScriptPath(dst), minijs, permissions)\n  139  	if err != nil {\n  140  		return err\n\nd:\\go\\src\\github.com\\fragmenta1\\fragmenta-cms\\src\\app\\bootstrap.go:\n    7  	\"fmt\"\n    8  	\"io\"\n    9: 	\"io/ioutil\"\n   10  	\"log\"\n   11  	\"os\"\n   ..\n  140  \n  141  	// Write the config json file\n  142: 	err = ioutil.WriteFile(configPath, configJSON, permissions)\n  143  	if err != nil {\n  144  		log.Printf(\"Error writing config %s %v\", configPath, err)\n  ...\n  161  	// Generate a migration to create db with today's date\n  162  	file := migrationPath(projectPath, createDatabaseMigrationName)\n  163: 	err := ioutil.WriteFile(file, []byte(sql), 0744)\n  164  	if err != nil {\n  165  		return err\n  ...\n  169  	createTablesPath := path.Join(projectPath, \"db\", \"migrate\", createTablesMigrationName+\".sql.tmpl\")\n  170  	if fileExists(createTablesPath) {\n  171: 		sql, err := ioutil.ReadFile(createTablesPath)\n  172  		if err != nil {\n  173  			return err\n  ...\n  178  \n  179  		file = migrationPath(projectPath, createTablesMigrationName)\n  180: 		err = ioutil.WriteFile(file, []byte(sqlString), 0744)\n  181  		if err != nil {\n  182  			return err\n\nd:\\go\\src\\github.com\\fragmenta1\\fragmenta-cms\\src\\pages\\actions\\setup.go:\n    3  import (\n    4  	\"fmt\"\n    5: 	\"io/ioutil\"\n    6  \n    7  	\"strings\"\n    .\n   70  	// and put it into the text field of a new page with id 1\n   71  \n   72: 	welcomeText, err := ioutil.ReadFile(\"src/pages/views/welcome.html.got\")\n   73  	if err != nil {\n   74  		return router.InternalError(err)\n\nd:\\go\\src\\github.com\\fragmenta1\\fragmenta\\fragmenta.go:\n    9  	\"fmt\"\n   10  	\"io\"\n   11: 	\"io/ioutil\"\n   12  	\"log\"\n   13  	\"os\"\n   ..\n  282  \n  283  	// Read the config json file\n  284: 	file, err := ioutil.ReadFile(configPath)\n  285  	if err != nil {\n  286  		log.Printf(\"Error opening config %s %v\", configPath, err)\n\nd:\\go\\src\\github.com\\fragmenta1\\fragmenta\\generate.go:\n    4  	\"bytes\"\n    5  	\"fmt\"\n    6: 	\"io/ioutil\"\n    7  	\"log\"\n    8  	\"os\"\n    .\n  131  \n  132  	routesPath := appRoutesFilePath()\n  133: 	data, err := ioutil.ReadFile(routesPath)\n  134  	if err != nil {\n  135  		fmt.Printf(\"#error Error reading routes at:%s :%s\", routesPath, err)\n  ...\n  153  	routes = strings.Replace(routes, importStart, importStart+resourceImport, 1)\n  154  \n  155: 	err = ioutil.WriteFile(routesPath, []byte(routes), permissions)\n  156  	if err != nil {\n  157  		fmt.Println(\"Error writing routes file: \", routesPath)\n  ...\n  335  \n  336  	// Read the file\n  337: 	template, err := ioutil.ReadFile(srcPath)\n  338  	if err != nil {\n  339  		log.Fatal(\"Error reading file \", srcPath)\n  ...\n  347  \n  348  	// Now write out again at same path\n  349: 	err = ioutil.WriteFile(dstPath, []byte(output), permissions)\n  350  	if err != nil {\n  351  		log.Fatal(\"Error writing file \", dstPath)\n  ...\n  613  	fmt.Println(\"Generating migration: \", name)\n  614  \n  615: 	err := ioutil.WriteFile(path, []byte(content), 0744)\n  616  	if err != nil {\n  617  		fmt.Println(\"Error writing migration file: \", path)\n\nd:\\go\\src\\github.com\\fragmenta1\\fragmenta\\new.go:\n    7  	\"fmt\"\n    8  	\"io\"\n    9: 	\"io/ioutil\"\n   10  	\"log\"\n   11  	\"os\"\n   ..\n  156  	for _, f := range files {\n  157  		// Load the file, if it contains refs to goprojectpath, replace them with relative project path imports\n  158: 		data, err := ioutil.ReadFile(f)\n  159  		if err != nil {\n  160  			return err\n  ...\n  167  		}\n  168  \n  169: 		err = ioutil.WriteFile(f, []byte(fileString), permissions)\n  170  		if err != nil {\n  171  			return err\n  ...\n  203  	// Generate a migration to create db with today's date\n  204  	file := migrationPath(projectPath, createDatabaseMigrationName)\n  205: 	err := ioutil.WriteFile(file, []byte(sql), 0744)\n  206  	if err != nil {\n  207  		return err\n  ...\n  211  	createTablesPath := path.Join(projectPath, \"db\", \"migrate\", createTablesMigrationName+\".sql.tmpl\")\n  212  	if fileExists(createTablesPath) {\n  213: 		sql, err := ioutil.ReadFile(createTablesPath)\n  214  		if err != nil {\n  215  			return err\n  ...\n  220  \n  221  		file = migrationPath(projectPath, createTablesMigrationName)\n  222: 		err = ioutil.WriteFile(file, []byte(sqlString), 0744)\n  223  		if err != nil {\n  224  			return err\n  ...\n  290  \n  291  	// Write the config json file\n  292: 	err = ioutil.WriteFile(configPath, configJSON, permissions)\n  293  	if err != nil {\n  294  		log.Printf(\"Error writing config %s %v\", configPath, err)\n\nd:\\go\\src\\github.com\\fragmenta1\\query\\query_test.go:\n    4  	\"fmt\"\n    5  	\"io\"\n    6: 	\"io/ioutil\"\n    7  	\"os\"\n    8  	\"os/exec\"\n    .\n  435  \n  436  	// read whole the file\n  437: 	bytes, err := ioutil.ReadFile(\"./tests/query_test_mysql.sql\")\n  438  	if err != nil {\n  439  		t.Fatalf(\"MYSQL DB ERROR: %s\", err)\n\nd:\\go\\src\\github.com\\fragmenta1\\server\\config.go:\n    5  	\"flag\"\n    6  	\"fmt\"\n    7: 	\"io/ioutil\"\n    8  	\"strconv\"\n    9  )\n   ..\n   70  \n   71  	// Read the config json file\n   72: 	file, err := ioutil.ReadFile(path)\n   73  	if err != nil {\n   74  		return fmt.Errorf(\"Error opening config %s %v\", path, err)\n\nd:\\go\\src\\github.com\\fragmenta1\\view\\parser\\template.go:\n    5  	\"fmt\"\n    6  	\"io\"\n    7: 	\"io/ioutil\"\n    8  	\"regexp\"\n    9  )\n   ..\n  158  // Utility method to read files into a string\n  159  func (t *BaseTemplate) readFile(path string) (string, error) {\n  160: 	fileBytes, err := ioutil.ReadFile(path)\n  161  	if err != nil {\n  162  		println(\"Error reading template file at path \", path)\n\nd:\\go\\src\\github.com\\fragmenta1\\view\\translation\\translation.go:\n    5  	\"encoding/json\"\n    6  	\"fmt\"\n    7: 	\"io/ioutil\"\n    8  	\"os\"\n    9  	\"path\"\n   ..\n   65  	// For each file, load all strings in the json file,\n   66  	//  and add them to our list of translations\n   67: 	file, err := ioutil.ReadFile(p)\n   68  	if err != nil {\n   69  		return fmt.Errorf(\"Error opening file %s %v\", p, err)\n\nd:\\go\\src\\github.com\\garyburd\\redigo\\redis\\test_test.go:\n   21  	\"fmt\"\n   22  	\"io\"\n   23: 	\"io/ioutil\"\n   24  	\"os\"\n   25  	\"os/exec\"\n   ..\n   41  	serverBasePort = flag.Int(\"redis-port\", 16379, \"Beginning of port range for test servers\")\n   42  	serverLogName  = flag.String(\"redis-log\", \"\", \"Write Redis server logs to `filename`\")\n   43: 	serverLog      = ioutil.Discard\n   44  \n   45  	defaultServerMu  sync.Mutex\n\nd:\\go\\src\\github.com\\gin-gonic\\gin\\binding\\protobuf.go:\n    8  	\"github.com/golang/protobuf/proto\"\n    9  \n   10: 	\"io/ioutil\"\n   11  	\"net/http\"\n   12  )\n   ..\n   20  func (protobufBinding) Bind(req *http.Request, obj interface{}) error {\n   21  \n   22: 	buf, err := ioutil.ReadAll(req.Body)\n   23  	if err != nil {\n   24  		return err\n\nd:\\go\\src\\github.com\\gin-gonic\\gin\\gin_integration_test.go:\n    4  	\"bufio\"\n    5  	\"fmt\"\n    6: 	\"io/ioutil\"\n    7  	\"net\"\n    8  	\"net/http\"\n    .\n   20  	assert.NoError(t, err)\n   21  \n   22: 	body, ioerr := ioutil.ReadAll(resp.Body)\n   23  	assert.NoError(t, ioerr)\n   24  	assert.Equal(t, \"it worked\", string(body), \"resp body should match\")\n\nd:\\go\\src\\github.com\\gin-gonic\\gin\\recovery.go:\n    9  	\"fmt\"\n   10  	\"io\"\n   11: 	\"io/ioutil\"\n   12  	\"log\"\n   13  	\"net/http/httputil\"\n   ..\n   62  		fmt.Fprintf(buf, \"%s:%d (0x%x)\\n\", file, line, pc)\n   63  		if file != lastFile {\n   64: 			data, err := ioutil.ReadFile(file)\n   65  			if err != nil {\n   66  				continue\n\nd:\\go\\src\\github.com\\gin-gonic\\gin\\routes_test.go:\n    7  import (\n    8  	\"fmt\"\n    9: 	\"io/ioutil\"\n   10  	\"net/http\"\n   11  	\"net/http/httptest\"\n   ..\n  247  	// SETUP file\n  248  	testRoot, _ := os.Getwd()\n  249: 	f, err := ioutil.TempFile(testRoot, \"\")\n  250  	if err != nil {\n  251  		t.Error(err)\n\nd:\\go\\src\\github.com\\go-sql-driver\\mysql\\driver_test.go:\n   16  	\"fmt\"\n   17  	\"io\"\n   18: 	\"io/ioutil\"\n   19  	\"log\"\n   20  	\"net\"\n   ..\n 1055  			}\n 1056  		}\n 1057: 		file, err := ioutil.TempFile(\"\", \"gotest\")\n 1058  		defer os.Remove(file.Name())\n 1059  		if err != nil {\n\nd:\\go\\src\\github.com\\go-sql-driver\\mysql\\utils.go:\n   28  //\n   29  //  rootCertPool := x509.NewCertPool()\n   30: //  pem, err := ioutil.ReadFile(\"/path/ca-cert.pem\")\n   31  //  if err != nil {\n   32  //      log.Fatal(err)\n\nd:\\go\\src\\github.com\\golang\\lint\\golint\\golint.go:\n   12  	\"fmt\"\n   13  	\"go/build\"\n   14: 	\"io/ioutil\"\n   15  	\"os\"\n   16  	\"path/filepath\"\n   ..\n   81  	files := make(map[string][]byte)\n   82  	for _, filename := range filenames {\n   83: 		src, err := ioutil.ReadFile(filename)\n   84  		if err != nil {\n   85  			fmt.Fprintln(os.Stderr, err)\n\nd:\\go\\src\\github.com\\golang\\lint\\lint_test.go:\n   16  	\"go/token\"\n   17  	\"go/types\"\n   18: 	\"io/ioutil\"\n   19  	\"path\"\n   20  	\"regexp\"\n   ..\n   34  \n   35  	baseDir := \"testdata\"\n   36: 	fis, err := ioutil.ReadDir(baseDir)\n   37  	if err != nil {\n   38: 		t.Fatalf(\"ioutil.ReadDir: %v\", err)\n   39  	}\n   40  	if len(fis) == 0 {\n   ..\n   46  		}\n   47  		//t.Logf(\"Testing %s\", fi.Name())\n   48: 		src, err := ioutil.ReadFile(path.Join(baseDir, fi.Name()))\n   49  		if err != nil {\n   50  			t.Fatalf(\"Failed reading %s: %v\", fi.Name(), err)\n\nd:\\go\\src\\github.com\\golang\\protobuf\\proto\\testdata\\golden_test.go:\n   37  	\"crypto/sha1\"\n   38  	\"fmt\"\n   39: 	\"io/ioutil\"\n   40  	\"os\"\n   41  	\"os/exec\"\n   ..\n   46  // sum returns in string form (for easy comparison) the SHA-1 hash of the named file.\n   47  func sum(t *testing.T, name string) string {\n   48: 	data, err := ioutil.ReadFile(name)\n   49  	if err != nil {\n   50  		t.Fatal(err)\n\nd:\\go\\src\\github.com\\golang\\protobuf\\proto\\text_test.go:\n   35  	\"bytes\"\n   36  	\"errors\"\n   37: 	\"io/ioutil\"\n   38  	\"math\"\n   39  	\"strings\"\n   ..\n  243  \n  244  func BenchmarkMarshalTextUnbuffered(b *testing.B) {\n  245: 	w := ioutil.Discard\n  246  	m := newTestMessage()\n  247  	for i := 0; i < b.N; i++ {\n\nd:\\go\\src\\github.com\\golang\\protobuf\\protoc-gen-go\\main.go:\n   50  \n   51  import (\n   52: 	\"io/ioutil\"\n   53  	\"os\"\n   54  \n   ..\n   63  	g := generator.New()\n   64  \n   65: 	data, err := ioutil.ReadAll(os.Stdin)\n   66  	if err != nil {\n   67  		g.Error(err, \"reading input\")\n\nd:\\go\\src\\github.com\\gorilla\\websocket\\client.go:\n   12  	\"errors\"\n   13  	\"io\"\n   14: 	\"io/ioutil\"\n   15  	\"net\"\n   16  	\"net/http\"\n   ..\n  338  		buf := make([]byte, 1024)\n  339  		n, _ := io.ReadFull(resp.Body, buf)\n  340: 		resp.Body = ioutil.NopCloser(bytes.NewReader(buf[:n]))\n  341  		return nil, resp, ErrBadHandshake\n  342  	}\n  343  \n  344: 	resp.Body = ioutil.NopCloser(bytes.NewReader([]byte{}))\n  345  	conn.subprotocol = resp.Header.Get(\"Sec-Websocket-Protocol\")\n  346  \n\nd:\\go\\src\\github.com\\gorilla\\websocket\\client_server_test.go:\n   10  	\"encoding/base64\"\n   11  	\"io\"\n   12: 	\"io/ioutil\"\n   13  	\"net\"\n   14  	\"net/http\"\n   ..\n  412  	}\n  413  \n  414: 	p, err := ioutil.ReadAll(resp.Body)\n  415  	if err != nil {\n  416  		t.Fatalf(\"ReadFull(resp.Body) returned error %v\", err)\n\nd:\\go\\src\\github.com\\gorilla\\websocket\\conn.go:\n   10  	\"errors\"\n   11  	\"io\"\n   12: 	\"io/ioutil\"\n   13  	\"math/rand\"\n   14  	\"net\"\n   ..\n  631  \n  632  	if c.readRemaining > 0 {\n  633: 		if _, err := io.CopyN(ioutil.Discard, c.br, c.readRemaining); err != nil {\n  634  			return noFrame, err\n  635  		}\n  ...\n  854  		return messageType, nil, err\n  855  	}\n  856: 	p, err = ioutil.ReadAll(r)\n  857  	return messageType, p, err\n  858  }\n\nd:\\go\\src\\github.com\\gorilla\\websocket\\conn_test.go:\n   11  	\"fmt\"\n   12  	\"io\"\n   13: 	\"io/ioutil\"\n   14  	\"net\"\n   15  	\"reflect\"\n   ..\n   88  						continue\n   89  					}\n   90: 					rbuf, err := ioutil.ReadAll(r)\n   91  					if err != nil {\n   92  						t.Errorf(\"%s: ReadFull() returned rbuf, %v\", name, err)\n   ..\n  165  		t.Fatalf(\"NextReader() returned %d, %v\", op, err)\n  166  	}\n  167: 	_, err = io.Copy(ioutil.Discard, r)\n  168  	if !reflect.DeepEqual(err, expectedErr) {\n  169  		t.Fatalf(\"io.Copy() returned %v, want %v\", err, expectedErr)\n  ...\n  189  		t.Fatalf(\"NextReader() returned %d, %v\", op, err)\n  190  	}\n  191: 	_, err = io.Copy(ioutil.Discard, r)\n  192  	if err != errUnexpectedEOF {\n  193  		t.Fatalf(\"io.Copy() returned %v, want %v\", err, errUnexpectedEOF)\n  ...\n  227  		t.Fatalf(\"2: NextReader() returned %d, %v\", op, err)\n  228  	}\n  229: 	_, err = io.Copy(ioutil.Discard, r)\n  230  	if err != ErrReadLimit {\n  231  		t.Fatalf(\"io.Copy() returned %v\", err)\n\nd:\\go\\src\\github.com\\gorilla\\websocket\\examples\\autobahn\\server.go:\n   83  \n   84  // echoReadAll echoes messages from the client by reading the entire message\n   85: // with ioutil.ReadAll.\n   86  func echoReadAll(w http.ResponseWriter, r *http.Request, writeMessage bool) {\n   87  	conn, err := upgrader.Upgrade(w, r, nil)\n\nd:\\go\\src\\github.com\\gorilla\\websocket\\examples\\filewatch\\main.go:\n    7  import (\n    8  	\"flag\"\n    9: 	\"io/ioutil\"\n   10  	\"log\"\n   11  	\"net/http\"\n   ..\n   50  		return nil, lastMod, nil\n   51  	}\n   52: 	p, err := ioutil.ReadFile(filename)\n   53  	if err != nil {\n   54  		return nil, fi.ModTime(), err\n\nd:\\go\\src\\github.com\\howeyc\\fsnotify\\fsnotify_bsd.go:\n   10  	\"errors\"\n   11  	\"fmt\"\n   12: 	\"io/ioutil\"\n   13  	\"os\"\n   14  	\"path/filepath\"\n   ..\n  407  func (w *Watcher) watchDirectoryFiles(dirPath string) error {\n  408  	// Get all files\n  409: 	files, err := ioutil.ReadDir(dirPath)\n  410  	if err != nil {\n  411  		return err\n  ...\n  462  func (w *Watcher) sendDirectoryChangeEvents(dirPath string) {\n  463  	// Get all files\n  464: 	files, err := ioutil.ReadDir(dirPath)\n  465  	if err != nil {\n  466  		w.Error <- err\n\nd:\\go\\src\\github.com\\howeyc\\fsnotify\\fsnotify_test.go:\n    6  \n    7  import (\n    8: 	\"io/ioutil\"\n    9  	\"os\"\n   10  	\"os/exec\"\n   ..\n   35  // tempMkdir makes a temporary directory\n   36  func tempMkdir(t *testing.T) string {\n   37: 	dir, err := ioutil.TempDir(\"\", \"fsnotify\")\n   38  	if err != nil {\n   39  		t.Fatalf(\"failed to create test directory: %s\", err)\n\nd:\\go\\src\\github.com\\hprose\\hprose-go\\examples\\tcpfileclient.go:\n    3  import (\n    4  	\"fmt\"\n    5: 	\"io/ioutil\"\n    6  	\"os\"\n    7  \n    .\n   17  	var stub *Stub\n   18  	client.UseService(&stub)\n   19: 	data, err := ioutil.ReadFile(\"hello.txt\")\n   20  	if err == nil {\n   21  		err = stub.WriteFile(\"hello2.txt\", data, 0777)\n\nd:\\go\\src\\github.com\\hprose\\hprose-go\\examples\\tcpfileserver.go:\n    2  \n    3  import (\n    4: 	\"io/ioutil\"\n    5  \n    6  	\"github.com/hprose/hprose-go\"\n    .\n    9  func main() {\n   10  	server := hprose.NewTcpServer(\"tcp4://0.0.0.0:4321/\")\n   11: 	server.AddFunction(\"writeFile\", ioutil.WriteFile)\n   12  	server.Start()\n   13  }\n\nd:\\go\\src\\github.com\\hprose\\hprose-go\\hprose\\http_client.go:\n   23  	\"crypto/tls\"\n   24  	\"io\"\n   25: 	\"io/ioutil\"\n   26  	\"net/http\"\n   27  	\"net/http/cookiejar\"\n   ..\n  153  	}\n  154  	if response.ContentLength < 0 {\n  155: 		return ioutil.ReadAll(response.Body)\n  156  	}\n  157  	return make([]byte, 0), nil\n  ...\n  175  		return nil, err\n  176  	}\n  177: 	data, err = ioutil.ReadAll(resp.Body)\n  178  	if err != nil {\n  179  		return nil, err\n\nd:\\go\\src\\github.com\\hprose\\hprose-go\\hprose\\http_service.go:\n   22  import (\n   23  	\"io\"\n   24: 	\"io/ioutil\"\n   25  	\"math/rand\"\n   26  	\"net/http\"\n   ..\n  184  func (service *HttpService) SetCrossDomainXmlFile(filename string) {\n  185  	service.crossDomainXmlFile = filename\n  186: 	service.crossDomainXmlContent, _ = ioutil.ReadFile(filename)\n  187  }\n  188  \n  ...\n  190  func (service *HttpService) SetClientAccessPolicyXmlFile(filename string) {\n  191  	service.clientAccessPolicyXmlFile = filename\n  192: 	service.clientAccessPolicyXmlContent, _ = ioutil.ReadFile(filename)\n  193  }\n  194  \n  ...\n  212  	}\n  213  	if request.ContentLength < 0 {\n  214: 		return ioutil.ReadAll(request.Body)\n  215  	}\n  216  	return make([]byte, 0), nil\n\nd:\\go\\src\\github.com\\hprose\\hprose-go\\http_client.go:\n   23  	\"crypto/tls\"\n   24  	\"io\"\n   25: 	\"io/ioutil\"\n   26  	\"net/http\"\n   27  	\"net/http/cookiejar\"\n   ..\n  153  	}\n  154  	if response.ContentLength < 0 {\n  155: 		return ioutil.ReadAll(response.Body)\n  156  	}\n  157  	return make([]byte, 0), nil\n  ...\n  175  		return nil, err\n  176  	}\n  177: 	data, err = ioutil.ReadAll(resp.Body)\n  178  	if err != nil {\n  179  		return nil, err\n\nd:\\go\\src\\github.com\\hprose\\hprose-go\\http_service.go:\n   22  import (\n   23  	\"io\"\n   24: 	\"io/ioutil\"\n   25  	\"math/rand\"\n   26  	\"net/http\"\n   ..\n  184  func (service *HttpService) SetCrossDomainXmlFile(filename string) {\n  185  	service.crossDomainXmlFile = filename\n  186: 	service.crossDomainXmlContent, _ = ioutil.ReadFile(filename)\n  187  }\n  188  \n  ...\n  190  func (service *HttpService) SetClientAccessPolicyXmlFile(filename string) {\n  191  	service.clientAccessPolicyXmlFile = filename\n  192: 	service.clientAccessPolicyXmlContent, _ = ioutil.ReadFile(filename)\n  193  }\n  194  \n  ...\n  212  	}\n  213  	if request.ContentLength < 0 {\n  214: 		return ioutil.ReadAll(request.Body)\n  215  	}\n  216  	return make([]byte, 0), nil\n\nd:\\go\\src\\github.com\\jinzhu\\configor\\configor.go:\n    5  	\"errors\"\n    6  	\"fmt\"\n    7: 	\"io/ioutil\"\n    8  	\"os\"\n    9  	\"path\"\n   ..\n  157  \n  158  func load(config interface{}, file string) error {\n  159: 	if data, err := ioutil.ReadFile(file); err == nil {\n  160  		switch {\n  161  		case strings.HasSuffix(file, \".yaml\"), strings.HasSuffix(file, \".yml\"):\n\nd:\\go\\src\\github.com\\jinzhu\\configor\\configor_test.go:\n    3  import (\n    4  	\"encoding/json\"\n    5: 	\"io/ioutil\"\n    6  	\"os\"\n    7  	\"reflect\"\n    .\n   59  	config := generateDefaultConfig()\n   60  	if bytes, err := json.Marshal(config); err == nil {\n   61: 		if file, err := ioutil.TempFile(\"/tmp\", \"configor\"); err == nil {\n   62  			defer file.Close()\n   63  			defer os.Remove(file.Name())\n   ..\n   80  \n   81  	if bytes, err := json.Marshal(config); err == nil {\n   82: 		if file, err := ioutil.TempFile(\"/tmp\", \"configor\"); err == nil {\n   83  			defer file.Close()\n   84  			defer os.Remove(file.Name())\n   ..\n  100  \n  101  	if bytes, err := json.Marshal(config); err == nil {\n  102: 		if file, err := ioutil.TempFile(\"/tmp\", \"configor\"); err == nil {\n  103  			defer file.Close()\n  104  			defer os.Remove(file.Name())\n  ...\n  122  	}\n  123  \n  124: 	if file, err := ioutil.TempFile(\"/tmp\", \"configor\"); err == nil {\n  125  		defer file.Close()\n  126  		defer os.Remove(file.Name())\n  127  		configBytes, _ := yaml.Marshal(config)\n  128  		config2Bytes, _ := yaml.Marshal(config2)\n  129: 		ioutil.WriteFile(file.Name()+\".yaml\", configBytes, 0644)\n  130  		defer os.Remove(file.Name() + \".yaml\")\n  131: 		ioutil.WriteFile(file.Name()+\".production.yaml\", config2Bytes, 0644)\n  132  		defer os.Remove(file.Name() + \".production.yaml\")\n  133  \n  ...\n  151  \n  152  	if bytes, err := json.Marshal(config); err == nil {\n  153: 		if file, err := ioutil.TempFile(\"/tmp\", \"configor\"); err == nil {\n  154  			defer file.Close()\n  155  			defer os.Remove(file.Name())\n  ...\n  176  \n  177  	if bytes, err := json.Marshal(config); err == nil {\n  178: 		if file, err := ioutil.TempFile(\"/tmp\", \"configor\"); err == nil {\n  179  			defer file.Close()\n  180  			defer os.Remove(file.Name())\n  ...\n  203  \n  204  	if bytes, err := json.Marshal(config); err == nil {\n  205: 		if file, err := ioutil.TempFile(\"/tmp\", \"configor\"); err == nil {\n  206  			defer file.Close()\n  207  			defer os.Remove(file.Name())\n  ...\n  230  \n  231  	if bytes, err := json.Marshal(config); err == nil {\n  232: 		if file, err := ioutil.TempFile(\"/tmp\", \"configor\"); err == nil {\n  233  			defer file.Close()\n  234  			defer os.Remove(file.Name())\n\nd:\\go\\src\\github.com\\lib\\pq\\conn.go:\n   12  	\"fmt\"\n   13  	\"io\"\n   14: 	\"io/ioutil\"\n   15  	\"net\"\n   16  	\"os\"\n   ..\n 1099  		tlsConf.RootCAs = x509.NewCertPool()\n 1100  \n 1101: 		cert, err := ioutil.ReadFile(sslrootcert)\n 1102  		if err != nil {\n 1103  			panic(err)\n\nd:\\go\\src\\github.com\\lukehoban\\go-find-references\\go-find-references:\n    <binary>\n\nd:\\go\\src\\github.com\\manucorporat\\sse\\sse-decoder.go:\n    8  	\"bytes\"\n    9  	\"io\"\n   10: 	\"io/ioutil\"\n   11  )\n   12  \n   ..\n   38  \n   39  func (d *decoder) decode(r io.Reader) ([]Event, error) {\n   40: 	buf, err := ioutil.ReadAll(r)\n   41  	if err != nil {\n   42  		return nil, err\n\nd:\\go\\src\\github.com\\mattn\\go-sqlite3\\error_test.go:\n    8  import (\n    9  	\"database/sql\"\n   10: 	\"io/ioutil\"\n   11  	\"os\"\n   12  	\"path\"\n   ..\n   22  \n   23  func TestCorruptDbErrors(t *testing.T) {\n   24: 	dirName, err := ioutil.TempDir(\"\", \"sqlite3\")\n   25  	if err != nil {\n   26  		t.Fatal(err)\n   ..\n   52  \n   53  func TestSqlLogicErrors(t *testing.T) {\n   54: 	dirName, err := ioutil.TempDir(\"\", \"sqlite3\")\n   55  	if err != nil {\n   56  		t.Fatal(err)\n   ..\n   79  \n   80  func TestExtendedErrorCodes_ForeignKey(t *testing.T) {\n   81: 	dirName, err := ioutil.TempDir(\"\", \"sqlite3-err\")\n   82  	if err != nil {\n   83  		t.Fatal(err)\n   ..\n  125  \n  126  func TestExtendedErrorCodes_NotNull(t *testing.T) {\n  127: 	dirName, err := ioutil.TempDir(\"\", \"sqlite3-err\")\n  128  	if err != nil {\n  129  		t.Fatal(err)\n  ...\n  181  \n  182  func TestExtendedErrorCodes_Unique(t *testing.T) {\n  183: 	dirName, err := ioutil.TempDir(\"\", \"sqlite3-err\")\n  184  	if err != nil {\n  185  		t.Fatal(err)\n\nd:\\go\\src\\github.com\\mattn\\go-sqlite3\\sqlite3_test.go:\n   11  	\"errors\"\n   12  	\"fmt\"\n   13: 	\"io/ioutil\"\n   14  	\"net/url\"\n   15  	\"os\"\n   ..\n   25  \n   26  func TempFilename(t *testing.T) string {\n   27: 	f, err := ioutil.TempFile(\"\", \"go-sqlite3-test-\")\n   28  	if err != nil {\n   29  		t.Fatal(err)\n\nd:\\go\\src\\github.com\\newhook\\go-symbols\\main.go:\n   10  	\"go/parser\"\n   11  	\"go/token\"\n   12: 	\"io/ioutil\"\n   13  	\"os\"\n   14  	\"path/filepath\"\n   ..\n  146  \n  147  		sema <- true\n  148: 		files, err := ioutil.ReadDir(dir)\n  149  		<-sema\n  150  		if pkg != \"\" || err != nil {\n\nd:\\go\\src\\github.com\\nsf\\gocode\\_testing\\test.0032\\out.expected:\n   58    package io \n   59    package iotest \n   60:   package ioutil \n   61    package jpeg \n   62    package json \n\nd:\\go\\src\\github.com\\nsf\\gocode\\_testing\\test.0032\\test.go.in:\n   77  	\"index/suffixarray\"\n   78  	\"io\"\n   79: 	\"io/ioutil\"\n   80  	\"log\"\n   81  	\"log/syslog\"\n\nd:\\go\\src\\github.com\\nsf\\gocode\\client.go:\n    5  	\"fmt\"\n    6  	\"go/build\"\n    7: 	\"io/ioutil\"\n    8  	\"net/rpc\"\n    9  	\"os\"\n   ..\n  104  \n  105  	if *g_input != \"\" {\n  106: 		file, err = ioutil.ReadFile(*g_input)\n  107  	} else {\n  108: 		file, err = ioutil.ReadAll(os.Stdin)\n  109  	}\n  110  \n\nd:\\go\\src\\github.com\\nsf\\gocode\\config.go:\n    6  	\"fmt\"\n    7  	\"io\"\n    8: 	\"io/ioutil\"\n    9  	\"os\"\n   10  	\"reflect\"\n   ..\n  157  \n  158  func (this *config) read() error {\n  159: 	data, err := ioutil.ReadFile(config_file())\n  160  	if err != nil {\n  161  		return err\n\nd:\\go\\src\\github.com\\nsf\\gocode\\utils.go:\n    5  	\"fmt\"\n    6  	\"go/build\"\n    7: 	\"io/ioutil\"\n    8  	\"os\"\n    9  	\"path/filepath\"\n   ..\n  175  		for {\n  176  			req := <-this.in\n  177: 			rsp.data, rsp.error = ioutil.ReadFile(req.filename)\n  178  			req.out <- rsp\n  179  		}\n\nd:\\go\\src\\github.com\\nutzam\\zgo\\file.go:\n    4  	\"errors\"\n    5  	\"io\"\n    6: 	\"io/ioutil\"\n    7  	\"log\"\n    8  	\"os\"\n    .\n   24  // 按照 UTF8 格式，将流的内容读成字符串\n   25  func Utf8r(r io.Reader) (str string, err error) {\n   26: 	bs, err := ioutil.ReadAll(r)\n   27  	if nil != err {\n   28  		str = \"\"\n   ..\n  210  	FcheckParents(path)\n  211  	// 写入文件\n  212: 	return ioutil.WriteFile(path, data, 0644)\n  213  }\n  214  \n\nd:\\go\\src\\github.com\\nutzam\\zgo\\os.go:\n   12  	\"hash\"\n   13  	\"io\"\n   14: 	\"io/ioutil\"\n   15  	\"log\"\n   16  	\"os\"\n   ..\n  208  			return err\n  209  		}\n  210: 		data, err := ioutil.ReadAll(r)\n  211  		if err != nil {\n  212  			return err\n\nd:\\go\\src\\github.com\\peterh\\liner\\race_test.go:\n    4  \n    5  import (\n    6: 	\"io/ioutil\"\n    7  	\"os\"\n    8  	\"sync\"\n    .\n   38  	}()\n   39  \n   40: 	s.WriteHistory(ioutil.Discard)\n   41  \n   42  	newinw.Close()\n\nd:\\go\\src\\github.com\\qor\\i18n\\backends\\yaml\\yaml.go:\n    4  	\"errors\"\n    5  	\"fmt\"\n    6: 	\"io/ioutil\"\n    7  	\"os\"\n    8  	\"path\"\n    .\n   65  func (backend *Backend) LoadTranslations() (translations []*i18n.Translation) {\n   66  	for _, file := range backend.files {\n   67: 		if content, err := ioutil.ReadFile(file); err == nil {\n   68  			var slice yaml.MapSlice\n   69  			if err := yaml.Unmarshal(content, &slice); err == nil {\n\nd:\\go\\src\\github.com\\qor\\i18n\\i18n.go:\n    5  	\"fmt\"\n    6  	\"html/template\"\n    7: 	\"io/ioutil\"\n    8  	\"net/http\"\n    9  	\"os\"\n   ..\n  166  \n  167  		if isIncludeExtendAssetLib {\n  168: 			if extendLib, err := ioutil.ReadFile(path.Join(gopath, \"src/github.com/qor/i18n/views/themes/i18n/inline-edit-libs.tmpl\")); err == nil {\n  169  				content += string(extendLib)\n  170  			} else {\n  ...\n  172  			}\n  173  \n  174: 			if css, err := ioutil.ReadFile(path.Join(gopath, \"src/github.com/qor/i18n/views/themes/i18n/assets/stylesheets/i18n-inline.css\")); err == nil {\n  175  				content += fmt.Sprintf(\"<style>%s</style>\", string(css))\n  176  			} else {\n  ...\n  180  		}\n  181  \n  182: 		if js, err := ioutil.ReadFile(path.Join(gopath, \"src/github.com/qor/i18n/views/themes/i18n/assets/javascripts/i18n-inline.js\")); err == nil {\n  183  			content += fmt.Sprintf(\"<script type=\\\"text/javascript\\\">%s</script>\", string(js))\n  184  		} else {\n\nd:\\go\\src\\github.com\\qor\\media_library\\aliyun\\aliyun.go:\n    3  import (\n    4  	\"io\"\n    5: 	\"io/ioutil\"\n    6  	\"net/http\"\n    7  	\"os\"\n    .\n   71  	if response, err := http.Get(\"http:\" + url); err == nil {\n   72  		defer response.Body.Close()\n   73: 		if file, err = ioutil.TempFile(\"/tmp\", \"OSS\"); err == nil {\n   74  			_, err := io.Copy(file, response.Body)\n   75  			return file, err\n\nd:\\go\\src\\github.com\\qor\\media_library\\aws\\s3.go:\n    4  	\"bytes\"\n    5  	\"io\"\n    6: 	\"io/ioutil\"\n    7  	\"net/http\"\n    8  	\"os\"\n    .\n   67  // Store store reader's content with url\n   68  func (s S3) Store(url string, option *media_library.Option, reader io.Reader) error {\n   69: 	buffer, err := ioutil.ReadAll(reader)\n   70  \n   71  	if err != nil {\n   ..\n  102  	defer response.Body.Close()\n  103  \n  104: 	if file, err = ioutil.TempFile(\"/tmp\", \"s3\"); err == nil {\n  105  		_, err := io.Copy(file, response.Body)\n  106  		return file, err\n\nd:\\go\\src\\github.com\\qor\\media_library\\qiniu\\qiniu.go:\n    3  import (\n    4  	\"io\"\n    5: 	\"io/ioutil\"\n    6  	\"log\"\n    7  	\"net/http\"\n    .\n  104  	defer response.Body.Close()\n  105  \n  106: 	if file, err = ioutil.TempFile(\"/tmp\", \"qiniu\"); err == nil {\n  107  		_, err := io.Copy(file, response.Body)\n  108  		return file, err\n\nd:\\go\\src\\github.com\\rogpeppe\\godef\\go\\parser\\interface.go:\n   11  	\"errors\"\n   12  	\"io\"\n   13: 	\"io/ioutil\"\n   14  	\"os\"\n   15  	\"path/filepath\"\n   ..\n   48  	}\n   49  \n   50: 	return ioutil.ReadFile(filename)\n   51  }\n   52  \n\nd:\\go\\src\\github.com\\rogpeppe\\godef\\go\\printer\\performance_test.go:\n   11  	\"bytes\"\n   12  	\"io\"\n   13: 	\"io/ioutil\"\n   14  	\"log\"\n   15  	\"testing\"\n   ..\n   31  	const filename = \"testdata/parser.go\"\n   32  \n   33: 	src, err := ioutil.ReadFile(filename)\n   34  	if err != nil {\n   35  		log.Fatalf(\"%s\", err)\n   ..\n   55  	}\n   56  	for i := 0; i < b.N; i++ {\n   57: 		testprint(ioutil.Discard, testfile)\n   58  	}\n   59  }\n\nd:\\go\\src\\github.com\\rogpeppe\\godef\\go\\printer\\printer_test.go:\n    8  	\"bytes\"\n    9  	\"flag\"\n   10: 	\"io/ioutil\"\n   11  	\"path/filepath\"\n   12  	\"testing\"\n   ..\n   71  	// update golden files if necessary\n   72  	if *update {\n   73: 		if err := ioutil.WriteFile(golden, res, 0644); err != nil {\n   74  			t.Error(err)\n   75  		}\n   ..\n   78  \n   79  	// get golden\n   80: 	gld, err := ioutil.ReadFile(golden)\n   81  	if err != nil {\n   82  		t.Error(err)\n\nd:\\go\\src\\github.com\\rogpeppe\\godef\\go\\printer\\testdata\\declarations.golden:\n   65  	renamed \"renameMe\"\n   66  	. \"io\"		/* a comment */\n   67: 	_ \"io/ioutil\"	// a comment\n   68  	\"io\"		// testing alignment\n   69  	. \"os\"\n\nd:\\go\\src\\github.com\\rogpeppe\\godef\\go\\printer\\testdata\\declarations.input:\n   66         renamed \"renameMe\"\n   67         . \"io\" /* a comment */\n   68:        _ \"io/ioutil\" // a comment\n   69         \"io\" // testing alignment\n   70         . \"os\"\n\nd:\\go\\src\\github.com\\rogpeppe\\godef\\go\\sym\\sym.go:\n    7  	\"fmt\"\n    8  	\"go/build\"\n    9: 	\"io/ioutil\"\n   10  	\"os\"\n   11  	\"path/filepath\"\n   ..\n  253  			return fmt.Errorf(\"cannot format %q: %v\", name, err)\n  254  		}\n  255: 		err = ioutil.WriteFile(name, newSrc, 0666)\n  256  		if err != nil {\n  257  			return fmt.Errorf(\"cannot write %q: %v\", name, err)\n\nd:\\go\\src\\github.com\\rogpeppe\\godef\\go\\types\\types_test.go:\n    4  	\"bytes\"\n    5  	\"flag\"\n    6: 	\"io/ioutil\"\n    7  	\"os\"\n    8  	\"path/filepath\"\n    .\n  170  	return // avoid usually\n  171  	code, _ := translateSymbols(testCode)\n  172: 	err := ioutil.WriteFile(\"/tmp/testcode.go\", code, 0666)\n  173  	if err != nil {\n  174  		t.Errorf(\"write file failed: %v\", err)\n\nd:\\go\\src\\github.com\\rogpeppe\\godef\\godef.go:\n    7  	\"fmt\"\n    8  	\"go/build\"\n    9: 	\"io/ioutil\"\n   10  	\"os\"\n   11  	\"path/filepath\"\n   ..\n   77  		filename, src, searchpos = afile.name, afile.body, afile.offset\n   78  	} else if *readStdin {\n   79: 		src, _ = ioutil.ReadAll(os.Stdin)\n   80  	} else {\n   81  		// TODO if there's no filename, look in the current\n   82  		// directory and do something plausible.\n   83: 		b, err := ioutil.ReadFile(filename)\n   84  		if err != nil {\n   85  			fail(\"cannot read %s: %v\", filename, err)\n\nd:\\go\\src\\github.com\\smartystreets\\assertions\\internal\\oglemock\\createmock\\createmock.go:\n   23  	\"fmt\"\n   24  	\"go/build\"\n   25: 	\"io/ioutil\"\n   26  	\"log\"\n   27  	\"os\"\n   ..\n  144  	}\n  145  \n  146: 	tmpDir, err := ioutil.TempDir(buildPkg.SrcRoot, \"tmp-createmock-\")\n  147  	if err != nil {\n  148  		return errors.New(fmt.Sprintf(\"Creating temp dir: %v\", err))\n\nd:\\go\\src\\github.com\\smartystreets\\assertions\\internal\\oglemock\\createmock\\createmock_test.go:\n   21  	\"fmt\"\n   22  	\"go/build\"\n   23: 	\"io/ioutil\"\n   24  	\"os\"\n   25  	\"os/exec\"\n   ..\n   48  func (t *CreateMockTest) SetUpTestSuite() {\n   49  	// Create a temporary file to hold the built createmock binary.\n   50: 	tempDir, err := ioutil.TempDir(\"\", \"createmock-\")\n   51  	if err != nil {\n   52  		panic(\"Creating temporary directory: \" + err.Error())\n   ..\n  113  	AssertEq(nil, err)\n  114  \n  115: 	tmpDir, err := ioutil.TempDir(buildPkg.SrcRoot, \"tmp-createmock_test-\")\n  116  	AssertEq(nil, err)\n  117  	defer os.RemoveAll(tmpDir)\n  ...\n  142  \n  143  func writeContentsToFileOrDie(contents []byte, path string) {\n  144: 	if err := ioutil.WriteFile(path, contents, 0600); err != nil {\n  145: 		panic(\"ioutil.WriteFile: \" + err.Error())\n  146  	}\n  147  }\n  148  \n  149  func readFileOrDie(path string) []byte {\n  150: 	contents, err := ioutil.ReadFile(path)\n  151  	if err != nil {\n  152: 		panic(\"ioutil.ReadFile: \" + err.Error())\n  153  	}\n  154  \n\nd:\\go\\src\\github.com\\smartystreets\\assertions\\internal\\oglemock\\generate\\generate_test.go:\n   21  	\"image\"\n   22  	\"io\"\n   23: 	\"io/ioutil\"\n   24  	\"path\"\n   25  	\"reflect\"\n   ..\n   75  \n   76  func writeContentsToFileOrDie(contents []byte, path string) {\n   77: 	if err := ioutil.WriteFile(path, contents, 0600); err != nil {\n   78: 		panic(\"ioutil.WriteFile: \" + err.Error())\n   79  	}\n   80  }\n   81  \n   82  func readFileOrDie(path string) []byte {\n   83: 	contents, err := ioutil.ReadFile(path)\n   84  	if err != nil {\n   85: 		panic(\"ioutil.ReadFile: \" + err.Error())\n   86  	}\n   87  \n\nd:\\go\\src\\github.com\\smartystreets\\assertions\\internal\\ogletest\\integration_test.go:\n   21  	\"fmt\"\n   22  	\"go/build\"\n   23: 	\"io/ioutil\"\n   24  	\"os\"\n   25  	\"os/exec\"\n   ..\n  100  \n  101  func writeContentsToFileOrDie(contents []byte, path string) {\n  102: 	if err := ioutil.WriteFile(path, contents, 0600); err != nil {\n  103: 		panic(\"ioutil.WriteFile: \" + err.Error())\n  104  	}\n  105  }\n  106  \n  107  func readFileOrDie(path string) []byte {\n  108: 	contents, err := ioutil.ReadFile(path)\n  109  	if err != nil {\n  110: 		panic(\"ioutil.ReadFile: \" + err.Error())\n  111  	}\n  112  \n  ...\n  160  	prefix := fmt.Sprintf(\"tmp-%s-\", caseName)\n  161  \n  162: 	dir, err = ioutil.TempDir(ogletestPkgDir, prefix)\n  163  	if err != nil {\n  164: 		panic(\"ioutil.TempDir: \" + err.Error())\n  165  	}\n  166  \n\nd:\\go\\src\\github.com\\smartystreets\\goconvey\\web\\server\\executor\\tester_test.go:\n    4  	\"errors\"\n    5  	\"fmt\"\n    6: 	\"io/ioutil\"\n    7  	\"log\"\n    8  	\"testing\"\n    .\n   14  \n   15  func init() {\n   16: 	log.SetOutput(ioutil.Discard)\n   17  }\n   18  \n\nd:\\go\\src\\github.com\\smartystreets\\goconvey\\web\\server\\parser\\package_parser_test.go:\n    4  	\"encoding/json\"\n    5  	\"fmt\"\n    6: 	\"io/ioutil\"\n    7  	\"log\"\n    8  	\"strings\"\n    .\n   14  \n   15  func init() {\n   16: 	log.SetOutput(ioutil.Discard)\n   17  }\n   18  \n\nd:\\go\\src\\github.com\\smartystreets\\goconvey\\web\\server\\watch\\imperative_shell.go:\n    3  import (\n    4  	\"io\"\n    5: 	\"io/ioutil\"\n    6  	\"os\"\n    7  	\"path/filepath\"\n    .\n   71  	defer file.Close()\n   72  	reader := io.LimitReader(file, 1024*4)\n   73: 	content, _ := ioutil.ReadAll(reader)\n   74  	return string(content)\n   75  }\n\nd:\\go\\src\\github.com\\smartystreets\\goconvey\\web\\server\\watch\\integration_test.go:\n    3  import (\n    4  	\"bytes\"\n    5: 	\"io/ioutil\"\n    6  	\"log\"\n    7  	\"os\"\n    .\n   29  	_, filename, _, _ := runtime.Caller(0)\n   30  	originalRoot := filepath.Join(filepath.Dir(filename), \"integration_testing\")\n   31: 	temporary, err := ioutil.TempDir(\"/tmp\", \"goconvey\")\n   32  	if err != nil {\n   33  		t.Fatal(err)\n\nd:\\go\\src\\github.com\\smartystreets\\goconvey\\web\\server\\watch\\util_test.go:\n    4  import \"os\"\n    5  import \"io\"\n    6: import \"io/ioutil\"\n    7  import \"log\"\n    8  \n    .\n   59  	}\n   60  \n   61: 	entries, err := ioutil.ReadDir(source)\n   62  \n   63  	for _, entry := range entries {\n\nd:\\go\\src\\github.com\\spf13\\cobra\\bash_completions.md:\n    7  \n    8  import (\n    9:         \"io/ioutil\"\n   10          \"os\"\n   11  \n   ..\n   14  \n   15  func main() {\n   16:         kubectl := cmd.NewFactory(nil).NewKubectlCommand(os.Stdin, ioutil.Discard, ioutil.Discard)\n   17          kubectl.GenBashCompletionFile(\"out.sh\")\n   18  }\n\nd:\\go\\src\\github.com\\spf13\\cobra\\doc\\md_docs.md:\n   30  \n   31  import (\n   32: 	\"io/ioutil\"\n   33  	\"os\"\n   34  \n   ..\n   40  \n   41  func main() {\n   42: 	cmd := kubectlcmd.NewKubectlCommand(cmdutil.NewFactory(nil), os.Stdin, ioutil.Discard, ioutil.Discard)\n   43  	doc.GenMarkdownTree(cmd, \"./\")\n   44  }\n\nd:\\go\\src\\github.com\\spf13\\pflag\\export_test.go:\n    6  \n    7  import (\n    8: 	\"io/ioutil\"\n    9  	\"os\"\n   10  )\n   ..\n   19  		name:          os.Args[0],\n   20  		errorHandling: ContinueOnError,\n   21: 		output:        ioutil.Discard,\n   22  	}\n   23  	Usage = usage\n\nd:\\go\\src\\github.com\\spf13\\pflag\\flag_test.go:\n    9  	\"fmt\"\n   10  	\"io\"\n   11: 	\"io/ioutil\"\n   12  	\"net\"\n   13  	\"os\"\n   ..\n  356  		notaflag,\n  357  	}\n  358: 	f.SetOutput(ioutil.Discard)\n  359  	if err := f.Parse(args); err != nil {\n  360  		t.Error(\"expected no error, got \", err)\n  ...\n  701  		arg2,\n  702  	}\n  703: 	f.SetOutput(ioutil.Discard)\n  704  	if err := f.Parse(args); err != nil {\n  705  		t.Fatal(\"expected no error; got \", err)\n\nd:\\go\\src\\github.com\\theplant\\cldr\\make_plurals.go:\n    5  import (\n    6  	\"fmt\"\n    7: 	\"io/ioutil\"\n    8  	\"os\"\n    9  	\"path/filepath\"\n   ..\n   25  			return nil\n   26  		}\n   27: 		in, err := ioutil.ReadFile(path)\n   28  		if err != nil {\n   29  			panic(err)\n\nd:\\go\\src\\golang.org\\x\\crypto\\acme\\internal\\acme\\acme.go:\n   16  	\"errors\"\n   17  	\"fmt\"\n   18: 	\"io/ioutil\"\n   19  	\"net/http\"\n   20  	\"strconv\"\n   ..\n  367  \n  368  func responseCert(client *http.Client, res *http.Response, bundle bool) ([][]byte, error) {\n  369: 	b, err := ioutil.ReadAll(res.Body)\n  370  	if err != nil {\n  371  		return nil, fmt.Errorf(\"ReadAll: %v\", err)\n  ...\n  389  		return nil, responseError(res)\n  390  	}\n  391: 	b, err = ioutil.ReadAll(res.Body)\n  392  	if err != nil {\n  393  		return nil, err\n  ...\n  400  	// don't care if ReadAll returns an error:\n  401  	// json.Unmarshal will fail in that case anyway\n  402: 	b, _ := ioutil.ReadAll(resp.Body)\n  403  	e := struct {\n  404  		Status int\n\nd:\\go\\src\\golang.org\\x\\crypto\\acme\\internal\\acme\\acme_test.go:\n   12  	\"encoding/json\"\n   13  	\"fmt\"\n   14: 	\"io/ioutil\"\n   15  	\"math/big\"\n   16  	\"net/http\"\n   ..\n  737  		StatusCode: 400,\n  738  		Status:     \"400 Bad Request\",\n  739: 		Body:       ioutil.NopCloser(strings.NewReader(s)),\n  740  		Header:     http.Header{\"X-Foo\": {\"bar\"}},\n  741  	}\n\nd:\\go\\src\\golang.org\\x\\crypto\\openpgp\\armor\\armor_test.go:\n    8  	\"bytes\"\n    9  	\"hash/adler32\"\n   10: 	\"io/ioutil\"\n   11  	\"testing\"\n   12  )\n   ..\n   30  	}\n   31  \n   32: 	contents, err := ioutil.ReadAll(result.Body)\n   33  	if err != nil {\n   34  		t.Error(err)\n\nd:\\go\\src\\golang.org\\x\\crypto\\openpgp\\packet\\compressed_test.go:\n    9  	\"encoding/hex\"\n   10  	\"io\"\n   11: 	\"io/ioutil\"\n   12  	\"testing\"\n   13  )\n   ..\n   26  	}\n   27  \n   28: 	contents, err := ioutil.ReadAll(c.Body)\n   29  	if err != nil && err != io.EOF {\n   30  		t.Error(err)\n\nd:\\go\\src\\golang.org\\x\\crypto\\openpgp\\packet\\opaque.go:\n    8  	\"bytes\"\n    9  	\"io\"\n   10: 	\"io/ioutil\"\n   11  \n   12  	\"golang.org/x/crypto/openpgp/errors\"\n   ..\n   27  \n   28  func (op *OpaquePacket) parse(r io.Reader) (err error) {\n   29: 	op.Contents, err = ioutil.ReadAll(r)\n   30  	return\n   31  }\n\nd:\\go\\src\\golang.org\\x\\crypto\\openpgp\\packet\\packet_test.go:\n   11  	\"golang.org/x/crypto/openpgp/errors\"\n   12  	\"io\"\n   13: 	\"io/ioutil\"\n   14  	\"testing\"\n   15  )\n   ..\n  101  	for i, test := range partialLengthReaderTests {\n  102  		r := &partialLengthReader{readerFromHex(test.hexInput), 0, true}\n  103: 		out, err := ioutil.ReadAll(r)\n  104  		if test.err != nil {\n  105  			if err != test.err {\n  ...\n  173  		}\n  174  \n  175: 		body, err := ioutil.ReadAll(contents)\n  176  		if err != nil {\n  177  			if !test.unexpectedEOF || err != io.ErrUnexpectedEOF {\n\nd:\\go\\src\\golang.org\\x\\crypto\\openpgp\\packet\\private_key.go:\n   13  	\"crypto/sha1\"\n   14  	\"io\"\n   15: 	\"io/ioutil\"\n   16  	\"math/big\"\n   17  	\"strconv\"\n   ..\n  111  	}\n  112  \n  113: 	pk.encryptedData, err = ioutil.ReadAll(r)\n  114  	if err != nil {\n  115  		return\n\nd:\\go\\src\\golang.org\\x\\crypto\\openpgp\\packet\\signature_v3_test.go:\n   10  	\"encoding/hex\"\n   11  	\"io\"\n   12: 	\"io/ioutil\"\n   13  	\"testing\"\n   14  \n   ..\n   46  		return\n   47  	}\n   48: 	expected, err := ioutil.ReadAll(v3KeyReader(t))\n   49  	if err != nil {\n   50  		t.Error(err)\n\nd:\\go\\src\\golang.org\\x\\crypto\\openpgp\\packet\\symmetric_key_encrypted_test.go:\n    9  	\"encoding/hex\"\n   10  	\"io\"\n   11: 	\"io/ioutil\"\n   12  	\"testing\"\n   13  )\n   ..\n   47  	}\n   48  \n   49: 	contents, err := ioutil.ReadAll(r)\n   50  	if err != nil && err != io.EOF {\n   51  		t.Error(err)\n\nd:\\go\\src\\golang.org\\x\\crypto\\openpgp\\packet\\symmetrically_encrypted.go:\n  237  }\n  238  \n  239: // noOpCloser is like an ioutil.NopCloser, but for an io.Writer.\n  240  type noOpCloser struct {\n  241  	w io.Writer\n\nd:\\go\\src\\golang.org\\x\\crypto\\openpgp\\packet\\symmetrically_encrypted_test.go:\n   11  	\"golang.org/x/crypto/openpgp/errors\"\n   12  	\"io\"\n   13: 	\"io/ioutil\"\n   14  	\"testing\"\n   15  )\n   ..\n   43  		r := &testReader{data: mdcPlaintext, stride: stride}\n   44  		mdcReader := &seMDCReader{in: r, h: sha1.New()}\n   45: 		body, err := ioutil.ReadAll(mdcReader)\n   46  		if err != nil {\n   47  			t.Errorf(\"stride: %d, error: %s\", stride, err)\n   ..\n   63  	r := &testReader{data: mdcPlaintext, stride: 2}\n   64  	mdcReader := &seMDCReader{in: r, h: sha1.New()}\n   65: 	_, err := ioutil.ReadAll(mdcReader)\n   66  	if err != nil {\n   67  		t.Errorf(\"corruption test, error: %s\", err)\n\nd:\\go\\src\\golang.org\\x\\crypto\\openpgp\\packet\\userattribute.go:\n   10  	\"image/jpeg\"\n   11  	\"io\"\n   12: 	\"io/ioutil\"\n   13  )\n   14  \n   ..\n   57  func (uat *UserAttribute) parse(r io.Reader) (err error) {\n   58  	// RFC 4880, section 5.13\n   59: 	b, err := ioutil.ReadAll(r)\n   60  	if err != nil {\n   61  		return\n\nd:\\go\\src\\golang.org\\x\\crypto\\openpgp\\packet\\userid.go:\n    7  import (\n    8  	\"io\"\n    9: 	\"io/ioutil\"\n   10  	\"strings\"\n   11  )\n   ..\n   67  func (uid *UserId) parse(r io.Reader) (err error) {\n   68  	// RFC 4880, section 5.11\n   69: 	b, err := ioutil.ReadAll(r)\n   70  	if err != nil {\n   71  		return\n\nd:\\go\\src\\golang.org\\x\\crypto\\openpgp\\read_test.go:\n   10  	\"encoding/hex\"\n   11  	\"io\"\n   12: 	\"io/ioutil\"\n   13  	\"strings\"\n   14  	\"testing\"\n   ..\n  129  	}\n  130  \n  131: 	contents, err := ioutil.ReadAll(md.UnverifiedBody)\n  132  	if err != nil {\n  133  		t.Errorf(\"error reading UnverifiedBody: %s\", err)\n  ...\n  222  		}\n  223  \n  224: 		contents, err := ioutil.ReadAll(md.UnverifiedBody)\n  225  		if err != nil {\n  226  			t.Errorf(\"#%d: error reading UnverifiedBody: %s\", i, err)\n  ...\n  246  	}\n  247  \n  248: 	contents, err := ioutil.ReadAll(md.UnverifiedBody)\n  249  	if err != nil {\n  250  		t.Errorf(\"error reading UnverifiedBody: %s\", err)\n  ...\n  281  	}\n  282  \n  283: 	contents, err := ioutil.ReadAll(md.UnverifiedBody)\n  284  	if err != nil {\n  285  		t.Errorf(\"ReadAll: %s\", err)\n  ...\n  455  	}\n  456  \n  457: 	_, err = ioutil.ReadAll(md.UnverifiedBody)\n  458  	if err != nil {\n  459  		t.Error(err)\n\nd:\\go\\src\\golang.org\\x\\crypto\\openpgp\\write.go:\n  363  }\n  364  \n  365: // noOpCloser is like an ioutil.NopCloser, but for an io.Writer.\n  366  // TODO: we have two of these in OpenPGP packages alone. This probably needs\n  367  // to be promoted somewhere more common.\n\nd:\\go\\src\\golang.org\\x\\crypto\\openpgp\\write_test.go:\n    8  	\"bytes\"\n    9  	\"io\"\n   10: 	\"io/ioutil\"\n   11  	\"testing\"\n   12  	\"time\"\n   ..\n  246  		}\n  247  \n  248: 		plaintext, err := ioutil.ReadAll(md.UnverifiedBody)\n  249  		if err != nil {\n  250  			t.Errorf(\"#%d: error reading encrypted contents: %s\", i, err)\n\nd:\\go\\src\\golang.org\\x\\crypto\\ssh\\cipher.go:\n   15  	\"hash\"\n   16  	\"io\"\n   17: 	\"io/ioutil\"\n   18  )\n   19  \n   ..\n  414  			// failing MAC and failing length check more\n  415  			// difficult.\n  416: 			io.CopyN(ioutil.Discard, r, int64(c.oracleCamouflage))\n  417  		}\n  418  	}\n\nd:\\go\\src\\golang.org\\x\\crypto\\ssh\\example_test.go:\n    8  	\"bytes\"\n    9  	\"fmt\"\n   10: 	\"io/ioutil\"\n   11  	\"log\"\n   12  	\"net\"\n   ..\n   31  	}\n   32  \n   33: 	privateBytes, err := ioutil.ReadFile(\"id_rsa\")\n   34  	if err != nil {\n   35  		panic(\"Failed to load private key\")\n   ..\n  153  	// If you have an encrypted private key, the crypto/x509 package\n  154  	// can be used to decrypt it.\n  155: 	key, err := ioutil.ReadFile(\"/home/user/.ssh/id_rsa\")\n  156  	if err != nil {\n  157  		log.Fatalf(\"unable to read private key: %v\", err)\n\nd:\\go\\src\\golang.org\\x\\crypto\\ssh\\mux_test.go:\n    7  import (\n    8  	\"io\"\n    9: 	\"io/ioutil\"\n   10  	\"sync\"\n   11  	\"testing\"\n   ..\n   73  	rd.Add(2)\n   74  	go func() {\n   75: 		c, err := ioutil.ReadAll(reader)\n   76  		if string(c) != magic {\n   77  			t.Fatalf(\"stdout read got %q, want %q (error %s)\", c, magic, err)\n   ..\n   80  	}()\n   81  	go func() {\n   82: 		c, err := ioutil.ReadAll(reader.Stderr())\n   83  		if string(c) != magic {\n   84  			t.Fatalf(\"stderr read got %q, want %q (error %s)\", c, magic, err)\n   ..\n  461  \n  462  	want := \"helloworld\"\n  463: 	c, _ := ioutil.ReadAll(b)\n  464  	if string(c) != want {\n  465  		t.Errorf(\"got %q want %q\", c, want)\n\nd:\\go\\src\\golang.org\\x\\crypto\\ssh\\session.go:\n   13  	\"fmt\"\n   14  	\"io\"\n   15: 	\"io/ioutil\"\n   16  	\"sync\"\n   17  )\n   ..\n  123  	//\n  124  	// If either is nil, Run connects the corresponding file\n  125: 	// descriptor to an instance of ioutil.Discard. There is a\n  126  	// fixed amount of buffering that is shared for the two streams.\n  127  	// If either blocks it may eventually cause the remote\n  ...\n  471  	}\n  472  	if s.Stdout == nil {\n  473: 		s.Stdout = ioutil.Discard\n  474  	}\n  475  	s.copyFuncs = append(s.copyFuncs, func() error {\n  ...\n  484  	}\n  485  	if s.Stderr == nil {\n  486: 		s.Stderr = ioutil.Discard\n  487  	}\n  488  	s.copyFuncs = append(s.copyFuncs, func() error {\n\nd:\\go\\src\\golang.org\\x\\crypto\\ssh\\session_test.go:\n   12  	\"errors\"\n   13  	\"io\"\n   14: 	\"io/ioutil\"\n   15  	\"math/rand\"\n   16  	\"net\"\n   ..\n  533  func discardHandler(ch Channel, t *testing.T) {\n  534  	defer ch.Close()\n  535: 	io.Copy(ioutil.Discard, ch)\n  536  }\n  537  \n  ...\n  608  	stdin.Close()\n  609  \n  610: 	res, err := ioutil.ReadAll(stdout)\n  611  	if err != nil {\n  612  		t.Fatalf(\"Read failed: %v\", err)\n  ...\n  620  func simpleEchoHandler(ch Channel, in <-chan *Request, t *testing.T) {\n  621  	defer ch.Close()\n  622: 	data, err := ioutil.ReadAll(ch)\n  623  	if err != nil {\n  624  		t.Errorf(\"handler read error: %v\", err)\n\nd:\\go\\src\\golang.org\\x\\crypto\\ssh\\test\\forward_unix_test.go:\n   10  	\"bytes\"\n   11  	\"io\"\n   12: 	\"io/ioutil\"\n   13  	\"math/rand\"\n   14  	\"net\"\n   ..\n   49  	readChan := make(chan []byte)\n   50  	go func() {\n   51: 		data, _ := ioutil.ReadAll(tcpConn)\n   52  		readChan <- data\n   53  	}()\n\nd:\\go\\src\\golang.org\\x\\crypto\\ssh\\test\\test_unix_test.go:\n   12  	\"bytes\"\n   13  	\"fmt\"\n   14: 	\"io/ioutil\"\n   15  	\"log\"\n   16  	\"net\"\n   ..\n  127  // ports.\n  128  func unixConnection() (*net.UnixConn, *net.UnixConn, error) {\n  129: 	dir, err := ioutil.TempDir(\"\", \"unixConnection\")\n  130  	if err != nil {\n  131  		return nil, nil, err\n  ...\n  228  		t.Skip(\"skipping test due to -short\")\n  229  	}\n  230: 	dir, err := ioutil.TempDir(\"\", \"sshtest\")\n  231  	if err != nil {\n  232  		t.Fatal(err)\n\nd:\\go\\src\\golang.org\\x\\debug\\dwarf\\frame_test.go:\n    7  import (\n    8  	\"fmt\"\n    9: 	\"io/ioutil\"\n   10  	\"os\"\n   11  	\"os/exec\"\n   ..\n   40  	}\n   41  	var err error\n   42: 	pcspTempDir, err = ioutil.TempDir(\"\", \"pcsptest\")\n   43  	if err != nil {\n   44  		panic(err)\n\nd:\\go\\src\\golang.org\\x\\debug\\dwarf\\pclntab_test.go:\n    9  import (\n   10  	\"fmt\"\n   11: 	\"io/ioutil\"\n   12  	\"os\"\n   13  	\"os/exec\"\n   ..\n   46  	}\n   47  	var err error\n   48: 	pclineTempDir, err = ioutil.TempDir(\"\", \"pclinetest\")\n   49  	if err != nil {\n   50  		panic(err)\n\nd:\\go\\src\\golang.org\\x\\debug\\gosym\\pclntab_test.go:\n    8  	\"debug/elf\"\n    9  	\"fmt\"\n   10: 	\"io/ioutil\"\n   11  	\"os\"\n   12  	\"os/exec\"\n   ..\n   39  	}\n   40  	var err error\n   41: 	pclineTempDir, err = ioutil.TempDir(\"\", \"pclinetest\")\n   42  	if err != nil {\n   43  		panic(err)\n\nd:\\go\\src\\golang.org\\x\\net\\bpf\\instructions_test.go:\n    6  \n    7  import (\n    8: 	\"io/ioutil\"\n    9  	\"reflect\"\n   10  	\"strconv\"\n   ..\n   90  	t.Logf(\"Assembled program is %d instructions long\", len(out))\n   91  \n   92: 	bs, err := ioutil.ReadFile(allInstructionsExpected)\n   93  	if err != nil {\n   94  		t.Fatalf(\"reading %s: %s\", allInstructionsExpected, err)\n\nd:\\go\\src\\golang.org\\x\\net\\context\\ctxhttp\\ctxhttp_test.go:\n    8  \n    9  import (\n   10: 	\"io/ioutil\"\n   11  	\"net\"\n   12  	\"net/http\"\n   ..\n   59  	cancel()\n   60  \n   61: 	b, err := ioutil.ReadAll(resp.Body)\n   62  	if err != nil || string(b) != requestBody {\n   63  		t.Fatalf(\"could not read body: %q %v\", b, err)\n   ..\n   89  \n   90  	go func() {\n   91: 		b, err := ioutil.ReadAll(resp.Body)\n   92  		if len(b) != 0 || err == nil {\n   93  			t.Errorf(`Read got (%q, %v); want (\"\", error)`, b, err)\n\nd:\\go\\src\\golang.org\\x\\net\\html\\charset\\charset_test.go:\n    8  	\"bytes\"\n    9  	\"encoding/xml\"\n   10: 	\"io/ioutil\"\n   11  	\"runtime\"\n   12  	\"strings\"\n   ..\n   18  func transformString(t transform.Transformer, s string) (string, error) {\n   19  	r := transform.NewReader(strings.NewReader(s), t)\n   20: 	b, err := ioutil.ReadAll(r)\n   21  	return string(b), err\n   22  }\n   ..\n  143  \n  144  	for _, tc := range sniffTestCases {\n  145: 		content, err := ioutil.ReadFile(\"testdata/\" + tc.filename)\n  146  		if err != nil {\n  147  			t.Errorf(\"%s: error reading file: %v\", tc.filename, err)\n  ...\n  164  \n  165  	for _, tc := range sniffTestCases {\n  166: 		content, err := ioutil.ReadFile(\"testdata/\" + tc.filename)\n  167  		if err != nil {\n  168  			t.Errorf(\"%s: error reading file: %v\", tc.filename, err)\n  ...\n  176  		}\n  177  \n  178: 		got, err := ioutil.ReadAll(r)\n  179  		if err != nil {\n  180  			t.Errorf(\"%s: error reading from charset.NewReader: %v\", tc.filename, err)\n  ...\n  183  \n  184  		e, _ := Lookup(tc.want)\n  185: 		want, err := ioutil.ReadAll(transform.NewReader(bytes.NewReader(content), e.NewDecoder()))\n  186  		if err != nil {\n  187  			t.Errorf(\"%s: error decoding with hard-coded charset name: %v\", tc.filename, err)\n\nd:\\go\\src\\golang.org\\x\\net\\html\\parse_test.go:\n   11  	\"fmt\"\n   12  	\"io\"\n   13: 	\"io/ioutil\"\n   14  	\"os\"\n   15  	\"path/filepath\"\n   ..\n  375  \n  376  func BenchmarkParser(b *testing.B) {\n  377: 	buf, err := ioutil.ReadFile(\"testdata/go1.html\")\n  378  	if err != nil {\n  379  		b.Fatalf(\"could not read testdata/go1.html: %v\", err)\n\nd:\\go\\src\\golang.org\\x\\net\\html\\token_test.go:\n    8  	\"bytes\"\n    9  	\"io\"\n   10: 	\"io/ioutil\"\n   11  	\"reflect\"\n   12  	\"runtime\"\n   ..\n  512  			}\n  513  			// Anything tokenized along with untokenized input or data left in the reader.\n  514: 			assembled, err := ioutil.ReadAll(io.MultiReader(&tokenized, bytes.NewReader(z.Buffered()), r))\n  515  			if err != nil {\n  516  				t.Errorf(\"%s: ReadAll: %v\", test.desc, err)\n  ...\n  698  \n  699  func benchmarkTokenizer(b *testing.B, level int) {\n  700: 	buf, err := ioutil.ReadFile(\"testdata/go1.html\")\n  701  	if err != nil {\n  702  		b.Fatalf(\"could not read testdata/go1.html: %v\", err)\n\nd:\\go\\src\\golang.org\\x\\net\\http2\\h2demo\\h2demo.go:\n   16  	\"image/jpeg\"\n   17  	\"io\"\n   18: 	\"io/ioutil\"\n   19  	\"log\"\n   20  	\"net\"\n   ..\n  183  			}\n  184  			defer res.Body.Close()\n  185: 			slurp, err := ioutil.ReadAll(res.Body)\n  186  			if err != nil {\n  187  				return nil, err\n  ...\n  276  		log.Fatalf(\"Error fetching %s: %v\", gopherURL, res.Status)\n  277  	}\n  278: 	slurp, err := ioutil.ReadAll(res.Body)\n  279  	res.Body.Close()\n  280  	if err != nil {\n  ...\n  393  		}\n  394  		defer rc.Close()\n  395: 		return ioutil.ReadAll(rc)\n  396  	}\n  397  	certPem, err := slurp(\"http2.golang.org.chained.pem\")\n\nd:\\go\\src\\golang.org\\x\\net\\http2\\h2demo\\launch.go:\n   14  	\"fmt\"\n   15  	\"io\"\n   16: 	\"io/ioutil\"\n   17  	\"log\"\n   18  	\"net/http\"\n   ..\n   39  \n   40  func readFile(v string) string {\n   41: 	slurp, err := ioutil.ReadFile(v)\n   42  	if err != nil {\n   43  		log.Fatalf(\"Error reading %s: %v\", v, err)\n   ..\n  283  \n  284  func (f tokenCacheFile) Token() (*oauth2.Token, error) {\n  285: 	slurp, err := ioutil.ReadFile(string(f))\n  286  	if err != nil {\n  287  		return nil, err\n  ...\n  299  		return err\n  300  	}\n  301: 	return ioutil.WriteFile(string(f), jt, 0600)\n  302  }\n  303  \n\nd:\\go\\src\\golang.org\\x\\net\\http2\\pipe_test.go:\n    9  	\"errors\"\n   10  	\"io\"\n   11: 	\"io/ioutil\"\n   12  	\"testing\"\n   13  )\n   ..\n   86  	a := errors.New(\"test error\")\n   87  	p.CloseWithError(a)\n   88: 	all, err := ioutil.ReadAll(p)\n   89  	if string(all) != body {\n   90  		t.Errorf(\"read bytes = %q; want %q\", all, body)\n   ..\n  100  	a := errors.New(\"test err\")\n  101  	p.BreakWithError(a)\n  102: 	all, err := ioutil.ReadAll(p)\n  103  	if string(all) != \"\" {\n  104  		t.Errorf(\"read bytes = %q; want empty string\", all)\n\nd:\\go\\src\\golang.org\\x\\net\\http2\\server_test.go:\n   12  	\"fmt\"\n   13  	\"io\"\n   14: 	\"io/ioutil\"\n   15  	\"log\"\n   16  	\"net\"\n   ..\n   38  	}\n   39  \n   40: 	return ioutil.Discard\n   41  }\n   42  \n   ..\n  124  	ts.TLS = ts.Config.TLSConfig // the httptest.Server has its own copy of this TLS config\n  125  	if quiet {\n  126: 		ts.Config.ErrorLog = log.New(ioutil.Discard, \"\", 0)\n  127  	} else {\n  128  		ts.Config.ErrorLog = log.New(io.MultiWriter(stderrv(), twriter{t: t, st: st}, logBuf), \"\", log.LstdFlags)\n  ...\n  714  			t.Errorf(\"ContentLength = %v; want %d\", r.ContentLength, wantContentLength)\n  715  		}\n  716: 		all, err := ioutil.ReadAll(r.Body)\n  717  		if err != nil {\n  718  			t.Fatal(err)\n  ...\n  735  			t.Errorf(\"ContentLength = %v; want %d\", r.ContentLength, wantContentLength)\n  736  		}\n  737: 		all, err := ioutil.ReadAll(r.Body)\n  738  		if err == nil {\n  739  			t.Fatalf(\"expected an error (%q) reading from the body. Successfully read %q instead.\",\n  ...\n 2633  			t.Errorf(\"initial Trailer = %v; want %v\", r.Trailer, wantTrailer)\n 2634  		}\n 2635: 		slurp, err := ioutil.ReadAll(r.Body)\n 2636  		if string(slurp) != testBody {\n 2637  			t.Errorf(\"read body %q; want %q\", slurp, testBody)\n ....\n 3023  	const msg = \"Hello, world.\"\n 3024  	st := newServerTester(b, func(w http.ResponseWriter, r *http.Request) {\n 3025: 		n, err := io.Copy(ioutil.Discard, r.Body)\n 3026  		if err != nil || n > 0 {\n 3027  			b.Error(\"Read %d bytes, error %v; want 0 bytes.\", n, err)\n ....\n 3055  	const msg = \"Hello, world.\"\n 3056  	st := newServerTester(b, func(w http.ResponseWriter, r *http.Request) {\n 3057: 		n, err := io.Copy(ioutil.Discard, r.Body)\n 3058  		if err != nil || n > 0 {\n 3059  			b.Error(\"Read %d bytes, error %v; want 0 bytes.\", n, err)\n ....\n 3129  			EndHeaders:    true,\n 3130  		})\n 3131: 		go io.Copy(ioutil.Discard, c2)\n 3132  		<-handlerDone\n 3133  	}()\n\nd:\\go\\src\\golang.org\\x\\net\\http2\\transport.go:\n   15  	\"fmt\"\n   16  	\"io\"\n   17: 	\"io/ioutil\"\n   18  	\"log\"\n   19  	\"net\"\n   ..\n 1618  }\n 1619  \n 1620: var noBody io.ReadCloser = ioutil.NopCloser(bytes.NewReader(nil))\n 1621  \n 1622  func strSliceContains(ss []string, s string) bool {\n\nd:\\go\\src\\golang.org\\x\\net\\http2\\transport_test.go:\n   13  	\"fmt\"\n   14  	\"io\"\n   15: 	\"io/ioutil\"\n   16  	\"log\"\n   17  	\"math/rand\"\n   ..\n   95  		t.Error(\"Response.TLS = nil; want non-nil\")\n   96  	}\n   97: 	slurp, err := ioutil.ReadAll(res.Body)\n   98  	if err != nil {\n   99  		t.Errorf(\"Body read: %v\", err)\n  ...\n  120  		}\n  121  		defer res.Body.Close()\n  122: 		slurp, err := ioutil.ReadAll(res.Body)\n  123  		if err != nil {\n  124  			t.Fatalf(\"Body read: %v\", err)\n  ...\n  184  			}\n  185  			defer res.Body.Close()\n  186: 			slurp, err := ioutil.ReadAll(res.Body)\n  187  			if err != nil {\n  188  				t.Errorf(\"Body read: %v\", err)\n  ...\n  263  		defer res.Body.Close()\n  264  		close(requestMade)\n  265: 		_, err = ioutil.ReadAll(res.Body)\n  266  		if err == nil {\n  267  			t.Error(\"expected error from res.Body.Read\")\n  ...\n  357  	st := newServerTester(t,\n  358  		func(w http.ResponseWriter, r *http.Request) {\n  359: 			slurp, err := ioutil.ReadAll(r.Body)\n  360  			if err != nil {\n  361  				gotc <- reqInfo{err: err}\n  ...\n  489  		t.Fatal(err)\n  490  	}\n  491: 	slurp, err := ioutil.ReadAll(res.Body)\n  492  	if err != nil {\n  493  		t.Fatal(err)\n  ...\n  671  			return fmt.Errorf(\"status code = %v; want %v\", res.StatusCode, status)\n  672  		}\n  673: 		slurp, err := ioutil.ReadAll(res.Body)\n  674  		if err != nil {\n  675  			return fmt.Errorf(\"Slurp: %v\", err)\n  ...\n  761  \n  762  	pr, pw := io.Pipe()\n  763: 	req, err := http.NewRequest(\"PUT\", st.ts.URL, ioutil.NopCloser(pr))\n  764  	if err != nil {\n  765  		log.Fatal(err)\n  ...\n  936  			return fmt.Errorf(\"status code = %v; want 200\", res.StatusCode)\n  937  		}\n  938: 		slurp, err := ioutil.ReadAll(res.Body)\n  939  		if err != nil {\n  940  			return fmt.Errorf(\"Slurp: %v\", err)\n  ...\n 1046  			return fmt.Errorf(\"status code = %v; want 200\", res.StatusCode)\n 1047  		}\n 1048: 		slurp, err := ioutil.ReadAll(res.Body)\n 1049  		if err != nil {\n 1050  			return fmt.Errorf(\"res.Body ReadAll error = %q, %v; want %v\", slurp, err, nil)\n ....\n 1146  			return fmt.Errorf(\"status code = %v; want 200\", res.StatusCode)\n 1147  		}\n 1148: 		slurp, err := ioutil.ReadAll(res.Body)\n 1149  		if err != wantErr {\n 1150  			return fmt.Errorf(\"res.Body ReadAll error = %q, %#v; want %T of %#v\", slurp, err, wantErr, wantErr)\n ....\n 1377  		t.Fatal(err)\n 1378  	}\n 1379: 	if _, err := ioutil.ReadAll(res.Body); err != nil {\n 1380  		t.Fatal(err)\n 1381  	}\n ....\n 1441  				return\n 1442  			}\n 1443: 			if _, err := ioutil.ReadAll(res.Body); err != nil {\n 1444  				t.Error(err)\n 1445  				return\n ....\n 1671  func TestGzipReader_DoubleReadCrash(t *testing.T) {\n 1672  	gz := &gzipReader{\n 1673: 		body: ioutil.NopCloser(strings.NewReader(\"0123456789\")),\n 1674  	}\n 1675  	var buf [1]byte\n ....\n 1761  			return fmt.Errorf(\"Content-Length = %d; want 123\", res.ContentLength)\n 1762  		}\n 1763: 		slurp, err := ioutil.ReadAll(res.Body)\n 1764  		if err != nil {\n 1765  			return fmt.Errorf(\"ReadAll: %v\", err)\n\nd:\\go\\src\\golang.org\\x\\net\\internal\\iana\\gen.go:\n   17  	\"go/format\"\n   18  	\"io\"\n   19: 	\"io/ioutil\"\n   20  	\"net/http\"\n   21  	\"os\"\n   ..\n   70  		os.Exit(1)\n   71  	}\n   72: 	if err := ioutil.WriteFile(\"const.go\", b, 0644); err != nil {\n   73  		fmt.Fprintln(os.Stderr, err)\n   74  		os.Exit(1)\n\nd:\\go\\src\\golang.org\\x\\net\\ipv4\\gen.go:\n   18  	\"go/format\"\n   19  	\"io\"\n   20: 	\"io/ioutil\"\n   21  	\"net/http\"\n   22  	\"os\"\n   ..\n   71  		zsys = \"zsys_\" + runtime.GOOS + \"_\" + runtime.GOARCH + \".go\"\n   72  	}\n   73: 	if err := ioutil.WriteFile(zsys, b, 0644); err != nil {\n   74  		return err\n   75  	}\n   ..\n  110  		return err\n  111  	}\n  112: 	if err := ioutil.WriteFile(\"iana.go\", b, 0644); err != nil {\n  113  		return err\n  114  	}\n\nd:\\go\\src\\golang.org\\x\\net\\ipv6\\gen.go:\n   18  	\"go/format\"\n   19  	\"io\"\n   20: 	\"io/ioutil\"\n   21  	\"net/http\"\n   22  	\"os\"\n   ..\n   71  		zsys = \"zsys_\" + runtime.GOOS + \"_\" + runtime.GOARCH + \".go\"\n   72  	}\n   73: 	if err := ioutil.WriteFile(zsys, b, 0644); err != nil {\n   74  		return err\n   75  	}\n   ..\n  110  		return err\n  111  	}\n  112: 	if err := ioutil.WriteFile(\"iana.go\", b, 0644); err != nil {\n  113  		return err\n  114  	}\n\nd:\\go\\src\\golang.org\\x\\net\\netutil\\listen_test.go:\n    9  	\"fmt\"\n   10  	\"io\"\n   11: 	\"io/ioutil\"\n   12  	\"net\"\n   13  	\"net/http\"\n   ..\n   58  			}\n   59  			defer r.Body.Close()\n   60: 			io.Copy(ioutil.Discard, r.Body)\n   61  		}()\n   62  	}\n\nd:\\go\\src\\golang.org\\x\\net\\webdav\\file_test.go:\n    9  	\"fmt\"\n   10  	\"io\"\n   11: 	\"io/ioutil\"\n   12  	\"os\"\n   13  	\"path\"\n   ..\n  514  	}\n  515  \n  516: 	td, err := ioutil.TempDir(\"\", \"webdav-test\")\n  517  	if err != nil {\n  518  		t.Fatal(err)\n  ...\n  750  				t.Fatalf(\"test case #%d %q: OpenFile: %v\", i, tc, err)\n  751  			}\n  752: 			gotBytes, err := ioutil.ReadAll(g)\n  753  			if err != nil {\n  754  				t.Fatalf(\"test case #%d %q: ReadAll: %v\", i, tc, err)\n\nd:\\go\\src\\golang.org\\x\\net\\webdav\\webdav_test.go:\n    9  	\"fmt\"\n   10  	\"io\"\n   11: 	\"io/ioutil\"\n   12  	\"net/http\"\n   13  	\"net/http/httptest\"\n   ..\n  173  		defer res.Body.Close()\n  174  \n  175: 		b, err := ioutil.ReadAll(res.Body)\n  176  		if err != nil {\n  177  			return \"\", err\n\nd:\\go\\src\\golang.org\\x\\net\\websocket\\hybi.go:\n   17  	\"fmt\"\n   18  	\"io\"\n   19: 	\"io/ioutil\"\n   20  	\"net/http\"\n   21  	\"net/url\"\n   ..\n  283  	}\n  284  	if header := frame.HeaderReader(); header != nil {\n  285: 		io.Copy(ioutil.Discard, header)\n  286  	}\n  287  	switch frame.PayloadType() {\n  ...\n  298  			return nil, err\n  299  		}\n  300: 		io.Copy(ioutil.Discard, frame)\n  301  		if frame.PayloadType() == PingFrame {\n  302  			if _, err := handler.WritePong(b[:n]); err != nil {\n\nd:\\go\\src\\golang.org\\x\\net\\websocket\\websocket.go:\n   13  	\"errors\"\n   14  	\"io\"\n   15: 	\"io/ioutil\"\n   16  	\"net\"\n   17  	\"net/http\"\n   ..\n  191  	if err == io.EOF {\n  192  		if trailer := ws.frameReader.TrailerReader(); trailer != nil {\n  193: 			io.Copy(ioutil.Discard, trailer)\n  194  		}\n  195  		ws.frameReader = nil\n  ...\n  305  	defer ws.rio.Unlock()\n  306  	if ws.frameReader != nil {\n  307: 		_, err = io.Copy(ioutil.Discard, ws.frameReader)\n  308  		if err != nil {\n  309  			return err\n  ...\n  324  	}\n  325  	payloadType := frame.PayloadType()\n  326: 	data, err := ioutil.ReadAll(frame)\n  327  	if err != nil {\n  328  		return err\n\nd:\\go\\src\\golang.org\\x\\sys\\unix\\mkpost.go:\n   15  	\"fmt\"\n   16  	\"go/format\"\n   17: 	\"io/ioutil\"\n   18  	\"log\"\n   19  	\"os\"\n   ..\n   22  \n   23  func main() {\n   24: 	b, err := ioutil.ReadAll(os.Stdin)\n   25  	if err != nil {\n   26  		log.Fatal(err)\n\nd:\\go\\src\\golang.org\\x\\sys\\unix\\syscall_linux_test.go:\n    8  \n    9  import (\n   10: 	\"io/ioutil\"\n   11  	\"os\"\n   12  	\"testing\"\n   ..\n   95  		t.Fatalf(\"chtmpdir: %v\", err)\n   96  	}\n   97: 	d, err := ioutil.TempDir(\"\", \"test\")\n   98  	if err != nil {\n   99  		t.Fatalf(\"chtmpdir: %v\", err)\n\nd:\\go\\src\\golang.org\\x\\sys\\unix\\syscall_unix_test.go:\n   10  	\"flag\"\n   11  	\"fmt\"\n   12: 	\"io/ioutil\"\n   13  	\"net\"\n   14  	\"os\"\n   ..\n  100  	}\n  101  \n  102: 	tempDir, err := ioutil.TempDir(\"\", \"TestPassFD\")\n  103  	if err != nil {\n  104  		t.Fatal(err)\n  ...\n  168  	defer f.Close()\n  169  \n  170: 	got, err := ioutil.ReadAll(f)\n  171  	want := \"Hello from child process!\\n\"\n  172  	if string(got) != want {\n  ...\n  200  	flag.Parse()\n  201  	tempDir := flag.Arg(0)\n  202: 	f, err := ioutil.TempFile(tempDir, \"\")\n  203  	if err != nil {\n  204  		fmt.Printf(\"TempFile: %v\", err)\n  ...\n  319  \n  320  func TestDup(t *testing.T) {\n  321: 	file, err := ioutil.TempFile(\"\", \"TestDup\")\n  322  	if err != nil {\n  323  		t.Fatalf(\"Tempfile failed: %v\", err)\n\nd:\\go\\src\\golang.org\\x\\sys\\windows\\svc\\svc_test.go:\n    8  \n    9  import (\n   10: 	\"io/ioutil\"\n   11  	\"os\"\n   12  	\"os/exec\"\n   ..\n   60  	defer m.Disconnect()\n   61  \n   62: 	dir, err := ioutil.TempDir(\"\", \"svc\")\n   63  	if err != nil {\n   64  		t.Fatalf(\"failed to create temp directory: %v\", err)\n\nd:\\go\\src\\golang.org\\x\\sys\\windows\\syscall_windows_test.go:\n    6  \n    7  import (\n    8: 	\"io/ioutil\"\n    9  	\"os\"\n   10  	\"path/filepath\"\n   ..\n   17  \n   18  func TestWin32finddata(t *testing.T) {\n   19: 	dir, err := ioutil.TempDir(\"\", \"go-build\")\n   20  	if err != nil {\n   21  		t.Fatalf(\"failed to create temp directory: %v\", err)\n\nd:\\go\\src\\golang.org\\x\\tools\\cmd\\bundle\\main.go:\n   93  	\"go/token\"\n   94  	\"go/types\"\n   95: 	\"io/ioutil\"\n   96  	\"log\"\n   97  	\"os\"\n   ..\n  165  	}\n  166  	if *outputFile != \"\" {\n  167: 		err := ioutil.WriteFile(*outputFile, code, 0666)\n  168  		if err != nil {\n  169  			log.Fatal(err)\n\nd:\\go\\src\\golang.org\\x\\tools\\cmd\\bundle\\main_test.go:\n    7  import (\n    8  	\"bytes\"\n    9: 	\"io/ioutil\"\n   10  	\"os\"\n   11  	\"os/exec\"\n   ..\n   18  func TestBundle(t *testing.T) {\n   19  	load := func(name string) string {\n   20: 		data, err := ioutil.ReadFile(name)\n   21  		if err != nil {\n   22  			t.Fatal(err)\n   ..\n   43  		t.Errorf(\"-- got --\\n%s\\n-- want --\\n%s\\n-- diff --\", got, want)\n   44  \n   45: 		if err := ioutil.WriteFile(\"testdata/out.got\", out, 0644); err != nil {\n   46  			t.Fatal(err)\n   47  		}\n\nd:\\go\\src\\golang.org\\x\\tools\\cmd\\cover\\cover.go:\n   14  	\"go/token\"\n   15  	\"io\"\n   16: 	\"io/ioutil\"\n   17  	\"log\"\n   18  	\"os\"\n   ..\n  327  func annotate(name string) {\n  328  	fset := token.NewFileSet()\n  329: 	content, err := ioutil.ReadFile(name)\n  330  	if err != nil {\n  331  		log.Fatalf(\"cover: %s: %s\", name, err)\n\nd:\\go\\src\\golang.org\\x\\tools\\cmd\\cover\\cover_test.go:\n   12  	\"bytes\"\n   13  	\"fmt\"\n   14: 	\"io/ioutil\"\n   15  	\"os\"\n   16  	\"os/exec\"\n   ..\n   46  func TestCover(t *testing.T) {\n   47  	// Read in the test file (testTest) and write it, with LINEs specified, to coverInput.\n   48: 	file, err := ioutil.ReadFile(testTest)\n   49  	if err != nil {\n   50  		t.Fatal(err)\n   ..\n   54  		lines[i] = bytes.Replace(line, []byte(\"LINE\"), []byte(fmt.Sprint(i+1)), -1)\n   55  	}\n   56: 	err = ioutil.WriteFile(coverInput, bytes.Join(lines, []byte(\"\\n\")), 0666)\n   57  	if err != nil {\n   58  		t.Fatal(err)\n\nd:\\go\\src\\golang.org\\x\\tools\\cmd\\cover\\html.go:\n   11  	\"html/template\"\n   12  	\"io\"\n   13: 	\"io/ioutil\"\n   14  	\"math\"\n   15  	\"os\"\n   ..\n   41  			return err\n   42  		}\n   43: 		src, err := ioutil.ReadFile(file)\n   44  		if err != nil {\n   45  			return fmt.Errorf(\"can't read %q: %v\", fn, err)\n   ..\n   60  	if outfile == \"\" {\n   61  		var dir string\n   62: 		dir, err = ioutil.TempDir(\"\", \"cover\")\n   63  		if err != nil {\n   64  			return err\n\nd:\\go\\src\\golang.org\\x\\tools\\cmd\\fiximports\\main.go:\n   81  	\"go/token\"\n   82  	\"io\"\n   83: 	\"io/ioutil\"\n   84  	\"log\"\n   85  	\"os\"\n   ..\n  104  var (\n  105  	stderr    io.Writer = os.Stderr\n  106: 	writeFile           = ioutil.WriteFile\n  107  )\n  108  \n\nd:\\go\\src\\golang.org\\x\\tools\\cmd\\godex\\godex.go:\n   13  	\"go/build\"\n   14  	\"go/types\"\n   15: 	\"io/ioutil\"\n   16  	\"os\"\n   17  	\"path/filepath\"\n   ..\n  200  \n  201  func walkDir(dirname, prefix string, out chan string) {\n  202: 	fiList, err := ioutil.ReadDir(dirname)\n  203  	if err != nil {\n  204  		return\n\nd:\\go\\src\\golang.org\\x\\tools\\cmd\\godoc\\godoc_test.go:\n   10  	\"fmt\"\n   11  	\"io\"\n   12: 	\"io/ioutil\"\n   13  	\"net\"\n   14  	\"net/http\"\n   ..\n   76  		t.Skip(\"skipping test on arm platforms; too slow\")\n   77  	}\n   78: 	tmp, err := ioutil.TempDir(\"\", \"godoc-regtest-\")\n   79  	if err != nil {\n   80  		t.Fatal(err)\n   ..\n  162  			continue\n  163  		}\n  164: 		rbody, err := ioutil.ReadAll(res.Body)\n  165  		res.Body.Close()\n  166  		if err == nil && res.StatusCode == http.StatusOK &&\n  ...\n  292  			continue\n  293  		}\n  294: 		body, err := ioutil.ReadAll(resp.Body)\n  295  		resp.Body.Close()\n  296  		if err != nil {\n  ...\n  323  \n  324  	// Write a fake GOROOT/GOPATH.\n  325: 	tmpdir, err := ioutil.TempDir(\"\", \"godoc-analysis\")\n  326  	if err != nil {\n  327: 		t.Fatalf(\"ioutil.TempDir failed: %s\", err)\n  328  	}\n  329  	defer os.RemoveAll(tmpdir)\n  ...\n  346  			t.Fatalf(\"MkdirAll(%s) failed: %s\", filepath.Dir(file), err)\n  347  		}\n  348: 		if err := ioutil.WriteFile(file, []byte(f.content), 0644); err != nil {\n  349  			t.Fatal(err)\n  350  		}\n  ...\n  412  			continue\n  413  		}\n  414: 		body, err := ioutil.ReadAll(resp.Body)\n  415  		resp.Body.Close()\n  416  		if err != nil {\n\nd:\\go\\src\\golang.org\\x\\tools\\cmd\\goimports\\goimports.go:\n   11  	\"go/scanner\"\n   12  	\"io\"\n   13: 	\"io/ioutil\"\n   14  	\"os\"\n   15  	\"os/exec\"\n   ..\n   75  	}\n   76  \n   77: 	src, err := ioutil.ReadAll(in)\n   78  	if err != nil {\n   79  		return err\n   ..\n   98  		}\n   99  		if *write {\n  100: 			err = ioutil.WriteFile(filename, res, 0)\n  101  			if err != nil {\n  102  				return err\n  ...\n  183  \n  184  func diff(b1, b2 []byte) (data []byte, err error) {\n  185: 	f1, err := ioutil.TempFile(\"\", \"gofmt\")\n  186  	if err != nil {\n  187  		return\n  ...\n  190  	defer f1.Close()\n  191  \n  192: 	f2, err := ioutil.TempFile(\"\", \"gofmt\")\n  193  	if err != nil {\n  194  		return\n\nd:\\go\\src\\golang.org\\x\\tools\\cmd\\gotype\\gotype.go:\n   17  	\"go/token\"\n   18  	\"go/types\"\n   19: 	\"io/ioutil\"\n   20  	\"os\"\n   21  	\"path/filepath\"\n   ..\n   96  \n   97  func parseStdin() (*ast.File, error) {\n   98: 	src, err := ioutil.ReadAll(os.Stdin)\n   99  	if err != nil {\n  100  		return nil, err\n\nd:\\go\\src\\golang.org\\x\\tools\\cmd\\guru\\guru_test.go:\n   35  	\"go/token\"\n   36  	\"io\"\n   37: 	\"io/ioutil\"\n   38  	\"os\"\n   39  	\"os/exec\"\n   ..\n   70  // parseQueries parses and returns the queries in the named file.\n   71  func parseQueries(t *testing.T, filename string) []*query {\n   72: 	filedata, err := ioutil.ReadFile(filename)\n   73  	if err != nil {\n   74  		t.Fatal(err)\n\nd:\\go\\src\\golang.org\\x\\tools\\cmd\\guru\\referrers.go:\n  490  }\n  491  \n  492: // readFile is like ioutil.ReadFile, but\n  493  // it goes through the virtualized build.Context.\n  494  func readFile(ctxt *build.Context, filename string) ([]byte, error) {\n\nd:\\go\\src\\golang.org\\x\\tools\\cmd\\present\\play.go:\n    8  	\"bytes\"\n    9  	\"fmt\"\n   10: 	\"io/ioutil\"\n   11  	\"net/http\"\n   12  	\"path/filepath\"\n   ..\n   29  			continue\n   30  		}\n   31: 		b, err := ioutil.ReadFile(filepath.Join(root, \"static\", p))\n   32  		if err != nil {\n   33  			panic(err)\n\nd:\\go\\src\\golang.org\\x\\tools\\cmd\\stress\\stress.go:\n   18  	\"flag\"\n   19  	\"fmt\"\n   20: 	\"io/ioutil\"\n   21  	\"os\"\n   22  	\"os/exec\"\n   ..\n  103  			}\n  104  			fails++\n  105: 			f, err := ioutil.TempFile(\"\", \"go-stress\")\n  106  			if err != nil {\n  107  				fmt.Printf(\"failed to create temp file: %v\\n\", err)\n\nd:\\go\\src\\golang.org\\x\\tools\\cmd\\stringer\\endtoend_test.go:\n   13  	\"go/build\"\n   14  	\"io\"\n   15: 	\"io/ioutil\"\n   16  	\"os\"\n   17  	\"os/exec\"\n   ..\n   27  \n   28  func TestEndToEnd(t *testing.T) {\n   29: 	dir, err := ioutil.TempDir(\"\", \"stringer\")\n   30  	if err != nil {\n   31  		t.Fatal(err)\n\nd:\\go\\src\\golang.org\\x\\tools\\cmd\\stringer\\stringer.go:\n   73  	\"go/token\"\n   74  	\"go/types\"\n   75: 	\"io/ioutil\"\n   76  	\"log\"\n   77  	\"os\"\n   ..\n  149  		outputName = filepath.Join(dir, strings.ToLower(baseName))\n  150  	}\n  151: 	err := ioutil.WriteFile(outputName, src, 0644)\n  152  	if err != nil {\n  153  		log.Fatalf(\"writing output: %s\", err)\n\nd:\\go\\src\\golang.org\\x\\tools\\cmd\\tip\\tip.go:\n   13  	\"fmt\"\n   14  	\"io\"\n   15: 	\"io/ioutil\"\n   16  	\"log\"\n   17  	\"net/http\"\n   ..\n  276  	}\n  277  	defer res.Body.Close()\n  278: 	defer io.Copy(ioutil.Discard, res.Body) // ensure EOF for keep-alive\n  279  	if res.StatusCode != 200 {\n  280  		return nil\n  ...\n  314  		return nil, err\n  315  	}\n  316: 	body, err = ioutil.ReadAll(res.Body)\n  317  	res.Body.Close()\n  318  	if err != nil {\n\nd:\\go\\src\\golang.org\\x\\tools\\go\\buildutil\\fakecontext.go:\n    5  	\"go/build\"\n    6  	\"io\"\n    7: 	\"io/ioutil\"\n    8  	\"os\"\n    9  	\"path\"\n   ..\n   73  			return nil, fmt.Errorf(\"file not found: %s\", filename)\n   74  		}\n   75: 		return ioutil.NopCloser(strings.NewReader(content)), nil\n   76  	}\n   77  	ctxt.IsAbsPath = func(path string) bool {\n\nd:\\go\\src\\golang.org\\x\\tools\\go\\buildutil\\overlay.go:\n   11  	\"go/build\"\n   12  	\"io\"\n   13: 	\"io/ioutil\"\n   14  	\"path/filepath\"\n   15  	\"strconv\"\n   ..\n   34  \n   35  	rc := func(data []byte) (io.ReadCloser, error) {\n   36: 		return ioutil.NopCloser(bytes.NewBuffer(data)), nil\n   37  	}\n   38  \n\nd:\\go\\src\\golang.org\\x\\tools\\go\\buildutil\\overlay_test.go:\n    3  import (\n    4  	\"go/build\"\n    5: 	\"io/ioutil\"\n    6  	\"reflect\"\n    7  	\"strings\"\n    .\n   60  			t.Errorf(\"unexpected error %v\", err)\n   61  		}\n   62: 		b, err := ioutil.ReadAll(f)\n   63  		if err != nil {\n   64  			t.Errorf(\"unexpected error %v\", err)\n\nd:\\go\\src\\golang.org\\x\\tools\\go\\buildutil\\util.go:\n   12  	\"go/token\"\n   13  	\"io\"\n   14: 	\"io/ioutil\"\n   15  	\"os\"\n   16  	\"path\"\n   ..\n  149  }\n  150  \n  151: // ReadDir behaves like ioutil.ReadDir,\n  152  // but uses the build context's file system interface, if any.\n  153  func ReadDir(ctxt *build.Context, path string) ([]os.FileInfo, error) {\n  ...\n  155  		return ctxt.ReadDir(path)\n  156  	}\n  157: 	return ioutil.ReadDir(path)\n  158  }\n  159  \n\nd:\\go\\src\\golang.org\\x\\tools\\go\\callgraph\\cha\\cha_test.go:\n   18  	\"go/token\"\n   19  	\"go/types\"\n   20: 	\"io/ioutil\"\n   21  	\"sort\"\n   22  	\"strings\"\n   ..\n   51  func TestCHA(t *testing.T) {\n   52  	for _, filename := range inputs {\n   53: 		content, err := ioutil.ReadFile(filename)\n   54  		if err != nil {\n   55  			t.Errorf(\"couldn't read file '%s': %s\", filename, err)\n\nd:\\go\\src\\golang.org\\x\\tools\\go\\callgraph\\rta\\rta_test.go:\n   18  	\"go/token\"\n   19  	\"go/types\"\n   20: 	\"io/ioutil\"\n   21  	\"sort\"\n   22  	\"strings\"\n   ..\n   56  func TestRTA(t *testing.T) {\n   57  	for _, filename := range inputs {\n   58: 		content, err := ioutil.ReadFile(filename)\n   59  		if err != nil {\n   60  			t.Errorf(\"couldn't read file '%s': %s\", filename, err)\n\nd:\\go\\src\\golang.org\\x\\tools\\go\\gcimporter15\\gcimporter.go:\n   27  	\"go/types\"\n   28  	\"io\"\n   29: 	\"io/ioutil\"\n   30  	\"os\"\n   31  	\"path/filepath\"\n   ..\n  173  	case \"$$B\\n\":\n  174  		var data []byte\n  175: 		data, err = ioutil.ReadAll(buf)\n  176  		if err == nil {\n  177  			fset := token.NewFileSet()\n\nd:\\go\\src\\golang.org\\x\\tools\\go\\gcimporter15\\gcimporter_test.go:\n   13  	\"fmt\"\n   14  	\"go/types\"\n   15: 	\"io/ioutil\"\n   16  	\"os\"\n   17  	\"os/exec\"\n   ..\n  103  func testDir(t *testing.T, dir string, endTime time.Time) (nimports int) {\n  104  	dirname := filepath.Join(runtime.GOROOT(), \"pkg\", runtime.GOOS+\"_\"+runtime.GOARCH, dir)\n  105: 	list, err := ioutil.ReadDir(dirname)\n  106  	if err != nil {\n  107  		t.Fatalf(\"testDir(%s): %s\", dirname, err)\n\nd:\\go\\src\\golang.org\\x\\tools\\go\\loader\\cgo.go:\n   60  	\"go/parser\"\n   61  	\"go/token\"\n   62: 	\"io/ioutil\"\n   63  	\"log\"\n   64  	\"os\"\n   ..\n   73  //\n   74  func processCgoFiles(bp *build.Package, fset *token.FileSet, DisplayPath func(path string) string, mode parser.Mode) ([]*ast.File, error) {\n   75: 	tmpdir, err := ioutil.TempDir(\"\", strings.Replace(bp.ImportPath, \"/\", \"_\", -1)+\"_C\")\n   76  	if err != nil {\n   77  		return nil, err\n\nd:\\go\\src\\golang.org\\x\\tools\\go\\loader\\doc.go:\n  131  // for the special type-checking discipline above.\n  132  // Cycles of size greater than two are possible.  For example:\n  133: //   compress/bzip2/bzip2_test.go (package bzip2)  imports \"io/ioutil\"\n  134: //   io/ioutil/tempfile_test.go   (package ioutil) imports \"regexp\"\n  135  //   regexp/exec_test.go          (package regexp) imports \"compress/bzip2\"\n  136  //\n\nd:\\go\\src\\golang.org\\x\\tools\\go\\loader\\stdlib_test.go:\n   18  	\"go/token\"\n   19  	\"go/types\"\n   20: 	\"io/ioutil\"\n   21  	\"path/filepath\"\n   22  	\"runtime\"\n   ..\n   80  	}\n   81  \n   82: 	// Check that Test functions for io/ioutil, regexp and\n   83  	// compress/bzip2 are all simultaneously present.\n   84  	// (The apparent cycle formed when augmenting all three of\n   ..\n   86  	// for reporting b/7114.)\n   87  	//\n   88: 	// compress/bzip2.TestBitReader in bzip2_test.go    imports io/ioutil\n   89: 	// io/ioutil.TestTempFile       in tempfile_test.go imports regexp\n   90  	// regexp.TestRE2Search         in exec_test.go     imports compress/bzip2\n   91  	for _, test := range []struct{ pkg, fn string }{\n   92: 		{\"io/ioutil\", \"TestTempFile\"},\n   93  		{\"regexp\", \"TestRE2Search\"},\n   94  		{\"compress/bzip2\", \"TestBitReader\"},\n   ..\n  189  \n  190  			// Load the file and check the object is declared at the right place.\n  191: 			b, err := ioutil.ReadFile(posn.Filename)\n  192  			if err != nil {\n  193  				t.Errorf(\"can't read %s: %s\", posn.Filename, err)\n\nd:\\go\\src\\golang.org\\x\\tools\\go\\pointer\\pointer_test.go:\n   21  	\"go/token\"\n   22  	\"go/types\"\n   23: 	\"io/ioutil\"\n   24  	\"os\"\n   25  	\"regexp\"\n   ..\n  541  \n  542  	for _, filename := range inputs {\n  543: 		content, err := ioutil.ReadFile(filename)\n  544  		if err != nil {\n  545  			t.Errorf(\"couldn't read file '%s': %s\", filename, err)\n\nd:\\go\\src\\golang.org\\x\\tools\\go\\vcs\\http.go:\n    8  	\"fmt\"\n    9  	\"io\"\n   10: 	\"io/ioutil\"\n   11  	\"log\"\n   12  	\"net/http\"\n   ..\n   28  		return nil, fmt.Errorf(\"%s: %s\", url, resp.Status)\n   29  	}\n   30: 	b, err := ioutil.ReadAll(resp.Body)\n   31  	if err != nil {\n   32  		return nil, fmt.Errorf(\"%s: %v\", url, err)\n\nd:\\go\\src\\golang.org\\x\\tools\\go\\vcs\\vcs_test.go:\n    6  \n    7  import (\n    8: 	\"io/ioutil\"\n    9  	\"os\"\n   10  	\"path\"\n   ..\n   51  // Test that FromDir correctly inspects a given directory and returns the right VCS and root.\n   52  func TestFromDir(t *testing.T) {\n   53: 	tempDir, err := ioutil.TempDir(\"\", \"vcstest\")\n   54  	if err != nil {\n   55  		t.Fatal(err)\n\nd:\\go\\src\\golang.org\\x\\tools\\godoc\\cmdline_test.go:\n    8  	\"bytes\"\n    9  	\"go/build\"\n   10: 	\"io/ioutil\"\n   11  	\"os\"\n   12  	\"path/filepath\"\n   ..\n   36  `,\n   37  	}\n   38: 	goroot, err := ioutil.TempDir(\"\", \"cmdline_test\")\n   39  	if err != nil {\n   40  		t.Fatal(err)\n   ..\n   50  			t.Fatal(err)\n   51  		}\n   52: 		if err := ioutil.WriteFile(name, []byte(contents), 0770); err != nil {\n   53  			t.Fatal(err)\n   54  		}\n\nd:\\go\\src\\golang.org\\x\\tools\\godoc\\proxy\\proxy.go:\n   16  	\"fmt\"\n   17  	\"io\"\n   18: 	\"io/ioutil\"\n   19  	\"net/http\"\n   20  	\"net/http/httputil\"\n   ..\n  122  	defer r.Body.Close()\n  123  	if r.StatusCode != http.StatusOK {\n  124: 		b, _ := ioutil.ReadAll(r.Body)\n  125  		return fmt.Errorf(\"bad status: %v body:\\n%s\", r.Status, b)\n  126  	}\n\nd:\\go\\src\\golang.org\\x\\tools\\godoc\\server.go:\n   16  	htmltemplate \"html/template\"\n   17  	\"io\"\n   18: 	\"io/ioutil\"\n   19  	\"log\"\n   20  	\"net/http\"\n   ..\n   81  			return nil, err\n   82  		}\n   83: 		return ioutil.NopCloser(bytes.NewReader(data)), nil\n   84  	}\n   85  \n\nd:\\go\\src\\golang.org\\x\\tools\\godoc\\static\\makestatic.go:\n   14  	\"bytes\"\n   15  	\"fmt\"\n   16: 	\"io/ioutil\"\n   17  	\"os\"\n   18  	\"unicode/utf8\"\n   ..\n   88  	fmt.Fprintf(w, \"var Files = map[string]string{\\n\")\n   89  	for _, fn := range files {\n   90: 		b, err := ioutil.ReadFile(fn)\n   91  		if err != nil {\n   92  			return err\n\nd:\\go\\src\\golang.org\\x\\tools\\godoc\\vfs\\mapfs\\mapfs_test.go:\n    6  \n    7  import (\n    8: 	\"io/ioutil\"\n    9  	\"os\"\n   10  	\"reflect\"\n   ..\n   37  			continue\n   38  		}\n   39: 		slurp, err := ioutil.ReadAll(rsc)\n   40  		if err != nil {\n   41  			t.Error(err)\n\nd:\\go\\src\\golang.org\\x\\tools\\godoc\\vfs\\namespace.go:\n   78  //\n   79  // OS is itself an implementation of a file system: it implements\n   80: // OS(`c:\\Go`).ReadDir(\"/src/pkg/code\") as ioutil.ReadDir(`c:\\Go\\src\\pkg\\code`).\n   81  //\n   82  // Because the new path is evaluated by fs (here OS(root)), another way\n\nd:\\go\\src\\golang.org\\x\\tools\\godoc\\vfs\\os.go:\n    7  import (\n    8  	\"fmt\"\n    9: 	\"io/ioutil\"\n   10  	\"os\"\n   11  	pathpkg \"path\"\n   ..\n   62  \n   63  func (root osFS) ReadDir(path string) ([]os.FileInfo, error) {\n   64: 	return ioutil.ReadDir(root.resolve(path)) // is sorted\n   65  }\n   66  \n\nd:\\go\\src\\golang.org\\x\\tools\\godoc\\vfs\\vfs.go:\n    9  import (\n   10  	\"io\"\n   11: 	\"io/ioutil\"\n   12  	\"os\"\n   13  )\n   ..\n   42  	}\n   43  	defer rc.Close()\n   44: 	return ioutil.ReadAll(rc)\n   45  }\n   46  \n\nd:\\go\\src\\golang.org\\x\\tools\\godoc\\vfs\\zipfs\\zipfs_test.go:\n    9  	\"fmt\"\n   10  	\"io\"\n   11: 	\"io/ioutil\"\n   12  	\"os\"\n   13  	\"reflect\"\n   ..\n  175  			// test Seek() multiple times\n  176  			for i := 0; i < 3; i++ {\n  177: 				all, err := ioutil.ReadAll(f)\n  178  				if err != nil {\n  179  					t.Error(err)\n\nd:\\go\\src\\golang.org\\x\\tools\\imports\\fix_test.go:\n    9  	\"flag\"\n   10  	\"go/build\"\n   11: 	\"io/ioutil\"\n   12  	\"os\"\n   13  	\"path/filepath\"\n   ..\n  834  	}\n  835  \n  836: 	newGoPath, err := ioutil.TempDir(\"\", \"vendortest\")\n  837  	if err != nil {\n  838  		t.Fatal(err)\n  ...\n  852  	}()\n  853  \n  854: 	if err := ioutil.WriteFile(vendoredPath+\"/f.go\", []byte(\"package mypkg\\nvar Foo = 123\\n\"), 0666); err != nil {\n  855  		t.Fatal(err)\n  856  	}\n  ...\n  879  \n  880  func TestFindImportGoPath(t *testing.T) {\n  881: 	goroot, err := ioutil.TempDir(\"\", \"goimports-\")\n  882  	if err != nil {\n  883  		t.Fatal(err)\n  ...\n  910  type Buffer2 struct {}\n  911  `)\n  912: 	if err := ioutil.WriteFile(bytesSrcPath, bytesSrc, 0775); err != nil {\n  913  		t.Fatal(err)\n  914  	}\n  ...\n 1045  		{\"http\", []string{\"Get\", \"Foo\"}, \"\"},\n 1046  		{\"bytes\", []string{\"Buffer\"}, \"bytes\"},\n 1047: 		{\"ioutil\", []string{\"Discard\"}, \"io/ioutil\"},\n 1048  	}\n 1049  	for _, tt := range tests {\n\nd:\\go\\src\\golang.org\\x\\tools\\imports\\mkindex.go:\n   19  	\"go/parser\"\n   20  	\"go/token\"\n   21: 	\"io/ioutil\"\n   22  	\"log\"\n   23  	\"os\"\n   ..\n   88  \n   89  	// Write out source file.\n   90: 	err = ioutil.WriteFile(\"pkgindex.go\", src, 0644)\n   91  	if err != nil {\n   92  		log.Fatal(err)\n\nd:\\go\\src\\golang.org\\x\\tools\\imports\\mkstdlib.go:\n   12  	\"go/format\"\n   13  	\"io\"\n   14: 	\"io/ioutil\"\n   15  	\"log\"\n   16  	\"os\"\n   ..\n   92  		log.Fatal(err)\n   93  	}\n   94: 	err = ioutil.WriteFile(\"zstdlib.go\", fmtbuf, 0666)\n   95  	if err != nil {\n   96  		log.Fatal(err)\n\nd:\\go\\src\\golang.org\\x\\tools\\imports\\zstdlib.go:\n 2038  	\"iotest.TimeoutReader\":                          \"testing/iotest\",\n 2039  	\"iotest.TruncateWriter\":                         \"testing/iotest\",\n 2040: 	\"ioutil.Discard\":                                \"io/ioutil\",\n 2041: 	\"ioutil.NopCloser\":                              \"io/ioutil\",\n 2042: 	\"ioutil.ReadAll\":                                \"io/ioutil\",\n 2043: 	\"ioutil.ReadDir\":                                \"io/ioutil\",\n 2044: 	\"ioutil.ReadFile\":                               \"io/ioutil\",\n 2045: 	\"ioutil.TempDir\":                                \"io/ioutil\",\n 2046: 	\"ioutil.TempFile\":                               \"io/ioutil\",\n 2047: 	\"ioutil.WriteFile\":                              \"io/ioutil\",\n 2048  	\"jpeg.Decode\":                                   \"image/jpeg\",\n 2049  	\"jpeg.DecodeConfig\":                             \"image/jpeg\",\n\nd:\\go\\src\\golang.org\\x\\tools\\oracle\\oracle_test.go:\n   36  	\"go/token\"\n   37  	\"io\"\n   38: 	\"io/ioutil\"\n   39  	\"os\"\n   40  	\"os/exec\"\n   ..\n   68  // parseQueries parses and returns the queries in the named file.\n   69  func parseQueries(t *testing.T, filename string) []*query {\n   70: 	filedata, err := ioutil.ReadFile(filename)\n   71  	if err != nil {\n   72  		t.Fatal(err)\n\nd:\\go\\src\\golang.org\\x\\tools\\oracle\\referrers.go:\n   13  	\"go/token\"\n   14  	\"go/types\"\n   15: 	\"io/ioutil\"\n   16  	\"sort\"\n   17  \n   ..\n  191  			go func() {\n  192  				sema <- struct{}{} // acquire token\n  193: 				content, err := ioutil.ReadFile(posn.Filename)\n  194  				<-sema // release token\n  195  				if err != nil {\n\nd:\\go\\src\\golang.org\\x\\tools\\playground\\socket\\socket.go:\n   21  	\"go/token\"\n   22  	\"io\"\n   23: 	\"io/ioutil\"\n   24  	\"log\"\n   25  	\"net\"\n   ..\n  363  	// write body to x.go\n  364  	defer os.Remove(src)\n  365: 	err := ioutil.WriteFile(src, []byte(body), 0666)\n  366  	if err != nil {\n  367  		return err\n\nd:\\go\\src\\golang.org\\x\\tools\\present\\parse.go:\n   12  	\"html/template\"\n   13  	\"io\"\n   14: 	\"io/ioutil\"\n   15  	\"log\"\n   16  	\"net/url\"\n   ..\n  270  \n  271  // Parse parses a document from r. Parse reads assets used by the presentation\n  272: // from the file system using ioutil.ReadFile.\n  273  func Parse(r io.Reader, name string, mode ParseMode) (*Doc, error) {\n  274: 	ctx := Context{ReadFile: ioutil.ReadFile}\n  275  	return ctx.Parse(r, name, mode)\n  276  }\n\nd:\\go\\src\\golang.org\\x\\tools\\refactor\\rename\\mvpkg_test.go:\n    8  	\"fmt\"\n    9  	\"go/build\"\n   10: 	\"io/ioutil\"\n   11  	\"path/filepath\"\n   12  	\"regexp\"\n   ..\n  289  				return\n  290  			}\n  291: 			bytes, err := ioutil.ReadAll(f)\n  292  			f.Close()\n  293  			if err != nil {\n\nd:\\go\\src\\golang.org\\x\\tools\\refactor\\rename\\rename.go:\n   21  	\"go/types\"\n   22  	\"io\"\n   23: 	\"io/ioutil\"\n   24  	\"log\"\n   25  	\"os\"\n   ..\n  487  \n  488  func reallyWriteFile(filename string, content []byte) error {\n  489: 	return ioutil.WriteFile(filename, content, 0644)\n  490  }\n  491  \n  492  func diff(filename string, content []byte) error {\n  493  	renamed := fmt.Sprintf(\"%s.%d.renamed\", filename, os.Getpid())\n  494: 	if err := ioutil.WriteFile(renamed, content, 0644); err != nil {\n  495  		return err\n  496  	}\n\nd:\\go\\src\\gopkg.in\\yaml.v2\\decode_test.go:\n  962  //func init() {\n  963  //	var err error\n  964: //	data, err = ioutil.ReadFile(\"/tmp/file.yaml\")\n  965  //	if err != nil {\n  966  //		panic(err)\n\nd:\\go\\src\\rsc.io\\x86\\x86asm\\decode_test.go:\n    7  import (\n    8  	\"encoding/hex\"\n    9: 	\"io/ioutil\"\n   10  	\"strconv\"\n   11  	\"strings\"\n   ..\n   14  \n   15  func TestDecode(t *testing.T) {\n   16: 	data, err := ioutil.ReadFile(\"testdata/decode.txt\")\n   17  	if err != nil {\n   18  		t.Fatal(err)\n\nd:\\go\\src\\rsc.io\\x86\\x86asm\\ext_test.go:\n   13  	\"flag\"\n   14  	\"fmt\"\n   15: 	\"io/ioutil\"\n   16  	\"log\"\n   17  	\"math/rand\"\n   ..\n  189  // the external disassembler.\n  190  func writeInst(generate func(func([]byte))) (file string, f *os.File, size int, err error) {\n  191: 	f, err = ioutil.TempFile(\"\", \"x86map\")\n  192  	if err != nil {\n  193  		return\n  ...\n  520  func testdataCases(t *testing.T) func(func([]byte)) {\n  521  	var codes [][]byte\n  522: 	data, err := ioutil.ReadFile(\"testdata/decode.txt\")\n  523  	if err != nil {\n  524  		t.Fatal(err)\n\nd:\\go\\src\\sourcegraph.com\\sqs\\goreturns\\goreturns.go:\n   12  	\"go/scanner\"\n   13  	\"io\"\n   14: 	\"io/ioutil\"\n   15  	\"os\"\n   16  	\"os/exec\"\n   ..\n   75  	}\n   76  \n   77: 	src, err := ioutil.ReadAll(in)\n   78  	if err != nil {\n   79  		return err\n   ..\n  107  		}\n  108  		if *write {\n  109: 			err = ioutil.WriteFile(filename, res, 0)\n  110  			if err != nil {\n  111  				return err\n  ...\n  180  \n  181  func diff(b1, b2 []byte) (data []byte, err error) {\n  182: 	f1, err := ioutil.TempFile(\"\", \"gofmt\")\n  183  	if err != nil {\n  184  		return\n  ...\n  187  	defer f1.Close()\n  188  \n  189: 	f2, err := ioutil.TempFile(\"\", \"gofmt\")\n  190  	if err != nil {\n  191  		return\n\nd:\\go\\src\\sourcegraph.com\\sqs\\goreturns\\returns\\fix_test.go:\n   79  		name: \"direct return of multiple return funcs\",\n   80  		in: `package foo\n   81: import \"io/ioutil\"\n   82: func F() ([]byte, error) { return ioutil.ReadFile(\"f\") }\n   83  `,\n   84  		out: `package foo\n   85  \n   86: import \"io/ioutil\"\n   87  \n   88: func F() ([]byte, error) { return ioutil.ReadFile(\"f\") }\n   89  `,\n   90  	},\n\nd:\\go\\src\\test\\main.go:\n    7  	\"encoding/xml\"\n    8  	\"fmt\"\n    9: 	\"io/ioutil\"\n   10  	//\"log\"\n   11  	//\"os\"\n   ..\n   83  	this.setChannelSdk()\n   84  \n   85: 	ioutil.WriteFile(outFile, []byte(this.mbRootEl.SyncToXml()), 0666)\n   86  	return\n   87  }\n   88  \n   89  func (this *AndroidXml) load(file string) (result *android.Element) {\n   90: 	byteArray, err := ioutil.ReadFile(file)\n   91  \n   92  	if err != nil {\n\nd:\\go\\src\\u9\\api\\debug:\n    <binary>\n\nd:\\go\\src\\u9\\test\\test.go:\n    4  	\"encoding/xml\"\n    5  	\"fmt\"\n    6: 	\"io/ioutil\"\n    7  )\n    8  \n    .\n   15  \n   16  func main() {\n   17: 	content, err := ioutil.ReadFile(\"t1.xml\")\n   18  	if err != nil {\n   19  		fmt.Println(err)\n\nd:\\go\\src\\u9\\tool\\android\\xml.go:\n    9  	\"fmt\"\n   10  	\"io\"\n   11: 	\"io/ioutil\"\n   12  	\"strings\"\n   13  	\"sync\"\n   ..\n   44  \n   45  func LoadXmlFile(file string) (result *Element) {\n   46: 	byteArray, err := ioutil.ReadFile(file)\n   47  	if err != nil {\n   48  		panic(err)\n\nd:\\go\\src\\u9\\tool\\file.go:\n    3  import (\n    4  	\"io\"\n    5: 	\"io/ioutil\"\n    6  	\"os\"\n    7  	\"strings\"\n    .\n   10  func GetDirList(path string, extName string) (map[string]string, error) {\n   11  	ret := make(map[string]string, 0)\n   12: 	dir, err := ioutil.ReadDir(path)\n   13  	if err != nil {\n   14  		return nil, err\n\nd:\\go\\src\\u9\\tool\\rsa.go:\n   10  	\"errors\"\n   11  	\"fmt\"\n   12: 	\"io/ioutil\"\n   13  	\"os\"\n   14  )\n   ..\n   19  		return\n   20  	}\n   21: 	buf, err := ioutil.ReadAll(f)\n   22  	if err != nil {\n   23  		return\n\nd:\\go\\src\\u9\\www\\android\\buildId.go:\n    8  	\"u9/tool/android\"\n    9  	\"strings\"\n   10: 	\"io/ioutil\"\n   11  )\n   12  \n   ..\n  119  		panic(err)\n  120  	}\n  121: 	if err := ioutil.WriteFile(javaPath+\"/WXEntryActivity.java\", d1, 0644);err !=nil{\n  122  		beego.Trace(err)\n  123  		panic(err)\n\nd:\\go\\src\\u9\\www\\android\\manifest.go:\n    5  	\"fmt\"\n    6  	\"github.com/astaxie/beego\"\n    7: 	\"io/ioutil\"\n    8  	\"strconv\"\n    9  	\"strings\"\n   ..\n   90  		beego.Trace(9)\n   91  	}\n   92: 	ioutil.WriteFile(this.packagePath+\"/\"+amName, []byte(this.productRootEl.SyncToXml()), 0666)\n   93  	return\n   94  }\n\nd:\\go\\src\\u9\\www\\android\\res.go:\n    3  import (\n    4  	\"github.com/astaxie/beego\"\n    5: 	\"io/ioutil\"\n    6  	\"os\"\n    7  	\"strings\"\n    .\n  163  	productEl.RemoveNode(\"item\", \"name\", \"demo_line\")\n  164  \n  165: 	if err := ioutil.WriteFile(packageXml, []byte(productEl.SyncToXml()), 0666); err != nil {\n  166  		beego.Trace(err)\n  167  		panic(err)\n  ...\n  208  	resEl.RemoveNode(\"public\", \"name\", \"logout_button\")\n  209  \n  210: 	if err := ioutil.WriteFile(publicXml, []byte(rootEl.SyncToXml()), 0666); err != nil {\n  211  		beego.Trace(err)\n  212  		panic(err)\n  ...\n  225  	}\n  226  \n  227: 	if err := ioutil.WriteFile(stringXml, []byte(el.SyncToXml()), 0666); err != nil {\n  228  		beego.Trace(err)\n  229  		panic(err)\n\n1289 matches across 252 files\n",
 			"settings":
 			{
-				"buffer_size": 5121,
+				"buffer_size": 117198,
+				"line_ending": "Windows",
+				"name": "Find Results",
+				"scratch": true
+			}
+		},
+		{
+			"file": "/d/go/src/u9/api/channel/notify/pay/gfan.go",
+			"settings":
+			{
+				"buffer_size": 2965,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "api/channel/api/createOrder/tencent.go",
+			"file": "test/test.go",
 			"settings":
 			{
-				"buffer_size": 4037,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "api/channel/api/createOrder/xmw.go",
-			"settings":
-			{
-				"buffer_size": 2963,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "api/channel/api/createOrder/vivo.go",
-			"settings":
-			{
-				"buffer_size": 3251,
+				"buffer_size": 492,
 				"line_ending": "Windows"
 			}
 		}
@@ -639,20 +641,66 @@
 	[
 		"/D/go/src/u9",
 		"/D/go/src/u9/api",
+		"/D/go/src/u9/api/channel",
 		"/D/go/src/u9/api/channel/api",
 		"/D/go/src/u9/api/channel/api/createOrder",
-		"/D/go/src/u9/api/common",
-		"/D/go/src/u9/api/controllers",
+		"/D/go/src/u9/api/channel/api/loginRequest",
+		"/D/go/src/u9/api/channel/notify",
 		"/D/go/src/u9/api/controllers/pay",
-		"/D/go/src/u9/api/routers"
+		"/D/go/src/u9/api/routers",
+		"/D/go/src/u9/test",
+		"/D/go/src/u9/tool",
+		"/D/go/src/u9/tool/jar"
 	],
 	"file_history":
 	[
-		"/d/go/src/9fans.net/go/acme/acme.go",
+		"/d/go/src/u9/api/channel/notify/pay/jiuyou.go",
+		"/D/go/src/u9/api/channel/notify/pay/huawei.go",
+		"/D/go/src/u9/api/channel/api/api.go",
+		"/D/go/src/u9/api/controllers/login/loginRequestHandle/huawei.go",
+		"/D/go/src/u9/api/controllers/pay/payRequest.go",
+		"/D/go/src/u9/api/channel/api/createOrder/huawei.go",
+		"/d/go/src/fragmenta/fragmenta-cms/src/images/images.go",
+		"/c/go/src/net/url/url.go",
+		"/D/go/src/u9/api/channel/api/createOrder/amigo.go",
+		"/D/go/src/u9/api/channel/api/createOrder/base.go",
+		"/d/go/src/github.com/astaxie/beego/hooks.go",
+		"/d/go/src/github.com/astaxie/beego/admin.go",
+		"/D/go/src/u9/test/test.go",
+		"/D/go/src/u9/tool/url.go",
+		"/c/go/src/builtin/builtin.go",
+		"/d/go/src/u9/api/channel/notify/pay/amigo.go",
+		"/D/go/src/u9/api/channel/notify/pay/base.go",
+		"/c/go/src/crypto/rsa/pkcs1v15.go",
+		"/D/go/src/u9/api/channel/api/createOrder/vivo.go",
+		"/D/go/src/u9/api/channel/notify/pay/vivo.go",
+		"/D/go/src/u9/api/channel/notify/pay/pay.go",
+		"/c/go/src/strconv/atoi.go",
+		"/d/go/src/github.com/astaxie/beego/context/context.go",
+		"/d/go/src/github.com/astaxie/beego/controller.go",
+		"/D/go/src/u9/api/controllers/login/loginRequest.go",
+		"/D/go/src/u9/api/controllers/login/loginRequestHandle/xmw.go",
+		"/D/go/src/u9/api/common/request.go",
+		"/D/go/src/u9/api/controllers/login/loginRequestHandle/base.go",
+		"/D/go/src/u9/api/channel/notify/pay/letv.go",
+		"/c/go/src/strconv/quote.go",
+		"/d/go/src/fragmenta/fragmenta-cms/src/lib/sms/sms.go",
+		"/c/go/src/strings/reader.go",
+		"/d/go/src/github.com/astaxie/beego/templatefunc_test.go",
+		"/d/go/src/github.com/astaxie/beego/context/input.go",
+		"/c/go/src/sort/sort.go",
+		"/d/go/src/u9/api/controllers/pay/channelPayNotify.go",
+		"/D/go/src/u9/api/channel/api/loginRequest/huawei.go",
+		"/D/go/src/u9/api/channel/api/loginRequest/vivo.go",
+		"/D/go/src/u9/api/channel/api/createOrder/xcs.go",
 		"/D/go/src/u9/api/controllers/pay/getNewChannel.go",
+		"/D/go/src/u9/sftp-config.json",
+		"/d/go/src/fragmenta/server/schedule/schedule.go",
+		"/D/go/src/u9/api/channel/api/createOrder/xmw.go",
+		"/D/go/src/u9/api/channel/api/createOrder/tencent.go",
+		"/d/go/src/9fans.net/go/acme/acme.go",
 		"/D/go/src/u9/api/common/common.go",
 		"/D/go/src/u9/tool/encrypt.go",
-		"/D/go/src/u9/test/test.go",
 		"/d/go/src/fragmenta/fragmenta/backup.go",
 		"/d/go/src/github.com/astaxie/beego/migration/migration.go",
 		"/c/go/src/mime/multipart/writer.go",
@@ -661,13 +709,10 @@
 		"/c/go/src/net/http/request.go",
 		"/D/go/src/github.com/astaxie/beego/httplib/httplib.go",
 		"/c/go/src/io/io.go",
-		"/D/go/src/u9/api/channel/api/createOrder/tencent.go",
 		"/D/go/src/u9/api/channel/api/loginRequest/tencent.go",
 		"/d/go/src/u9/api/channel/notify/pay/base.go",
-		"/D/go/src/u9/sftp-config.json",
 		"/D/go/src/u9/api/channel/notify/pay/tt.go",
 		"/D/go/src/u9/api/channel/notify/pay/pyw.go",
-		"/D/go/src/u9/api/channel/notify/pay/pay.go",
 		"/D/go/src/u9/api/channel/notify/pay/oppo.go",
 		"/D/go/src/u9/api/channel/notify/pay/guopan.go",
 		"/D/go/src/u9/api/channel/notify/pay/cygame.go",
@@ -678,7 +723,6 @@
 		"/D/go/src/u9/api/channel/notify/pay/amigo.go",
 		"/d/go/src/github.com/astaxie/beego/httplib/README.md",
 		"/D/go/src/u9/api/channel/api/loginRequest/base.go",
-		"/D/go/src/u9/api/common/request.go",
 		"/c/go/src/mime/multipart/multipart.go",
 		"/D/go/src/u9/api/channel/notify/pay/tencent.go",
 		"/c/go/src/log/log.go",
@@ -695,23 +739,18 @@
 		"/d/go/src/golang.org/x/net/http2/transport_test.go",
 		"/c/go/src/net/http/jar.go",
 		"/c/go/src/net/http/client.go",
-		"/c/go/src/net/url/url.go",
 		"/d/go/src/github.com/astaxie/beego/httplib/httplib.go",
 		"/c/go/src/time/time.go",
 		"/d/go/src/u9/api/channel/notify/pay/pay.go",
 		"/d/go/src/github.com/astaxie/beego/router.go",
-		"/d/go/src/github.com/astaxie/beego/context/input.go",
 		"/d/go/src/github.com/astaxie/beego/session/sess_cookie_test.go",
 		"/d/go/src/github.com/astaxie/beego/filter_test.go",
 		"/c/go/src/net/http/httptest/recorder.go",
 		"/d/go/src/github.com/astaxie/beego/context/input_test.go",
-		"/d/go/src/github.com/astaxie/beego/context/context.go",
 		"/D/go/src/u9/api/routers/router.go",
-		"/D/go/src/u9/api/controllers/pay/payRequest.go",
 		"/D/go/src/u9/api/controllers/pay/channelPayNotify.go",
 		"/D/go/src/github.com/astaxie/beego/controller.go",
 		"/D/go/src/u9/www/android/manifest.go",
-		"/D/go/src/u9/api/channel/notify/pay/base.go",
 		"/D/go/src/u9/api/channel/notify/pay/qmyx.go",
 		"/E/backup/android/tool/back/baozoushuihu_PYW_1.4.0_20160506135754/AndroidManifest.xml",
 		"/D/go/src/u9/api/channel/notify/pay/test.go",
@@ -720,16 +759,11 @@
 		"/D/go/src/github.com/astaxie/beego/config.go",
 		"/D/go/src/github.com/astaxie/beego/config/config.go",
 		"/D/go/src/u9/api/channel/notify/pay/jiuyou.go",
-		"/D/go/src/u9/api/controllers/login/loginRequest.go",
 		"/d/go/src/u9/api/controllers/login/loginRequestHandle/param.go",
 		"/d/go/src/u9/api/channel/api/api.go",
 		"/d/go/src/code.google.com/p/graphics-go/graphics/affine.go",
 		"/D/go/src/u9/api/controllers/test/test.go",
 		"/D/go/src/u9/api/channel/api/createOrder/meizu.go",
-		"/D/go/src/u9/api/channel/api/createOrder/amigo.go",
-		"/D/go/src/u9/api/channel/api/createOrder/base.go",
-		"/D/go/src/u9/api/channel/api/createOrder/xmw.go",
-		"/D/go/src/u9/api/channel/api/createOrder/xcs.go",
 		"/c/go/src/crypto/tls/common.go",
 		"/c/go/src/crypto/tls/tls.go",
 		"/d/go/src/u9/api/channel/api/createOrder/meizu.go",
@@ -737,7 +771,6 @@
 		"/d/go/src/u9/api/channel/api/loginRequest/base.go",
 		"/d/go/src/u9/api/controllers/login/loginRequestHandle/xmw.go",
 		"/d/go/src/u9/api/controllers/login/loginRequestHandle/base.go",
-		"/D/go/src/u9/api/channel/api/api.go",
 		"/c/go/src/time/sleep.go",
 		"/c/go/src/net/http/cookie_test.go",
 		"/c/go/src/net/http/client_test.go",
@@ -748,34 +781,7 @@
 		"/c/go/src/cmd/compile/internal/big/natconv_test.go",
 		"/D/go/src/github.com/astaxie/beego/log.go",
 		"/c/go/src/crypto/tls/handshake_server_test.go",
-		"/c/go/src/archive/tar/example_test.go",
-		"/c/go/src/cmd/compile/internal/gc/typecheck.go",
-		"/c/go/src/archive/tar/reader.go",
-		"/c/go/src/archive/tar/common.go",
-		"/c/go/src/net/http/cookie.go",
-		"/c/go/src/net/http/response.go",
-		"/c/go/src/strconv/atoi.go",
-		"/c/go/src/strconv/itoa.go",
-		"/C/Users/jacky/Desktop/b7cabc32-26e6-44ad-b73f-ff37a7cc957e_20160513040101.sql",
-		"/D/go/src/u9/api/channel/notify/pay/pengyouwan.go",
-		"/D/go/src/u9/api/channel/notify/pay/xmw.go",
-		"/D/go/src/github.com/astaxie/beego/context/context.go",
-		"/D/go/src/github.com/astaxie/beego/context/output.go",
-		"/D/go/src/u9/api/channel/api/loginRequest/amigo.go",
-		"/D/go/src/u9/api/channel/api/loginRequest/jiuyou.go",
-		"/D/go/src/u9/api/channel/api/loginRequest/haimawan.go",
-		"/D/go/src/u9/api/channel/api/loginRequest/oppo.go",
-		"/D/go/src/u9/api/channel/api/loginRequest/shoumeng.go",
-		"/D/go/src/u9/api/channel/api/loginRequest/sogou.go",
-		"/D/go/src/u9/api/channel/api/loginRequest/tt.go",
-		"/D/go/src/u9/api/channel/api/loginRequest/gfan.go",
-		"/C/Users/jacky/AppData/Roaming/Sublime Text 3/Packages/GoSublime/CHANGELOG.md",
-		"/D/go/src/u9/api/controllers/login/validateLogin.go",
-		"/C/Users/jacky/Desktop/YSDK_PHP_V1.0.0/ysdks/Api.php",
-		"/C/Users/jacky/Desktop/YSDK_PHP_V1.0.0/ysdks/lib/SnsNetwork.php",
-		"/C/Users/jacky/Desktop/YSDK_PHP_V1.0.0/ysdks/Ysdk.php",
-		"/C/Users/jacky/Desktop/YSDK_PHP_V1.0.0/samples/SampleTest.php",
-		"/D/go/src/u9/tool/url.go"
+		"/c/go/src/archive/tar/example_test.go"
 	],
 	"find":
 	{
@@ -786,6 +792,8 @@
 		"height": 127.0,
 		"where_history":
 		[
+			"d:\\go\\src\\",
+			"d:\\go\\src\\u9\\api",
 			"d:\\go\\src\\",
 			"d:\\go\\src\\u9\\api",
 			"d:\\go\\src",
@@ -882,6 +890,74 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"ioutil",
+			"xml",
+			"\"encoding/xml\"",
+			"Vivo",
+			"vivo",
+			"strings.Replace",
+			"Content",
+			"Marshal",
+			"huaweiChannelRet",
+			"huaweChannelRet",
+			"amigoChannelRet",
+			"rsaPublicKeyStr",
+			"ParsePKIXPublicKeyWithStr",
+			"amigoRsaPrivateKey",
+			"huaweiRsaPublicKey",
+			"Amigo",
+			"beego",
+			"ParseParam",
+			"amigoRsaPublicKeyStr",
+			"RsaVerifyPKCS1v15",
+			"GetResult",
+			"radeType",
+			"QueryEscape",
+			"status",
+			"panic",
+			"Abort",
+			"ParseInt",
+			"orm",
+			"GetChannelOrderId",
+			"channelOrderId",
+			"orderId",
+			"Init",
+			"getAccessToken",
+			"getUserInfo",
+			"XMWChannelRet",
+			"Token",
+			"AccessToken",
+			"lrParam",
+			"channelRet",
+			"handleLrParam",
+			"updateDB",
+			"lrRet",
+			"ChannelExt",
+			"Token",
+			"updateDB",
+			"handleLrParam",
+			"err_letvParsePayKey",
+			"jiuyou",
+			"Jiuyou",
+			"Encode",
+			"ms",
+			"url.Values",
+			"heapSort",
+			"siftDown",
+			"44",
+			":",
+			"CallPayNotify",
+			"jiuyou",
+			"Jiuyou",
+			"vivoChannelRet",
+			"NotifyUrl",
+			"xmwExtParam",
+			"amigoExtParam",
+			"meizuExtParam",
+			"TencentExtParam",
+			"Vivo",
+			"vivo",
+			"time.NewTicker",
 			"Param",
 			"for",
 			"Arg",
@@ -941,75 +1017,7 @@
 			"sign",
 			"CallLoginRequest",
 			"Email",
-			"check",
-			"WX",
-			"WEIXIN",
-			"extParam.LoginType",
-			"cookies",
-			"canonicalHost",
-			"Cookies",
-			"Jar",
-			"Timeout",
-			"ioutil",
-			"cookiejar",
-			"defaultCookieJar",
-			"http.Client",
-			"NewInput",
-			"http.NewRequest",
-			"httplib.Get",
-			"Header",
-			"C07073",
-			"CallPayNotify",
-			"Input",
-			"Input()",
-			"setTencent",
-			"productAppEl",
-			"ptAppElAcWX",
-			"testChannelPayKey",
-			"err_testResultFailure",
-			"callbackRet",
-			"ParseChannelRet",
-			"notifyProductSvr",
-			"err_callbackFail",
-			"callbackRet",
-			"err_callbackFail",
-			"err_checkUrlParam",
-			"IniConfigContainer",
-			"NewConfig",
-			"IniConfigContainer",
-			"IniConfig",
-			"Register",
-			"Config",
-			"Parse",
-			"AppConfig",
-			"AppConfigProvider",
-			"this.data",
-			"err_parseProductKey",
-			"ParseParam",
-			"this.data",
-			"parseUrlParam",
-			"this.data",
-			"parseGameID",
-			"parseGameKey",
-			"channelGameId",
-			"gameId",
-			"gameKey",
-			"gameId",
-			"err_parseProductKey",
-			"ParseChannelRet",
-			"notifyProductSvr",
-			"handleOrder",
-			"notifyProductSvr",
-			"Handle",
-			"parseChannelGameKey",
-			"GetTencentPayQueryUrl",
-			"GetResponse",
-			"Handle",
-			"payAmount",
-			"payAmount is invalid",
-			"SaveAmt",
-			"GetTencentPayQueryUrl",
-			"payAmount"
+			"check"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1017,6 +1025,16 @@
 		"regex": false,
 		"replace_history":
 		[
+			"Lenovo",
+			"lenovo",
+			"rsaPrivateKeyStr",
+			"Huawei",
+			"huawei",
+			"Huawei",
+			"vivo",
+			"Vivo",
+			"Huawei",
+			"huawei",
 			"Vivo",
 			"vivo",
 			"",
@@ -1134,17 +1152,7 @@
 			"Md5",
 			"tool",
 			"AB",
-			"Oppo",
-			"strParams",
-			"productEl",
-			"elValue",
-			"elName",
-			"cp",
-			"Channel",
-			"channel",
-			"channelPackage",
-			"packageRootEl",
-			"Manifest"
+			"Oppo"
 		],
 		"reverse": false,
 		"show_context": true,
@@ -1155,105 +1163,2964 @@
 	"groups":
 	[
 		{
-			"selected": 4,
+			"selected": 3,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "api/channel/api/loginRequest/vivo.go",
+					"file": "api/channel/api/loginRequest/lenovo.go",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1239,
+						"buffer_size": 1119,
 						"regions":
 						{
-							"mark":
-							{
-								"flags": 144,
-								"icon": "dot",
-								"regions":
-								[
-									[
-										1016,
-										1016
-									]
-								],
-								"scope": "mark"
-							}
 						},
 						"selection":
 						[
 							[
-								855,
-								809
+								46,
+								32
 							]
 						],
 						"settings":
 						{
 							"incomplete_sync": null,
 							"remote_loading": false,
-							"rulers":
-							[
-								80
-							],
 							"synced": false,
 							"syntax": "Packages/GoSublime/syntax/GoSublime-Go.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 837.0,
+						"translation.y": 93.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 117198,
+						"regions":
+						{
+							"match":
+							{
+								"flags": 112,
+								"regions":
+								[
+									[
+										144,
+										158
+									],
+									[
+										278,
+										292
+									],
+									[
+										597,
+										603
+									],
+									[
+										706,
+										712
+									],
+									[
+										833,
+										839
+									],
+									[
+										954,
+										960
+									],
+									[
+										1052,
+										1058
+									],
+									[
+										1166,
+										1172
+									],
+									[
+										1337,
+										1343
+									],
+									[
+										1541,
+										1547
+									],
+									[
+										1835,
+										1841
+									],
+									[
+										2010,
+										2016
+									],
+									[
+										2243,
+										2249
+									],
+									[
+										2358,
+										2364
+									],
+									[
+										2566,
+										2572
+									],
+									[
+										2746,
+										2752
+									],
+									[
+										2879,
+										2885
+									],
+									[
+										3067,
+										3073
+									],
+									[
+										3293,
+										3299
+									],
+									[
+										3440,
+										3446
+									],
+									[
+										3565,
+										3571
+									],
+									[
+										3787,
+										3793
+									],
+									[
+										3989,
+										3995
+									],
+									[
+										4105,
+										4111
+									],
+									[
+										4281,
+										4287
+									],
+									[
+										4526,
+										4532
+									],
+									[
+										4658,
+										4664
+									],
+									[
+										4797,
+										4803
+									],
+									[
+										4994,
+										5000
+									],
+									[
+										5095,
+										5101
+									],
+									[
+										5396,
+										5402
+									],
+									[
+										5658,
+										5664
+									],
+									[
+										5837,
+										5843
+									],
+									[
+										6036,
+										6042
+									],
+									[
+										6178,
+										6184
+									],
+									[
+										6380,
+										6386
+									],
+									[
+										6487,
+										6493
+									],
+									[
+										6692,
+										6698
+									],
+									[
+										6804,
+										6810
+									],
+									[
+										7047,
+										7053
+									],
+									[
+										7257,
+										7263
+									],
+									[
+										7429,
+										7435
+									],
+									[
+										7640,
+										7646
+									],
+									[
+										7849,
+										7855
+									],
+									[
+										8059,
+										8065
+									],
+									[
+										8164,
+										8170
+									],
+									[
+										8419,
+										8425
+									],
+									[
+										8681,
+										8687
+									],
+									[
+										8860,
+										8866
+									],
+									[
+										9020,
+										9026
+									],
+									[
+										9246,
+										9252
+									],
+									[
+										9352,
+										9358
+									],
+									[
+										9549,
+										9555
+									],
+									[
+										9656,
+										9662
+									],
+									[
+										9855,
+										9861
+									],
+									[
+										10044,
+										10050
+									],
+									[
+										10257,
+										10263
+									],
+									[
+										10434,
+										10440
+									],
+									[
+										10630,
+										10636
+									],
+									[
+										10838,
+										10844
+									],
+									[
+										11030,
+										11036
+									],
+									[
+										11136,
+										11142
+									],
+									[
+										11304,
+										11310
+									],
+									[
+										11444,
+										11450
+									],
+									[
+										11686,
+										11692
+									],
+									[
+										11873,
+										11879
+									],
+									[
+										12080,
+										12086
+									],
+									[
+										12225,
+										12231
+									],
+									[
+										12395,
+										12401
+									],
+									[
+										12617,
+										12623
+									],
+									[
+										12761,
+										12767
+									],
+									[
+										12953,
+										12959
+									],
+									[
+										13089,
+										13095
+									],
+									[
+										13232,
+										13238
+									],
+									[
+										13371,
+										13377
+									],
+									[
+										13615,
+										13621
+									],
+									[
+										13730,
+										13736
+									],
+									[
+										13793,
+										13799
+									],
+									[
+										13953,
+										13959
+									],
+									[
+										14053,
+										14059
+									],
+									[
+										14258,
+										14264
+									],
+									[
+										14405,
+										14411
+									],
+									[
+										14576,
+										14582
+									],
+									[
+										14703,
+										14709
+									],
+									[
+										14826,
+										14832
+									],
+									[
+										14991,
+										14997
+									],
+									[
+										15172,
+										15178
+									],
+									[
+										15383,
+										15389
+									],
+									[
+										15621,
+										15627
+									],
+									[
+										15796,
+										15802
+									],
+									[
+										15952,
+										15958
+									],
+									[
+										16108,
+										16114
+									],
+									[
+										16270,
+										16276
+									],
+									[
+										16397,
+										16403
+									],
+									[
+										16577,
+										16583
+									],
+									[
+										16710,
+										16716
+									],
+									[
+										16934,
+										16940
+									],
+									[
+										17102,
+										17108
+									],
+									[
+										17290,
+										17296
+									],
+									[
+										17451,
+										17457
+									],
+									[
+										17611,
+										17617
+									],
+									[
+										17728,
+										17734
+									],
+									[
+										17869,
+										17875
+									],
+									[
+										18043,
+										18049
+									],
+									[
+										18218,
+										18224
+									],
+									[
+										18361,
+										18367
+									],
+									[
+										18547,
+										18553
+									],
+									[
+										18773,
+										18779
+									],
+									[
+										18941,
+										18947
+									],
+									[
+										19031,
+										19037
+									],
+									[
+										19188,
+										19194
+									],
+									[
+										19274,
+										19280
+									],
+									[
+										19499,
+										19505
+									],
+									[
+										19597,
+										19603
+									],
+									[
+										19783,
+										19789
+									],
+									[
+										19881,
+										19887
+									],
+									[
+										20048,
+										20054
+									],
+									[
+										20146,
+										20152
+									],
+									[
+										20430,
+										20436
+									],
+									[
+										20548,
+										20554
+									],
+									[
+										20860,
+										20866
+									],
+									[
+										21011,
+										21017
+									],
+									[
+										21179,
+										21185
+									],
+									[
+										21330,
+										21336
+									],
+									[
+										21520,
+										21526
+									],
+									[
+										21624,
+										21630
+									],
+									[
+										21697,
+										21703
+									],
+									[
+										21987,
+										21993
+									],
+									[
+										22091,
+										22097
+									],
+									[
+										22164,
+										22170
+									],
+									[
+										22406,
+										22412
+									],
+									[
+										22522,
+										22528
+									],
+									[
+										22745,
+										22751
+									],
+									[
+										22997,
+										23003
+									],
+									[
+										23194,
+										23200
+									],
+									[
+										23318,
+										23324
+									],
+									[
+										23538,
+										23544
+									],
+									[
+										23683,
+										23689
+									],
+									[
+										23699,
+										23705
+									],
+									[
+										23901,
+										23907
+									],
+									[
+										24044,
+										24050
+									],
+									[
+										24060,
+										24066
+									],
+									[
+										24224,
+										24230
+									],
+									[
+										24349,
+										24355
+									],
+									[
+										24571,
+										24577
+									],
+									[
+										24784,
+										24790
+									],
+									[
+										24900,
+										24906
+									],
+									[
+										25076,
+										25082
+									],
+									[
+										25332,
+										25338
+									],
+									[
+										25464,
+										25470
+									],
+									[
+										25603,
+										25609
+									],
+									[
+										25799,
+										25805
+									],
+									[
+										25906,
+										25912
+									],
+									[
+										26122,
+										26128
+									],
+									[
+										26234,
+										26240
+									],
+									[
+										26477,
+										26483
+									],
+									[
+										26687,
+										26693
+									],
+									[
+										26859,
+										26865
+									],
+									[
+										27070,
+										27076
+									],
+									[
+										27290,
+										27296
+									],
+									[
+										27500,
+										27506
+									],
+									[
+										27605,
+										27611
+									],
+									[
+										27860,
+										27866
+									],
+									[
+										28122,
+										28128
+									],
+									[
+										28301,
+										28307
+									],
+									[
+										28461,
+										28467
+									],
+									[
+										28698,
+										28704
+									],
+									[
+										28804,
+										28810
+									],
+									[
+										29022,
+										29028
+									],
+									[
+										29147,
+										29153
+									],
+									[
+										29369,
+										29375
+									],
+									[
+										29583,
+										29589
+									],
+									[
+										29699,
+										29705
+									],
+									[
+										29875,
+										29881
+									],
+									[
+										30132,
+										30138
+									],
+									[
+										30264,
+										30270
+									],
+									[
+										30403,
+										30409
+									],
+									[
+										30612,
+										30618
+									],
+									[
+										30713,
+										30719
+									],
+									[
+										31014,
+										31020
+									],
+									[
+										31276,
+										31282
+									],
+									[
+										31455,
+										31461
+									],
+									[
+										31666,
+										31672
+									],
+									[
+										31808,
+										31814
+									],
+									[
+										32022,
+										32028
+									],
+									[
+										32129,
+										32135
+									],
+									[
+										32346,
+										32352
+									],
+									[
+										32458,
+										32464
+									],
+									[
+										32701,
+										32707
+									],
+									[
+										32911,
+										32917
+									],
+									[
+										33083,
+										33089
+									],
+									[
+										33294,
+										33300
+									],
+									[
+										33515,
+										33521
+									],
+									[
+										33725,
+										33731
+									],
+									[
+										33830,
+										33836
+									],
+									[
+										34085,
+										34091
+									],
+									[
+										34347,
+										34353
+									],
+									[
+										34526,
+										34532
+									],
+									[
+										34686,
+										34692
+									],
+									[
+										34924,
+										34930
+									],
+									[
+										35030,
+										35036
+									],
+									[
+										35239,
+										35245
+									],
+									[
+										35346,
+										35352
+									],
+									[
+										35557,
+										35563
+									],
+									[
+										35746,
+										35752
+									],
+									[
+										35971,
+										35977
+									],
+									[
+										36148,
+										36154
+									],
+									[
+										36351,
+										36357
+									],
+									[
+										36615,
+										36621
+									],
+									[
+										36794,
+										36800
+									],
+									[
+										36943,
+										36949
+									],
+									[
+										37115,
+										37121
+									],
+									[
+										37224,
+										37230
+									],
+									[
+										37448,
+										37454
+									],
+									[
+										37618,
+										37624
+									],
+									[
+										37780,
+										37786
+									],
+									[
+										37915,
+										37921
+									],
+									[
+										38088,
+										38094
+									],
+									[
+										38175,
+										38181
+									],
+									[
+										38399,
+										38405
+									],
+									[
+										38590,
+										38596
+									],
+									[
+										38748,
+										38754
+									],
+									[
+										38936,
+										38942
+									],
+									[
+										39040,
+										39046
+									],
+									[
+										39107,
+										39113
+									],
+									[
+										39251,
+										39257
+									],
+									[
+										39500,
+										39506
+									],
+									[
+										39711,
+										39717
+									],
+									[
+										39882,
+										39888
+									],
+									[
+										40009,
+										40015
+									],
+									[
+										40186,
+										40192
+									],
+									[
+										40279,
+										40285
+									],
+									[
+										40460,
+										40466
+									],
+									[
+										40608,
+										40614
+									],
+									[
+										40732,
+										40738
+									],
+									[
+										40967,
+										40973
+									],
+									[
+										41050,
+										41056
+									],
+									[
+										41255,
+										41261
+									],
+									[
+										41375,
+										41381
+									],
+									[
+										41540,
+										41546
+									],
+									[
+										41695,
+										41701
+									],
+									[
+										41802,
+										41808
+									],
+									[
+										42017,
+										42023
+									],
+									[
+										42256,
+										42262
+									],
+									[
+										42490,
+										42496
+									],
+									[
+										42766,
+										42772
+									],
+									[
+										43027,
+										43033
+									],
+									[
+										43136,
+										43142
+									],
+									[
+										43323,
+										43329
+									],
+									[
+										43490,
+										43496
+									],
+									[
+										43680,
+										43686
+									],
+									[
+										43844,
+										43850
+									],
+									[
+										44002,
+										44008
+									],
+									[
+										44227,
+										44233
+									],
+									[
+										44339,
+										44345
+									],
+									[
+										44550,
+										44556
+									],
+									[
+										44733,
+										44739
+									],
+									[
+										44891,
+										44897
+									],
+									[
+										45019,
+										45025
+									],
+									[
+										45156,
+										45162
+									],
+									[
+										45335,
+										45341
+									],
+									[
+										45553,
+										45559
+									],
+									[
+										45788,
+										45794
+									],
+									[
+										45902,
+										45908
+									],
+									[
+										46078,
+										46084
+									],
+									[
+										46206,
+										46212
+									],
+									[
+										46343,
+										46349
+									],
+									[
+										46515,
+										46521
+									],
+									[
+										46733,
+										46739
+									],
+									[
+										46968,
+										46974
+									],
+									[
+										47082,
+										47088
+									],
+									[
+										47251,
+										47257
+									],
+									[
+										47383,
+										47389
+									],
+									[
+										47626,
+										47632
+									],
+									[
+										47798,
+										47804
+									],
+									[
+										48015,
+										48021
+									],
+									[
+										48232,
+										48238
+									],
+									[
+										48398,
+										48404
+									],
+									[
+										48621,
+										48627
+									],
+									[
+										48735,
+										48741
+									],
+									[
+										48970,
+										48976
+									],
+									[
+										49187,
+										49193
+									],
+									[
+										49404,
+										49410
+									],
+									[
+										49621,
+										49627
+									],
+									[
+										49816,
+										49822
+									],
+									[
+										49933,
+										49939
+									],
+									[
+										50188,
+										50194
+									],
+									[
+										50311,
+										50317
+									],
+									[
+										50483,
+										50489
+									],
+									[
+										50605,
+										50611
+									],
+									[
+										50766,
+										50772
+									],
+									[
+										50942,
+										50948
+									],
+									[
+										51119,
+										51125
+									],
+									[
+										51295,
+										51301
+									],
+									[
+										51474,
+										51480
+									],
+									[
+										51593,
+										51599
+									],
+									[
+										51780,
+										51786
+									],
+									[
+										51884,
+										51890
+									],
+									[
+										52087,
+										52093
+									],
+									[
+										52258,
+										52264
+									],
+									[
+										52390,
+										52396
+									],
+									[
+										52492,
+										52498
+									],
+									[
+										52556,
+										52562
+									],
+									[
+										52682,
+										52688
+									],
+									[
+										52798,
+										52804
+									],
+									[
+										52961,
+										52967
+									],
+									[
+										53086,
+										53092
+									],
+									[
+										53236,
+										53242
+									],
+									[
+										53385,
+										53391
+									],
+									[
+										53510,
+										53516
+									],
+									[
+										53642,
+										53648
+									],
+									[
+										53737,
+										53743
+									],
+									[
+										53886,
+										53892
+									],
+									[
+										53971,
+										53977
+									],
+									[
+										54115,
+										54121
+									],
+									[
+										54317,
+										54323
+									],
+									[
+										54543,
+										54549
+									],
+									[
+										54666,
+										54672
+									],
+									[
+										54892,
+										54898
+									],
+									[
+										55156,
+										55162
+									],
+									[
+										55494,
+										55500
+									],
+									[
+										55667,
+										55673
+									],
+									[
+										55880,
+										55886
+									],
+									[
+										56090,
+										56096
+									],
+									[
+										56218,
+										56224
+									],
+									[
+										56433,
+										56439
+									],
+									[
+										56547,
+										56553
+									],
+									[
+										56771,
+										56777
+									],
+									[
+										56855,
+										56861
+									],
+									[
+										57008,
+										57014
+									],
+									[
+										57128,
+										57134
+									],
+									[
+										57279,
+										57285
+									],
+									[
+										57432,
+										57438
+									],
+									[
+										57572,
+										57578
+									],
+									[
+										57712,
+										57718
+									],
+									[
+										57933,
+										57939
+									],
+									[
+										58171,
+										58177
+									],
+									[
+										58350,
+										58356
+									],
+									[
+										58490,
+										58496
+									],
+									[
+										58718,
+										58724
+									],
+									[
+										58862,
+										58868
+									],
+									[
+										59075,
+										59081
+									],
+									[
+										59248,
+										59254
+									],
+									[
+										59420,
+										59426
+									],
+									[
+										59659,
+										59665
+									],
+									[
+										59741,
+										59747
+									],
+									[
+										60028,
+										60034
+									],
+									[
+										60220,
+										60226
+									],
+									[
+										60405,
+										60411
+									],
+									[
+										60625,
+										60631
+									],
+									[
+										60694,
+										60700
+									],
+									[
+										60829,
+										60835
+									],
+									[
+										60891,
+										60897
+									],
+									[
+										61076,
+										61082
+									],
+									[
+										61218,
+										61224
+									],
+									[
+										61287,
+										61293
+									],
+									[
+										61422,
+										61428
+									],
+									[
+										61484,
+										61490
+									],
+									[
+										61667,
+										61673
+									],
+									[
+										61807,
+										61813
+									],
+									[
+										61876,
+										61882
+									],
+									[
+										62011,
+										62017
+									],
+									[
+										62073,
+										62079
+									],
+									[
+										62209,
+										62215
+									],
+									[
+										62288,
+										62294
+									],
+									[
+										62463,
+										62469
+									],
+									[
+										62560,
+										62566
+									],
+									[
+										62730,
+										62736
+									],
+									[
+										62827,
+										62833
+									],
+									[
+										62984,
+										62990
+									],
+									[
+										63131,
+										63137
+									],
+									[
+										63321,
+										63327
+									],
+									[
+										63520,
+										63526
+									],
+									[
+										63733,
+										63739
+									],
+									[
+										63817,
+										63823
+									],
+									[
+										63986,
+										63992
+									],
+									[
+										64131,
+										64137
+									],
+									[
+										64147,
+										64153
+									],
+									[
+										64313,
+										64319
+									],
+									[
+										64456,
+										64462
+									],
+									[
+										64472,
+										64478
+									],
+									[
+										64622,
+										64628
+									],
+									[
+										64759,
+										64765
+									],
+									[
+										64894,
+										64900
+									],
+									[
+										64984,
+										64990
+									],
+									[
+										65146,
+										65152
+									],
+									[
+										65352,
+										65358
+									],
+									[
+										65455,
+										65461
+									],
+									[
+										65625,
+										65631
+									],
+									[
+										65801,
+										65807
+									],
+									[
+										65975,
+										65981
+									],
+									[
+										66178,
+										66184
+									],
+									[
+										66360,
+										66366
+									],
+									[
+										66499,
+										66505
+									],
+									[
+										66712,
+										66718
+									],
+									[
+										66796,
+										66802
+									],
+									[
+										66984,
+										66990
+									],
+									[
+										67068,
+										67074
+									],
+									[
+										67252,
+										67258
+									],
+									[
+										67418,
+										67424
+									],
+									[
+										67592,
+										67598
+									],
+									[
+										67784,
+										67790
+									],
+									[
+										67910,
+										67916
+									],
+									[
+										68134,
+										68140
+									],
+									[
+										68235,
+										68241
+									],
+									[
+										68409,
+										68415
+									],
+									[
+										68500,
+										68506
+									],
+									[
+										68704,
+										68710
+									],
+									[
+										68788,
+										68794
+									],
+									[
+										68992,
+										68998
+									],
+									[
+										69233,
+										69239
+									],
+									[
+										69415,
+										69421
+									],
+									[
+										69659,
+										69665
+									],
+									[
+										69872,
+										69878
+									],
+									[
+										70021,
+										70027
+									],
+									[
+										70177,
+										70183
+									],
+									[
+										70329,
+										70335
+									],
+									[
+										70488,
+										70494
+									],
+									[
+										70581,
+										70587
+									],
+									[
+										70749,
+										70755
+									],
+									[
+										70925,
+										70931
+									],
+									[
+										71091,
+										71097
+									],
+									[
+										71228,
+										71234
+									],
+									[
+										71406,
+										71412
+									],
+									[
+										71673,
+										71679
+									],
+									[
+										71766,
+										71772
+									],
+									[
+										71983,
+										71989
+									],
+									[
+										72112,
+										72118
+									],
+									[
+										72273,
+										72279
+									],
+									[
+										72362,
+										72368
+									],
+									[
+										72594,
+										72600
+									],
+									[
+										72808,
+										72814
+									],
+									[
+										72912,
+										72918
+									],
+									[
+										73101,
+										73107
+									],
+									[
+										73301,
+										73307
+									],
+									[
+										73481,
+										73487
+									],
+									[
+										73635,
+										73641
+									],
+									[
+										73863,
+										73869
+									],
+									[
+										74010,
+										74016
+									],
+									[
+										74186,
+										74192
+									],
+									[
+										74330,
+										74336
+									],
+									[
+										74423,
+										74429
+									],
+									[
+										74642,
+										74648
+									],
+									[
+										74837,
+										74843
+									],
+									[
+										74963,
+										74969
+									],
+									[
+										75126,
+										75132
+									],
+									[
+										75274,
+										75280
+									],
+									[
+										75448,
+										75454
+									],
+									[
+										75617,
+										75623
+									],
+									[
+										75721,
+										75727
+									],
+									[
+										75891,
+										75897
+									],
+									[
+										75997,
+										76003
+									],
+									[
+										76173,
+										76179
+									],
+									[
+										76279,
+										76285
+									],
+									[
+										76446,
+										76452
+									],
+									[
+										76593,
+										76599
+									],
+									[
+										76821,
+										76827
+									],
+									[
+										76911,
+										76917
+									],
+									[
+										77098,
+										77104
+									],
+									[
+										77339,
+										77345
+									],
+									[
+										77546,
+										77552
+									],
+									[
+										77686,
+										77692
+									],
+									[
+										77904,
+										77910
+									],
+									[
+										78085,
+										78091
+									],
+									[
+										78282,
+										78288
+									],
+									[
+										78564,
+										78570
+									],
+									[
+										78687,
+										78693
+									],
+									[
+										78900,
+										78906
+									],
+									[
+										79079,
+										79085
+									],
+									[
+										79329,
+										79335
+									],
+									[
+										79551,
+										79557
+									],
+									[
+										79662,
+										79668
+									],
+									[
+										79846,
+										79852
+									],
+									[
+										79979,
+										79985
+									],
+									[
+										80161,
+										80167
+									],
+									[
+										80278,
+										80284
+									],
+									[
+										80473,
+										80479
+									],
+									[
+										80600,
+										80606
+									],
+									[
+										80745,
+										80751
+									],
+									[
+										80872,
+										80878
+									],
+									[
+										81070,
+										81076
+									],
+									[
+										81269,
+										81275
+									],
+									[
+										81344,
+										81350
+									],
+									[
+										81535,
+										81541
+									],
+									[
+										81814,
+										81820
+									],
+									[
+										82009,
+										82015
+									],
+									[
+										82271,
+										82277
+									],
+									[
+										82544,
+										82550
+									],
+									[
+										82819,
+										82825
+									],
+									[
+										83014,
+										83020
+									],
+									[
+										83156,
+										83162
+									],
+									[
+										83249,
+										83255
+									],
+									[
+										83447,
+										83453
+									],
+									[
+										83580,
+										83586
+									],
+									[
+										83741,
+										83747
+									],
+									[
+										83907,
+										83913
+									],
+									[
+										84084,
+										84090
+									],
+									[
+										84308,
+										84314
+									],
+									[
+										84454,
+										84460
+									],
+									[
+										84646,
+										84652
+									],
+									[
+										84838,
+										84844
+									],
+									[
+										85022,
+										85028
+									],
+									[
+										85232,
+										85238
+									],
+									[
+										85485,
+										85491
+									],
+									[
+										85708,
+										85714
+									],
+									[
+										85838,
+										85844
+									],
+									[
+										86026,
+										86032
+									],
+									[
+										86231,
+										86237
+									],
+									[
+										86424,
+										86430
+									],
+									[
+										86518,
+										86524
+									],
+									[
+										86714,
+										86720
+									],
+									[
+										86858,
+										86864
+									],
+									[
+										86988,
+										86994
+									],
+									[
+										87155,
+										87161
+									],
+									[
+										87299,
+										87305
+									],
+									[
+										87429,
+										87435
+									],
+									[
+										87601,
+										87607
+									],
+									[
+										87709,
+										87715
+									],
+									[
+										87844,
+										87850
+									],
+									[
+										87923,
+										87929
+									],
+									[
+										88114,
+										88120
+									],
+									[
+										88313,
+										88319
+									],
+									[
+										88433,
+										88439
+									],
+									[
+										88594,
+										88600
+									],
+									[
+										88731,
+										88737
+									],
+									[
+										88862,
+										88868
+									],
+									[
+										89088,
+										89094
+									],
+									[
+										89252,
+										89258
+									],
+									[
+										89415,
+										89421
+									],
+									[
+										89573,
+										89579
+									],
+									[
+										89729,
+										89735
+									],
+									[
+										89817,
+										89823
+									],
+									[
+										89982,
+										89988
+									],
+									[
+										90094,
+										90100
+									],
+									[
+										90280,
+										90286
+									],
+									[
+										90363,
+										90369
+									],
+									[
+										90500,
+										90506
+									],
+									[
+										90673,
+										90679
+									],
+									[
+										90838,
+										90844
+									],
+									[
+										91028,
+										91034
+									],
+									[
+										91130,
+										91136
+									],
+									[
+										91339,
+										91345
+									],
+									[
+										91464,
+										91470
+									],
+									[
+										91681,
+										91687
+									],
+									[
+										91779,
+										91785
+									],
+									[
+										91970,
+										91976
+									],
+									[
+										92119,
+										92125
+									],
+									[
+										92296,
+										92302
+									],
+									[
+										92486,
+										92492
+									],
+									[
+										92622,
+										92628
+									],
+									[
+										92813,
+										92819
+									],
+									[
+										93012,
+										93018
+									],
+									[
+										93199,
+										93205
+									],
+									[
+										93411,
+										93417
+									],
+									[
+										93506,
+										93512
+									],
+									[
+										93688,
+										93694
+									],
+									[
+										93860,
+										93866
+									],
+									[
+										93984,
+										93990
+									],
+									[
+										94118,
+										94124
+									],
+									[
+										94263,
+										94269
+									],
+									[
+										94421,
+										94427
+									],
+									[
+										94558,
+										94564
+									],
+									[
+										94700,
+										94706
+									],
+									[
+										94870,
+										94876
+									],
+									[
+										95024,
+										95030
+									],
+									[
+										95104,
+										95110
+									],
+									[
+										95289,
+										95295
+									],
+									[
+										95443,
+										95449
+									],
+									[
+										95625,
+										95631
+									],
+									[
+										95708,
+										95714
+									],
+									[
+										95825,
+										95831
+									],
+									[
+										96000,
+										96006
+									],
+									[
+										96127,
+										96133
+									],
+									[
+										96298,
+										96304
+									],
+									[
+										96423,
+										96429
+									],
+									[
+										96594,
+										96600
+									],
+									[
+										96804,
+										96810
+									],
+									[
+										96973,
+										96979
+									],
+									[
+										97221,
+										97227
+									],
+									[
+										97327,
+										97333
+									],
+									[
+										97516,
+										97522
+									],
+									[
+										97611,
+										97617
+									],
+									[
+										97838,
+										97844
+									],
+									[
+										97952,
+										97958
+									],
+									[
+										98135,
+										98141
+									],
+									[
+										98269,
+										98275
+									],
+									[
+										98465,
+										98471
+									],
+									[
+										98575,
+										98581
+									],
+									[
+										98746,
+										98752
+									],
+									[
+										98923,
+										98929
+									],
+									[
+										99057,
+										99063
+									],
+									[
+										99266,
+										99272
+									],
+									[
+										99403,
+										99409
+									],
+									[
+										99573,
+										99579
+									],
+									[
+										99700,
+										99706
+									],
+									[
+										99886,
+										99892
+									],
+									[
+										99976,
+										99982
+									],
+									[
+										100207,
+										100213
+									],
+									[
+										100355,
+										100361
+									],
+									[
+										100505,
+										100511
+									],
+									[
+										100731,
+										100737
+									],
+									[
+										100881,
+										100887
+									],
+									[
+										101102,
+										101108
+									],
+									[
+										101221,
+										101227
+									],
+									[
+										101414,
+										101420
+									],
+									[
+										101658,
+										101664
+									],
+									[
+										101856,
+										101862
+									],
+									[
+										102077,
+										102083
+									],
+									[
+										102442,
+										102448
+									],
+									[
+										102465,
+										102471
+									],
+									[
+										102500,
+										102506
+									],
+									[
+										102724,
+										102730
+									],
+									[
+										102842,
+										102848
+									],
+									[
+										103108,
+										103114
+									],
+									[
+										103129,
+										103135
+									],
+									[
+										103344,
+										103350
+									],
+									[
+										103568,
+										103574
+									],
+									[
+										103794,
+										103800
+									],
+									[
+										103913,
+										103919
+									],
+									[
+										104114,
+										104120
+									],
+									[
+										104249,
+										104255
+									],
+									[
+										104437,
+										104443
+									],
+									[
+										104644,
+										104650
+									],
+									[
+										104820,
+										104826
+									],
+									[
+										104914,
+										104920
+									],
+									[
+										105054,
+										105060
+									],
+									[
+										105240,
+										105246
+									],
+									[
+										105390,
+										105396
+									],
+									[
+										105600,
+										105606
+									],
+									[
+										105700,
+										105706
+									],
+									[
+										105863,
+										105869
+									],
+									[
+										106026,
+										106032
+									],
+									[
+										106189,
+										106195
+									],
+									[
+										106287,
+										106293
+									],
+									[
+										106542,
+										106548
+									],
+									[
+										106758,
+										106764
+									],
+									[
+										106901,
+										106907
+									],
+									[
+										107055,
+										107061
+									],
+									[
+										107141,
+										107147
+									],
+									[
+										107277,
+										107283
+									],
+									[
+										107420,
+										107426
+									],
+									[
+										107587,
+										107593
+									],
+									[
+										107682,
+										107688
+									],
+									[
+										107805,
+										107811
+									],
+									[
+										108024,
+										108030
+									],
+									[
+										108167,
+										108173
+									],
+									[
+										108373,
+										108379
+									],
+									[
+										108407,
+										108413
+									],
+									[
+										108563,
+										108569
+									],
+									[
+										108660,
+										108666
+									],
+									[
+										108847,
+										108853
+									],
+									[
+										108936,
+										108942
+									],
+									[
+										109238,
+										109244
+									],
+									[
+										109290,
+										109296
+									],
+									[
+										109308,
+										109314
+									],
+									[
+										109360,
+										109366
+									],
+									[
+										109378,
+										109384
+									],
+									[
+										109430,
+										109436
+									],
+									[
+										109448,
+										109454
+									],
+									[
+										109500,
+										109506
+									],
+									[
+										109518,
+										109524
+									],
+									[
+										109570,
+										109576
+									],
+									[
+										109588,
+										109594
+									],
+									[
+										109640,
+										109646
+									],
+									[
+										109658,
+										109664
+									],
+									[
+										109710,
+										109716
+									],
+									[
+										109728,
+										109734
+									],
+									[
+										109780,
+										109786
+									],
+									[
+										110028,
+										110034
+									],
+									[
+										110238,
+										110244
+									],
+									[
+										110411,
+										110417
+									],
+									[
+										110544,
+										110550
+									],
+									[
+										110740,
+										110746
+									],
+									[
+										110856,
+										110862
+									],
+									[
+										111039,
+										111045
+									],
+									[
+										111216,
+										111222
+									],
+									[
+										111342,
+										111348
+									],
+									[
+										111514,
+										111520
+									],
+									[
+										111623,
+										111629
+									],
+									[
+										111788,
+										111794
+									],
+									[
+										111921,
+										111927
+									],
+									[
+										112127,
+										112133
+									],
+									[
+										112325,
+										112331
+									],
+									[
+										112503,
+										112509
+									],
+									[
+										112621,
+										112627
+									],
+									[
+										112789,
+										112795
+									],
+									[
+										112991,
+										112997
+									],
+									[
+										113176,
+										113182
+									],
+									[
+										113362,
+										113368
+									],
+									[
+										113445,
+										113451
+									],
+									[
+										113562,
+										113568
+									],
+									[
+										113737,
+										113743
+									],
+									[
+										113864,
+										113870
+									],
+									[
+										114096,
+										114102
+									],
+									[
+										114145,
+										114151
+									],
+									[
+										114231,
+										114237
+									],
+									[
+										114288,
+										114294
+									],
+									[
+										114406,
+										114412
+									],
+									[
+										114496,
+										114502
+									],
+									[
+										114698,
+										114704
+									],
+									[
+										114867,
+										114873
+									],
+									[
+										114951,
+										114957
+									],
+									[
+										115101,
+										115107
+									],
+									[
+										115239,
+										115245
+									],
+									[
+										115374,
+										115380
+									],
+									[
+										115562,
+										115568
+									],
+									[
+										115702,
+										115708
+									],
+									[
+										115784,
+										115790
+									],
+									[
+										115936,
+										115942
+									],
+									[
+										116015,
+										116021
+									],
+									[
+										116233,
+										116239
+									],
+									[
+										116325,
+										116331
+									],
+									[
+										116538,
+										116544
+									],
+									[
+										116667,
+										116673
+									],
+									[
+										116885,
+										116891
+									],
+									[
+										117049,
+										117055
+									]
+								],
+								"scope": ""
+							}
+						},
+						"selection":
+						[
+							[
+								465,
+								465
+							]
+						],
+						"settings":
+						{
+							"default_dir": "D:\\go\\src\\u9",
+							"detect_indentation": false,
+							"incomplete_sync": null,
+							"line_numbers": false,
+							"output_tag": 3,
+							"result_base_dir": "",
+							"result_file_regex": "^([^ 	].*):$",
+							"result_line_regex": "^ +([0-9]+):",
+							"scroll_past_end": true,
+							"syntax": "Packages/Default/Find Results.hidden-tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 806.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 2,
 					"type": "text"
 				},
 				{
-					"buffer": 1,
-					"file": "api/channel/api/api.go",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 5121,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3936,
-								3951
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/GoSublime/syntax/GoSublime-Go.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 4929.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
 					"buffer": 2,
-					"file": "api/channel/api/createOrder/tencent.go",
+					"file": "/d/go/src/u9/api/channel/notify/pay/gfan.go",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4037,
+						"buffer_size": 2965,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								59,
+								45
 							]
 						],
 						"settings":
@@ -1265,7 +4132,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 465.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 3,
@@ -1273,51 +4140,19 @@
 				},
 				{
 					"buffer": 3,
-					"file": "api/channel/api/createOrder/xmw.go",
+					"file": "test/test.go",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2963,
+						"buffer_size": 492,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1836,
-								1932
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/GoSublime/syntax/GoSublime-Go.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": -0.0,
-						"translation.y": 1581.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "api/channel/api/createOrder/vivo.go",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3251,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3251,
-								3251
+								282,
+								282
 							]
 						],
 						"settings":
@@ -1329,7 +4164,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 3224.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -1455,7 +4290,7 @@
 	},
 	"output.GsDoc-output-output":
 	{
-		"height": 96.0
+		"height": 125.0
 	},
 	"output.find_results":
 	{
@@ -1463,7 +4298,7 @@
 	},
 	"output.golang_build":
 	{
-		"height": 142.0
+		"height": 264.0
 	},
 	"output.sftp":
 	{
@@ -1486,6 +4321,26 @@
 		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"payrequ",
+				"api\\controllers\\pay\\payRequest.go"
+			],
+			[
+				"huawei",
+				"api\\controllers\\login\\loginRequestHandle\\huawei.go"
+			],
+			[
+				"vivo",
+				"api\\channel\\api\\createOrder\\vivo.go"
+			],
+			[
+				"loginrequest",
+				"api\\controllers\\login\\loginRequest.go"
+			],
+			[
+				"payrequest",
+				"api\\controllers\\pay\\payRequest.go"
+			],
 			[
 				"base",
 				"api\\channel\\api\\loginRequest\\base.go"
@@ -1591,10 +4446,6 @@
 				"api\\channel\\api\\loginRequest\\amigo.go"
 			],
 			[
-				"payrequ",
-				"api\\controllers\\pay\\payRequest.go"
-			],
-			[
 				"packagets",
 				"models\\packageTask.go"
 			]
@@ -1636,7 +4487,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 245.0,
+	"side_bar_width": 368.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

@@ -16,7 +16,7 @@ func (this *PayController) GetNewChannel() {
 	ret.Init()
 	defer func() {
 		if err != nil {
-			beego.Error(err)
+			beego.Warn(err)
 		}
 		this.Data["json"] = ret
 		this.ServeJSON(true)

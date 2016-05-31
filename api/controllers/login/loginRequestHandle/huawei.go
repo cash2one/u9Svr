@@ -42,6 +42,7 @@ func (this *Huawei) Handle() (ret string, err error) {
 	token := url.QueryEscape(this.param.Token)
 	format := "?nsp_svc=OpenUP.User.getInfo&nsp_ts=%s&access_token=%s"
 	this.Url = "https://api.vmall.com/rest.php" + fmt.Sprintf(format, ts, token)
+	beego.Trace(this.Url)
 
 	this.LRH.InitParam()
 
@@ -65,7 +66,6 @@ func (this *Huawei) Handle() (ret string, err error) {
 	this.param.ChannelUserId = this.channelRet.UserID
 	this.param.ChannelUserName = this.channelRet.UserName
 
-	data, _ := json.Marshal(this.channelRet)
-	ret = string(data)
+	ret = this.Result
 	return
 }

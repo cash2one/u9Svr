@@ -54,18 +54,6 @@ func NewUrlValuesSorter(values *url.Values, excludeItems *[]string) UrlValuesSor
 	return uvs
 }
 
-func (uvs UrlValuesSorter) Body() (ret string) {
-	maxIndex := len(uvs) - 1
-	for index, value := range uvs {
-		format := "%s=%s"
-		ret = ret + fmt.Sprintf(format, value.Key, value.Val)
-		if index != maxIndex {
-			ret = ret + "&"
-		}
-	}
-	return
-}
-
 func (uvs UrlValuesSorter) Len() int {
 	return len(uvs)
 }
@@ -76,6 +64,64 @@ func (uvs UrlValuesSorter) Less(i, j int) bool {
 
 func (uvs UrlValuesSorter) Swap(i, j int) {
 	uvs[i], uvs[j] = uvs[j], uvs[i]
+}
+
+func (uvs UrlValuesSorter) MapFormat(
+	mapFun func(int, int, UrlValueSorterItem, string, string) string, format, sep string) (ret string) {
+	maxIndex := len(uvs) - 1
+	for index, value := range uvs {
+		ret = ret + mapFun(index, maxIndex, value, format, sep)
+	}
+	return
+}
+
+func (uvs UrlValuesSorter) DefaultBody() string {
+	return uvs.FormatBody("k=v", "&")
+}
+
+func (uvs UrlValuesSorter) FormatBody(format, sep string) string {
+	mapFunc := func(index, maxIndex int, item UrlValueSorterItem, format, sep string) string {
+
+		length := len(format)
+		if length < 1 || length > 3 {
+			format = "k=v"
+		}
+		content := ""
+		switch format[0:1] {
+		case "k":
+			content = fmt.Sprintf("%s", item.Key)
+		case "v":
+			fallthrough
+		default:
+			content = fmt.Sprintf("%s", item.Val)
+		}
+
+		if length > 1 {
+			content = content + format[1:2]
+		}
+
+		if length > 2 {
+			switch format[2:3] {
+			case "k":
+				content = content + fmt.Sprintf("%s", item.Key)
+			case "v":
+				fallthrough
+			default:
+				content = content + fmt.Sprintf("%s", item.Val)
+			}
+		}
+
+		if sep == "" {
+			sep = "&"
+		}
+
+		if index != maxIndex {
+			content = content + sep
+		}
+		return content
+	}
+
+	return uvs.MapFormat(mapFunc, format, sep)
 }
 
 func TestUrlValuesSort() {

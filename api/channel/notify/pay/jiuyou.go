@@ -2,7 +2,7 @@ package channelPayNotify
 
 import (
 	"bytes"
-	"encoding/xml"
+	"encoding/json"
 	"errors"
 	"fmt"
 	"github.com/astaxie/beego"
@@ -63,7 +63,7 @@ func (this *Jiuyou) parseBody() (err error) {
 	}
 
 	body = string(buffer.Bytes())
-	if err = xml.Unmarshal([]byte(body), &this.data); err != nil {
+	if err = json.Unmarshal([]byte(body), &this.data); err != nil {
 		return
 	}
 
