@@ -6,8 +6,6 @@ import (
 	"fmt"
 	"github.com/astaxie/beego"
 	"net/url"
-	"strconv"
-	"time"
 )
 
 type qihoo360ChannelRet struct {
@@ -39,7 +37,7 @@ func (this *Qihoo360) Init(param *Param) (err error) {
 func (this *Qihoo360) Handle() (ret string, err error) {
 	this.IsHttps = true
 	this.Method = "GET"
-	ts := strconv.FormatInt(time.Now().Unix(), 10)
+
 	token := url.QueryEscape(this.param.Token)
 	format := "?access_token=%s"
 	this.Url = "https://openapi.360.cn/user/me" + fmt.Sprintf(format, token)

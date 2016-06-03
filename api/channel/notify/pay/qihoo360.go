@@ -70,7 +70,7 @@ func (this *Qihoo360) ParseParam() (err error) {
 	if err = this.parseUrlParam(); err != nil {
 		return
 	}
-	if err = this.parseChannelGameKey("QIHOO360_APP_KEY"); err != nil {
+	if err = this.parseChannelGameKey("QHOPENSDK_APPKEY"); err != nil {
 		return
 	}
 	if err = this.parseChannelPayKey("QIHOO360_SECRET"); err != nil {

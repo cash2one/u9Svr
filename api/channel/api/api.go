@@ -114,6 +114,8 @@ func CallLoginRequest(mlr *models.LoginRequest) (ret *common.BasicRet) {
 		llr = loginRequest.LrNewC07073(mlr, jsonParam)
 	case 144:
 		llr = loginRequest.LrNewVivo(mlr, jsonParam)
+	case 147:
+		llr = loginRequest.LrNewBaidu(mlr, jsonParam)
 	default:
 		ret.SetCode(3004)
 		return

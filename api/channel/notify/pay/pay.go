@@ -106,6 +106,8 @@ func CallPayNotify(channelId, productId int, urlParams *url.Values, ctx *context
 		pn = NewHuawei(channelId, productId, urlParams, ctx)
 	case 146:
 		pn = NewLenovo(channelId, productId, urlParams, ctx)
+	case 147:
+		pn = NewBaidu(channelId, productId, urlParams, ctx)
 	default:
 		err = errors.New("channelId isn't exist.")
 		return

@@ -1,6 +1,7 @@
 package channelPayNotify
 
 import (
+	"bytes"
 	"encoding/json"
 	"errors"
 	"fmt"
@@ -8,6 +9,7 @@ import (
 	"github.com/astaxie/beego/context"
 	"github.com/astaxie/beego/httplib"
 	"github.com/astaxie/beego/orm"
+	"io"
 	"net/url"
 	"strconv"
 	"time"
@@ -143,6 +145,15 @@ func (this *Base) getPackageParam(key string) (ret string, err error) {
 	return
 }
 
+func (this *Base) getBody() (ret string, err error) {
+	var buffer bytes.Buffer
+	if _, err = io.Copy(&buffer, this.ctx.Request.Body); err != nil {
+		return
+	}
+	ret = string(buffer.Bytes())
+	return
+}
+
 func (this *Base) parseChannelGameKey(gameKey string) (err error) {
 	defer func() {
 		if err != nil {
@@ -242,7 +253,7 @@ func (this *Base) parseLoginRequest() (err error) {
 func (this *Base) ParseChannelRet() (err error) {
 	beego.Trace("callbackRet:" + strconv.Itoa(this.callbackRet))
 	if this.callbackRet == err_callbackFail {
-		msg := fmt.Sprintf("gameServer return:(%v) failure", this.ProductRet)
+		msg := fmt.Sprintf("gameServer return:(%+v)", this.ProductRet)
 		beego.Error(msg)
 		err = errors.New(msg)
 		return

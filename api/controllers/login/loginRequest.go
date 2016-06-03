@@ -32,20 +32,20 @@ func (this *LoginController) handleLrParam() (err error) {
 	}
 	var lrh loginRequestHandle.LRHandle
 	switch this.lrParam.ChannelId {
+	case 102: //qihoo360
+		lrh = loginRequestHandle.NewQihoo360()
 	case 123: //熊猫玩
 		lrh = loginRequestHandle.NewXMW()
 	case 145: //huawei
 		lrh = loginRequestHandle.NewHuawei()
 	case 146: //lenovo
 		lrh = loginRequestHandle.NewLenovo()
-	case 147: //qihoo360
-		lrh = loginRequestHandle.NewQihoo360()
 	default:
 		if this.lrParam.ChannelUserId == "" {
 			this.lrRet.SetCode(1001)
 			err = errors.New("Require channelUserId.")
-			return
 		}
+		return
 	}
 
 	if err = lrh.Init(&this.lrParam); err != nil {

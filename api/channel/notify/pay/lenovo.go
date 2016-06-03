@@ -51,10 +51,11 @@ func (this *Lenovo) Init(channelId, productId int, urlParams *url.Values, ctx *c
 	this.data = new(lenovoResData)
 }
 
-func (this *Lenovo) parseBody() (err error) {
+func (this *Lenovo) parseForm() (err error) {
 	defer func() {
 		if err != nil {
 			this.callbackRet = err_htcParseBody
+			beego.Error(this.ctx.Request.Form)
 			beego.Error(err)
 		}
 	}()
@@ -94,7 +95,7 @@ func (this *Lenovo) parseRsaPrivateKey() (err error) {
 }
 
 func (this *Lenovo) ParseParam() (err error) {
-	if err = this.parseBody(); err != nil {
+	if err = this.parseForm(); err != nil {
 		return
 	}
 	if err = this.parseRsaPrivateKey(); err != nil {
@@ -148,6 +149,7 @@ func (this *Lenovo) ParseChannelRet() (err error) {
 	if this.channelGameId != data.TransData.AppId {
 		this.callbackRet = err_parseChannelGameId
 		beego.Error("lenovo.open.appid is invalid.")
+		return
 	}
 
 	if data.TransData.Result != 0 {
