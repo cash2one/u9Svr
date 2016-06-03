@@ -53,6 +53,8 @@ func CallLoginRequest(mlr *models.LoginRequest) (ret *common.BasicRet) {
 	case 145: //huawei
 		fallthrough
 	case 146: //lenovo
+		fallthrough
+	case 148: //安锋
 		beego.Trace(fmt.Sprintf("channelId:%d", mlr.ChannelId))
 		ret.SetCode(0)
 		return
