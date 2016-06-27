@@ -4,35 +4,32 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/astaxie/beego"
-	// "u9/tool"
 	"u9/models"
 )
 
 //应用汇
-type DataJson struct {
-	Nick_name    string `json:"nick_name"`
-	Valid        bool   `json:"valid"`
-	User_name    string `json:"user_name"`
-	Phone        string `json:"phone"`
-	Avatar_url   string `json:"avatar_url"`
-	Actived      bool   `json:"actived"`
-	Email        string `json:"email"`
-	Ticket       string `json:"ticket"`
-	Create_time  string `json:"create_time"`
-	User_id      int    `json:"user_id"`
-	Role_type    int    `json:"role_type"`
-	Account_type string `json:"account_type"`
-}
-
-type YYHChannelRet struct {
-	Data    DataJson `json:"data"`
-	Status  int      `json:"status`
-	Message string   `json:"message`
+type yyhChannelRet struct {
+	Data struct {
+		Nick_name    string `json:"nick_name"`
+		Valid        bool   `json:"valid"`
+		User_name    string `json:"user_name"`
+		Phone        string `json:"phone"`
+		Avatar_url   string `json:"avatar_url"`
+		Actived      bool   `json:"actived"`
+		Email        string `json:"email"`
+		Ticket       string `json:"ticket"`
+		Create_time  string `json:"create_time"`
+		User_id      int    `json:"user_id"`
+		Role_type    int    `json:"role_type"`
+		Account_type string `json:"account_type"`
+	} `json:"data"`
+	Status  int    `json:"status`
+	Message string `json:"message`
 }
 
 type YYH struct {
 	Lr
-	channelRet YYHChannelRet
+	channelRet yyhChannelRet
 }
 
 func LrNewYYH(mlr *models.LoginRequest, args *map[string]interface{}) *YYH {

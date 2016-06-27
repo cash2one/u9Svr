@@ -1,6 +1,7 @@
 package createOrder
 
 import (
+	"crypto"
 	"crypto/rsa"
 	"encoding/json"
 	"errors"
@@ -89,7 +90,7 @@ func (this *Huawei) GetResult() (ret string) {
 	}
 	content = strings.Replace(content, "orderId", this.orderId, -1)
 	beego.Trace(content)
-	if channelRet.Msg, err = tool.RsaPKCS1V15Sign(huaweiRsaPrivateKey, content); err != nil {
+	if channelRet.Msg, err = tool.RsaPKCS1V15Sign(huaweiRsaPrivateKey, crypto.MD5SHA1, content); err != nil {
 		channelRet.Status = 2
 		channelRet.Msg = "rsa sign error."
 		return

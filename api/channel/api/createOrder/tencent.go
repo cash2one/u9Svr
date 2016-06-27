@@ -63,7 +63,6 @@ func GetTencentPayQueryUrl(debug bool,
 	content = content + "&sig=" + encodeSign
 	ret = ret + content
 
-	beego.Trace(ret)
 	return
 }
 
@@ -74,12 +73,13 @@ func GetTencentPayQueryCookie(loginType string) (ret string, err error) {
 	} else if loginType == "WX" {
 		ret = "session_id=hy_gameid;session_type=wc_actoken"
 	} else {
-		err = errors.New("login type is error, must in (QQ, WX)")
+		msg := "getTencentPayQueryCookie: login type is error, must in (QQ, WX)"
+		err = errors.New(msg)
 		beego.Error(err)
 		return
 	}
 	ret = ret + ";" + TencentPayQueryOrgLoc
-	beego.Trace(ret)
+
 	return ret, nil
 }
 
@@ -89,7 +89,8 @@ func GetTencentPayParamName(loginType string) (appId, appKey, payKey string, err
 	} else if loginType == "WX" {
 		appKey = "WX_APP_KEY"
 	} else {
-		err = errors.New("login type is error, must in (QQ, WX)")
+		msg := "getTencentPayParamName: login type is error, must in (QQ, WX)"
+		err = errors.New(msg)
 		beego.Error(err)
 		return
 	}
@@ -101,10 +102,10 @@ func GetTencentPayParamName(loginType string) (appId, appKey, payKey string, err
 func (this *Tencent) Prepare(lr *models.LoginRequest, orderId, extParamStr string,
 	channelParams *map[string]interface{}, ctx *context.Context) (err error) {
 
-	if err = this.Cr.Initial(lr, orderId, new(TencentChannelRet), new(TencentExtParam),
+	if err = this.Cr.Initial(lr, orderId,
+		new(TencentChannelRet), new(TencentExtParam),
 		extParamStr, channelParams, ctx); err != nil {
-		beego.Error(err)
-		return err
+		return
 	}
 
 	this.IsHttps = true
@@ -112,7 +113,6 @@ func (this *Tencent) Prepare(lr *models.LoginRequest, orderId, extParamStr strin
 
 	var appId, appKey, payKey string
 	if appId, appKey, payKey, err = GetTencentPayParamName(extParam.LoginType); err != nil {
-		beego.Error("extParamStr:" + extParamStr)
 		return
 	}
 	this.parseAppId(appId)
@@ -131,6 +131,10 @@ func (this *Tencent) InitParam() (err error) {
 	extParam := this.extParam.(*TencentExtParam)
 	cookie := ""
 	if cookie, err = GetTencentPayQueryCookie(extParam.LoginType); err != nil {
+		format := "tencent-initParam: err:%v, cookie:%s"
+		msg := fmt.Sprintf(format, err, cookie)
+		err = errors.New(msg)
+		beego.Error(err)
 		return err
 	}
 	this.Req.Header("cookie", cookie)
@@ -139,13 +143,12 @@ func (this *Tencent) InitParam() (err error) {
 
 func (this *Tencent) ParseChannelRet() (err error) {
 	if err = this.Cr.ParseChannelRet(); err != nil {
-		beego.Error(err)
 		return
 	}
 
 	channelRet := this.channelRet.(*TencentChannelRet)
 	if channelRet.Ret != 0 {
-		err = errors.New("status is failure")
+		err = errors.New("tencent-parseChannelRet: channelRet.Ret!=0")
 		beego.Error(err)
 		return
 	}

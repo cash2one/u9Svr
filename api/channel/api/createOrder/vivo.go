@@ -62,7 +62,7 @@ func (this *Vivo) InitParam() (err error) {
 	extParam := this.extParam.(*vivoExtParam)
 	extParam.SignMethod = "MD5"
 	extParam.CpId = (*this.channelParams)["VIVO_CP_ID"].(string)
-	extParam.AppId = (*this.channelParams)["VIVO_APP_ID"].(string)
+	extParam.AppId = (*this.channelParams)["APP_MONITOR_APPID"].(string)
 	extParam.OrderTime = time.Now().Format("20060102150405")
 	extParam.CpOrderNumber = this.orderId
 

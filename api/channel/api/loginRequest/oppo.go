@@ -28,9 +28,9 @@ type OppoChannelRet struct {
 
 type Oppo struct {
 	Lr
-	channelRet OppoChannelRet
-	baseStr    string
-	sign       string
+	channelRet  OppoChannelRet
+	signContent string
+	sign        string
 }
 
 func LrNewOppo(mlr *models.LoginRequest, args *map[string]interface{}) *Oppo {
@@ -51,18 +51,18 @@ func (this *Oppo) Init(mlr *models.LoginRequest, args *map[string]interface{}) {
 	timeStamp := strconv.FormatInt(time.Now().Unix(), 10)
 	r := rand.New(rand.NewSource(time.Now().UnixNano()))
 
-	this.baseStr = "oauthConsumerKey=" + appkey + "&oauthToken=" + escapeToken +
+	this.signContent = "oauthConsumerKey=" + appkey + "&oauthToken=" + escapeToken +
 		"&oauthSignatureMethod=HMAC-SHA1" + "&oauthTimestamp=" + timeStamp +
 		"&oauthNonce=" + timeStamp + strconv.Itoa(r.Intn(10)) + "&oauthVersion=1.0&"
 
-	this.sign = base64.StdEncoding.EncodeToString(tool.HmacSHA1Encrypt(this.baseStr, appSecret+"&"))
+	this.sign = base64.StdEncoding.EncodeToString(tool.HmacSHA1Encrypt(this.signContent, appSecret+"&"))
 }
 
 func (this *Oppo) InitParam() (err error) {
 	if err = this.Lr.InitParam(); err != nil {
 		return
 	}
-	this.Req.Header("param", this.baseStr)
+	this.Req.Header("param", this.signContent)
 	this.Req.Header("oauthsignature", this.sign)
 	return
 }

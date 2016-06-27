@@ -2,6 +2,8 @@ package createOrder
 
 import (
 	"encoding/json"
+	"errors"
+	"fmt"
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/context"
 	"u9/api/common"
@@ -51,12 +53,23 @@ func (this *Cr) Initial(
 	this.channelRet = channelRet
 	this.extParamStr = extParamStr
 	this.extParam = extParam
-	if err = json.Unmarshal([]byte(this.extParamStr), &this.extParam); err != nil {
-		beego.Error(err)
-		beego.Error("extParamStr:", this.extParamStr)
-		beego.Error("extParam:", this.extParam)
-		return
+
+	if this.extParam != nil {
+		if err = json.Unmarshal([]byte(this.extParamStr), &this.extParam); err != nil {
+			format := "initial: err:%v "
+			msg := fmt.Sprintf(format, err) + this.Dump()
+			err = errors.New(msg)
+			beego.Error(err)
+			return
+		}
 	}
+
+	return
+}
+
+func (this *Cr) Dump() (ret string) {
+	format := "this:%+v"
+	ret = fmt.Sprintf(format, this)
 	return
 }
 
@@ -77,10 +90,13 @@ func (this *Cr) GetChannelOrderId() (ret string) {
 }
 
 func (this *Cr) ParseChannelRet() (err error) {
-	beego.Trace("channelRet:" + this.Result)
+	//beego.Trace("cr-parseChannelRet: Result:" + this.Result)
 	if err = json.Unmarshal([]byte(this.Result), &this.channelRet); err != nil {
+		format := "cr-parseChannelRet: err:%v, result:%s, channelRet:%+v"
+		msg := fmt.Sprintf(format, err, this.Result, this.channelRet)
+		err = errors.New(msg)
 		beego.Error(err)
-		return err
+		return
 	}
 	return nil
 }

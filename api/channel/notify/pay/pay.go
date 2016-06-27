@@ -2,136 +2,145 @@ package channelPayNotify
 
 import (
 	"errors"
+	"fmt"
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/context"
-	"net/url"
 )
 
-func CallPayNotify(channelId, productId int, urlParams *url.Values, ctx *context.Context) (ret string, err error) {
-	beego.Trace("CallPayNotify")
+func CallPayNotify(channelId, productId int, ctx *context.Context) (ret string, err error) {
+
 	var pn PayNotify
+	ret = "failure"
 
 	defer func() {
+		format := "callPayNotify: 7:GetResult:%s"
 		if pn != nil {
 			ret = pn.GetResult()
-			//warnInfo := fmt.Sprintf("LoginRequestUrl:%v", this.Ctx.Request.PostForm)
-			//beego.Warn(warnInfo)
+			msg := fmt.Sprintf(format, ret)
+			beego.Trace(msg)
 		} else {
-			ret = "failure"
-
+			msg := fmt.Sprintf(format, ret)
+			beego.Error(msg)
 		}
-		beego.Trace("GetResult:", ret)
 	}()
 
 	switch channelId {
 	case 100:
-		pn = NewTest(channelId, productId, urlParams)
+		pn = new(Test)
 	case 101:
-		pn = NewDangle(channelId, productId, urlParams)
+		pn = new(Dangle)
 	case 102:
-		pn = NewQihoo360(channelId, productId, urlParams, ctx)
+		pn = new(Qihoo360)
 	case 103:
-		pn = NewAnZhi(channelId, productId, urlParams)
+		pn = new(AnZhi)
 	case 104:
-		pn = NewCCPay(channelId, productId, urlParams)
+		pn = new(CCPay)
 	case 106:
-		pn = NewGFan(channelId, productId, urlParams, ctx)
+		pn = new(GFan)
 	case 107:
-		pn = NewGuopan(channelId, productId, urlParams)
+		pn = new(Guopan)
 	case 108:
-		pn = NewKaoPu(channelId, productId, urlParams)
+		pn = new(KaoPu)
 	case 109:
-		pn = NewM4399(channelId, productId, urlParams)
+		pn = new(M4399)
 	case 110:
-		pn = NewOppo(channelId, productId, urlParams)
+		pn = new(Oppo)
 	case 111:
-		pn = NewMuMaYi(channelId, productId, urlParams)
+		pn = new(MuMaYi)
 	case 112:
-		pn = NewMeizu(channelId, productId, urlParams)
+		pn = new(Meizu)
 	case 113:
-		pn = NewMZW(channelId, productId, urlParams)
+		pn = new(MZW)
 	case 114:
-		pn = NewJiuyou(channelId, productId, urlParams, ctx)
+		pn = new(Jiuyou)
 	case 115:
-		pn = NewSogou(channelId, productId, urlParams)
+		pn = new(Sogou)
 	case 117:
-		pn = NewWandoujia(channelId, productId, urlParams)
+		pn = new(Wandoujia)
 	case 118:
-		pn = NewXiaomi(channelId, productId, urlParams)
+		pn = new(Xiaomi)
 	case 120:
-		pn = NewAmigo(channelId, productId, urlParams)
+		pn = new(Amigo)
 	case 122:
-		pn = NewCYGame(channelId, productId, urlParams)
+		pn = new(CYGame)
 	case 123:
-		pn = NewXmw(channelId, productId, urlParams)
+		pn = new(Xmw)
 	case 125:
-		pn = NewHaimawan(channelId, productId, urlParams)
+		pn = new(Haimawan)
 	case 126:
-		pn = NewLeTV(channelId, productId, urlParams)
+		pn = new(LeTV)
 	case 127:
-		pn = NewHTC(channelId, productId, urlParams, ctx)
+		pn = new(HTC)
 	case 128:
-		pn = NewZhuoYi(channelId, productId, urlParams)
+		pn = new(ZhuoYi)
 	case 129:
-		pn = NewShouMeng(channelId, productId, urlParams)
+		pn = new(ShouMeng)
 	case 130:
-		pn = NewYYH(channelId, productId, urlParams)
+		pn = new(YYH)
 	case 131:
-		pn = NewSnail(channelId, productId, urlParams)
+		pn = new(Snail)
 	case 132:
-		pn = NewYiJie(channelId, productId, urlParams)
+		pn = new(YiJie)
 	case 133:
-		pn = NewYouLong(channelId, productId, urlParams)
+		pn = new(YouLong)
 	case 134:
-		pn = NewMango(channelId, productId, urlParams)
+		pn = new(Mango)
 	case 135:
-		pn = NewQikQik(channelId, productId, urlParams)
+		pn = new(QikQik)
 	case 136:
-		pn = NewXcs(channelId, productId, urlParams)
+		pn = new(Xcs)
 	case 137:
-		pn = NewPPTV(channelId, productId, urlParams)
+		pn = new(PPTV)
 	case 139:
-		pn = NewTencent(channelId, productId, urlParams)
+		pn = new(Tencent)
 	case 140:
-		pn = NewTT(channelId, productId, urlParams, ctx)
+		pn = new(TT)
 	case 141:
-		pn = NewC07073(channelId, productId, urlParams)
+		pn = new(C07073)
 	case 142:
-		pn = NewPengyouwan(channelId, productId, urlParams)
+		pn = new(Pengyouwan)
 	case 143:
-		pn = NewQmyx(channelId, productId, urlParams)
+		pn = new(Qmyx)
 	case 144:
-		pn = NewVivo(channelId, productId, urlParams, ctx)
+		pn = new(Vivo)
 	case 145:
-		pn = NewHuawei(channelId, productId, urlParams, ctx)
+		pn = new(Huawei)
 	case 146:
-		pn = NewLenovo(channelId, productId, urlParams, ctx)
+		pn = new(Lenovo)
 	case 147:
-		pn = NewBaidu(channelId, productId, urlParams, ctx)
+		pn = new(Baidu)
 	case 148:
-		pn = NewAnFeng(channelId, productId, urlParams, ctx)
+		pn = new(AnFeng)
+	case 149:
+		pn = new(CoolPad)
 	default:
 		err = errors.New("channelId isn't exist.")
 		return
 	}
-	beego.Trace("CheckUrlParam")
-	if err = pn.CheckUrlParam(); err != nil {
+
+	beego.Trace("callPayNotify: 1:Init")
+	if err = pn.Init(channelId, productId, ctx); err != nil {
 		return
 	}
-	beego.Trace("ParseParam")
-	if err = pn.ParseParam(); err != nil {
+
+	beego.Trace("callPayNotify: 2:ParseInputParam")
+	if err = pn.ParseInputParam(); err != nil {
 		return
 	}
-	beego.Trace("CheckSign")
+	beego.Trace("callPayNotify: 3:PrepareTradeData")
+	if err = pn.PrepareTradeData(); err != nil {
+		return
+	}
+	beego.Trace("callPayNotify: 4:CheckSign")
 	if err = pn.CheckSign(); err != nil {
 		return
 	}
-	beego.Trace("Handle")
-	if err = pn.Handle(); err != nil {
+	beego.Trace("callPayNotify: 5:CheckChannelRet")
+	if err = pn.CheckChannelRet(); err != nil {
 		return
 	}
-	beego.Trace("ParseChannelRet")
-	if err = pn.ParseChannelRet(); err != nil {
+	beego.Trace("callPayNotify: 6:Handle")
+	if err = pn.Handle(); err != nil {
 		return
 	}
 	return

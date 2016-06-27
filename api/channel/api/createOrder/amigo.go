@@ -1,6 +1,7 @@
 package createOrder
 
 import (
+	"crypto"
 	"crypto/rsa"
 	"errors"
 	"github.com/astaxie/beego"
@@ -36,16 +37,16 @@ type amigoExtParam struct {
 
 type Amigo struct {
 	Cr
+	privateKey    string
+	rsaPrivateKey *rsa.PrivateKey
 }
-
-const amigoRsaPrivateKeyStr = `MIICdwIBADANBgkqhkiG9w0BAQEFAASCAmEwggJdAgEAAoGBAJs5MKkLs2c+7xORPLvx+S6roUqThA4pcF03bl2+BUjpz7WJMaFOqpkTedTYcHANZN/ztHb/L5VddjB0XaTsN1f6fqukPdrIeuVKN3ioDJlHrStCgf55pckXtMZiAqNwvsiZMVZNHf0QzVhPNX9dgEGO34B2lmzhyBLvl2cJEKPRAgMBAAECgYArZTe3avADA1Mvc0E5ghKZ+52iDc+zbd5eESsnxgIQOl25cNuRLz7+gLVkzgXRLc1v1uAzDHCvH2v1a/LqMqfd3mZtzShrLnccgCCY64XC3xxSSBsVReYWV5uJP9g7PU2P5eatS1aUopWkNYSq25atE7dpxlMJ4T4tcnDQvav6gQJBAOKq8DD0Cx9mBmS95PazMaHzaM56Wb/8tEHoZDsTaJ5nW+RW7SnYPmHXlKVs5OpQTF3FU7KDgj/QjGkvW9Oyh1kCQQCvT3Ce4PVfjiobFczdmpgQJlUn+UK86TX0JdmRWsXvpOXo0m4HIk/BV/pyPtwBGKSJ0b/s8gXf603YR8BWlWk5AkEAiieYOK42rU+ZLAQWL0uvP7/FrLwkQgF7uQQ1O1CsHohvGPDmou+brjUg8+c4a5y/vxPL3O2NEOpC+sWT2adiGQJABpB88RYPWhKitPzt/OZLB1/IFIUa4KQC5y97pBu4Ca8tBLjMcevw/JZkxF5iMpBPqPF3tFGjsqzG73BQXW2e0QJBAI5CpS0S7g6IgvhGSqavonFR3Pkgkbdn5qKIATZCywkBeMx0QHTO3EJq/yLWacsi4Na5l6SNcX3Tde6hwRpVuYw=`
-
-var (
-	amigoRsaPrivateKey *rsa.PrivateKey
-)
 
 func (this *Amigo) Prepare(lr *models.LoginRequest, orderId, extParamStr string,
 	channelParams *map[string]interface{}, ctx *context.Context) (err error) {
+
+	beego.Trace(channelParams)
+
+	this.privateKey = (*channelParams)["AMIGO_PRIVATEKEY"].(string)
 
 	if err = this.initRsaPrivateKey(); err != nil {
 		beego.Error(err)
@@ -66,12 +67,10 @@ func (this *Amigo) Prepare(lr *models.LoginRequest, orderId, extParamStr string,
 }
 
 func (this *Amigo) initRsaPrivateKey() (err error) {
-	if amigoRsaPrivateKey == nil {
-		amigoRsaPrivateKey, err = tool.ParsePkCS8PrivateKeyWithStr(amigoRsaPrivateKeyStr)
-		if err != nil {
-			beego.Error(err)
-			return err
-		}
+	this.rsaPrivateKey, err = tool.ParsePkCS8PrivateKeyWithStr(this.privateKey)
+	if err != nil {
+		beego.Error(err)
+		return err
 	}
 	return nil
 }
@@ -96,7 +95,7 @@ func (this *Amigo) InitParam() (err error) {
 	context := extParam.ApiKey + extParam.DealPrice + extParam.DeliverType + extParam.NotifyUrl +
 		extParam.OutOrderNo + extParam.Subject + extParam.SubmitTime + extParam.TotalFee
 
-	extParam.Sign, err = tool.RsaPKCS1V15Sign(amigoRsaPrivateKey, context)
+	extParam.Sign, err = tool.RsaPKCS1V15Sign(this.rsaPrivateKey, crypto.MD5SHA1, context)
 	if err != nil {
 		beego.Error(err)
 		return

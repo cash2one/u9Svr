@@ -19,11 +19,12 @@ const (
 
 func CallLoginRequest(mlr *models.LoginRequest) (ret *common.BasicRet) {
 	ret = new(common.BasicRet).Init()
+
+	beego.Trace("callLoginRequest: 1:checkPackageParam")
 	var jsonParam *map[string]interface{}
 	var err error
 	if jsonParam, err = checkPackageParam(mlr); err != nil {
 		code, _ := strconv.Atoi(err.Error())
-		beego.Error(err)
 		ret.SetCode(code)
 		return
 	}
@@ -55,7 +56,10 @@ func CallLoginRequest(mlr *models.LoginRequest) (ret *common.BasicRet) {
 	case 146: //lenovo
 		fallthrough
 	case 148: //安锋
-		beego.Trace(fmt.Sprintf("channelId:%d", mlr.ChannelId))
+		fallthrough
+	case 149: //coolpad
+		msg := "callLoginRequest: direct return"
+		beego.Trace(msg)
 		ret.SetCode(0)
 		return
 	case 101: //当乐
@@ -119,28 +123,35 @@ func CallLoginRequest(mlr *models.LoginRequest) (ret *common.BasicRet) {
 	case 147:
 		llr = loginRequest.LrNewBaidu(mlr, jsonParam)
 	default:
+		format := "callLoginRequest: it isn't implement"
+		msg := fmt.Sprintf(format, mlr.ChannelId, mlr.ProductId)
+		beego.Warn(msg)
 		ret.SetCode(3004)
 		return
 	}
 
+	beego.Trace("callLoginRequest: 2:InitParam")
 	if err := llr.InitParam(); err != nil {
 		beego.Error(err)
 		ret = llr.SetCode(9001)
 		return
 	}
 
+	beego.Trace("callLoginRequest: 3:GetResponse")
 	if err := llr.GetResponse(); err != nil {
 		beego.Error(err)
 		ret = llr.SetCode(3002)
 		return
 	}
 
+	beego.Trace("callLoginRequest: 4:ParseChannelRet")
 	if err := llr.ParseChannelRet(); err != nil {
 		beego.Error(err)
 		ret = llr.SetCode(9002)
 		return
 	}
 
+	beego.Trace("callLoginRequest: 5:CheckChannelRet")
 	if !llr.CheckChannelRet() {
 		beego.Error(errors.New("channelRet code is fail."))
 		ret = llr.SetCode(3003)
@@ -151,34 +162,43 @@ func CallLoginRequest(mlr *models.LoginRequest) (ret *common.BasicRet) {
 }
 
 func checkPackageParam(mlr *models.LoginRequest) (jsonParam *map[string]interface{}, err error) {
-	pp := new(models.PackageParam)
-	if mlr.ChannelId != testChannelId {
-		if err = pp.Query().Filter("channelId", mlr.ChannelId).Filter("productId", mlr.ProductId).One(pp); err != nil {
-			msg := fmt.Sprintf("1005:channelId=%d and productId=%d", mlr.ChannelId, mlr.ProductId)
-			beego.Error(msg)
-			return nil, errors.New("1005")
-		}
-
-		jsonParam = new(map[string]interface{})
-		if err = json.Unmarshal([]byte(pp.XmlParam), jsonParam); err != nil {
-			beego.Error(err)
-			return nil, errors.New("9002")
-		}
+	if testChannelId == mlr.ChannelId {
+		msg := "checkPackageParam: skip test channel"
+		beego.Trace(msg)
+		return jsonParam, nil
 	}
-	//beego.Trace(pp.XmlParam)
-	//beego.Trace(jsonParam)
+
+	pp := new(models.PackageParam)
+	format := `checkPackageParam: err:%+v`
+
+	if err = pp.Query().
+		Filter("channelId", mlr.ChannelId).
+		Filter("productId", mlr.ProductId).
+		One(pp); err != nil {
+
+		msg := fmt.Sprintf(format, err)
+		beego.Error(msg)
+
+		return nil, errors.New("1005")
+	}
+
+	jsonParam = new(map[string]interface{})
+	if err = json.Unmarshal([]byte(pp.XmlParam), jsonParam); err != nil {
+
+		msg := fmt.Sprintf(format, err)
+		beego.Error(msg)
+
+		return nil, errors.New("9002")
+	}
+
 	return jsonParam, nil
 }
 
-func CallCreateOrder(mlr *models.LoginRequest, orderId,
-	extParamStr string, ctx *context.Context) (channelOrderId, ret string, err error) {
-	var channelParams *map[string]interface{}
-	if testChannelId != mlr.ChannelId {
-		if channelParams, err = checkPackageParam(mlr); err != nil {
-			beego.Error("checkPackageParam is error.")
-			return
-		}
-	}
+func CallCreateOrder(
+	mlr *models.LoginRequest,
+	orderId, extParamStr string,
+	ctx *context.Context) (channelOrderId, ret string, err error) {
+
 	var co createOrder.CreateOrder
 	switch mlr.ChannelId {
 	case 112: //魅族游戏
@@ -195,31 +215,42 @@ func CallCreateOrder(mlr *models.LoginRequest, orderId,
 		co = new(createOrder.Vivo)
 	case 145: //huawei
 		co = new(createOrder.Huawei)
+	case 149: //coolpad
+		co = new(createOrder.CoolPad)
 	default:
+		format := "callCreateOrder: direct return"
+		msg := fmt.Sprintf(format)
+		beego.Warn(msg)
 		return
 	}
 
-	beego.Trace("1:Prepare")
+	var channelParams *map[string]interface{}
+	beego.Trace("callCreateOrder: 1:checkPackageParam")
+	if channelParams, err = checkPackageParam(mlr); err != nil {
+		return
+	}
+
+	beego.Trace("callCreateOrder:2:Prepare")
 	if err = co.Prepare(mlr, orderId, extParamStr, channelParams, ctx); err != nil {
 		return
 	}
 
-	beego.Trace("2:InitParam")
+	beego.Trace("callCreateOrder:3:InitParam")
 	if err = co.InitParam(); err != nil {
 		return
 	}
 
-	beego.Trace("3:Response")
+	beego.Trace("callCreateOrder:4:Response")
 	if err = co.GetResponse(); err != nil {
 		return
 	}
 
-	beego.Trace("4:ParseChannelRet")
+	beego.Trace("callCreateOrder:5:ParseChannelRet")
 	if err = co.ParseChannelRet(); err != nil {
 		return
 	}
 
-	beego.Trace("5:GetResult")
+	beego.Trace("callCreateOrder:6:GetResult")
 	ret = co.GetResult()
 	channelOrderId = co.GetChannelOrderId()
 	return
