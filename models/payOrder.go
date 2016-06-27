@@ -11,7 +11,7 @@ type PayOrder struct {
 	ChannelOrderId string
 	PayAmount      int
 	PayDiscount    int
-	PayTime        time.Time `orm:"auto_now;type(datatime)"`
+	PayTime        time.Time `orm:"auto_now;type(datetime)"`
 }
 
 func (this *PayOrder) Init() {

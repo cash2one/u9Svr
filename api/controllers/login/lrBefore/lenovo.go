@@ -1,4 +1,4 @@
-package loginRequestHandle
+package lrBefore
 
 import (
 	"encoding/json"
@@ -6,7 +6,6 @@ import (
 	"errors"
 	"fmt"
 	"github.com/astaxie/beego"
-	"u9/models"
 )
 
 type lenovoChannelRet struct {
@@ -23,9 +22,7 @@ type lenovoChannelRet struct {
 }
 
 type Lenovo struct {
-	LRH
-	appId      string
-	channelRet lenovoChannelRet
+	base
 }
 
 func NewLenovo() *Lenovo {
@@ -34,22 +31,26 @@ func NewLenovo() *Lenovo {
 }
 
 func (this *Lenovo) Init(param *Param) (err error) {
-	this.LRH.Init(param)
+	this.base.Init(param)
+	this.channelRet = new(lenovoChannelRet)
 	return
 }
 
-func (this *Lenovo) Handle() (ret string, err error) {
+func (this *Lenovo) Exec() (ret string, err error) {
 	this.Method = "GET"
 	this.IsHttps = false
 
-	appId := ""
-	channelId := this.param.ChannelId
-	productId := this.param.ProductId
+	defer func() {
+		if err != nil {
+			format := "exec: err:%v"
+			msg := fmt.Sprintf(format, err) + this.Dump()
+			err = errors.New(msg)
+			beego.Error(err)
+		}
+	}()
 
-	pp := new(models.PackageParam)
-	if appId, err = pp.GetXmlParam(channelId, productId, "lenovo.open.appid"); err != nil {
-		beego.Error(err)
-		beego.Error(this.param)
+	appId := ""
+	if appId, err = this.getChannelParam("lenovo.open.appid"); err != nil {
 		return
 	}
 
@@ -57,29 +58,26 @@ func (this *Lenovo) Handle() (ret string, err error) {
 	//token := url.QueryEscape(this.param.Token)
 	url := "http://passport.lenovo.com/interserver/authen/1.2/getaccountid"
 	this.Url = url + "?" + fmt.Sprintf(format, this.param.Token, appId)
-	beego.Trace(this.Url)
 
-	this.LRH.InitParam()
-
+	this.base.InitParam()
 	if err = this.GetResponse(); err != nil {
-		beego.Error(err)
 		return
 	}
 
-	beego.Trace("result:", this.Result)
 	if err = xml.Unmarshal([]byte(this.Result), &this.channelRet); err != nil {
-		beego.Error(err)
 		return
 	}
 
-	if this.channelRet.Code != "" {
-		err = errors.New(this.Result)
-		beego.Error(fmt.Sprintf("channelRet:%+v", this.channelRet))
+	channelRet := this.channelRet.(*lenovoChannelRet)
+
+	if channelRet.Code != "" {
+		msg := fmt.Sprintf(`channelRet.Code!=""`)
+		err = errors.New(msg)
 		return
 	}
 
-	this.param.ChannelUserId = this.channelRet.AccountID
-	this.param.ChannelUserName = this.channelRet.Username
+	this.param.ChannelUserId = channelRet.AccountID
+	this.param.ChannelUserName = channelRet.Username
 
 	data, _ := json.Marshal(this.channelRet)
 

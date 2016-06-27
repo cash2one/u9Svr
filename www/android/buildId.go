@@ -67,6 +67,9 @@ func (this *BuildId) Handle() {
 		case 139:
 			this.init()
 			this.tencent()
+		case 144:
+			// this.init()
+			// this.vivo()
 		default :
 			
 	}
@@ -138,3 +141,94 @@ func (this *BuildId) tencent() {
 	}
 	
 }
+
+func (this *BuildId) vivo() {
+	var err error
+	javaContent := `import com.bbk.payment.weixin.VivoWXPayEntryActivity;
+import com.tencent.mm.sdk.modelbase.BaseReq;
+import com.tencent.mm.sdk.modelbase.BaseResp;
+import com.tencent.mm.sdk.openapi.IWXAPIEventHandler;
+import android.content.Intent;
+import android.os.Bundle;
+import android.util.Log;
+
+public class WXPayEntryActivity extends VivoWXPayEntryActivity implements IWXAPIEventHandler {
+
+	private static final String TAG = "WXPayEntryActivity";
+
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		this.finish();
+	}
+
+	@Override
+	protected void onNewIntent(Intent intent) {
+		super.onNewIntent(intent);
+	}
+
+	@Override
+	public void onReq(BaseReq req) {
+		// TODO Auto-generated method stub
+		Log.d(TAG, "onReq, errCode = " + req);
+		super.onReq(req);
+	}
+
+	@Override
+	public void onResp(BaseResp resp) {
+		// TODO Auto-generated method stub
+		Log.d(TAG, "onPayFinish, errCode = " + resp.errCode+",resp.getType() = " + resp.getType());
+		super.onResp(resp);
+	}
+	
+}`
+	content := "package " + this.packageParam.PackageName + ".wxapi"
+	filePath := strings.Replace(this.packageParam.PackageName + ".wxapi", ".", "/", -1)
+	smaliPath := this.packagePath +"/smali/"+filePath
+	beego.Trace(smaliPath)
+	javaPath := this.buildIdPath + "/src/"+filePath
+	classesFile := this.buildIdPath + "/apk/smali/"+filePath + "/WXPayEntryActivity.smali"
+	smaliFile := this.packagePath +"/smali/"+filePath + "/WXPayEntryActivity.smali"
+	wxJar := this.channelPath+"/libammsdk.jar"
+	cpWxJar := this.buildIdPath + "/libs/libammsdk.jar"
+	vivoJar := this.channelPath+"/vivoUnionSDK_3.1.2.jar"
+	cpVivoJar := this.buildIdPath + "/libs/vivoUnionSDK_3.1.2.jar"
+	apkFile :=  this.buildIdPath + "/bin/project-release-unsigned.apk"
+	unCompileApkPath := this.buildIdPath + "/apk"
+
+	content = content + ";\r\n" + javaContent
+
+	d1 := []byte(content)
+	if err = os.MkdirAll(javaPath, 0777);err != nil{
+		beego.Trace(err)
+		panic(err)
+	}
+	if err := ioutil.WriteFile(javaPath+"/WXPayEntryActivity.java", d1, 0644);err !=nil{
+		beego.Trace(err)
+		panic(err)
+	}
+	
+	if _,err = tool.CopyFile(wxJar,cpWxJar);err != nil {
+		beego.Trace(err)
+		panic(err)
+	}
+	if _,err = tool.CopyFile(vivoJar,cpVivoJar);err != nil {
+		beego.Trace(err)
+		panic(err)
+	}
+
+	this.ant()
+	android.UnCompileApk(apkFile,unCompileApkPath)
+	if err = os.MkdirAll(smaliPath, 0777);err != nil{
+		beego.Trace(err)
+		panic(err)
+	}
+	if _,err = tool.CopyFile(classesFile,smaliFile);err != nil {
+		beego.Trace(err)
+		panic(err)
+	}
+	
+}
+
+
+

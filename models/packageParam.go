@@ -2,9 +2,6 @@ package models
 
 import (
 	"encoding/json"
-	"errors"
-	"fmt"
-	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/orm"
 	"time"
 )
@@ -13,15 +10,15 @@ type PackageParam struct {
 	Id          int
 	ChannelId   int
 	ProductId   int
-	ProductName string `orm:"size(255)"`
-	PackageName string `orm:"size(255)"`
-	SignKeyFile string `orm:"size(255)"`
+	ProductName string
+	PackageName string
+	SignKeyFile string
 	IconType    int8
-	PackageIcon string    `orm:"size(512)"`
-	JsonParam   string    `orm:"size(512)"`
-	XmlParam    string    `orm:"size(2048)"`
-	ExtParam    string    `orm:"size(512)"`
-	UpdateTime  time.Time `orm:"auto_now_add;type(datatime)"`
+	PackageIcon string
+	JsonParam   string
+	XmlParam    string
+	ExtParam    string
+	UpdateTime  time.Time `orm:"auto_now_add;type(datetime)"`
 }
 
 func (m *PackageParam) TableName() string {
@@ -60,22 +57,16 @@ func (m *PackageParam) Query() orm.QuerySeter {
 	return orm.NewOrm().QueryTable(m)
 }
 
-func (m *PackageParam) GetXmlParam(channelId, productId int, key string) (ret string, err error) {
+func GetChannelXmlParam(channelId, productId int) (ret map[string]string, err error) {
+	m := new(PackageParam)
+
 	err = m.Query().Filter("channelId", channelId).Filter("productId", productId).One(m)
+
 	if err != nil {
 		return
 	}
 
-	args := new(map[string]string)
-	if err = json.Unmarshal([]byte(m.XmlParam), args); err != nil {
-		beego.Error(m.XmlParam)
-		return
-	}
-
-	ok := false
-	if ret, ok = (*args)[key]; !ok {
-		msg := fmt.Sprintf("PackageParam %s is empty.", key)
-		err = errors.New(msg)
+	if err = json.Unmarshal([]byte(m.XmlParam), &ret); err != nil {
 		return
 	}
 	return

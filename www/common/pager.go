@@ -30,7 +30,6 @@ func (this *Pager) ToString() string {
 	if this.Totalnum <= this.Pagesize {
 		return ""
 	}
-
 	var buf bytes.Buffer
 	var from, to, linknum, offset, totalpage int64
 

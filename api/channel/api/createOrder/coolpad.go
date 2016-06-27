@@ -44,8 +44,7 @@ func (this *CoolPad) Prepare(lr *models.LoginRequest, orderId, extParamStr strin
 	}
 
 	content := string(enbyte)
-	beego.Trace(content)
-	beego.Trace(this.payKey)
+
 	if this.Result, err = tool.IapppaySign(content, this.payKey); err != nil {
 		format := "prepare: IapppayVerify:%v"
 		msg := fmt.Sprintf(format, err)
@@ -53,7 +52,6 @@ func (this *CoolPad) Prepare(lr *models.LoginRequest, orderId, extParamStr strin
 		return
 	}
 
-	beego.Trace(this.Result)
 	return nil
 }
 

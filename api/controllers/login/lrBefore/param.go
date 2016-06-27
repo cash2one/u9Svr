@@ -1,9 +1,14 @@
-package loginRequestHandle
+package lrBefore
 
 import (
 	"github.com/astaxie/beego/validation"
 	"u9/models"
 )
+
+type MobileInfo struct {
+	Imei string `json:"Imei"`
+	Imsi string `json:"Imsi"`
+}
 
 type Param struct {
 	ProductId       int    `json:"ProductId"`
@@ -11,6 +16,7 @@ type Param struct {
 	ChannelUserId   string `json:"ChannelUserId"`
 	ChannelUserName string `json:"ChannelUserName"`
 	Token           string `json:"Token"`
+	MobileInfo      string `json:"MobileInfo"`
 	Ext             string `json:"Ext"`
 	IsDebug         bool   `json:"IsDebug"`
 }

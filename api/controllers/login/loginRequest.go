@@ -7,15 +7,16 @@ import (
 	"github.com/astaxie/beego/orm"
 	"time"
 	"u9/api/common"
-	"u9/api/controllers/login/loginRequestHandle"
+	"u9/api/controllers/login/lrBefore"
 	"u9/models"
 )
 
 type LoginRequestRet struct {
 	common.BasicRet
-	UserId     string `json:"UserId"`
-	TransType  string `json:"TransType"`
-	ChannelExt string `json:"Ext"`
+	UserId     string    `json:"UserId"`
+	TransType  string    `json:"TransType"`
+	CreateTime time.Time `json:"CreateTime"`
+	ChannelExt string    `json:"Ext"`
 }
 
 func (this *LoginRequestRet) Init() *LoginRequestRet {
@@ -24,34 +25,46 @@ func (this *LoginRequestRet) Init() *LoginRequestRet {
 	return this
 }
 
-func (this *LoginController) handleLrParam() (err error) {
+func (this *LoginController) beforeHandle() (err error) {
 	if code := this.Validate(&this.lrParam); code != 0 {
 		this.lrRet.SetCode(code)
-		err = errors.New("loginRequest' param parse error.")
+		format := "beforeHandle: param is error"
+		msg := fmt.Sprintf(format)
+		err = errors.New(msg)
+		beego.Error(err)
 		return
 	}
-	var lrh loginRequestHandle.LRHandle
+
+	var bh lrBefore.Handle
 	switch this.lrParam.ChannelId {
 	case 102: //qihoo360
-		lrh = loginRequestHandle.NewQihoo360()
+		bh = lrBefore.NewQihoo360()
 	case 123: //熊猫玩
-		lrh = loginRequestHandle.NewXMW()
+		bh = lrBefore.NewXMW()
 	case 145: //huawei
-		lrh = loginRequestHandle.NewHuawei()
+		bh = lrBefore.NewHuawei()
 	case 146: //lenovo
-		lrh = loginRequestHandle.NewLenovo()
+		bh = lrBefore.NewLenovo()
+	case 149: //coolPad
+		bh = lrBefore.NewCoolPad()
 	default:
 		if this.lrParam.ChannelUserId == "" {
 			this.lrRet.SetCode(1001)
-			err = errors.New("Require channelUserId.")
+			format := `beforeHandle: default require channelUserId`
+			msg := fmt.Sprintf(format)
+			err = errors.New(msg)
+			beego.Error(err)
 		}
 		return
 	}
 
-	if err = lrh.Init(&this.lrParam); err != nil {
+	beego.Trace("beforeHandle:1:Init")
+	if err = bh.Init(&this.lrParam); err != nil {
 		return
 	}
-	if this.lrRet.ChannelExt, err = lrh.Handle(); err != nil {
+
+	beego.Trace("beforeHandle:2:Exec")
+	if this.lrRet.ChannelExt, err = bh.Exec(); err != nil {
 		return
 	}
 	return
@@ -63,62 +76,72 @@ func (this *LoginController) updateDB() (err error) {
 		this.lrParam.ProductId,
 		this.lrParam.ChannelUserId)
 
-	lr := models.LoginRequest{
-		ChannelId:       this.lrParam.ChannelId,
-		ProductId:       this.lrParam.ProductId,
-		ChannelUserid:   this.lrParam.ChannelUserId,
+	this.lr = models.LoginRequest{
+		ChannelId:     this.lrParam.ChannelId,
+		ProductId:     this.lrParam.ProductId,
+		ChannelUserid: this.lrParam.ChannelUserId,
+		Userid:        userId,
+		MobileInfo:    this.lrParam.MobileInfo,
+
 		Token:           this.lrParam.Token,
-		IsDebug:         this.lrParam.IsDebug,
 		ChannelUsername: this.lrParam.ChannelUserName,
 		Ext:             this.lrParam.Ext,
-		Userid:          userId,
+		IsDebug:         this.lrParam.IsDebug,
 		UpdateTime:      time.Now()}
 
 	create := false
-	if create, _, err = orm.NewOrm().ReadOrCreate(&lr,
+	if create, _, err = orm.NewOrm().ReadOrCreate(&this.lr,
 		"ChannelId", "ProductId", "ChannelUserid", "Userid"); err != nil {
-		beego.Error(lr)
+		format := `updateDB: err:%v`
+		msg := fmt.Sprintf(format, err)
+		beego.Error(msg)
 		return
 	}
 
 	if !create {
-		lr.Token = this.lrParam.Token
-		lr.ChannelUsername = this.lrParam.ChannelUserName
-		lr.Ext = this.lrParam.Ext
-		//beego.Trace("loginUrlExt:", lr.Ext)
-		lr.UpdateTime = time.Now()
-		if err = lr.Update("ChannelUsername", "Token", "IsDebug", "UpdateTime", "Ext"); err != nil {
-			beego.Error(lr)
+		this.lr.Token = this.lrParam.Token
+		this.lr.ChannelUsername = this.lrParam.ChannelUserName
+		this.lr.Ext = this.lrParam.Ext
+		this.lr.IsDebug = this.lrParam.IsDebug
+		this.lr.UpdateTime = time.Now()
+
+		if err = this.lr.Update("ChannelUsername", "Token", "IsDebug",
+			"UpdateTime", "MobileInfo", "Ext"); err != nil {
+			format := `updateDB: err:%v`
+			msg := fmt.Sprintf(format, err)
+			beego.Error(msg)
 			return
 		}
 	}
-	this.lrRet.UserId = lr.Userid
+	this.lrRet.UserId = this.lr.Userid
 	return
 }
 
 func (this *LoginController) LoginRequest() {
 	this.lrRet.Init()
 
+	msg := "loginRequest:" + common.DumpCtx(this.Ctx)
+	beego.Trace(msg)
+
 	defer func() {
 		this.Data["json"] = this.lrRet
-		if this.lrRet.Code != 0 {
-			warnInfo := fmt.Sprintf("LoginRequestUrl:%v", this.Ctx.Request.PostForm)
-			beego.Warn(warnInfo)
-		}
 		this.ServeJSON(true)
 	}()
 
-	if err := this.handleLrParam(); err != nil {
-		beego.Error(err)
+	beego.Trace("loginRequest: 1:beforeHandle")
+	if err := this.beforeHandle(); err != nil {
 		return
 	}
 
+	beego.Trace("loginRequest: 2:updateDB")
 	if err := this.updateDB(); err != nil {
 		beego.Error(err)
 		return
 	}
 
 	this.lrRet.SetCode(0)
+
+	this.lrRet.CreateTime = this.lr.CreateTime
 }
 
 /*

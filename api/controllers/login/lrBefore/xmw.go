@@ -1,11 +1,10 @@
-package loginRequestHandle
+package lrBefore
 
 import (
 	"encoding/json"
 	"errors"
 	"fmt"
 	"github.com/astaxie/beego"
-	"u9/models"
 )
 
 type xmwChannelRet struct {
@@ -21,8 +20,7 @@ type xmwChannelRet struct {
 }
 
 type XMW struct {
-	LRH
-	channelRet        xmwChannelRet
+	base
 	authorizationCode string
 	clientId          string
 	clientSecret      string
@@ -34,18 +32,23 @@ func NewXMW() *XMW {
 }
 
 func (this *XMW) Init(param *Param) (err error) {
-	this.LRH.Init(param)
-	pp := new(models.PackageParam)
+	this.base.Init(param)
+	this.channelRet = new(xmwChannelRet)
 
-	this.clientId, err = pp.GetXmlParam(this.param.ChannelId, this.param.ProductId, "XMWAPPID")
-	if err != nil {
-		beego.Error(err)
+	defer func() {
+		if err != nil {
+			format := "exec: err:%v"
+			msg := fmt.Sprintf(format, err) + this.Dump()
+			err = errors.New(msg)
+			beego.Error(err)
+		}
+	}()
+
+	if this.clientId, err = this.getChannelParam("XMWAPPID"); err != nil {
 		return
 	}
 
-	this.clientSecret, err = pp.GetXmlParam(this.param.ChannelId, this.param.ProductId, "XMWAPPSECRET")
-	if err != nil {
-		beego.Error(err)
+	if this.clientSecret, err = this.getChannelParam("XMWAPPSECRET"); err != nil {
 		return
 	}
 	return
@@ -55,7 +58,7 @@ func (this *XMW) getAccessToken() (err error) {
 	this.Method = "POST"
 	format := "http://open.xmwan.com/v2/oauth2/access_token?client_id=%s&client_secret=%s&grant_type=%s&code=%s"
 	this.Url = fmt.Sprintf(format, this.clientId, this.clientSecret, "authorization_code", this.param.Token)
-	this.LRH.InitParam()
+	this.base.InitParam()
 
 	if err = this.GetResponse(); err != nil {
 		beego.Error(err)
@@ -68,20 +71,22 @@ func (this *XMW) getAccessToken() (err error) {
 		return
 	}
 
-	if this.channelRet.Error != "" {
-		err = errors.New(this.channelRet.Error)
+	channelRet := this.channelRet.(*xmwChannelRet)
+	if channelRet.Error != "" {
+		err = errors.New(channelRet.Error)
 		beego.Error(err)
 		return
 	}
-	//this.channelRet.Error = ""
-	this.param.Token = this.channelRet.AccessToken
+	this.param.Token = channelRet.AccessToken
 	return
 }
 
 func (this *XMW) getUserInfo() (err error) {
+	channelRet := this.channelRet.(*xmwChannelRet)
+
 	this.Method = "GET"
-	this.Url = "http://open.xmwan.com/v2/users/me?access_token=" + this.channelRet.AccessToken
-	this.LRH.InitParam()
+	this.Url = "http://open.xmwan.com/v2/users/me?access_token=" + channelRet.AccessToken
+	this.base.InitParam()
 
 	if err = this.GetResponse(); err != nil {
 		beego.Error(err)
@@ -94,19 +99,18 @@ func (this *XMW) getUserInfo() (err error) {
 		return
 	}
 
-	if this.channelRet.Error != "" {
-		err = errors.New(this.channelRet.Error)
+	if channelRet.Error != "" {
+		err = errors.New(channelRet.Error)
 		beego.Error(err)
 		return
 	}
-	//this.channelRet.Error = ""
 
-	this.param.ChannelUserId = this.channelRet.XmwOpenId
-	this.param.ChannelUserName = this.channelRet.Nickname
+	this.param.ChannelUserId = channelRet.XmwOpenId
+	this.param.ChannelUserName = channelRet.Nickname
 	return
 }
 
-func (this *XMW) Handle() (ret string, err error) {
+func (this *XMW) Exec() (ret string, err error) {
 	if err = this.getAccessToken(); err != nil {
 		return
 	}
@@ -118,8 +122,3 @@ func (this *XMW) Handle() (ret string, err error) {
 	ret = string(data)
 	return
 }
-
-// func (this *XMW) GetChannelResult() (ret interface{}) {
-// 	//return this.channelRet.AccessToken
-// 	return this.channelRet
-// }

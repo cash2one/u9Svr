@@ -7,17 +7,17 @@ import (
 
 type Channel struct {
 	Id              int
-	Name            string `orm:"size(32)"`
-	Type            string `orm:"size(16)"`
+	Name            string
+	Type            string
 	IsCustomPackage bool
 	IsCustomSign    bool
-	SdkVersion      string    `orm:"size(32)"`
-	IconLeftTop     string    `orm:"size(255)"`
-	IconLeftBottom  string    `orm:"size(255)"`
-	IconRightTop    string    `orm:"size(255)"`
-	IconRightBottom string    `orm:"size(255)"`
-	UpdateTime      time.Time `orm:"auto_now;type(datatime)"`
-	Desc            string    `orm:"size(255)"`
+	SdkVersion      string
+	IconLeftTop     string
+	IconLeftBottom  string
+	IconRightTop    string
+	IconRightBottom string
+	UpdateTime      time.Time `orm:"auto_now;type(datetime)"`
+	Desc            string
 }
 
 func (m *Channel) TableName() string {

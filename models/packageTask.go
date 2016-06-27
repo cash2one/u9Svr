@@ -10,12 +10,12 @@ type PackageTask struct {
 	CpId              int
 	PackageParamId    int
 	ProductVersionId  int
-	PackageTime       time.Time `orm:"type(datatime)"`
-	VersionUpdateTime time.Time `orm:"type(datatime)"`
-	ChannelUpdateTime time.Time `orm:"type(datatime)"`
+	PackageTime       time.Time `orm:"type(datetime)"`
+	VersionUpdateTime time.Time `orm:"type(datetime)"`
+	ChannelUpdateTime time.Time `orm:"type(datetime)"`
 	State             int       //0:初始 1正在打包 2:打包成功 3:打包失败'
-	PublishApk        string    `orm:"size(255)"`
-	Log               string    `orm:"size(512)"`
+	PublishApk        string
+	Log               string
 }
 
 func (m *PackageTask) TableName() string {

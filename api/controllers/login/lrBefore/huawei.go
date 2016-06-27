@@ -1,4 +1,4 @@
-package loginRequestHandle
+package lrBefore
 
 import (
 	"encoding/json"
@@ -21,8 +21,7 @@ type huaweiChannelRet struct {
 }
 
 type Huawei struct {
-	LRH
-	channelRet huaweiChannelRet
+	base
 }
 
 func NewHuawei() *Huawei {
@@ -31,40 +30,42 @@ func NewHuawei() *Huawei {
 }
 
 func (this *Huawei) Init(param *Param) (err error) {
-	this.LRH.Init(param)
+	this.base.Init(param)
+	this.channelRet = new(huaweiChannelRet)
 	return
 }
 
-func (this *Huawei) Handle() (ret string, err error) {
+func (this *Huawei) Exec() (ret string, err error) {
 	this.IsHttps = true
 	this.Method = "GET"
 	ts := strconv.FormatInt(time.Now().Unix(), 10)
+
 	token := url.QueryEscape(this.param.Token)
 	format := "?nsp_svc=OpenUP.User.getInfo&nsp_ts=%s&access_token=%s"
 	this.Url = "https://api.vmall.com/rest.php" + fmt.Sprintf(format, ts, token)
-	beego.Trace(this.Url)
 
-	this.LRH.InitParam()
+	this.base.InitParam()
 
 	if err = this.GetResponse(); err != nil {
 		beego.Error(err)
 		return
 	}
 
-	beego.Trace("result:", this.Result)
 	if err = json.Unmarshal([]byte(this.Result), &this.channelRet); err != nil {
 		beego.Error(err)
 		return
 	}
 
-	if this.channelRet.UserID == "" {
-		err = errors.New(this.channelRet.Error)
-		beego.Error(fmt.Sprintf("channelRet:%+v", this.channelRet))
+	channelRet := this.channelRet.(*huaweiChannelRet)
+
+	if channelRet.UserID == "" {
+		err = errors.New(channelRet.Error)
+		beego.Error(fmt.Sprintf("channelRet:%+v", channelRet))
 		return
 	}
 
-	this.param.ChannelUserId = this.channelRet.UserID
-	this.param.ChannelUserName = this.channelRet.UserName
+	this.param.ChannelUserId = channelRet.UserID
+	this.param.ChannelUserName = channelRet.UserName
 
 	ret = this.Result
 	return

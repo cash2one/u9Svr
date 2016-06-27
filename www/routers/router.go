@@ -23,11 +23,17 @@ func init() {
 	beego.Router("/manager/channel/edit", &manager.ChannelController{}, "*:Edit")
 	beego.Router("/manager/channel/delete", &manager.ChannelController{}, "*:Delete")
 
+	beego.Router("/manager/statistic/payList",&manager.StatisticController{},"*:PayList")
+
 	//cp
 	beego.Router("/cp", &cp.IndexController{}, "*:Index")
 	beego.Router("/cp/login", &cp.LoginController{}, "*:Login")
 	beego.Router("/cp/logout", &cp.BaseController{}, "*:Logout")
 	beego.Router("/cp/profile", &cp.ProfileController{}, "*:Profile")
+
+	beego.Router("/cp/product/list", &cp.ProductController{}, "*:List")
+	beego.Router("/cp/product/edit", &cp.ProductController{}, "*:Edit")
+	beego.Router("/cp/product/delete", &cp.ProductController{}, "*:Delete")
 
 	beego.Router("/cp/package/list", &cp.PackageController{}, "*:List")
 	beego.Router("/cp/package/add", &cp.PackageController{}, "*:Add")
@@ -35,4 +41,6 @@ func init() {
 	beego.Router("/cp/package/package", &cp.PackageController{}, "*:Package")
 	beego.Router("/cp/package/download", &cp.PackageController{}, "*:Download")
 	beego.Router("/cp/package/delete", &cp.PackageController{}, "*:Delete")
+
+	
 }

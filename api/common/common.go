@@ -1,5 +1,10 @@
 package common
 
+import (
+	"fmt"
+	"github.com/astaxie/beego/context"
+)
+
 const (
 	CommonTimeLayout = "20060102150405"
 )
@@ -64,4 +69,10 @@ func (this *BasicRet) SetCode(code int) {
 		this.Code = 9001
 		this.Message = "Unknow execption"
 	}
+}
+
+func DumpCtx(ctx *context.Context) (ret string) {
+	format := "request:%+v"
+	ret = fmt.Sprintf(format, ctx.Request)
+	return
 }

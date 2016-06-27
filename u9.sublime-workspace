@@ -4,6 +4,226 @@
 		"selected_items":
 		[
 			[
+				"channelTr",
+				"channelTradeData	interface{} ν"
+			],
+			[
+				"err_input",
+				"err_parseInputParam	 Ɩ"
+			],
+			[
+				"err_inpu",
+				"err_parseInputParam	 Ɩ"
+			],
+			[
+				"con",
+				"channelTradeContent	string ν"
+			],
+			[
+				"pr",
+				"Println	n int, err error ƒ"
+			],
+			[
+				"flo",
+				"Float64	 Ɩ"
+			],
+			[
+				"Print",
+				"Println	n int, err error ƒ"
+			],
+			[
+				"fie",
+				"FieldByName	reflect.Value ƒ"
+			],
+			[
+				"k",
+				"Kind	reflect.Kind ƒ"
+			],
+			[
+				"in",
+				"Interface	i interface{} ƒ"
+			],
+			[
+				"field",
+				"FieldByIndex	reflect.Value ƒ"
+			],
+			[
+				"fi",
+				"Field	reflect.Value ƒ"
+			],
+			[
+				"fin",
+				"FieldByIndex	reflect.Value ƒ"
+			],
+			[
+				"type",
+				"typeOfT	reflect.Type ν"
+			],
+			[
+				"para",
+				"paramKey	string ν"
+			],
+			[
+				"T",
+				"String	string ƒ"
+			],
+			[
+				"channelP",
+				"err_parseChannelParam	 Ɩ"
+			],
+			[
+				"or",
+				"orderId	string ν"
+			],
+			[
+				"channelPa",
+				"channelParams	map[string]string ν"
+			],
+			[
+				"channelPar",
+				"channelParamKeys	map[string]string ν"
+			],
+			[
+				"channelId",
+				"requireChannelUserId	bool ν"
+			],
+			[
+				"ba",
+				"baiduChannelRet	struct ʈ"
+			],
+			[
+				"channe",
+				"channelRet	baiduChannelRet ν"
+			],
+			[
+				"chec",
+				"CheckSign	err error ƒ"
+			],
+			[
+				"err_check",
+				"err_checkChannelRet	 Ɩ"
+			],
+			[
+				"err_chan",
+				"err_parseChannelRet	 Ɩ"
+			],
+			[
+				"tes",
+				"Test	struct ʈ"
+			],
+			[
+				"err_parsePay",
+				"err_parsePayDiscount	 Ɩ"
+			],
+			[
+				"Pr",
+				"Printf	n int, err error ƒ"
+			],
+			[
+				"pt",
+				"Println	n int, err error ƒ"
+			],
+			[
+				"check",
+				"checkUrlParam	err error ƒ"
+			],
+			[
+				"amon",
+				"channelAmountType	int ν"
+			],
+			[
+				"p",
+				"Println	n int, err error ƒ"
+			],
+			[
+				"err_parsechanne",
+				"err_parseChannelPayKey	 Ɩ"
+			],
+			[
+				"channel",
+				"channelPayKey	string ν"
+			],
+			[
+				"parsechannel",
+				"parseChannelPayKey	err error ƒ"
+			],
+			[
+				"get",
+				"GetResult	ret string ƒ"
+			],
+			[
+				"err_urlp",
+				"err_parseUrlParam	 Ɩ"
+			],
+			[
+				"err_pars",
+				"err_parseBody	 Ɩ"
+			],
+			[
+				"parsegame",
+				"parseChannelGameKey	err error ƒ"
+			],
+			[
+				"pay",
+				"payOrder	models.PayOrder ν"
+			],
+			[
+				"parse",
+				"parseChannelPayKey	err error ƒ"
+			],
+			[
+				"err_parse",
+				"err_parseChannelRet	 Ɩ"
+			],
+			[
+				"err_parseChannel",
+				"err_parseChannelPayKey	 Ɩ"
+			],
+			[
+				"err_channel",
+				"err_parseChannelPayKey	 Ɩ"
+			],
+			[
+				"err_rsa",
+				"err_parseRsaPublicKey	 Ɩ"
+			],
+			[
+				"err_or",
+				"err_parseOrderRequest	 Ɩ"
+			],
+			[
+				"err_channelg",
+				"err_parseChannelGameKey	 Ɩ"
+			],
+			[
+				"err_ca",
+				"err_callbackFail	 Ɩ"
+			],
+			[
+				"lr",
+				"lrParam	lrBefore.Param ν"
+			],
+			[
+				"ne",
+				"NewOrm	orm.Ormer ƒ"
+			],
+			[
+				"Or",
+				"OrderStatus	string ν"
+			],
+			[
+				"Ur",
+				"RequestURI	string ν"
+			],
+			[
+				"q",
+				"QueryUnescape	string, error ƒ"
+			],
+			[
+				"tp",
+				"TplName	string ν"
+			],
+			[
 				"chan",
 				"channelPayKey	string ν"
 			],
@@ -48,14 +268,6 @@
 				"FormValue	string ƒ"
 			],
 			[
-				"in",
-				"Input	*context.BeegoInput ν"
-			],
-			[
-				"pr",
-				"Println	n int, err error ƒ"
-			],
-			[
 				"t",
 				"Timestamp	time.Time ν"
 			],
@@ -64,16 +276,8 @@
 				"Username	string ν"
 			],
 			[
-				"err_channel",
-				"err_parseChannelGameId	 Ɩ"
-			],
-			[
 				"a",
 				"AppId	string ν"
-			],
-			[
-				"channel",
-				"channelUserId	string ν"
 			],
 			[
 				"parseChannel",
@@ -82,10 +286,6 @@
 			[
 				"conte",
 				"content	 ν"
-			],
-			[
-				"q",
-				"QueryEscape	string ƒ"
 			],
 			[
 				"cont",
@@ -108,16 +308,8 @@
 				"NewHuawei	*Huawei ƒ"
 			],
 			[
-				"or",
-				"CpOrderNumber	string ν"
-			],
-			[
 				"Res",
 				"RespMsg	string ν"
-			],
-			[
-				"p",
-				"Printf	n int, err error ƒ"
 			],
 			[
 				"cp",
@@ -134,10 +326,6 @@
 			[
 				"channelg",
 				"err_parseChannelGameKey	 Ɩ"
-			],
-			[
-				"err_parse",
-				"err_parseUrlParam	 Ɩ"
 			],
 			[
 				"err_parsega",
@@ -160,14 +348,6 @@
 				"Code	int ν"
 			],
 			[
-				"lr",
-				"lrRet	LoginRequestRet ν"
-			],
-			[
-				"para",
-				"Params	map[string]string ƒ"
-			],
-			[
 				"Pa",
 				"Param	string ƒ"
 			],
@@ -178,10 +358,6 @@
 			[
 				"time",
 				"timeStamp	string ν"
-			],
-			[
-				"parse",
-				"parsePayKey	 ƒ"
 			],
 			[
 				"exp",
@@ -214,10 +390,6 @@
 			[
 				"ha",
 				"Handle	err error ƒ"
-			],
-			[
-				"con",
-				"strconv	 package ρ"
 			],
 			[
 				"parseChannelga",
@@ -264,10 +436,6 @@
 				"CPOrderid	string ν"
 			],
 			[
-				"err_parseChannel",
-				"err_parseChannelGameKey	 Ɩ"
-			],
-			[
 				"channelG",
 				"parseChannelGameKey	err error ƒ"
 			],
@@ -280,10 +448,6 @@
 				"CpOrderId	int ν"
 			],
 			[
-				"channe",
-				"channelGameKey	string ν"
-			],
-			[
 				"http",
 				"httplib	 package ρ"
 			],
@@ -294,10 +458,6 @@
 			[
 				"ch",
 				"ChOrderid	string ν"
-			],
-			[
-				"pay",
-				"payKey	string ν"
 			],
 			[
 				"A",
@@ -354,166 +514,6 @@
 			[
 				"pro",
 				"ProductId	string ν"
-			],
-			[
-				"b",
-				"buy_amount	string ν"
-			],
-			[
-				"n",
-				"UnixNano	int64 ƒ"
-			],
-			[
-				"ca",
-				"channelRet	AmigoCoChannelRet ν"
-			],
-			[
-				"C",
-				"ChannelId	int ν"
-			],
-			[
-				"do",
-				"Domain	string ƒ"
-			],
-			[
-				"Req",
-				"Request	common.Request ν"
-			],
-			[
-				"no",
-				"Now	time.Time ƒ"
-			],
-			[
-				"deco",
-				"DecodeString	[]byte, error ƒ"
-			],
-			[
-				"er",
-				"ErrMsg	string ν"
-			],
-			[
-				"resu",
-				"resultMsg	 ν"
-			],
-			[
-				"print",
-				"Sprintf	string ƒ"
-			],
-			[
-				"tp",
-				"tplname	string ν"
-			],
-			[
-				"Ser",
-				"ServeJson	 ƒ"
-			],
-			[
-				"Chan",
-				"ChannelUserid	string ν"
-			],
-			[
-				"ps",
-				"ParseInt	i int64, err error ƒ"
-			],
-			[
-				"param",
-				"urlParams	url.Values ν"
-			],
-			[
-				"getstr",
-				"GetStrings	[]string ƒ"
-			],
-			[
-				"get",
-				"GetFloat	float64, error ƒ"
-			],
-			[
-				"pri",
-				"Println	n int, err error ƒ"
-			],
-			[
-				"opp",
-				"oppoRsaPublicKey	*rsa.PublicKey ν"
-			],
-			[
-				"rsa",
-				"oppoRsaPublicKeyStr	 Ɩ"
-			],
-			[
-				"pub",
-				"pukBytes	[]byte ν"
-			],
-			[
-				"quer",
-				"QueryUnescape	string, error ƒ"
-			],
-			[
-				"attr",
-				"Attrs	[]*Attr ν"
-			],
-			[
-				"att",
-				"Attrs	[]*android.Attr ν"
-			],
-			[
-				"new",
-				"NewEncoder	io.WriteCloser ƒ"
-			],
-			[
-				"es",
-				"QueryEscape	string ƒ"
-			],
-			[
-				"ver",
-				"VersionName	string ν"
-			],
-			[
-				"fprint",
-				"Fprintf	n int, err error ƒ"
-			],
-			[
-				"admin",
-				"EnableAdmin	bool ν"
-			],
-			[
-				"Pack",
-				"PackageTask	struct ʈ"
-			],
-			[
-				"sel",
-				"selectedIndex"
-			],
-			[
-				"las",
-				"LastLoginTime	time.Time ν"
-			],
-			[
-				"manager",
-				"managerName	string ν"
-			],
-			[
-				"sl",
-				"slPackage	 ν"
-			],
-			[
-				"mb",
-				"mbPackage	 ν"
-			],
-			[
-				"slp",
-				"slPackages	 ν"
-			],
-			[
-				"cl",
-				"ClId	string ν"
-			],
-			[
-				"sf",
-				"Sprintf	string ƒ"
-			],
-			[
-				"TR",
-				"Trace	 ƒ"
 			]
 		]
 	},
@@ -610,150 +610,181 @@
 		"/D/go/src/u9/api/channel",
 		"/D/go/src/u9/api/channel/api",
 		"/D/go/src/u9/api/channel/notify",
-		"/D/go/src/u9/api/controllers",
-		"/D/go/src/u9/api/controllers/login",
-		"/D/go/src/u9/api/controllers/pay"
+		"/D/go/src/u9/api/channel/notify/pay",
+		"/D/go/src/u9/api/conf",
+		"/D/go/src/u9/api/controllers/login/lrBefore",
+		"/D/go/src/u9/api/controllers/pay",
+		"/D/go/src/u9/api/routers",
+		"/D/go/src/u9/test",
+		"/D/go/src/u9/www/controllers",
+		"/D/go/src/u9/www/controllers/cp",
+		"/D/go/src/u9/www/controllers/manager",
+		"/D/go/src/u9/www/package",
+		"/D/go/src/u9/www/publish",
+		"/D/go/src/u9/www/routers",
+		"/D/go/src/u9/www/views/cp"
 	],
 	"file_history":
 	[
-		"/D/go/src/u9/api/channel/notify/pay/anFeng.go",
-		"/D/go/src/u9/api/channel/notify/pay/pay.go",
-		"/D/go/src/u9/api/channel/api/api.go",
-		"/d/go/src/u9/api/channel/api/createOrder/xmw.go",
-		"/d/go/src/u9/api/channel/api/createOrder/huawei.go",
-		"/D/go/src/u9/api/channel/notify/pay/baidu.go",
-		"/D/go/src/u9/api/channel/notify/pay/base.go",
-		"/D/go/src/u9/api/channel/notify/pay/tencent.go",
-		"/D/go/src/u9/api/channel/api/loginRequest/baidu.go",
-		"/d/go/src/u9/api/channel/notify/pay/lenovo.go",
-		"/d/go/src/u9/api/channel/notify/pay/base.go",
-		"/d/go/src/u9/api/channel/notify/pay/jiuyou.go",
-		"/D/go/src/u9/api/channel/notify/pay/lenovo.go",
-		"/d/go/src/u9/api/controllers/login/validateLogin.go",
-		"/D/go/src/u9/api/controllers/login/loginRequest.go",
-		"/D/go/src/u9/sftp-config.json",
-		"/c/go/src/encoding/base64/base64.go",
-		"/c/go/src/net/url/url.go",
-		"/c/go/src/encoding/json/decode.go",
+		"/D/go/src/u9/api/channel/notify/pay/md5-youlong.go",
+		"/D/go/src/u9/api/channel/notify/pay/md5_qihoo360.go",
+		"/D/go/src/u9/api/channel/notify/pay/rsa-amigo.go",
+		"/D/go/src/u9/api/channel/notify/pay/rsa-huawei.go",
+		"/D/go/src/u9/api/channel/notify/pay/rsa-lenovo.go",
+		"/D/go/src/u9/api/channel/notify/pay/rsa-oppo.go",
+		"/D/go/src/u9/api/channel/notify/pay/base-anzhi.go",
+		"/D/go/src/u9/tool/des.go",
+		"/D/go/src/u9/api/channel/notify/pay/base-mumayi.go",
+		"/D/go/src/u9/api/channel/notify/pay/base-tencent.go",
+		"/D/go/src/u9/api/channel/notify/pay/base-tt.go",
+		"/D/go/src/u9/api/channel/notify/pay/md5-zhuoyi.go",
+		"/D/go/src/u9/api/channel/notify/pay/md5-anFeng.go",
+		"/D/go/src/u9/api/channel/notify/pay/base-yyh.go",
+		"/D/go/src/u9/api/channel/notify/pay/md5-baidu.go",
+		"/D/go/src/u9/api/channel/notify/pay/md5-ccpay.go",
+		"/D/go/src/u9/api/channel/notify/pay/md5-cygame.go",
+		"/D/go/src/u9/api/channel/notify/pay/md5-dangle.go",
+		"/D/go/src/u9/api/channel/notify/pay/md5-guopan.go",
+		"/D/go/src/u9/api/channel/notify/pay/md5-haimawan.go",
+		"/D/go/src/u9/api/channel/notify/pay/md5-jiuyou.go",
+		"/D/go/src/u9/api/channel/notify/pay/md5-kaopu.go",
+		"/D/go/src/u9/api/channel/notify/pay/md5-letv.go",
+		"/D/go/src/u9/api/channel/notify/pay/md5-m4399.go",
+		"/D/go/src/u9/api/channel/notify/pay/md5-mango.go",
+		"/D/go/src/u9/api/channel/notify/pay/md5-meizu.go",
+		"/D/go/src/u9/api/channel/notify/pay/md5-mzw.go",
+		"/D/go/src/u9/api/channel/notify/pay/md5-pengyouwan.go",
+		"/D/go/src/u9/api/channel/notify/pay/md5-pptv.go",
+		"/D/go/src/u9/api/channel/notify/pay/md5-qikqik.go",
+		"/D/go/src/u9/api/channel/notify/pay/md5-qmyx.go",
+		"/D/go/src/u9/api/channel/notify/pay/md5-shoumeng.go",
+		"/D/go/src/u9/api/channel/notify/pay/md5-snail.go",
+		"/D/go/src/u9/api/channel/notify/pay/md5-sogou.go",
+		"/D/go/src/u9/api/channel/notify/pay/md5-vivo.go",
+		"/D/go/src/u9/api/channel/notify/pay/md5-xcs.go",
+		"/D/go/src/u9/api/channel/notify/pay/md5-xmw.go",
+		"/D/go/src/u9/api/channel/notify/pay/md5-yijie.go",
+		"/D/go/src/u9/api/channel/notify/pay/md5-c07073.go",
+		"/D/go/src/u9/tool/sign.go",
+		"/D/go/src/u9/api/channel/notify/pay/base-xiaomi.go",
+		"/D/go/src/u9/api/channel/notify/pay/md5-gfan.go",
+		"/D/go/src/u9/api/channel/notify/pay/common-crypto.go",
+		"/D/go/src/u9/api/channel/notify/pay/rsa-wandoujia.go",
 		"/D/go/src/u9/tool/encrypt.go",
-		"/D/go/src/u9/test/test2.html",
-		"/D/go/src/u9/test/test1.html",
-		"/c/go/src/html/template/content.go",
-		"/c/go/src/path/filepath/export_test.go",
-		"/c/go/src/os/stat_windows.go",
-		"/c/go/src/path/filepath/match.go",
-		"/c/go/src/html/template/template.go",
-		"/D/go/src/u9/test/test.go",
-		"/c/go/src/text/template/doc.go",
-		"/D/go/src/u9/test/tmpl.html",
-		"/D/go/src/u9/api/channel/notify/pay/qihoo360.go",
-		"/D/go/src/u9/api/controllers/login/loginRequestHandle/qihoo360.go",
-		"/D/go/src/u9/models/loginRequest.go",
-		"/D/go/src/u9/tool/url.go",
-		"/D/go/src/u9/api/channel/notify/pay/jiuyou.go",
-		"/d/go/src/u9/api/channel/notify/pay/huawei.go",
-		"/c/go/src/strings/strings.go",
-		"/d/go/src/u9/api/channel/notify/pay/cygame.go",
-		"/D/go/src/u9/api/channel/notify/pay/test.go",
-		"/d/go/src/u9/api/channel/notify/pay/amigo.go",
-		"/D/go/src/u9/api/controllers/pay/getNewChannel.go",
-		"/d/go/src/u9/api/channel/notify/pay/c07073.go",
-		"/d/go/src/fragmenta/router/context.go",
-		"/D/go/src/u9/api/controllers/login/loginRequestHandle/huawei.go",
-		"/D/go/src/u9/api/channel/notify/pay/gfan.go",
-		"/D/go/src/u9/api/controllers/pay/base.go",
-		"/c/go/src/strconv/atoi.go",
-		"/D/go/src/u9/models/packageParam.go",
-		"/D/go/src/u9/api/controllers/login/loginRequestHandle/lenovo.go",
-		"/D/go/src/u9/api/channel/notify/pay/huawei.go",
-		"/d/go/src/u9/api/channel/api/createOrder/amigo.go",
-		"/D/go/src/u9/api/channel/api/loginRequest/lenovo.go",
-		"/d/go/src/u9/api/channel/notify/pay/gfan.go",
-		"/D/go/src/u9/api/common/request.go",
-		"/D/go/src/u9/api/controllers/pay/payRequest.go",
-		"/D/go/src/u9/api/channel/api/createOrder/huawei.go",
-		"/d/go/src/fragmenta/fragmenta-cms/src/images/images.go",
-		"/D/go/src/u9/api/channel/api/createOrder/amigo.go",
-		"/D/go/src/u9/api/channel/api/createOrder/base.go",
-		"/d/go/src/github.com/astaxie/beego/hooks.go",
-		"/d/go/src/github.com/astaxie/beego/admin.go",
-		"/c/go/src/builtin/builtin.go",
-		"/c/go/src/crypto/rsa/pkcs1v15.go",
-		"/D/go/src/u9/api/channel/api/createOrder/vivo.go",
-		"/D/go/src/u9/api/channel/notify/pay/vivo.go",
-		"/d/go/src/github.com/astaxie/beego/context/context.go",
-		"/d/go/src/github.com/astaxie/beego/controller.go",
-		"/D/go/src/u9/api/controllers/login/loginRequestHandle/xmw.go",
-		"/D/go/src/u9/api/controllers/login/loginRequestHandle/base.go",
-		"/D/go/src/u9/api/channel/notify/pay/letv.go",
-		"/c/go/src/strconv/quote.go",
-		"/d/go/src/fragmenta/fragmenta-cms/src/lib/sms/sms.go",
-		"/c/go/src/strings/reader.go",
-		"/d/go/src/github.com/astaxie/beego/templatefunc_test.go",
-		"/d/go/src/github.com/astaxie/beego/context/input.go",
-		"/c/go/src/sort/sort.go",
-		"/d/go/src/u9/api/controllers/pay/channelPayNotify.go",
-		"/D/go/src/u9/api/channel/api/loginRequest/huawei.go",
-		"/D/go/src/u9/api/channel/api/loginRequest/vivo.go",
-		"/D/go/src/u9/api/channel/api/createOrder/xcs.go",
-		"/d/go/src/fragmenta/server/schedule/schedule.go",
-		"/D/go/src/u9/api/channel/api/createOrder/xmw.go",
+		"/D/go/src/u9/api/channel/notify/pay/rsa-htc.go",
 		"/D/go/src/u9/api/channel/api/createOrder/tencent.go",
-		"/d/go/src/9fans.net/go/acme/acme.go",
-		"/D/go/src/u9/api/common/common.go",
-		"/d/go/src/fragmenta/fragmenta/backup.go",
-		"/d/go/src/github.com/astaxie/beego/migration/migration.go",
-		"/c/go/src/mime/multipart/writer.go",
-		"/c/go/src/io/ioutil/ioutil.go",
-		"/c/go/src/bytes/buffer.go",
-		"/c/go/src/net/http/request.go",
-		"/D/go/src/github.com/astaxie/beego/httplib/httplib.go",
-		"/c/go/src/io/io.go",
-		"/D/go/src/u9/api/channel/api/loginRequest/tencent.go",
-		"/D/go/src/u9/api/channel/notify/pay/tt.go",
-		"/D/go/src/u9/api/channel/notify/pay/pyw.go",
-		"/D/go/src/u9/api/channel/notify/pay/oppo.go",
+		"/D/go/src/u9/api/channel/notify/pay/sogou.go",
+		"/D/go/src/u9/api/channel/notify/pay/common-base.go",
+		"/D/go/src/u9/api/channel/notify/pay/qmyx.go",
+		"/D/go/src/u9/api/channel/notify/pay/base-test.go",
+		"/D/go/src/u9/api/channel/notify/pay/pay.go",
+		"/D/go/src/u9/api/channel/notify/pay/trade-common.go",
+		"/D/go/src/u9/api/channel/notify/pay/common-define.go",
+		"/D/go/src/fragmenta/view/helpers/forms.go",
+		"/D/go/src/u9/test/test.go",
+		"/c/go/src/reflect/value.go",
+		"/D/go/src/u9/api/controllers/pay/payRequest.go",
+		"/C/Users/jacky/Desktop/bak/tencent.go",
+		"/D/go/src/9fans.net/go/acme/acmego/read.go",
+		"/c/go/src/reflect/type.go",
+		"/D/go/src/code.google.com/p/graphics-go/graphics/detect/opencv_parser_test.go",
+		"/D/go/src/code.google.com/p/graphics-go/graphics/detect/opencv_parser.go",
+		"/D/go/src/9fans.net/go/plumb/plumb_test.go",
+		"/D/go/src/u9/api/channel/notify/pay/letv.go",
+		"/c/go/src/encoding/json/decode.go",
+		"/D/go/src/u9/api/channel/notify/pay/md5UrlParam-haimawan.go",
+		"/D/go/src/u9/api/channel/notify/pay/md5UrlParam-anFeng.go",
+		"/D/go/src/u9/api/channel/notify/pay/md5UrlParam-guopan.go",
+		"/D/go/src/u9/api/channel/notify/pay/md5UrlParam-dangle.go",
+		"/D/go/src/u9/api/channel/notify/pay/md5UrlParam-cygame.go",
+		"/D/go/src/u9/api/channel/notify/pay/md5UrlParam-ccpay.go",
+		"/c/go/src/net/url/url.go",
+		"/D/go/src/u9/api/channel/notify/pay/base.go",
+		"/D/go/src/u9/api/channel/notify/pay/dangle.go",
 		"/D/go/src/u9/api/channel/notify/pay/guopan.go",
-		"/D/go/src/u9/api/channel/notify/pay/cygame.go",
-		"/D/go/src/u9/api/channel/notify/pay/ccpay.go",
-		"/D/go/src/u9/api/channel/notify/pay/caishen.go",
-		"/D/go/src/u9/api/channel/notify/pay/c07073.go",
+		"/D/go/src/u9/api/channel/notify/pay/xcs.go",
+		"/D/go/src/u9/api/channel/notify/pay/anFeng.go",
 		"/D/go/src/u9/api/channel/notify/pay/anzhi.go",
+		"/D/go/src/u9/api/channel/notify/pay/baidu.go",
+		"/D/go/src/u9/api/channel/notify/pay/c07073.go",
+		"/D/go/src/u9/api/channel/notify/pay/ccpay.go",
+		"/D/go/src/u9/api/channel/notify/pay/cygame.go",
+		"/D/go/src/u9/api/channel/notify/pay/test.go",
+		"/D/go/src/u9/api/channel/notify/pay/haimawan.go",
+		"/D/go/src/u9/api/channel/notify/pay/common/base.go",
+		"/D/go/src/u9/api/channel/notify/pay/bak/anFeng.go",
+		"/D/go/src/u9/api/channel/notify/pay/bak/anzhi.go",
+		"/D/go/src/u9/api/channel/notify/pay/bak/baidu.go",
+		"/D/go/src/u9/api/channel/notify/pay/bak/c07073.go",
+		"/D/go/src/u9/api/channel/notify/pay/bak/ccpay.go",
+		"/D/go/src/u9/api/channel/notify/pay/bak/cygame.go",
+		"/D/go/src/u9/api/channel/notify/pay/bak/dangle.go",
+		"/D/go/src/u9/api/channel/notify/pay/bak/guopan.go",
+		"/D/go/src/u9/api/channel/notify/pay/bak/xcs.go",
+		"/D/go/src/u9/www/controllers/cp/product.go",
+		"/D/go/src/u9/models/base.go",
+		"/D/go/src/u9/www/controllers/manager/statistic.go",
+		"/D/go/src/u9/models/statChannelPay.go",
+		"/D/go/src/github.com/astaxie/beego/orm/cmd.go",
+		"/D/go/src/u9/models/startChannelPay.go",
+		"/D/go/src/u9/sftp-config.json",
 		"/D/go/src/u9/api/channel/notify/pay/amigo.go",
-		"/d/go/src/github.com/astaxie/beego/httplib/README.md",
-		"/D/go/src/u9/api/channel/api/loginRequest/base.go",
-		"/c/go/src/mime/multipart/multipart.go",
-		"/c/go/src/log/log.go",
-		"/c/go/src/net/textproto/header.go",
-		"/c/go/src/crypto/rand/rand.go",
-		"/c/go/src/io/pipe.go",
-		"/C/go/src/crypto/rand/rand_test.go",
-		"/c/go/src/testing/testing.go",
-		"/d/go/src/u9/api/channel/api/createOrder/tencent.go",
-		"/d/go/src/u9/api/channel/notify/pay/tencent.go",
-		"/C/test2.txt",
-		"/c/go/src/net/http/cookiejar/jar.go",
-		"/d/go/src/golang.org/x/net/http2/transport_test.go",
-		"/c/go/src/net/http/jar.go",
-		"/c/go/src/net/http/client.go",
-		"/d/go/src/github.com/astaxie/beego/httplib/httplib.go",
-		"/c/go/src/time/time.go",
-		"/d/go/src/u9/api/channel/notify/pay/pay.go",
-		"/d/go/src/github.com/astaxie/beego/router.go",
-		"/d/go/src/github.com/astaxie/beego/session/sess_cookie_test.go",
-		"/d/go/src/github.com/astaxie/beego/filter_test.go",
-		"/c/go/src/net/http/httptest/recorder.go",
-		"/d/go/src/github.com/astaxie/beego/context/input_test.go"
+		"/D/go/src/u9/api/channel/notify/pay/caishen.go",
+		"/C/Users/jacky/Desktop/bak/ccpay.go",
+		"/C/Users/jacky/Desktop/bak/cygame.go",
+		"/C/Users/jacky/Desktop/bak/dangle.go",
+		"/C/Users/jacky/Desktop/bak/gfan.go",
+		"/C/Users/jacky/Desktop/bak/guopan.go",
+		"/C/Users/jacky/Desktop/bak/haimawan.go",
+		"/C/Users/jacky/Desktop/bak/jiuyou.go",
+		"/C/Users/jacky/Desktop/bak/lenovo.go",
+		"/C/Users/jacky/Desktop/bak/pengyouwan.go",
+		"/C/Users/jacky/Desktop/bak/qihoo360.go",
+		"/D/go/src/u9/api/channel/api/api.go",
+		"/D/go/src/github.com/astaxie/beego/context/context.go",
+		"/D/go/src/u9/api/channel/notify/pay/kaopu.go",
+		"/c/go/src/strings/strings.go",
+		"/c/go/src/fmt/print.go",
+		"/c/go/src/strconv/atof.go",
+		"/D/go/src/fragmenta/auth/session.go",
+		"/D/go/src/code.google.com/p/graphics-go/graphics/interp/interp.go",
+		"/D/go/src/u9/api/channel/notify/pay/gfan.go",
+		"/D/go/src/u9/api/channel/notify/pay/htc.go",
+		"/D/go/src/u9/api/channel/notify/pay/oppo.go",
+		"/D/go/src/u9/api/channel/notify/pay/rsa.go",
+		"/D/go/src/u9/api/channel/notify/pay/tt.go",
+		"/D/go/src/u9/api/controllers/pay/channelPayNotify.go"
 	],
 	"find":
 	{
-		"height": 49.0
+		"height": 52.0
 	},
 	"find_in_files":
 	{
 		"height": 127.0,
 		"where_history":
 		[
+			"D:\\go\\src\\u9\\api\\channel\\notify\\pay",
+			"D:\\go\\src\\",
+			"D:\\go\\src\\u9\\api\\channel\\notify\\pay",
+			"C:\\Users\\jacky\\Desktop\\bak",
+			"D:\\go\\src\\u9\\api\\channel\\notify\\pay",
+			"C:\\Users\\jacky\\Desktop\\bak",
+			"D:\\go\\src\\u9\\api\\channel\\notify\\pay",
+			"D:\\go\\src",
+			"C:\\Users\\jacky\\Desktop\\bak",
+			"D:\\go\\src\\u9\\api\\channel\\notify\\pay",
+			"D:\\go\\src",
+			"D:\\go\\src\\u9\\api\\channel\\notify\\pay",
+			"D:\\go\\src\\u9\\api",
+			"D:\\go\\src\\",
+			"D:\\go\\src\\u9\\",
+			"D:\\go\\src\\u9\\api",
+			"D:\\go\\src\\github.com\\beego\\bee",
+			"d:\\go\\src\\",
+			"d:\\go\\src\\u9\\",
+			"d:\\go\\src\\u9\\models",
+			"d:\\go\\src\\",
 			"d:\\go\\src\\u9\\",
 			"d:\\go\\src\\u9\\api\\",
 			"d:\\go\\src\\u9\\api\\channel\\notify",
@@ -855,134 +886,134 @@
 		"case_sensitive": true,
 		"find_history":
 		[
-			"PayRequest",
-			"sort",
-			"}\n",
-			"baidu",
-			"Baidu",
-			"channelOrderId",
-			"this.orderRequest:",
-			"base64",
-			"json.Marshal",
-			"channelPayKey",
-			"Md5",
-			"err_checkSign",
-			"ResultCode",
-			"tool.Md5",
-			"transData.result is equal",
-			"ToJSON",
-			"UID",
-			"payAmount",
-			"CooperatorOrderSerial",
-			"ParseParam",
-			"parseBody",
-			"io",
-			"bytes",
-			"parseBody",
-			"parseB",
-			"lenovo",
-			"Lenovo",
-			"EncodeString",
-			"decode",
-			"Decode",
-			"base64.StdEncoding.Decode",
-			"handleSpecialToken",
-			"CallLoginRequest",
-			"checkPackageParam",
-			"BAIDU_APPSECRET",
-			"tool.Md5",
-			"Xiaomi",
-			"Base64",
-			"Parse",
-			"hasMeta",
-			"Parse",
-			"Execute",
-			"HTML",
-			"tihuan",
-			"Require channelUserId",
-			"end",
-			"OnlineUser",
-			"()",
-			"Body",
-			"switch",
-			"ParseChannelRet",
-			"productKey",
-			"parseProductKey",
-			"parseOrderRequest",
-			"orderRequest",
-			"handleOrder",
-			"parseUrlParam",
-			"jiuyou",
-			"Jiuyou",
-			"Md5",
-			"Trace",
-			"parseUrlParam",
-			"this.data",
-			"channel_order_id",
-			"order_id",
-			"orderId",
-			"ParseForm",
-			"Huawei",
-			"huawei",
-			"handleLrParam",
-			"Huawei",
-			"huawei",
-			"CallLoginRequest",
-			"rsaPublicKeyStr",
-			"lenovoRsaPrivateKey",
-			"amigoRsaPrivateKey",
-			"rsa.PrivateKey",
-			"huaweiRsaPublicKey",
-			"channelUserId",
-			"orderId",
-			"channelOrderId",
-			"existChannelUserId",
-			"err_callbackFail",
-			"ParseChannelRet",
-			"for",
-			"map",
-			"for",
-			"err_youlongResultFailure",
+			"SignType",
+			"Sign",
+			"bodyParams",
+			"htcUrlKeys",
+			"this.MD5.CheckSign(inputSign, content)",
+			"ParseInputParam",
+			"this.transData",
+			"Base.CheckSign",
+			"MMYSign",
+			"YYHSign",
+			"content",
+			"signContent",
+			"inputSign",
+			"signMethod",
+			"replaceSDKParam",
+			"CheckChannelRet",
+			"checkUserId",
+			"OutTradeNo",
+			"channelRet",
+			"wandoujiaRsaPublicKey",
+			"WandoujiaLrRet",
+			"vivoTradeData",
+			"Base",
+			"vivoResData",
+			"Base.CheckSign",
+			"CheckSign(signState, signMethod, signMsg, err)",
+			"MMYSign",
+			"this.requireChannelUserId = false",
+			"urlParams",
+			"urlParam",
+			"tt_Sign",
+			"_payKey",
+			"Init",
+			"tt_contentBody",
+			"tt_result",
+			"TT_Result",
+			"tencentChannelRet",
+			"InitParam",
+			"GetTencentPayParamName",
+			"clientExtParam",
+			"clientChannelRet",
+			"tencentChannelRet",
+			"clientChannelRet",
+			"clientExtParam",
+			"Result",
 			"data",
-			"parsePayKey",
-			"parseUrlParam",
-			"vivo",
-			"Vivo",
-			"args",
-			"channelReq",
-			"jiuyouChannelReq",
-			"jiuyouReqGame",
-			"ioutil",
-			"xml",
-			"\"encoding/xml\"",
-			"Vivo",
-			"vivo",
-			"strings.Replace",
-			"Content",
-			"Marshal",
-			"huaweiChannelRet",
-			"huaweChannelRet",
-			"amigoChannelRet",
-			"rsaPublicKeyStr",
-			"ParsePKIXPublicKeyWithStr",
-			"amigoRsaPrivateKey",
-			"huaweiRsaPublicKey",
-			"Amigo",
-			"beego",
-			"ParseParam",
-			"amigoRsaPublicKeyStr",
-			"RsaVerifyPKCS1v15",
-			"GetResult",
-			"radeType",
-			"QueryEscape",
-			"status",
+			"channelGameKey",
+			"gameIdKeyName",
+			"tencentResData",
+			"err_sogouParam",
+			"err_sogouOk",
+			"sogouPayResult",
+			"payKey",
+			"gameId",
+			"packetId",
+			"u9UserId",
+			"channelTradeData",
+			"this.payAmount",
+			"qmyxData",
+			"CheckChannelRet",
+			"CheckChannelRet.",
+			"CheckChannelRet",
+			"gameKey",
+			"channelParams",
+			"qihoo360ResData",
+			"pengyouwanData_cpParam",
+			"_gameKey",
+			"Gamekey",
+			"_gameKey",
+			"data",
+			"product_desc",
+			"order_id",
+			"product_id",
+			"ProductId",
+			"pengyouwanData_cpParam",
+			"checkPayAmount",
+			"msg",
+			"params",
+			"AppExt",
+			"InitParam",
+			"createOrder",
+			"err_payAmountError",
 			"panic",
-			"Abort",
-			"ParseInt",
-			"orm",
-			"GetChannelOrderId",
-			"channelOrderId",
-			"orderId"
+			"Btest",
+			"Atest",
+			"Elem",
+			"Type",
+			"cascade",
+			"reflect",
+			"paramValue",
+			"Unmarshal",
+			"unmarshal",
+			"anZhiResData",
+			"oppoRsaPublicKeyStr",
+			"parseUrlInputParam",
+			"urlSign",
+			"jsonRet",
+			"meizuChannelRet",
+			"jsonRet",
+			"channelRetData",
+			"context",
+			"Base",
+			"amountType",
+			"exChangeRatio",
+			"parseUrlInputParam",
+			"exChangeRatio",
+			"payAmount",
+			"this.requireChannelUserId = false",
+			"this.requireChannelUserId",
+			"_gameKey",
+			"gameId",
+			"gameKey",
+			"gameId",
+			"CheckChannelRet",
+			"gameId",
+			"payKey",
+			"channelParams",
+			"parseChannelParam",
+			"xml.Unmarshal",
+			"channelParams",
+			"channelParamKeys",
+			"err_parsechannelParam",
+			"PackageParam",
+			"err_parsePackageParam",
+			"initProductKey",
+			"prepareProductKey",
+			"getPackageParam",
+			"parsePackageParam"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -990,6 +1021,64 @@
 		"regex": false,
 		"replace_history":
 		[
+			"this.MD5.CheckSign()",
+			"MD5",
+			"vivoTradeData",
+			"tencentTradeData",
+			"qmyxTradeData",
+			"qihoo360TradeData",
+			"anZhiTradeData",
+			"MD5",
+			"err_parseChannelParam",
+			"err_parsechannelParam",
+			"initProductKey",
+			"D:\\go\\src\\u9\\api\\channel\\notify\\pay\nD:\\go\\src\\u9\\api\\channel\\notify\\pay\nparsePackageParam",
+			"err_parsePackageParam",
+			"lenovoTradeData",
+			"jiuyouTradeData",
+			"huaweiTradeData",
+			"MD5",
+			"channelTradeData",
+			"htcTradeData",
+			"MD5_URLParam",
+			"MD5",
+			"urlParamCheckKeys",
+			"channelOrderId",
+			"this.ChannelOrderId",
+			"MD5",
+			"gFanTradeData",
+			"MD5",
+			"StatChannelPay",
+			"MD5",
+			"this.channelParams[\"payKey\"]",
+			"initChannelPayKey",
+			"MD5",
+			"c07073TradeData",
+			"channelTradeData",
+			"baiduTradeData",
+			"channelRetData",
+			"channelTradeData",
+			"tradeData",
+			"err_initChannelGameKey",
+			"err_initChannelGameId",
+			"initChannelPayKey",
+			"",
+			"new(",
+			"urlParams, ctx",
+			"requireChannelUserId",
+			"this.urlParamCheckKey",
+			"CheckChannelRet",
+			"PrepareTradeData",
+			"prepareProductKey",
+			"prepareLoginRequest",
+			"prepareOrderRequest",
+			"PrepareDBData",
+			"Rsa",
+			"err_tradeFail",
+			"lastError",
+			"beforehandle",
+			"Jiuyou",
+			"jiuyou",
 			"anFeng",
 			"AnFeng",
 			"baidu",
@@ -1059,65 +1148,7 @@
 			"RemoveNodes",
 			"zhuoyi",
 			"Zhuoyi",
-			"Haimawan",
-			"haimawan",
-			"key",
-			"serverKey",
-			"HaiMaWan",
-			"xmw",
-			"Xmw",
-			"xmw",
-			"Xmw",
-			"xmw",
-			"CYGame",
-			"cygame",
-			"CCPay",
-			"ccpay",
-			"CCPay",
-			"GFan",
-			"gfan",
-			"Gfan",
-			"Wandoujia",
-			"wandoujia",
-			"Meizu",
-			"meizu",
-			"flyme",
-			"Flyme",
-			"Wandoujia",
-			"Flyme",
-			"Amigo",
-			"amigo",
-			"Amigo",
-			"AMIGO",
-			"amigo",
-			"Amigo",
-			"amigo",
-			"Amigo",
-			"amigo",
-			"Cr",
-			"Req",
-			"Amigo",
-			"Msg",
-			"Status",
-			"jsonRet",
-			"parseSecrectKey",
-			"secrectKey",
-			"or",
-			"msg",
-			"code",
-			"Xiaomi",
-			"lr",
-			"prp",
-			"Base",
-			"payKey",
-			"productKey",
-			"payOrder",
-			"NotifyProductSvr",
-			"productId",
-			"channelId",
-			"orderRequest",
-			"CheckParam",
-			"pp"
+			"Haimawan"
 		],
 		"reverse": false,
 		"show_context": true,
@@ -1135,7 +1166,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 39.0
+		"height": 42.0
 	},
 	"input":
 	{
@@ -1258,7 +1289,7 @@
 	},
 	"output.golang_build":
 	{
-		"height": 233.0
+		"height": 291.0
 	},
 	"output.sftp":
 	{
@@ -1272,7 +1303,7 @@
 	"project": "u9.sublime-project",
 	"replace":
 	{
-		"height": 92.0
+		"height": 98.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -1281,6 +1312,58 @@
 		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"pyw",
+				"api\\channel\\notify\\pay\\pyw.go"
+			],
+			[
+				"api.go",
+				"api\\channel\\api\\api.go"
+			],
+			[
+				"api",
+				"api\\channel\\api\\api.go"
+			],
+			[
+				"test",
+				"test\\test.go"
+			],
+			[
+				"jiu",
+				"api\\channel\\notify\\pay\\jiuyou.go"
+			],
+			[
+				"jiuyoug.o",
+				"api\\channel\\notify\\pay\\jiuyou.go"
+			],
+			[
+				"payrequ",
+				"api\\controllers\\pay\\payRequest.go"
+			],
+			[
+				"valid",
+				"api\\controllers\\login\\validateLogin.go"
+			],
+			[
+				"valte",
+				"www\\views\\manager\\profile_profile.html"
+			],
+			[
+				"xiao",
+				"api\\channel\\notify\\pay\\xiaomi.go"
+			],
+			[
+				"xioa",
+				"api\\channel\\notify\\pay\\xiaomi.go"
+			],
+			[
+				"pengyou",
+				"api\\channel\\notify\\pay\\pengyouwan.go"
+			],
+			[
+				"base.go",
+				"api\\controllers\\pay\\base.go"
+			],
 			[
 				"tencent",
 				"api\\channel\\notify\\pay\\tencent.go"
@@ -1308,14 +1391,6 @@
 			[
 				"test.go",
 				"api\\channel\\notify\\pay\\test.go"
-			],
-			[
-				"base.go",
-				"api\\controllers\\pay\\base.go"
-			],
-			[
-				"payrequ",
-				"api\\controllers\\pay\\payRequest.go"
 			],
 			[
 				"huawei",
@@ -1346,10 +1421,6 @@
 				"api\\channel\\notify\\pay\\base.go"
 			],
 			[
-				"api",
-				"api\\channel\\api\\api.go"
-			],
-			[
 				"payreq",
 				"api\\controllers\\pay\\payRequest.go"
 			],
@@ -1376,10 +1447,6 @@
 			[
 				"requ",
 				"api\\common\\request.go"
-			],
-			[
-				"api.go",
-				"api\\channel\\api\\api.go"
 			],
 			[
 				"apigo",
@@ -1449,21 +1516,12 @@
 	"selected_group": 0,
 	"settings":
 	{
-		"last_automatic_layout":
-		[
-			[
-				0,
-				0,
-				1,
-				1
-			]
-		]
 	},
 	"show_minimap": true,
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 483.0,
+	"side_bar_width": 315.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

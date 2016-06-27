@@ -74,11 +74,15 @@ func GenerateImage(backImagePath, overImagePath, destImagePath string, newWidth,
 
 func SaveImage(rgba *image.RGBA, path string) (err error) {
 	var file *os.File
+
 	if file, err = os.Create(path); err != nil {
 		return
 	}
 	defer file.Close()
-	return png.Encode(file, rgba)
+	var e png.Encoder
+	e.CompressionLevel = png.NoCompression
+	return e.Encode(file, rgba)
+	//return png.Encode(file, rgba)
 }
 
 func LoadImage(path string) (img image.Image, err error) {

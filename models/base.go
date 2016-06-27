@@ -24,7 +24,7 @@ func init() {
 		new(LoginRequest), new(OrderRequest), new(PayOrder),
 		new(Manager), new(Cp),
 		new(PackageParam), new(ChannelPackageParam),
-		new(PackageTask), new(PackageTaskView1),
+		new(PackageTask), new(PackageTaskList), new(StatChannelPay),
 		new(LoginRequestLog))
 
 	if beego.AppConfig.String("runmode") == "dev" {

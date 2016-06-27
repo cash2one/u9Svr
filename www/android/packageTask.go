@@ -71,7 +71,7 @@ func (this *PackageTaskHandle) Init(packageTaskId int) {
 
 	this.apkName = GetApkName(&this.product, &this.productVersion)
 
-	this.res = NewRes(this.packageTask.Id, &this.product, &this.productVersion, &this.packageParam)
+	this.res = NewRes(this.packageTask.Id, &this.product, &this.productVersion, &this.packageParam,&this.channel)
 	this.icon = NewIcon(this.packageTask.Id, &this.product, &this.channel, &this.productVersion, &this.packageParam)
 	this.lib = NewLib(this.packageTask.Id, &this.product, &this.productVersion)
 	this.asset = NewAsset(this.packageTask.Id, &this.product, &this.productVersion, &this.packageParam)

@@ -9,7 +9,7 @@ import (
 type LoginRequestLog struct {
 	Id             int
 	LoginRequestId int
-	LoginTime      time.Time `orm:"auto_now_add;type(datatime)"`
+	LoginTime      time.Time `orm:"auto_now_add;type(datetime)"`
 }
 
 func (m *LoginRequestLog) TableName() string {

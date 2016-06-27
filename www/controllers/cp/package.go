@@ -2,9 +2,7 @@ package cp
 
 import (
 	"errors"
-	//"fmt"
 	"github.com/astaxie/beego"
-	//"strings"
 	"os"
 	"time"
 	"u9/models"
@@ -20,28 +18,35 @@ type PackageController struct {
 }
 
 func (this *PackageController) List() {
-	pageSize := 15
-	page, _ := this.GetInt("page", 1)
-	offset := (page - 1) * pageSize
+	var err error
+	pageBar := ""
+	var pageSize int64 = 15
+	var recordCount int64 = 0
+	pageIndex, _ := this.GetInt64("page", 1)
+	offset := (pageIndex - 1) * pageSize
 
-	var packageTaskView1s []*models.PackageTaskView1
-	var packageTaskView1 models.PackageTaskView1
+	var packageTaskLists []*models.PackageTaskList
+	var packageTaskList models.PackageTaskList
 
-	count, _ := packageTaskView1.Query().Count()
-	if count > 0 {
-		packageTaskView1.Query().
-			Filter("CpId", this.getCp().Id).
-			OrderBy("-id").
-			Limit(pageSize, offset).
-			All(&packageTaskView1s)
+	defer func() {
+		this.Data["list"] = packageTaskLists
+		this.Data["pagebar"] = pageBar
+		this.updateData()
+		this.display()
+	}()
+
+	cpId := this.getCp().Id
+	if recordCount, err = packageTaskList.Query().Filter("CpId", cpId).Count(); err != nil {
+		beego.Error(err)
+		return
 	}
-
-	this.Data["list"] = packageTaskView1s
-	pageBar := common.NewPager(int64(page), int64(count), int64(pageSize), "/cp/package/list?page=%d").ToString()
-	this.Data["pagebar"] = pageBar
-
-	this.updateData()
-	this.display()
+	urlPathFormat := "/cp/package/list?page=%d"
+	pageBar = common.NewPager(pageIndex, recordCount, pageSize, urlPathFormat).ToString()
+	if _, err = packageTaskList.Query().Filter("CpId", this.getCp().Id).
+		OrderBy("-id").Limit(pageSize, offset).All(&packageTaskLists); err != nil {
+		beego.Error(err)
+		return
+	}
 }
 
 // 根据产品ID号得到版本ID和渠道ID及相关参数

@@ -3,6 +3,7 @@ package common
 import (
 	"bytes"
 	"crypto/tls"
+	"fmt"
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/httplib"
 	"io"
@@ -31,26 +32,27 @@ func (this *Request) InitParam() (err error) {
 	if this.IsHttps {
 		this.Req.SetTLSClientConfig(&tls.Config{InsecureSkipVerify: true})
 	}
-	beego.Trace(this.Url)
+
 	return nil
 }
 
 func (this *Request) GetResponse() (err error) {
-
 	var resp *http.Response
+	format := "request-getResponse: err:%v, url:%s"
 	resp, err = this.Req.Response()
 	if err != nil {
-		beego.Error(err)
-		beego.Trace("ResponseErr")
+
+		msg := fmt.Sprintf(format, err, this.Url)
+		beego.Error(msg)
 		return
 	}
 	var buffer bytes.Buffer
 	if _, err = io.Copy(&buffer, resp.Body); err != nil {
-		beego.Error(err)
+		msg := fmt.Sprintf(format, err, this.Url)
+		beego.Error(msg)
 		return
 	}
 	bytes := buffer.Bytes()
 	this.Result = string(bytes)
-	beego.Trace("this.Result:" + this.Result)
 	return
 }

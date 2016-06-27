@@ -20,7 +20,7 @@ func (this *BaseController) Validate(obj interface{}) (code int) {
 	if valid.Valid(obj); valid.HasErrors() {
 		for _, verr := range valid.Errors {
 			if code, cerr := strconv.Atoi(verr.Key); cerr == nil {
-				beego.Error(verr.Message)
+				//beego.Error(verr.Message)
 				return code
 			}
 		}

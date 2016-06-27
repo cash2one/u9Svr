@@ -69,22 +69,27 @@ func (this *PayController) PayRequest() {
 
 	defer func() {
 		this.Data["json"] = ret
-		if ret.Code != 0 {
-			warnInfo := fmt.Sprintf("LoginRequestUrl:%v", this.Ctx.Request.PostForm)
-			beego.Warn(warnInfo)
-		}
 		this.ServeJSON(true)
 	}()
 
+	msg := common.DumpCtx(this.Ctx)
+	beego.Trace(msg)
+
+	beego.Trace("payRequestParam: 1:validate")
 	prp := new(PayRequestParam)
 	if code := this.Validate(prp); code != 0 {
 		ret.SetCode(code)
 		return
 	}
 
+	beego.Trace("validateLogin: 2:query loginRequest with userId and productId")
 	var lr models.LoginRequest
-	lr.Query().Filter("UserId", prp.UserId).Filter("ProductId", prp.ProductId).One(&lr)
+	lr.Query().
+		Filter("UserId", prp.UserId).
+		Filter("ProductId", prp.ProductId).
+		One(&lr)
 
+	beego.Trace("validateLogin: 3:create/update orderRequest")
 	or := models.OrderRequest{
 		UserId:         lr.Userid,
 		ChannelId:      lr.ChannelId,
@@ -93,6 +98,7 @@ func (this *PayController) PayRequest() {
 		ReqAmount:      prp.Amount,
 		AppExt:         prp.AppExt,
 		ReqTime:        time.Now(),
+		ProductCode:    -1,
 		State:          0,
 		CallbackUrl:    prp.CallbackUrl}
 	create, _, err := orm.NewOrm().ReadOrCreate(&or,
@@ -102,16 +108,23 @@ func (this *PayController) PayRequest() {
 	if create {
 		or.OrderId = time.Now().Format(common.CommonTimeLayout) + strconv.Itoa(or.Id)
 		if err = or.Update("OrderId"); err != nil {
+			format := `validateLogin: err:%v`
+			msg := fmt.Sprintf(format, err)
+			beego.Error(msg)
+
 			ret.SetCode(2005)
-			beego.Error(err)
 			return
 		}
 	} else {
-		beego.Warn(err)
+		format := `validateLogin: record is exist, err:%v`
+		msg := fmt.Sprintf(format, err)
+		beego.Warn(msg)
+
 		ret.SetCode(2005)
 		return
 	}
 
+	beego.Trace("validateLogin: 4:callCreateOrder")
 	channelExt := ""
 	channelOrderId := ""
 	channelOrderId, channelExt, err = channelApi.CallCreateOrder(&lr, or.OrderId, prp.Ext, this.Ctx)
@@ -123,6 +136,7 @@ func (this *PayController) PayRequest() {
 		return
 	}
 
+	beego.Trace("validateLogin: 5:update orderRequest with channelOrderId")
 	or.ChannelOrderId = channelOrderId
 	if err = or.Update("ChannelOrderId"); err != nil {
 		ret.SetCode(3002)
@@ -130,6 +144,7 @@ func (this *PayController) PayRequest() {
 		return
 	}
 
+	beego.Trace("validateLogin: 6:set ret")
 	ret.SetCode(0)
 	ret.Ext = channelExt
 	ret.OrderId = or.OrderId

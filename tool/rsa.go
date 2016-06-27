@@ -3,12 +3,10 @@ package tool
 import (
 	"crypto"
 	"crypto/rsa"
-	"crypto/sha1"
 	"crypto/x509"
 	"encoding/base64"
 	"encoding/pem"
 	"errors"
-	"fmt"
 	"io/ioutil"
 	"os"
 )
@@ -100,17 +98,32 @@ func ParsePkCS8PrivateKeyWithStr(privateKey string) (key *rsa.PrivateKey, err er
 	return ret.(*rsa.PrivateKey), err
 }
 
-func RsaPKCS1V15Sign(key *rsa.PrivateKey, context string) (string, error) {
-	h := sha1.New()
+func RsaPKCS1V15Sign(key *rsa.PrivateKey, hashType crypto.Hash, context string) (string, error) {
+	hashType = crypto.SHA1
+
+	if !hashType.Available() {
+		return "", x509.ErrUnsupportedAlgorithm
+	}
+
+	h := hashType.New()
+
+	//h := sha1.New()
 	h.Write([]byte(context))
 	digest := h.Sum(nil)
-	bytes, err := rsa.SignPKCS1v15(nil, key, crypto.SHA1, digest)
+
+	bytes, err := rsa.SignPKCS1v15(nil, key, hashType, digest)
 	ret := base64.StdEncoding.EncodeToString(bytes)
+
 	return ret, err
 }
 
-func RsaVerifyPKCS1v15(key *rsa.PublicKey, context, sign string) error {
-	h := sha1.New()
+func RsaVerifyPKCS1v15(key *rsa.PublicKey, hashType crypto.Hash, context, sign string) error {
+	if !hashType.Available() {
+		return x509.ErrUnsupportedAlgorithm
+	}
+
+	h := hashType.New()
+	//h := sha1.New()
 	h.Write([]byte(context))
 	digest := h.Sum(nil)
 
@@ -119,18 +132,5 @@ func RsaVerifyPKCS1v15(key *rsa.PublicKey, context, sign string) error {
 		return err
 	}
 
-	return rsa.VerifyPKCS1v15(key, crypto.SHA1, digest, ds)
-}
-
-func Test() {
-	publicKey := `MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCeZ6HFJXiXORcv5ljI27J8ZUb/YIXDzRIpVN53NOgZ0NZ4OplXPumZBxR/gksskd79sPMcy9Rvpz8ZiPUKTTUuTmUMjtL9f/E1XafVcjvUUrUILv+aJb65OiR9YHqbGSqj8B9qR5pmtyP8TAuBA2CRooBF01WrYRHXxYv328aDWwIDAQAB`
-	text := "notifyId=20160204152757964736&partnerOrder=20160204152757165&productName=test&productDesc=test&price=5&count=1&attach=test&sign=8f00a109716e819bfe0afb695c1addf1"
-	sign := "BV52daLE+DCRCByIUvu9SpxXC9ov/ftHp7aWiOwu/lBA2FapBl2akxT1MYMinxEZTf4VrJbhnHC8/pPHo5nY4EGykHOmJk6AXm8GwgYlk7AK5O9wUSqA+61UD0OlefNyuCuVuVQabDEu0RS6Q99D2mN99M5ALOJODDWC4GOShNE="
-	keyInterface, err := ParsePKIXPublicKeyWithStr(publicKey)
-	if err != nil {
-		fmt.Println("ParsePKIXPublicKeyWithStr:", err)
-		return
-	}
-	err = RsaVerifyPKCS1v15(keyInterface, text, sign)
-	fmt.Println("RsaVerifyPKCS1v15WithStr:", err)
+	return rsa.VerifyPKCS1v15(key, hashType, digest, ds)
 }

@@ -36,9 +36,11 @@ type Manifest struct {
 	channelPath string
 	packagePath string
 	channelId int
+	packageName string
 
 	packageParam     *models.PackageParam
 	channel          *models.Channel
+	product          *models.Product
 	channelSdkParams map[string]string
 	cpSdkParams      map[string]string
 
@@ -65,7 +67,7 @@ func (this *Manifest) Init(packageTaskId int,
 	this.productPath = GetProductPath(product, apkName)
 	this.packagePath = GetPackagePath(packageTaskId, apkName)
 	this.channelId = channel.Id
-	this.packageParam, this.channel = packageParam, channel
+	this.packageParam, this.channel,this.product = packageParam, channel ,product
 	if err := json.Unmarshal([]byte(this.packageParam.XmlParam), &this.channelSdkParams); err != nil {
 		panic(err)
 	}
@@ -85,9 +87,13 @@ func (this *Manifest) Handle() (err error) {
 	this.setMeta()
 	switch this.channelId{
 	case 139:
-		beego.Trace(8)
 		this.setTencent()
-		beego.Trace(9)
+	case 144:
+		this.setVivo()
+	case 146:
+		this.setLenovo()
+	case 147:
+		this.setBaidu()
 	}
 	ioutil.WriteFile(this.packagePath+"/"+amName, []byte(this.productRootEl.SyncToXml()), 0666)
 	return
@@ -167,7 +173,11 @@ func (this *Manifest) setMeta() {
 		el := this.productAppEl.GetNodeByPathAndAttr("meta-data", "android:name", k)
 		if el != nil {
 			switch this.channelId{
+			case 102://360
+				fallthrough
 			case 126://乐视
+				fallthrough
+			case 148://安锋
 				fallthrough
 			case 143://全民游戏
 				el.AddAttr("android:name", k)
@@ -228,6 +238,7 @@ func (this *Manifest) setPack() {
 	}
 	beego.Trace("packageName:", packageName)
 	this.productAppEl.Parent().AddAttr("package", packageName)
+	this.packageName = packageName
 }
 
 func (this *Manifest) setTencent() {
@@ -252,9 +263,88 @@ func (this *Manifest) setTencent() {
 	beego.Trace(valueWX)
 	vwx := ptAppElIfWX.GetNodeByPathAndAttr("data","android:scheme","wxa87b932b65d13d54")
 	vwx.AddAttr("android:scheme",valueWX)
-	
+
 	mainActivity := (*jsonParam)["MainActivity"].(string)
+	beego.Trace(mainActivity)
 	ptAppElMain := this.productAppEl.GetNodeByPathAndAttr("activity","android:name",mainActivity)
 	ptAppElMain.RemoveNodes("intent-filter")
 
+}
+
+func (this *Manifest) setVivo() {
+		//修改QQ相关参数
+	ptAppElAc := this.productAppEl.GetNodeByPathAndAttr("activity", "android:name","com.bbk.payment.tenpay.VivoQQPayResultActivity")
+	ptAppElIf := ptAppElAc.Node("intent-filter")
+	var vivo string = "qwallet" + this.packageName
+	vqq := ptAppElIf.GetNodeByPathAndAttr("data","android:scheme","qwalletcom.game79.mw.vivo")
+	vqq.AddAttr("android:scheme",vivo) 
+
+	ptAppElWx := this.productAppEl.GetNodeByPathAndAttr("activity", "android:name","com.bbk.payment.wxapi.WXPayEntryActivity")
+	ptAppElWx.AddAttr("android:name",this.packageName + ".wxapi.WXPayEntryActivity") 
+}
+
+func (this *Manifest) setLenovo(){
+	//获取参数
+	jsonParam := new(map[string]interface{})
+		if err := json.Unmarshal([]byte(this.packageParam.XmlParam), jsonParam); err != nil {
+			beego.Error(err)
+		}
+	//联想要求
+	appid := (*jsonParam)["lenovo.open.appid"].(string)
+	ptAppElRe := this.productAppEl.GetNodeByPathAndAttr("receiver", "android:name","com.lenovo.lsf.gamesdk.receiver.GameSdkReceiver")
+	ptAppElIf := ptAppElRe.Node("intent-filter")
+	action := ptAppElIf.GetNodeByPathAndAttr("action","android:name","1603291086545.app.ln")
+	action.AddAttr("android:name",appid)
+	category := ptAppElIf.GetNodeByPathAndAttr("category","android:name","com.game79.mw.lenovo")
+	category.AddAttr("android:name",this.packageName)
+	//联想要求
+	ptAppElRe2 := this.productAppEl.GetNodeByPathAndAttr("receiver", "android:name","com.lenovo.lsf.gamesdk.receiver.GameSdkAndroidLReceiver")
+	ptAppElIf2 := ptAppElRe2.Node("intent-filter")
+	category2 := ptAppElIf2.GetNodeByPathAndAttr("category","android:name","com.game79.mw.lenovo")
+	category2.AddAttr("android:name",this.packageName)
+	//修改主Activity
+	mainActivity := (*jsonParam)["MainActivity"].(string)
+	ptAppElMain := this.productAppEl.GetNodeByPathAndAttr("activity","android:name",mainActivity)
+	ptAppElMainIf := ptAppElMain.Node("intent-filter")
+	main := ptAppElMainIf.GetNodeByPathAndAttr("action","android:name","android.intent.action.MAIN")
+	main.AddAttr("android:name","lenovoid.MAIN")
+	launcher :=  ptAppElMainIf.GetNodeByPathAndAttr("category","android:name","android.intent.category.LAUNCHER")
+	launcher.AddAttr("android:name","android.intent.category.DEFAULT")
+	//闪屏页横竖屏设置
+	direction := this.product.Direction
+	var orientation string 
+	if (direction == 0){
+		orientation = "landscape"
+	}else{
+		orientation = "portrait"
+	}
+	welcomActivity := this.productAppEl.GetNodeByPathAndAttr("activity","android:name","com.lenovo.lsf.gamesdk.ui.WelcomeActivity")
+	welcomActivity.AddAttr("android:screenOrientation",orientation)
+
+}
+func (this *Manifest) setBaidu(){
+	//获取参数
+	jsonParam := new(map[string]interface{})
+		if err := json.Unmarshal([]byte(this.packageParam.XmlParam), jsonParam); err != nil {
+			beego.Error(err)
+		}
+	//bdpsdk要求
+	bdsdk := this.productAppEl.GetNodeByPathAndAttr("activity", "android:name","com.baidu.platformsdk.pay.channel.ali.AliPayActivity")
+	bdsdkIf := bdsdk.Node("intent-filter")
+	bdsdkData := bdsdkIf.GetNodeByPathAndAttr("data","android:scheme","bdpsdkcom.baidu.bdgamesdk.demo")
+	bdsdkData.AddAttr("android:scheme","bdpsdk"+this.packageName)
+	//qq支付
+	qqsdk := this.productAppEl.GetNodeByPathAndAttr("activity", "android:name","com.baidu.platformsdk.pay.channel.qqwallet.QQPayActivity")
+	qqsdkIf := qqsdk.Node("intent-filter")
+	qqsdkData := qqsdkIf.GetNodeByPathAndAttr("data","android:scheme","qwalletcom.game79.mw.baidu")
+	qqsdkData.AddAttr("android:scheme","qwallet"+this.packageName)
+	//多酷SDK
+	dksdk := this.productAppEl.GetNodeByPathAndAttr("provider", "android:name","com.duoku.platform.download.DownloadProvider")
+	dksdk.AddAttr("android:authorities",this.packageName)
+	//录屏SDK
+	lpsdk := this.productAppEl.GetNodeByPathAndAttr("provider", "android:name","mobisocial.omlib.service.OmlibContentProvider")
+	lpsdk.AddAttr("android:authorities",this.packageName+".provider")
+	//录屏SDK
+	lpsdk1 := this.productAppEl.GetNodeByPathAndAttr("provider", "android:name","glrecorder.Initializer")
+	lpsdk1.AddAttr("android:authorities",this.packageName+".initializer")
 }

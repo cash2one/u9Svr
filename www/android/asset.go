@@ -3,6 +3,10 @@ package androidPackage
 import (
 	"os"
 	"u9/models"
+	"fmt"
+	"github.com/astaxie/beego"
+	"encoding/json"
+	"github.com/astaxie/beego/config"
 )
 
 type Asset struct {
@@ -26,7 +30,7 @@ func NewAsset(packageTaskId int, product *models.Product, productVersion *models
 func (this *Asset) Handle() {
 	this.clear()
 	this.setHyGameJson() //5、生成json文件
-	this.setTencent()
+	this.setChannel()
 }
 
 func (this *Asset) clear() {

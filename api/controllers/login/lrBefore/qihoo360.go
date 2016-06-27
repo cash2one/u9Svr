@@ -1,4 +1,4 @@
-package loginRequestHandle
+package lrBefore
 
 import (
 	"encoding/json"
@@ -20,8 +20,7 @@ type qihoo360ChannelRet struct {
 }
 
 type Qihoo360 struct {
-	LRH
-	channelRet qihoo360ChannelRet
+	base
 }
 
 func NewQihoo360() *Qihoo360 {
@@ -30,11 +29,12 @@ func NewQihoo360() *Qihoo360 {
 }
 
 func (this *Qihoo360) Init(param *Param) (err error) {
-	this.LRH.Init(param)
+	this.base.Init(param)
+	this.channelRet = new(qihoo360ChannelRet)
 	return
 }
 
-func (this *Qihoo360) Handle() (ret string, err error) {
+func (this *Qihoo360) Exec() (ret string, err error) {
 	this.IsHttps = true
 	this.Method = "GET"
 
@@ -43,7 +43,7 @@ func (this *Qihoo360) Handle() (ret string, err error) {
 	this.Url = "https://openapi.360.cn/user/me" + fmt.Sprintf(format, token)
 	beego.Trace(this.Url)
 
-	this.LRH.InitParam()
+	this.base.InitParam()
 
 	if err = this.GetResponse(); err != nil {
 		beego.Error(err)
@@ -56,14 +56,15 @@ func (this *Qihoo360) Handle() (ret string, err error) {
 		return
 	}
 
-	if this.channelRet.Error_code != "" {
+	channelret := this.channelRet.(*qihoo360ChannelRet)
+	if channelret.Error_code != "" {
 		err = errors.New(this.Result)
 		beego.Error(fmt.Sprintf("channelRet:%+v", this.channelRet))
 		return
 	}
 
-	this.param.ChannelUserId = this.channelRet.Id
-	this.param.ChannelUserName = this.channelRet.Name
+	this.param.ChannelUserId = channelret.Id
+	this.param.ChannelUserName = channelret.Name
 
 	ret = this.Result
 	return

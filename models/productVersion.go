@@ -8,12 +8,12 @@ import (
 type ProductVersion struct {
 	Id             int
 	ProductId      int
-	AppName        string    `orm:"size(32)"`
-	VersionCode    string    `orm:"size(32)"`
-	VersionName    string    `orm:"size(32)"`
+	AppName        string
+	VersionCode    string
+	VersionName    string
 	ApkUpdateTime  time.Time `orm:"type(datetime)"`
 	ApkUpdateState int
-	IconUrl        string    `orm:"size(255)"`
+	IconUrl        string
 	UpdateTime     time.Time `orm:"auto_now_add;type(datetime)"`
 }
 

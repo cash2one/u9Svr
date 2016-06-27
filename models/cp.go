@@ -7,11 +7,11 @@ import (
 
 type Cp struct {
 	Id            int
-	Name          string    `orm:"unique;size(15)"`
-	Password      string    `orm:"size(32)"`
-	Email         string    `orm:"size(50)"`
+	Name          string
+	Password      string
+	Email         string
 	LastLoginTime time.Time `orm:"auto_now_add;type(datetime)"`
-	LastLoginIp   string    `orm:"size(32)"`
+	LastLoginIp   string
 	LoginCount    int
 	State         int8
 }

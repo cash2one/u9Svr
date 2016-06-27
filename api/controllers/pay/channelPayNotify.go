@@ -1,8 +1,10 @@
 package pay
 
 import (
+	"github.com/astaxie/beego"
 	"strconv"
 	"u9/api/channel/notify/pay"
+	"u9/api/common"
 	"u9/models"
 )
 
@@ -11,6 +13,9 @@ func (this *PayController) ChannelPayNotify() {
 	defer func() {
 		this.Ctx.WriteString(ret)
 	}()
+
+	msg := common.DumpCtx(this.Ctx)
+	beego.Trace(msg)
 
 	productId, _ := strconv.Atoi(this.Ctx.Input.Param(":productId"))
 	if isExist := new(models.Product).Query().Filter("Id", productId).Exist(); !isExist {
@@ -24,9 +29,10 @@ func (this *PayController) ChannelPayNotify() {
 		return
 	}
 
-	input := this.Input()
+	beego.Trace("channelPayNotify: callPayNotify")
+
 	var err error
-	if ret, err = channelPayNotify.CallPayNotify(channelId, productId, &input, this.Ctx); err != nil {
+	if ret, err = channelPayNotify.CallPayNotify(channelId, productId, this.Ctx); err != nil {
 	}
 }
 

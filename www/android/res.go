@@ -8,6 +8,7 @@ import (
 	"u9/models"
 	"u9/tool"
 	"u9/tool/android"
+	"strconv"
 )
 
 const (
@@ -16,10 +17,11 @@ const (
 )
 
 type Res struct {
+	channel        *models.Channel
 	product        *models.Product
 	productVersion *models.ProductVersion
 	packageParam   *models.PackageParam
-
+	channelPath string
 	productPath string
 	packagePath string
 }
@@ -27,11 +29,12 @@ type Res struct {
 func NewRes(packageTaskId int,
 	product *models.Product,
 	productVersion *models.ProductVersion,
-	packageParam *models.PackageParam) *Res {
+	packageParam *models.PackageParam,channel *models.Channel) *Res {
 	ret := new(Res)
-	ret.product, ret.productVersion, ret.packageParam = product, productVersion, packageParam
+	ret.product, ret.productVersion, ret.packageParam, ret.channel= product, productVersion, packageParam ,channel
 
 	apkName := GetApkName(product, productVersion)
+	ret.channelPath = GetChannelPath(channel)
 	ret.productPath = GetProductPath(product, apkName)
 	ret.packagePath = GetPackagePath(packageTaskId, apkName)
 
@@ -44,6 +47,7 @@ func (this *Res) Handle() {
 
 	this.setPublicXml()
 	this.setStringsXml()
+	this.setChannel()
 }
 
 func (this *Res) clear() {
@@ -231,9 +235,25 @@ func (this *Res) setStringsXml() {
 }
 
 func (this *Res) setChannel(){
-
+	switch this.channel.Id{
+	case 139:
+		this.setTencent()
+	}
 }
 
 func (this *Res) setTencent(){
-	
+	channelResPath := this.channelPath + "/" + strconv.Itoa(this.product.Id)
+	packageResPath := this.packagePath + "/res/drawable/"
+	var drawableFile  map[string]string
+	var err error
+	if drawableFile,err = tool.GetDirList(channelResPath,"");err != nil{
+		beego.Trace(err)
+		panic(err)
+	}
+	for fileName, filePath := range drawableFile{
+       if _,err = tool.CopyFile(filePath,packageResPath+fileName);err != nil {
+		beego.Trace(err)
+		panic(err)
+	}
+    }
 }

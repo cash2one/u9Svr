@@ -1,0 +1,69 @@
+<fieldset>
+	<legend>产品列表</legend>
+	<form method="post" name="p">
+	<table class="table table-list">
+		<thead>
+			<tr>
+				<th width="20">ID</th>
+				<th width="150">游戏开发商</th>
+				<th width="80">屏幕方向</th>
+				<th width="80">游戏名称</th>
+				<th width="180">回调地址</th>
+				<th width="60">操作</th>
+			</tr>
+		</thead>
+		<tbody>
+
+		{{range $k, $v := .list}}
+		<tr id="tr{{$v.Id}}">
+			<td>{{$v.Id}}</td>
+			<td>{{$v.CpName}}</td>
+			<td>
+				{{if eq $v.Direction 0}}
+					横屏
+				{{else if eq $v.Direction 1}}
+					竖屏
+				{{else}}
+					未知
+				{{end}}
+			</td>
+			<td>{{$v.Name}}</td>
+			<td>{{$v.CallbackUrl}}</td>
+			<td>
+			 <a name="edit", href="/cp/product/edit?Id={{$v.Id}}" target="_blank">编辑</a>
+			 | <a name="delete", value="{{$v.Id}}", href="javascript:void(0);">删除</a>	
+			</td>
+		</tr>
+		{{end}}
+		</tbody>
+		<tfoot>
+			<tr>
+				<td colspan="20">
+					{{str2html .pagebar}}
+				</td>
+			</tr>
+		</tfoot>
+	</table>
+	</form>
+</fieldset>
+
+<script type="text/javascript">
+$(function() {
+	$("a[name='delete']").click(function(){
+	    ret = confirm('一旦删除将不可恢复，确定吗？');
+		if (ret == true)
+		{
+			id =$(this).attr("value")
+		    $.getJSON("/cp/product/delete?Id=" + id ,function(data){
+		    	if (data == "success") 
+		    	{
+		    		$("tr[id=tr" + id + "]").remove();
+		    	}
+		    });			
+			
+		}
+		return ret;
+	});
+});
+
+</script>
