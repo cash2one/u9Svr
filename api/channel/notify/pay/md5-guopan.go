@@ -50,7 +50,7 @@ func (this *Guopan) CheckSign(params ...interface{}) (err error) {
 		this.urlParams.Get("status") +
 		this.urlParams.Get("t") +
 		this.channelParams["_payKey"]
-	this.inputSign = this.urlParams.Get("Sign")
+	this.inputSign = this.urlParams.Get("sign")
 	return this.MD5.CheckSign()
 }
 

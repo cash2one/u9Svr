@@ -1,10 +1,11 @@
 package createOrder
 
 import (
-	"encoding/json"
+	//"encoding/json"
 	"fmt"
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/context"
+	"strings"
 	"u9/models"
 	"u9/tool"
 )
@@ -13,37 +14,17 @@ type CoolPad struct {
 	Cr
 }
 
-type coolPadExtParam struct {
-	Appid     string  `json:"appid"`
-	Waresid   int     `json:"waresid"`
-	Cporderid string  `json:"cporderid"`
-	Price     float64 `json:"price"`
-	Appuserid string  `json:"appuserid"`
-	Notifyurl string  `json:"notifyurl"`
-}
-
 func (this *CoolPad) Prepare(lr *models.LoginRequest, orderId, extParamStr string,
 	channelParams *map[string]interface{}, ctx *context.Context) (err error) {
 
-	if err = this.Cr.Initial(lr, orderId, nil,
-		new(coolPadExtParam), extParamStr, channelParams, ctx); err != nil {
+	if err = this.Cr.Initial(lr, orderId, nil, nil, extParamStr, channelParams, ctx); err != nil {
 		return
 	}
 
 	this.parsePayKey("COOLPAD_PRIVATEKEY")
 
-	extParam := this.extParam.(*coolPadExtParam)
-	extParam.Cporderid = this.orderId
-
-	var enbyte []byte
-	if enbyte, err = json.Marshal(extParam); err != nil {
-		format := "prepare: err:%v"
-		msg := fmt.Sprintf(format, err)
-		beego.Error(msg)
-		return
-	}
-
-	content := string(enbyte)
+	content := fmt.Sprintf(this.extParamStr, this.orderId)
+	content = strings.Replace(content, `\`, ``, -1) //去json中的`\`
 
 	if this.Result, err = tool.IapppaySign(content, this.payKey); err != nil {
 		format := "prepare: IapppayVerify:%v"
