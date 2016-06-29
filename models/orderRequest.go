@@ -15,12 +15,13 @@ type OrderRequest struct {
 	ProductOrderId string    //产品订单号
 	ReqAmount      int       //请求订单金额
 	ReqTime        time.Time `orm:"auto_now_add;type(datetime)"` //请求时间
-	AppExt         string
-	State          int    //0初始 1完成渠道API通知回调 2完成产品通知API调用
-	ProductCode    int    //产品通知API调用状态码  -1初始0成功1失败 ...
-	ProductMessage string //产品通知API调用消息
-	ChannelLog     string //渠道API通知回调日志
-	CallbackUrl    string //游戏服务器支付回调地址
+	Ext            string    //自定义扩展
+	AppExt         string    //产品扩展
+	State          int       //0初始 1完成渠道API通知回调 2完成产品通知API调用
+	ProductCode    int       //产品通知API调用状态码  -1初始0成功1失败 ...
+	ProductMessage string    //产品通知API调用消息
+	ChannelLog     string    //渠道API通知回调日志
+	CallbackUrl    string    //游戏服务器支付回调地址
 }
 
 func (this *OrderRequest) Init() {

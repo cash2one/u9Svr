@@ -25,7 +25,7 @@ type PayRequestParam struct {
 	ProductOrderId string `json:"ProductOrderId"`
 	Amount         int    `json:"Amount"`
 	CallbackUrl    string `json:"CallbackUrl"`
-	Ext            string `json:"Ext"` //channelExt
+	Ext            string `json:"Ext"`
 	AppExt         string `json:"AppExt"`
 }
 
@@ -97,6 +97,7 @@ func (this *PayController) PayRequest() {
 		ProductOrderId: prp.ProductOrderId,
 		ReqAmount:      prp.Amount,
 		AppExt:         prp.AppExt,
+		Ext:            prp.Ext,
 		ReqTime:        time.Now(),
 		ProductCode:    -1,
 		State:          0,
