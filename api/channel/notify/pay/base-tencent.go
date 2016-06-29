@@ -133,14 +133,19 @@ func (this *Tencent) InitParam() (err error) {
 
 func (this *Tencent) Handle() (err error) {
 	var tencentChannelRet createOrder.TencentChannelRet
+
+	format := `handle err:%v, channelParams:%v, ` +
+		`clientChannelRet:%v, this.clientExtParam:%v, ` +
+		`tencentChannelRet:%v, ` +
+		`queryUrl:%s queryResult:%s`
+
 	defer func() {
 		if err != nil {
-			this.lastError = err_handleOrder
 
-			format := `err:%v, channelParams:%v, ` +
-				`clientChannelRet:%v, this.clientExtParam:%v, ` +
-				`tencentChannelRet:%v, ` +
-				`queryUrl:%s queryResult:%s`
+			if this.lastError != err_noerror {
+				this.lastError = err_handleOrder
+			}
+
 			msg := fmt.Sprintf(format,
 				err, this.channelParams,
 				this.clientChannelRet, this.clientExtParam,
@@ -179,19 +184,30 @@ func (this *Tencent) Handle() (err error) {
 				beego.Warn(requestErr)
 			}
 
-			beego.Trace("Result:" + this.Result)
+			//beego.Trace("Result:" + this.Result)
 			if requestErr := json.Unmarshal([]byte(this.Result), &tencentChannelRet); requestErr != nil {
 				beego.Warn(requestErr)
 			}
 
 			if tencentChannelRet.SaveAmt > this.clientChannelRet.SaveAmt {
-				beego.Trace("tencent pay query is finish.")
+				msg := fmt.Sprintf(format,
+					"pay query finish", this.channelParams,
+					this.clientChannelRet, this.clientExtParam,
+					tencentChannelRet,
+					this.Url, this.Result)
+				beego.Trace(msg)
 				if err = this.Base.Handle(); err != nil {
 					return
 				}
 				return
 			} else if cur >= 120 {
-				beego.Trace("tencent pay query is timeout.")
+				msg := fmt.Sprintf(format,
+					"pay query timeout", this.channelParams,
+					this.clientChannelRet, this.clientExtParam,
+					tencentChannelRet,
+					this.Url, this.Result)
+				beego.Trace(msg)
+
 				return
 			} else {
 				cur = cur + dur

@@ -67,7 +67,7 @@ func (this *Qihoo360) CheckSign(params ...interface{}) (err error) {
 	excludeItems := []string{"sign_return", "sign"}
 	sorter := tool.NewUrlValuesSorter(this.urlParams, &excludeItems)
 	sort.Sort(sorter)
-	this.signContent = sorter.FormatBody("v", "#") + "#" + this.channelParams["payKey"]
+	this.signContent = sorter.FormatBody("v", "#") + "#" + this.channelParams["_payKey"]
 
 	this.inputSign = this.urlParams.Get("sign")
 	return this.MD5.CheckSign()

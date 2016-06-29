@@ -39,7 +39,7 @@ func (this *Huawei) Init(params ...interface{}) (err error) {
 	}
 
 	this.urlParamCheckKeys = &huaweiUrlKeys
-	this.requireChannelUserId = true
+	this.requireChannelUserId = false
 	this.exChangeRatio = 100
 
 	this.channelParamKeys["_gameId"] = ""
@@ -59,7 +59,8 @@ func (this *Huawei) ParseInputParam(params ...interface{}) (err error) {
 	}
 
 	orderId_key := "requestId"
-	channelUserId_key := "userName"
+	//channelUserId_key := "userName"
+	channelUserId_key := ""
 	channelOrderId_key := "orderId"
 	amount_key := "amount"
 	discount_key := ""

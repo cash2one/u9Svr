@@ -54,7 +54,7 @@ func (this *Rsa) CheckSign(params ...interface{}) (err error) {
 	signState := false
 	signMsg := ""
 	payKey := this.channelParams["_payKey"]
-	hashType := crypto.MD5SHA1
+	hashType := crypto.SHA1
 
 	switch this.signMode {
 	case 0:

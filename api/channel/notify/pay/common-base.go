@@ -486,7 +486,7 @@ func (this *Base) Handle() (err error) {
 	case 2:
 		return nil
 	default:
-		err = errors.New("notifyProductSvr: It isn't exist orderRequest state")
+		err = errors.New("handle: It isn't exist orderRequest state")
 		beego.Error(err)
 		return err
 	}
