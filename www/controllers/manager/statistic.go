@@ -36,6 +36,7 @@ func (this *StatisticController) PayList() {
 		Limit(int(pagesize)).Offset(int(offset))
 
 	beego.Trace(queryBuilder.String())
+
 	if _, err := orm.NewOrm().Raw(queryBuilder.String()).QueryRows(&payStatisticList); err != nil {
 		beego.Error(err)
 		return

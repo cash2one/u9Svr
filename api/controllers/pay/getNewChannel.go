@@ -19,8 +19,8 @@ func (this *PayController) GetNewChannel() {
 		this.ServeJSON(true)
 	}()
 
-	msg := common.DumpCtx(this.Ctx)
-	beego.Trace(msg)
+	//msg := common.DumpCtx(this.Ctx)
+	//beego.Trace(msg)
 
 	productId, _ := strconv.Atoi(this.Ctx.Input.Param(":productId"))
 	channelId, _ := strconv.Atoi(this.Ctx.Input.Param(":channelId"))

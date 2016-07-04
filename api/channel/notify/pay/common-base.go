@@ -244,8 +244,21 @@ func (this *Base) prepareOrderRequest() (err error) {
 		return
 	}
 
+	jsonInfo := map[string]interface{}{}
+
+	if this.body != "" {
+		jsonInfo["body"] = this.body
+	}
+	if len(*(this.urlParams)) > 0 {
+		jsonInfo["urlParam"] = this.urlParams
+	}
+
+	if this.channelTradeData != nil {
+		jsonInfo["channelTradeData"] = this.channelTradeData
+	}
+
 	var jsonBytes []byte
-	if jsonBytes, err = json.Marshal(this.urlParams); err != nil {
+	if jsonBytes, err = json.Marshal(jsonInfo); err != nil {
 		format := "prepareOrderRequest: err:%v"
 		msg := fmt.Sprintf(format, err)
 		err = errors.New(msg)
@@ -310,28 +323,16 @@ func (this *Base) CheckSign(params ...interface{}) (err error) {
 func (this *Base) CheckChannelRet(params ...interface{}) (err error) {
 	if this.orderId != this.orderRequest.OrderId {
 		this.lastError = err_orderIsNotExist
-		format := "CheckChannelRet: err:orderId!=orderRequest.OrderId, channelId:%s, productId:%s orderRequest:%+v, orderId:%s"
-		msg := fmt.Sprintf(format, this.channelId, this.productId, this.orderRequest, this.orderId)
-		err = errors.New(msg)
-		beego.Error(err)
 		return
 	}
 
 	if this.orderRequest.ReqAmount != this.payAmount {
 		this.lastError = err_payAmountError
-		format := "CheckChannelRet: err:orderRequest.ReqAmount!=payAmount, orderRequest:%+v, payAmount:%d"
-		msg := fmt.Sprintf(format, this.orderRequest, this.payAmount)
-		err = errors.New(msg)
-		beego.Error(msg)
 		return
 	}
 
 	if this.requireChannelUserId && this.channelUserId != this.loginRequest.ChannelUserid {
 		this.lastError = err_channelUserIsNotExist
-		format := "CheckChannelRet: channelUserId!=loginRequest.ChannelUserid, loginRequest:%+v, channelUserId:%s"
-		msg := fmt.Sprintf(format, this.loginRequest, this.channelUserId)
-		err = errors.New(msg)
-		beego.Error(err)
 		return
 	}
 
@@ -341,12 +342,9 @@ func (this *Base) CheckChannelRet(params ...interface{}) (err error) {
 		if !tradeState {
 			this.lastError = err_tradeFail
 
-			format := "CheckChannelRet: err:%s, channelParamKeys:%+v, channelParam:%+v, urlParam:%+v, body:%s, channelTradeData:%+v"
+			format := "checkChannelRet: err:%s"
 			tradeFailDesc := params[1].(string)
-			errMsg := fmt.Sprintf(format,
-				tradeFailDesc,
-				this.channelParamKeys, this.channelParams,
-				this.urlParams, this.body, this.channelTradeData)
+			errMsg := fmt.Sprintf(format, tradeFailDesc)
 			beego.Warn(errMsg)
 		}
 	}
@@ -407,7 +405,6 @@ func (this *Base) notifyProductSvr() (err error) {
 	} else {
 		this.ProductRet.SetCode(0)
 	}
-	beego.Trace(this.gameNotifyUrl)
 
 	this.orderRequest.ProductCode = this.ProductRet.Code
 	this.orderRequest.ProductMessage = this.ProductRet.Message
@@ -439,7 +436,7 @@ func (this *Base) handleOrder() (err error) {
 	created := false
 	this.payOrder = models.PayOrder{OrderId: this.orderId, ChannelOrderId: this.channelOrderId}
 	if created, _, err = orm.NewOrm().ReadOrCreate(&this.payOrder, "OrderId", "ChannelOrderId"); err != nil {
-		format := "notifyProductSvr: err:%+v, payOrder:%+v"
+		format := "handleOrder: err:%+v, payOrder:%+v"
 		msg := fmt.Sprintf(format, err, this.payOrder)
 		err = errors.New(msg)
 		beego.Error(err)
@@ -447,7 +444,7 @@ func (this *Base) handleOrder() (err error) {
 	}
 
 	if !created {
-		beego.Warn("notifyProductSvr: PayOrder:order is exist.")
+		beego.Warn("handleOrder: PayOrder:order is exist.")
 		return
 	}
 
@@ -455,7 +452,7 @@ func (this *Base) handleOrder() (err error) {
 	this.payOrder.PayDiscount = this.payDiscount
 	this.payOrder.PayTime = time.Now()
 	if err = this.payOrder.Update("PayAmount", "PayDiscount"); err != nil {
-		format := "notifyProductSvr: err:%+v, payOrder:%+v"
+		format := "handleOrder: err:%+v, payOrder:%+v"
 		msg := fmt.Sprintf(format, err, this.payOrder)
 		err = errors.New(msg)
 		beego.Error(msg)
@@ -465,7 +462,7 @@ func (this *Base) handleOrder() (err error) {
 	this.orderRequest.State = 2
 	err = this.orderRequest.Update("State")
 	if err != nil {
-		format := "notifyProductSvr: err:%+v, orderRequest:%+v"
+		format := "handleOrder: err:%+v, orderRequest:%+v"
 		msg := fmt.Sprintf(format, err, this.orderRequest)
 		err = errors.New(msg)
 		beego.Error(msg)
@@ -565,17 +562,17 @@ func (this *Base) Dump() (ret string) {
 	}
 	urlParamCheckKey = urlParamCheckKey + `]`
 
-	format := `productKey:%s productSignContent:%s` +
-		"\nchannelParamKey: %+v,\n" + "channelParam: %+v,\n\n" +
-		"urlParamCheckKey: %s,\n" + "request: %+v,\n" + "body: %s,\n\n" +
+	format := "productKey: %s \n\nproductSignContent: %s\n\n" +
+		"channelParamKey: %+v,\n\n" + "channelParam: %+v,\n\n" +
+		"urlParamCheckKey: %s,\n\n" + "request: %+v,\n\n" + "body: %s,\n\n" +
 		"channelTradeContent: %s,\n\n" + "channelTradeData: %+v, \n\n" +
-		"orderId: %s,  channelUserId: %s,  requireChannelUserId: %v,  channelOrderId: %s" +
-		" ,payAmount: %d,  payDiscount: %d,  exChangeRatio: %f,\n\n" +
+		"orderId: %s, channelUserId: %s,requireChannelUserId: %+v, channelOrderId: %s,\n\n" +
+		"payAmount: %d, payDiscount: %d, exChangeRatio: %f,\n\n" +
 		"loginRequest: %+v,\n\n" +
 		"orderRequest: %+v,\n\n" +
 		"payOrder: %+v,\n\n" +
-		"gameNotifyUrl: %s,\n" +
-		"channelRetData: %+v,\n" +
+		"gameNotifyUrl: %s,\n\n" +
+		"channelRetData: %+v,\n\n" +
 		"lastError: %d,  lastErrorDesc: %s"
 
 	ret = fmt.Sprintf(format,

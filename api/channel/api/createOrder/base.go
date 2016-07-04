@@ -18,6 +18,7 @@ type CreateOrder interface {
 	ParseChannelRet() (err error)
 	GetResult() (ret string)
 	GetChannelOrderId() (ret string)
+	Dump() (ret string)
 }
 
 type Cr struct {
@@ -67,22 +68,19 @@ func (this *Cr) Initial(
 	return
 }
 
-func (this *Cr) Dump() (ret string) {
-	format := "this:%+v"
-	ret = fmt.Sprintf(format, this)
-	return
-}
-
-func (this *Cr) parseAppKey(key string) {
+func (this *Cr) parseAppKey(key string) string {
 	this.appKey = (*this.channelParams)[key].(string)
+	return this.appKey
 }
 
-func (this *Cr) parseAppId(key string) {
+func (this *Cr) parseAppId(key string) string {
 	this.appId = (*this.channelParams)[key].(string)
+	return this.appId
 }
 
-func (this *Cr) parsePayKey(key string) {
+func (this *Cr) parsePayKey(key string) string {
 	this.payKey = (*this.channelParams)[key].(string)
+	return this.payKey
 }
 
 func (this *Cr) GetChannelOrderId() (ret string) {
@@ -92,11 +90,30 @@ func (this *Cr) GetChannelOrderId() (ret string) {
 func (this *Cr) ParseChannelRet() (err error) {
 	//beego.Trace("cr-parseChannelRet: Result:" + this.Result)
 	if err = json.Unmarshal([]byte(this.Result), &this.channelRet); err != nil {
-		format := "cr-parseChannelRet: err:%v, result:%s, channelRet:%+v"
+		format := "parseChannelRet: err:%v, result:%s, channelRet:%+v"
 		msg := fmt.Sprintf(format, err, this.Result, this.channelRet)
 		err = errors.New(msg)
 		beego.Error(err)
 		return
 	}
 	return nil
+}
+
+func (this *Cr) Dump() (ret string) {
+	var request interface{}
+	if this.ctx != nil {
+		request = this.ctx.Request
+	}
+	format := "request:%+v,\n\nloginRequest:%+v,\n\nchannelParams:%+v,\n\n" +
+		"orderId:%s,\n\nextParamStr:%s,\n\nchannelRet:%+v,\n\nchannelOrderId:%s"
+
+	ret = fmt.Sprintf(format, request,
+		this.lr,
+		this.channelParams,
+		this.orderId,
+		this.extParamStr,
+		this.channelRet,
+		this.channelOrderId)
+	ret = ret + "\n\n" + this.Request.Dump()
+	return
 }

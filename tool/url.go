@@ -40,11 +40,12 @@ func NewUrlValuesSorter(values *url.Values, excludeItems *[]string) UrlValuesSor
 	uvs := make(UrlValuesSorter, 0, len(*values))
 	for valuesKey, valuesItem := range *values {
 		skip := false
-		for _, excludeItem := range *excludeItems {
-			if excludeItem == valuesKey {
-
-				skip = true
-				break
+		if excludeItems != nil {
+			for _, excludeItem := range *excludeItems {
+				if excludeItem == valuesKey {
+					skip = true
+					break
+				}
 			}
 		}
 		if !skip {

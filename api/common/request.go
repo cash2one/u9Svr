@@ -38,21 +38,27 @@ func (this *Request) InitParam() (err error) {
 
 func (this *Request) GetResponse() (err error) {
 	var resp *http.Response
-	format := "request-getResponse: err:%v, url:%s"
+	format := "getResponse:err:%v \n"
 	resp, err = this.Req.Response()
 	if err != nil {
-
-		msg := fmt.Sprintf(format, err, this.Url)
+		msg := fmt.Sprintf(format, err) + this.Dump()
 		beego.Error(msg)
 		return
 	}
 	var buffer bytes.Buffer
 	if _, err = io.Copy(&buffer, resp.Body); err != nil {
-		msg := fmt.Sprintf(format, err, this.Url)
+		msg := fmt.Sprintf(format, err) + this.Dump()
 		beego.Error(msg)
 		return
 	}
 	bytes := buffer.Bytes()
 	this.Result = string(bytes)
+	return
+}
+
+func (this *Request) Dump() (ret string) {
+	format := "method:%s,\nurl:%s,\n\nheader:%+v,\n\nresult:%+s"
+	ret = fmt.Sprintf(format,
+		this.Method, this.Url, this.Req.GetRequest().Header, this.Result)
 	return
 }

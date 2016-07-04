@@ -230,6 +230,14 @@ func CallCreateOrder(
 		return
 	}
 
+	defer func() {
+		if err != nil {
+			format := "\ncallCreateOrder: err:%v\n, %s"
+			msg := fmt.Sprintf(format, err, co.Dump())
+			beego.Error(msg)
+		}
+	}()
+
 	beego.Trace("callCreateOrder:2:Prepare")
 	if err = co.Prepare(mlr, orderId, extParamStr, channelParams, ctx); err != nil {
 		return
@@ -253,5 +261,7 @@ func CallCreateOrder(
 	beego.Trace("callCreateOrder:6:GetResult")
 	ret = co.GetResult()
 	channelOrderId = co.GetChannelOrderId()
+
+	beego.Trace(ret)
 	return
 }

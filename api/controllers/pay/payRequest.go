@@ -72,8 +72,8 @@ func (this *PayController) PayRequest() {
 		this.ServeJSON(true)
 	}()
 
-	msg := common.DumpCtx(this.Ctx)
-	beego.Trace(msg)
+	//msg := common.DumpCtx(this.Ctx)
+	//beego.Trace(msg)
 
 	beego.Trace("payRequestParam: 1:validate")
 	prp := new(PayRequestParam)

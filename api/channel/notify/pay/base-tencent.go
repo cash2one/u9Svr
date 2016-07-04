@@ -6,14 +6,15 @@ import (
 	"fmt"
 	"github.com/astaxie/beego"
 	"net/url"
+	"strconv"
 	"time"
-	"u9/api/channel/api/createOrder"
+	. "u9/api/channel/third/ysdk"
 	"u9/api/common"
 )
 
 var tencentUrlKeys []string = []string{"data"}
 
-type tencentTradeData struct {
+type tencentTradeData_0 struct {
 	Amount        string `json:"amount"`
 	OrderId       string `json:"orderId"`
 	ChannelUserId string `json:"channelUserId"`
@@ -24,8 +25,10 @@ type tencentTradeData struct {
 type Tencent struct {
 	Base
 	common.Request
-	clientChannelRet createOrder.TencentChannelRet
-	clientExtParam   createOrder.TencentExtParam
+	ver               string
+	tencentChannelRet GetBalanceRet   //tencentTradeData_0
+	clientChannelRet  GetBalanceRet   //tencentTradeData_0
+	clientExtParam    GetBalanceParam //tencentTradeData_0
 }
 
 func (this *Tencent) Init(params ...interface{}) (err error) {
@@ -41,8 +44,16 @@ func (this *Tencent) Init(params ...interface{}) (err error) {
 	this.channelParamKeys["_gameKey"] = ""
 	this.channelParamKeys["_payKey"] = ""
 
-	this.channelTradeData = new(tencentTradeData)
-	this.channelRetData = nil
+	this.ver = this.urlParams.Get("Ver")
+
+	switch this.ver {
+	case "1":
+		this.channelTradeData = new(PayParam)
+		this.channelRetData = new(PayRet)
+	default:
+		this.channelTradeData = new(tencentTradeData_0)
+		this.channelRetData = nil
+	}
 
 	return
 }
@@ -56,9 +67,8 @@ func (this *Tencent) ParseInputParam(params ...interface{}) (err error) {
 		if err != nil {
 			this.lastError = err_parseInputParam
 
-			format := `ParseInputParam:err:%v, clientChannelRet:%v, clientExtParam:%v`
-			msg := fmt.Sprintf(format,
-				err, this.clientChannelRet, this.clientExtParam)
+			format := "parseInputParam:err:%+v, \n\n"
+			msg := fmt.Sprintf(format, err) + this.Dump()
 			err = errors.New(msg)
 			beego.Error(err)
 		}
@@ -72,38 +82,42 @@ func (this *Tencent) ParseInputParam(params ...interface{}) (err error) {
 		return
 	}
 
-	channelTradeData := this.channelTradeData.(*tencentTradeData)
-	if err = json.Unmarshal([]byte(channelTradeData.ChannelRet), &this.clientChannelRet); err != nil {
-		return
-	}
-
-	if err = json.Unmarshal([]byte(channelTradeData.ExtParam), &this.clientExtParam); err != nil {
-		return
-	}
-
-	gameId_keyName := ""
-	//gameKey_keyName := ""
-	payKey_keyName := ""
-
-	if gameId_keyName, _, payKey_keyName, err =
-		createOrder.GetTencentPayParamName(this.clientExtParam.LoginType); err != nil {
-		return
-	}
-
-	if this.channelParams["_gameId"], err = this.getChannelParam(gameId_keyName); err != nil {
-		return
-	}
-
-	if this.channelParams["_payKey"], err = this.getChannelParam(payKey_keyName); err != nil {
-		return
-	}
-
-	this.orderId = channelTradeData.OrderId
-	this.channelUserId = channelTradeData.ChannelUserId
-	this.channelOrderId = ""
-
-	amount := channelTradeData.Amount
+	amount := ""
 	discount := ""
+
+	switch this.ver {
+	case "1":
+		channelTradeData := this.channelTradeData.(*PayParam)
+		if this.channelParamKeys["_gameId"], _, this.channelParamKeys["_payKey"], err =
+			GetParamName(channelTradeData.LoginType); err != nil {
+			return
+		}
+		this.orderId = channelTradeData.Billno
+		this.channelUserId = channelTradeData.ChannelUserId
+		this.channelOrderId = ""
+		amount = channelTradeData.Amt
+	default:
+		channelTradeData := this.channelTradeData.(*tencentTradeData_0)
+		if err = json.Unmarshal([]byte(channelTradeData.ChannelRet), &this.clientChannelRet); err != nil {
+			return
+		}
+
+		if err = json.Unmarshal([]byte(channelTradeData.ExtParam), &this.clientExtParam); err != nil {
+			return
+		}
+		if this.channelParamKeys["_gameId"], _, this.channelParamKeys["_payKey"], err =
+			GetParamName(this.clientExtParam.LoginType); err != nil {
+			return
+		}
+		this.orderId = channelTradeData.OrderId
+		this.channelUserId = channelTradeData.ChannelUserId
+		this.channelOrderId = ""
+		amount = channelTradeData.Amount
+	}
+
+	if err = this.parseChannelParam(); err != nil {
+		return
+	}
 
 	if err = this.Base.parsePayAmount(amount, discount); err != nil {
 		err = nil
@@ -118,39 +132,169 @@ func (this *Tencent) CheckSign(params ...interface{}) (err error) {
 }
 
 func (this *Tencent) InitParam() (err error) {
-	//beego.Trace("InitParam")
 	if err = this.Request.InitParam(); err != nil {
 		return err
 	}
 
 	cookie := ""
-	if cookie, err = createOrder.GetTencentPayQueryCookie(this.clientExtParam.LoginType); err != nil {
-		return err
+	loginType := ""
+	switch this.ver {
+	case "1":
+		channelTradeData := this.channelTradeData.(*PayParam)
+		loginType = channelTradeData.LoginType
+
+		if cookie, err = GetPayCookie(loginType); err != nil {
+			return err
+		}
+	default:
+		loginType = this.clientExtParam.LoginType
+
+		if cookie, err = GetGetBalanceCookie(loginType); err != nil {
+			return err
+		}
+
 	}
 	this.Req.Header("cookie", cookie)
 	return nil
 }
 
-func (this *Tencent) Handle() (err error) {
-	var tencentChannelRet createOrder.TencentChannelRet
+func (this *Tencent) pay(amount string) (err error) {
+	this.Request.Init()
+	this.IsHttps = true
 
-	format := `handle err:%v, channelParams:%v, ` +
-		`clientChannelRet:%v, this.clientExtParam:%v, ` +
-		`tencentChannelRet:%v, ` +
-		`queryUrl:%s queryResult:%s`
+	channelTradeData := this.channelTradeData.(*tencentTradeData_0)
 
+	loginType := this.clientExtParam.LoginType
+
+	payParam := new(PayParam)
+	payRet := new(PayRet)
+	cookie := ""
+
+	format := "pay err:%+v,\n\npayParam:%+v,\n\npayRet:%+v\n\n\n"
 	defer func() {
 		if err != nil {
+			msg := fmt.Sprintf(format, err, payParam, payRet) + this.Dump()
+			beego.Warn(msg)
+		} else {
+			msg := fmt.Sprintf(format, err, payParam, payRet) + this.Dump()
+			beego.Trace(msg)
+		}
+	}()
 
+	payParam.AppId = this.channelParams["_gameId"]
+	payParam.PayKey = this.channelParams["_payKey"]
+
+	payParam.Debug = this.clientExtParam.Debug
+	payParam.LoginType = this.clientExtParam.LoginType
+	payParam.OpenId = this.clientExtParam.OpenId
+	payParam.OpenKey = this.clientExtParam.OpenKey
+	payParam.PayToken = this.clientExtParam.PayToken
+	payParam.Pf = this.clientExtParam.Pf
+	payParam.PfKey = this.clientExtParam.PfKey
+	payParam.ZoneId = this.clientExtParam.ZoneId
+
+	payParam.Billno = channelTradeData.OrderId
+	payParam.Amt = amount
+
+	this.Url = GetPayUrl(payParam)
+
+	if err = this.Request.InitParam(); err != nil {
+		return err
+	}
+
+	if cookie, err = GetPayCookie(loginType); err != nil {
+		return err
+	}
+	this.Req.Header("cookie", cookie)
+
+	if err = this.GetResponse(); err != nil {
+		return err
+	}
+
+	if err = json.Unmarshal([]byte(this.Result), payRet); err != nil {
+		return err
+	}
+
+	if tradeState := payRet.Ret == 0; !tradeState {
+		tradeFailDesc := `payRet.Ret!=0`
+		return this.Base.CheckChannelRet(tradeState, tradeFailDesc)
+	}
+
+	return
+}
+
+func (this *Tencent) cancelPay() (err error) {
+	this.Request.Init()
+	this.IsHttps = true
+
+	channelTradeData := this.channelTradeData.(*PayParam)
+
+	loginType := channelTradeData.LoginType
+
+	cancelPayParam := new(CancelPayParam)
+	cancelPayRet := new(CancelPayRet)
+	cookie := ""
+
+	format := "cancelPay err:%+v,\n\ncancelPayParam:%+v,\n\ncancelPayRet:%+v\n\n\n"
+	defer func() {
+		if err != nil {
+			msg := fmt.Sprintf(format, err, cancelPayParam, cancelPayRet) + this.Dump()
+			beego.Warn(msg)
+		} else {
+			msg := fmt.Sprintf(format, err, cancelPayParam, cancelPayRet) + this.Dump()
+			beego.Trace(msg)
+		}
+	}()
+
+	cancelPayParam.AppId = this.channelParams["_gameId"]
+	cancelPayParam.PayKey = this.channelParams["_payKey"]
+
+	cancelPayParam.Debug = channelTradeData.Debug
+	cancelPayParam.LoginType = channelTradeData.LoginType
+	cancelPayParam.OpenId = channelTradeData.OpenId
+	cancelPayParam.OpenKey = channelTradeData.OpenKey
+	cancelPayParam.PayToken = channelTradeData.PayToken
+	cancelPayParam.Pf = channelTradeData.Pf
+	cancelPayParam.PfKey = channelTradeData.PfKey
+	cancelPayParam.ZoneId = channelTradeData.ZoneId
+	cancelPayParam.Billno = channelTradeData.Billno
+	cancelPayParam.Amt = channelTradeData.Amt
+
+	this.Url = GetCancelPayUrl(cancelPayParam)
+
+	if err = this.Request.InitParam(); err != nil {
+		return err
+	}
+
+	if cookie, err = GetPayCookie(loginType); err != nil {
+		return err
+	}
+	this.Req.Header("cookie", cookie)
+
+	if err = this.GetResponse(); err != nil {
+		return err
+	}
+
+	if err = json.Unmarshal([]byte(this.Result), cancelPayRet); err != nil {
+		return err
+	}
+
+	if tradeState := cancelPayRet.Ret == 0; !tradeState {
+		tradeFailDesc := `cancelPayRet.Ret!=0`
+		return this.Base.CheckChannelRet(tradeState, tradeFailDesc)
+	}
+
+	return
+}
+
+func (this *Tencent) Handle() (err error) {
+	format := "handle err:%+v, \n\n"
+	defer func() {
+		if err != nil {
 			if this.lastError != err_noerror {
 				this.lastError = err_handleOrder
 			}
-
-			msg := fmt.Sprintf(format,
-				err, this.channelParams,
-				this.clientChannelRet, this.clientExtParam,
-				tencentChannelRet,
-				this.Url, this.Result)
+			msg := fmt.Sprintf(format, err) + this.Dump()
 			err = errors.New(msg)
 			beego.Error(err)
 		}
@@ -159,69 +303,126 @@ func (this *Tencent) Handle() (err error) {
 	this.Request.Init()
 	this.IsHttps = true
 
-	channelTradeData := this.channelTradeData.(*tencentTradeData)
-	this.Url = createOrder.GetTencentPayQueryUrl(
-		this.clientExtParam.Debug,
-		channelTradeData.ChannelUserId,
-		this.clientExtParam.OpenKey,
-		this.clientExtParam.PayToken,
-		this.clientExtParam.Pf,
-		this.clientExtParam.PfKey,
-		this.clientExtParam.ZoneId,
-		this.channelParams["_gameId"],
-		this.channelParams["_payKey"])
+	switch this.ver {
+	case "1":
+		channelTradeData := this.channelTradeData.(*PayParam)
 
-	if err = this.InitParam(); err != nil {
-		return err
-	}
+		channelTradeData.AppId = this.channelParams["_gameId"]
+		channelTradeData.PayKey = this.channelParams["_payKey"]
 
-	go func() {
-		var cur time.Duration = 0
-		var dur time.Duration = 15
+		this.Url = GetPayUrl(channelTradeData)
 
-		for {
-			if requestErr := this.GetResponse(); requestErr != nil {
-				beego.Warn(requestErr)
-			}
-
-			//beego.Trace("Result:" + this.Result)
-			if requestErr := json.Unmarshal([]byte(this.Result), &tencentChannelRet); requestErr != nil {
-				beego.Warn(requestErr)
-			}
-
-			if tencentChannelRet.SaveAmt > this.clientChannelRet.SaveAmt {
-				msg := fmt.Sprintf(format,
-					"pay query finish", this.channelParams,
-					this.clientChannelRet, this.clientExtParam,
-					tencentChannelRet,
-					this.Url, this.Result)
-				beego.Trace(msg)
-				if err = this.Base.Handle(); err != nil {
-					return
-				}
-				return
-			} else if cur >= 120 {
-				msg := fmt.Sprintf(format,
-					"pay query timeout", this.channelParams,
-					this.clientChannelRet, this.clientExtParam,
-					tencentChannelRet,
-					this.Url, this.Result)
-				beego.Trace(msg)
-
-				return
-			} else {
-				cur = cur + dur
-				time.Sleep(time.Second * dur)
-			}
+		if err = this.InitParam(); err != nil {
+			return err
 		}
 
-	}()
+		if err = this.GetResponse(); err != nil {
+			return err
+		}
+		if err = json.Unmarshal([]byte(this.Result), this.channelRetData); err != nil {
+			return err
+		}
+
+		payRet := this.channelRetData.(*PayRet)
+		if tradeState := payRet.Ret == 0; !tradeState {
+			tradeFailDesc := `payRet.Ret!=0`
+			return this.Base.CheckChannelRet(tradeState, tradeFailDesc)
+		}
+
+		if err = this.Base.Handle(); err != nil {
+			//call 取消支付
+			msg := "pay request:\n\n" + this.Request.Dump() + "\n\n\n"
+			beego.Error(msg)
+
+			this.cancelPay()
+			return
+		}
+	default:
+		this.clientExtParam.AppId = this.channelParams["_gameId"]
+		this.clientExtParam.PayKey = this.channelParams["_payKey"]
+
+		this.Url = GetGetBalanceUrl(&this.clientExtParam)
+
+		if err = this.InitParam(); err != nil {
+			return err
+		}
+
+		go func() {
+			var cur time.Duration = 0
+			var dur time.Duration = 15
+
+			for {
+				if requestErr := this.GetResponse(); requestErr != nil {
+					beego.Warn(requestErr)
+				}
+
+				if requestErr := json.Unmarshal([]byte(this.Result), &this.tencentChannelRet); requestErr != nil {
+					beego.Warn(this.Request.Dump())
+					beego.Warn(requestErr)
+				}
+
+				if this.tencentChannelRet.Balance > this.tencentChannelRet.Balance {
+					msg := fmt.Sprintf(format, "pay query finish") +
+						this.Dump()
+					beego.Trace(msg)
+					if err = this.Base.Handle(); err != nil {
+						return
+					}
+					amount := strconv.Itoa(this.tencentChannelRet.Balance)
+					this.pay(amount)
+					return
+				} else if cur >= 480 {
+					msg := fmt.Sprintf(format, "pay query timeout") +
+						this.Dump()
+					beego.Warn(msg)
+					amount := strconv.Itoa(this.clientChannelRet.Balance)
+					this.pay(amount)
+					return
+				} else {
+					cur = cur + dur
+					time.Sleep(time.Second * dur)
+				}
+			}
+
+		}()
+	}
+
 	return nil
 }
 
 func (this *Tencent) GetResult(params ...interface{}) (ret string) {
-	format := `{"result":"%s"}`
-	succMsg := "success"
-	failMsg := "failure"
-	return this.Base.GetResult(format, succMsg, failMsg)
+	switch this.ver {
+	case "1":
+		format := `{"result":"%s"}`
+		succMsg := "success"
+		failMsg := "failure"
+
+		return this.Base.GetResult(format, succMsg, failMsg)
+	default:
+		format := `{"result":"%s"}`
+		succMsg := "success"
+		failMsg := "failure"
+		return this.Base.GetResult(format, succMsg, failMsg)
+	}
+	return
+}
+
+func (this *Tencent) Dump() (ret string) {
+	ret = "1 base:\n\n" + this.Base.Dump() + "\n\n\n" +
+		"2 request:\n\n" + this.Request.Dump() + "\n\n\n" + "3 tencent:\n\n"
+
+	switch this.ver {
+	case "1":
+		format := "ver: %+v,\n\n"
+		ret = fmt.Sprintf(format, this.ver)
+	default:
+		format := "ver: %s,\n\nclientExtParam: %+v,\n\n" +
+			"clientChannelRet: %+v,\n\ntencentChannelRet: %+v\n\n"
+		ret = ret + fmt.Sprintf(format, this.ver,
+			this.clientChannelRet,
+			this.clientExtParam,
+			this.tencentChannelRet)
+	}
+
+	return
 }
