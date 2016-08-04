@@ -1,0 +1,71 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>辉耀互娱U9管理后台</title>
+
+	<link rel="stylesheet" href="/static/bower_components/bootstrap/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/static/bower_components/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="/static/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css" >
+	<link rel="stylesheet" href="/static/themes/admin/css/admin.css">
+
+	<script src="/static/bower_components/jquery/dist/jquery.min.js"></script>
+</head>
+
+<body>
+
+	<nav class="navbar navbar-inverse " role="navigation">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="/manager">辉耀互娱U9管理后台</a>
+			</div>
+			<div id="navbar" class="navbar-collapse collapse">
+				<ul class="nav navbar-nav navbar-right">
+					<li>
+						<a href="/manager/profile">账号信息</a>
+					</li>
+					<li>
+						<a href="/manager/logout">退出登录</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<div class="container-fluid">
+		<div class="row-fluid">
+			<div class="col-md-1">
+				<ul class="nav nav-pills nav-stacked">
+					<li class="nav-header">CP管理</li>
+					<li><a href="/manager/cp/add">添加CP</a></li>
+					<li><a href="/manager/cp/list">CP列表</a></li>
+					<li class="nav-header">统计信息</li>
+					<li><a href="/manager/statistic/pay">支付统计</a></li>
+					<li><a href="/manager/statistic/user">用户统计</a></li>
+					<li class="nav-header">查询信息</li>
+					<li><a href="/manager/query/order">订单查询</a></li>
+					<li><a href="/manager/query/user">用户查询</a></li>
+				</ul>
+			</div>
+			<div class="col-md-11">{{.LayoutContent}}</div>
+		</div>
+	</div>
+	<!-- end container -->
+	<div class="footer">
+		<div class="container">
+			Copyright &copy; 2015
+			<a href=""></a>
+			.All Rights Reserved.
+		</div>
+	</div>
+
+	<script src="/static/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="/static/bower_components/moment/min/moment-with-locales.min.js"></script>
+	<script src="/static/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+	<script src="/static/bower_components/spin.js/spin.min.js"></script>
+	<script src="/static/themes/admin/js/admin.js"></script>
+</body>
+</html>

@@ -25,7 +25,7 @@ func init() {
 		new(Manager), new(Cp),
 		new(PackageParam), new(ChannelPackageParam),
 		new(PackageTask), new(PackageTaskList), new(StatChannelPay),
-		new(LoginRequestLog))
+		new(LoginRequestLog), new(StatUser), new(VStatUser), new(VProductChannel))
 
 	if beego.AppConfig.String("runmode") == "dev" {
 		orm.Debug = true

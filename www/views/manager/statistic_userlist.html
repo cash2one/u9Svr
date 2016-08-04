@@ -1,0 +1,131 @@
+<fieldset>
+	<legend>登录统计</legend>
+	
+	<table style="margin-top:20px"class="table" >
+	<form id="queryForm" class="form-horizontal" method="post">
+	<tr>
+		<th class="span2" style="text-align:center;height:36px;line-height:36px;font-size:15px">游戏</th>
+		<td>
+			<select style="width:100px;height:36px;margin-right:10px;" id="product" name="Product" class="combobox">
+				<option value="">请选择</option>
+				  {{range $k, $v := .productList}}
+				  	<option value="{{$v.Id}}">{{$v.Name}}</option>
+				  {{end}}
+				</select>
+		</td>
+		<th class="span2" style="text-align:center;height:36px;line-height:36px;font-size:15px">渠道</th>
+		<td>
+			<select style="width:100px;height:36px;margin-right:10px;" id="channel" name="Channel" class="combobox">
+				<option value="">请选择</option>
+				 {{range $k, $v := .channelList}}
+				  	<option value="{{$v.Id}}">{{$v.Name}}</option>
+				  {{end}}
+			</select>
+		</td>
+
+		<th class="span2" style="text-align:center;height:36px;line-height:36px;font-size:15px">开始时间</th>
+		<td>
+			<div style="width:170px;" class="input-group date" id="startDate">
+                    <input type="text" class="form-control" name="StartDate" >
+                    <span class="input-group-addon">
+                    	<span class="glyphicon glyphicon-calendar">	</span>
+                    </span>
+            </div>
+		</td>
+
+		<th class="span2" style="text-align:center;height:36px;line-height:36px;font-size:15px">结束时间</th>
+		<td>
+			<div style="width:170px;" class="input-group date" id="endDate">
+                    <input type="text" class="form-control" name="EndDate">
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+             </div>
+		</td>
+
+		<td>
+			<button style="margin-right:10px;height:36px;float:right" type="button" class="btn" id="yes"><i class="icon-ok"></i> 确定</button>
+		</td>
+		<td>
+			<div class="checkbox">
+				 <label>
+	      			<input  type= "checkbox" id="updateData" value="false" name="UpdateData">更新数据
+	      		</label>	
+			</div>		
+		</td>
+		
+	</tr>
+</table>
+	</form>
+	
+	<table style="margin-top:20px"class="table table-hover table-list" >
+		<thead>
+		<tr>
+			<!--<th style="text-align:center" width="80">游戏ID</th>-->
+			<th style="text-align:center" width="80">游戏名</th>
+			<!--<th style="text-align:center" width="80">渠道ID</th>-->
+			<th style="text-align:center" width="80">渠道名</th>
+			<th style="text-align:center" width="100">登录用户</th>
+			<th style="text-align:center" width="100">新增用户</th>
+			<th style="text-align:center" width="100">设备激活</th>
+			<th style="text-align:center" width="150">日期</th>
+		</tr>
+		</thead>
+		<tbody >
+		{{range $k, $v := .userList}}
+			<tr>
+				<!--<td style="text-align:center">{{$v.ProductId}}</td>-->
+				<td style="text-align:center">{{$v.ProductName}}</td>
+				<!--<td style="text-align:center">{{$v.ChannelId}}</td>-->
+				<td style="text-align:center">{{$v.ChannelName}}</td>
+				<td style="text-align:center">{{$v.LoginRequestIdCount}}</td>
+				<td style="text-align:center">{{$v.UserCount}}</td>
+				<td style="text-align:center">{{$v.MobileCount}}</td>
+				<td style="text-align:center">{{date $v.Time "Y-m-d"}}</td>
+			</tr>
+		{{end}}
+		</tbody>
+		<tfoot>
+			<tr>
+				<td colspan="20">{{str2html .pagebar}}</td>
+			</tr>
+		</tfoot>
+		
+	</table>
+</fieldset>
+
+<script>
+	$("#yes").click(function(){
+		update = $("#updateData").prop('checked');
+		
+		if (update) {
+			 ret = confirm('是否同步数据');
+			 $("#updateData").prop('value',ret);		
+		}
+
+		// update = $("#updateData").prop('value');
+		// alert(update)
+		$('#queryForm').submit();
+
+	});
+	//开始日期
+   $(function () {
+                $('#startDate').datetimepicker(
+				{
+					locale: 'zh-cn',
+					format:"YYYY-MM-DD",
+					sideBySide:true
+				});
+            });
+    //结束日期
+   $(function () {
+                $('#endDate').datetimepicker(
+				{
+					locale: 'zh-cn',
+					format:"YYYY-MM-DD",
+					sideBySide:true
+				});
+            });
+
+</script>
+

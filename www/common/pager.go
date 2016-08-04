@@ -66,14 +66,14 @@ func (this *Pager) ToString() string {
 
 	for i := from; i <= to; i++ {
 		if i == this.Page {
-			buf.WriteString(fmt.Sprintf("<b>%d</b>", i))
+			buf.WriteString(fmt.Sprintf("<b>%d  </b>", i))
 		} else {
-			buf.WriteString(fmt.Sprintf("<a href=\"%s\">%d</a>", this.url(i), i))
+			buf.WriteString(fmt.Sprintf("<a href=\"%s\">%d  </a>", this.url(i), i))
 		}
 	}
 
 	if totalpage > to {
-		buf.WriteString(fmt.Sprintf("<a href=\"%s\">%d</a>", this.url(totalpage), totalpage))
+		buf.WriteString(fmt.Sprintf("<a href=\"%s\">...%d  </a>", this.url(totalpage), totalpage))
 	}
 
 	if this.Page < totalpage {

@@ -1,0 +1,133 @@
+<h3>登录统计</h3>
+
+<nav class="navbar navbar-default" role="navigation">
+   <div>
+      <form id="queryForm" class="navbar-form navbar-left" method="post" >
+         <div class="form-group">
+			<select id="product" name="Product" class="form-control">
+				<option value="">所有游戏</option>
+				{{range $k, $v := .productList}}
+				<option value="{{$v.Id}}">{{$v.Name}}</option>
+				{{end}}
+			</select>
+
+			<select id="channel" name="Channel" class="form-control">
+				<option value="">所有渠道</option>
+				 {{range $k, $v := .channelList}}
+				  	<option value="{{$v.Id}}">{{$v.Name}}</option>
+				  {{end}}
+			</select>
+
+			<div class="input-group date" id="startDate">
+	             <input type="text" class="form-control" name="StartDate" placeholder="开始时间">
+	             <span class="input-group-addon">
+	             <span class="glyphicon glyphicon-calendar"></span>
+	             </span>
+            </div>
+
+			<div class="input-group date" id="endDate">
+                 <input type="text" class="form-control" name="EndDate" placeholder="结束时间">
+                 <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                 </span>
+            </div>
+
+			<label class="checkbox-inline">
+      			<input type="checkbox" id="updateData" name="UpdateData" value="false">更新数据
+   			</label>
+
+   			<button type="button" class="btn btn-primary" id="okBtn">提交</button>
+         </div>
+      </form>
+   </div>
+</nav>
+
+<table style="margin-top:20px"class="table table-hover table-list" >
+	<thead>monokai
+	<tr>
+		<!--<th style="text-align:center" width="80">游戏ID</th>-->
+		<th style="text-align:center" width="80">游戏名</th>
+		<!--<th style="text-align:center" width="80">渠道ID</th>-->
+		<th style="text-align:center" width="80">渠道名</th>
+		<th style="text-align:center" width="100">登录用户</th>
+		<th style="text-align:center" width="100">新增用户</th>
+		<th style="text-align:center" width="100">设备激活</th>
+		<th style="text-align:center" width="150">日期</th>
+	</tr>
+	</thead>
+	<tbody >
+	{{range $k, $v := .userList}}
+		<tr>
+			<!--<td style="text-align:center">{{$v.ProductId}}</td>-->
+			<td style="text-align:center">{{$v.ProductName}}</td>
+			<!--<td style="text-align:center">{{$v.ChannelId}}</td>-->
+			<td style="text-align:center">{{$v.ChannelName}}</td>
+			<td style="text-align:center">{{$v.LoginRequestIdCount}}</td>
+			<td style="text-align:center">{{$v.UserCount}}</td>
+			<td style="text-align:center">{{$v.MobileCount}}</td>
+			<td style="text-align:center">{{date $v.Time "Y-m-d"}}</td>
+		</tr>
+	{{end}}
+	</tbody>
+	<tfoot>
+		<tr>
+			<td colspan="20">page</td>
+		</tr>
+	</tfoot>
+</table>
+	<script data-main="/static/scripts/userList" src="/static/bower_components/requirejs/require.js"></script>
+<script>
+// requirejs.config({
+//     //"baseUrl": "js",
+//     "paths": {
+//       "jquery": "http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min"
+//     }
+// });
+// requirejs(["jquery"], function($) {
+//     //the jquery.alpha.js and jquery.beta.js plugins have been loaded.
+//     $(function() {
+//     	console.log("test");
+//     	alert("test")
+//         // $('body').alpha().beta();
+//     });
+// });
+
+	//requirejs(["jquery"],function($){
+
+	    //$(function(){
+	    //	alert("load finished");
+	    // 	$("#okBtn").click(function(){
+	    // 		update = $("#updateData").prop('checked');
+
+	    // 		if (update) {
+	    // 			 ret = confirm('是否同步数据');
+	    // 			 $("#updateData").prop('value',ret);
+	    // 		}
+
+	    // 		// update = $("#updateData").prop('value');
+	    // 		// alert(update)
+	    // 		$('#queryForm').submit();
+	    // 	});
+	   // })
+	//});
+
+	//开始日期
+   // $(function () {
+   //              $('#startDate').datetimepicker(
+			// 	{
+			// 		locale: 'zh-cn',
+			// 		format:"YYYY-MM-DD",
+			// 		sideBySide:true
+			// 	});
+   //          });
+   //  //结束日期
+   // $(function () {
+   //              $('#endDate').datetimepicker(
+			// 	{
+			// 		locale: 'zh-cn',
+			// 		format:"YYYY-MM-DD",
+			// 		sideBySide:true
+			// 	});
+   //          });
+</script>
+

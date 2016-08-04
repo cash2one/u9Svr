@@ -122,10 +122,6 @@ func (this *PackageTaskHandle) Handle() (publishApk string) {
 	if err := tool.UnTar(channelTar, packagePath); err != nil {
 		panic(err)
 	}
-	beego.Trace("unTar:", u9sdkTar, packagePath)
-	if err := tool.UnTar(u9sdkTar, packagePath); err != nil {
-		panic(err)
-	}
 
 	beego.Trace("res handle...")
 	this.res.Handle()
@@ -147,6 +143,11 @@ func (this *PackageTaskHandle) Handle() (publishApk string) {
 
 	beego.Trace("buildId handle")
 	this.buildId.Handle()
+
+	beego.Trace("unTar:", u9sdkTar, packagePath)
+	if err := tool.UnTar(u9sdkTar, packagePath); err != nil {
+		panic(err)
+	}
 
 	beego.Trace("publishApk handle...")
 	publishApk = this.publish.Handle()

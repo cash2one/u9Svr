@@ -4,6 +4,114 @@
 		"selected_items":
 		[
 			[
+				"j",
+				"jquery.beta"
+			],
+			[
+				"jq",
+				"jquery.alpha"
+			],
+			[
+				"la",
+				"layoutName	string ν"
+			],
+			[
+				"Newor",
+				"NewOrmWithDB	orm.Ormer, error ƒ"
+			],
+			[
+				"new",
+				"NewOrm	orm.Ormer ƒ"
+			],
+			[
+				"B",
+				"Bytes	[]byte ƒ"
+			],
+			[
+				"fo",
+				"FormatInt	string ƒ"
+			],
+			[
+				"co",
+				"convErr	error ν"
+			],
+			[
+				"cl",
+				"clientExtParam	GetBalanceParam ν"
+			],
+			[
+				"channel",
+				"channelRetData	interface{} ν"
+			],
+			[
+				"Pay",
+				"PayRet	struct ʈ"
+			],
+			[
+				"ur",
+				"Url	string ν"
+			],
+			[
+				"re",
+				"Request	*http.Request ν"
+			],
+			[
+				"op",
+				"OpenKey	string ν"
+			],
+			[
+				"req",
+				"Request	common.Request ν"
+			],
+			[
+				"chann",
+				"channelOrderId	string ν"
+			],
+			[
+				"ex",
+				"extParamStr	string ν"
+			],
+			[
+				"du",
+				"DumpRequest	[]byte ƒ"
+			],
+			[
+				"d",
+				"DumpBody	*httplib.BeegoHTTPRequest ƒ"
+			],
+			[
+				"a",
+				"appId	string ν"
+			],
+			[
+				"o",
+				"OpenId	string ν"
+			],
+			[
+				"url",
+				"urlParamsBytes	[]byte ν"
+			],
+			[
+				"json",
+				"jsonInfo	*url.Values ν"
+			],
+			[
+				"cha",
+				"ChannelLog	string ν"
+			],
+			[
+				"or",
+				"orderRequest	models.OrderRequest ν"
+			],
+			[
+				"ch",
+				"ChannelLog	string ν"
+			],
+			[
+				"u",
+				"RequestURI	string ν"
+			],
+			[
 				"pr",
 				"Println	n int, err error ƒ"
 			],
@@ -28,28 +136,8 @@
 				"getChannelParam	ret string, err error ƒ"
 			],
 			[
-				"cha",
-				"channelRet	huaweiChannelRet ν"
-			],
-			[
-				"chann",
-				"channelRet	interface{} ν"
-			],
-			[
 				"chan",
 				"channelRet	lenovoChannelRet ν"
-			],
-			[
-				"req",
-				"Request	common.Request ν"
-			],
-			[
-				"re",
-				"Result	string ν"
-			],
-			[
-				"ex",
-				"extParamStr	string ν"
 			],
 			[
 				"En",
@@ -164,10 +252,6 @@
 				"err_parseChannelParam	 Ɩ"
 			],
 			[
-				"or",
-				"orderId	string ν"
-			],
-			[
 				"channelPa",
 				"channelParams	map[string]string ν"
 			],
@@ -226,10 +310,6 @@
 			[
 				"err_parsechanne",
 				"err_parseChannelPayKey	 Ɩ"
-			],
-			[
-				"channel",
-				"channelPayKey	string ν"
 			],
 			[
 				"parsechannel",
@@ -312,10 +392,6 @@
 				"parseChannelPayKey	err error ƒ"
 			],
 			[
-				"fo",
-				"Form	url.Values ν"
-			],
-			[
 				"de",
 				"Decode	n int, err error ƒ"
 			],
@@ -346,10 +422,6 @@
 			[
 				"U",
 				"Username	string ν"
-			],
-			[
-				"a",
-				"AppId	string ν"
 			],
 			[
 				"parseChannel",
@@ -412,16 +484,8 @@
 				"NewTencent	*Tencent ƒ"
 			],
 			[
-				"co",
-				"Code	int ν"
-			],
-			[
 				"Pa",
 				"Param	string ƒ"
-			],
-			[
-				"u",
-				"URL	string ƒ"
 			],
 			[
 				"time",
@@ -450,80 +514,83 @@
 			[
 				"ha",
 				"Handle	err error ƒ"
-			],
-			[
-				"parseChannelga",
-				"parseChannelGameKey	err error ƒ"
-			],
-			[
-				"parseGame",
-				"parseChannelGameKey	err error ƒ"
-			],
-			[
-				"app",
-				"appKey	string ν"
-			],
-			[
-				"pf",
-				"PfKey	string ν"
-			],
-			[
-				"op",
-				"OpenKey	string ν"
-			],
-			[
-				"for",
-				"format	 ν"
-			],
-			[
-				"res",
-				"Result	string ν"
-			],
-			[
-				"par",
-				"parseAppKey	key string ƒ"
-			],
-			[
-				"str",
-				"strlen	int ν"
-			],
-			[
-				"Cp",
-				"CPOrderid	string ν"
-			],
-			[
-				"channelG",
-				"parseChannelGameKey	err error ƒ"
-			],
-			[
-				"parseChannelGa",
-				"parseChannelGameKey	err error ƒ"
-			],
-			[
-				"c",
-				"CpOrderId	int ν"
-			],
-			[
-				"http",
-				"httplib	 package ρ"
-			],
-			[
-				"qm",
-				"QmyxData	struct ʈ"
-			],
-			[
-				"ch",
-				"ChOrderid	string ν"
 			]
 		]
 	},
 	"buffers":
 	[
 		{
-			"file": "sftp-config.json",
+			"file": "www/controllers/manager/statistic.go",
 			"settings":
 			{
-				"buffer_size": 1459,
+				"buffer_size": 13902,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "www/web/app/static/scripts/admin/main.js",
+			"settings":
+			{
+				"buffer_size": 193,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "www/static/scripts/userList.js",
+			"settings":
+			{
+				"buffer_size": 166,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/C/Users/jacky/Desktop/example-multipage-master/www/js/app/main1.js",
+			"settings":
+			{
+				"buffer_size": 366,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "www/views/manager/statistic_userlist1.html",
+			"settings":
+			{
+				"buffer_size": 4034,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "www/views/manager/layout1.html",
+			"settings":
+			{
+				"buffer_size": 2547,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "<!doctype html>\n<html lang=\"\">\n  <head>\n    <meta charset=\"utf-8\">\n    <meta name=\"description\" content=\"\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n    <title>abc</title>\n\n    <link rel=\"apple-touch-icon\" href=\"apple-touch-icon.png\">\n    <!-- Place favicon.ico in the root directory -->\n\n    <!-- build:css styles/vendor.css -->\n    <!-- bower:css -->\n    <link rel=\"stylesheet\" href=\"/bower_components/bootstrap/dist/css/bootstrap.css\" />\n    <link rel=\"stylesheet\" href=\"/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css\" />\n    <!-- endbower -->\n    <!-- endbuild -->\n\n    <!-- build:css styles/main.css -->\n    <link rel=\"stylesheet\" href=\"styles/main.css\">\n    <!-- endbuild -->\n    \n  </head>\n  <body>\n    <!--[if lt IE 10]>\n      <p class=\"browserupgrade\">You are using an <strong>outdated</strong> browser. Please <a href=\"http://browsehappy.com/\">upgrade your browser</a> to improve your experience.</p>\n    <![endif]-->\n    \n    <div class=\"container\">\n      <div class=\"header\">\n        <ul class=\"nav nav-pills pull-right\">\n          <li class=\"active\"><a href=\"#\">Home</a></li>\n          <li><a href=\"#\">About</a></li>\n          <li><a href=\"#\">Contact</a></li>\n        </ul>\n        <h3 class=\"text-muted\">abc</h3>\n      </div>\n\n      <div class=\"jumbotron\">\n        <h1>'Allo, 'Allo!</h1>\n        <p class=\"lead\">Always a pleasure scaffolding your apps.</p>\n        <p><a class=\"btn btn-lg btn-success\" href=\"#\">Splendid!</a></p>\n      </div>\n\n      <div class=\"row marketing\">\n        <div class=\"col-lg-6\">\n          <h4>HTML5 Boilerplate</h4>\n          <p>HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites.</p>\n\n          <h4>Bootstrap</h4>\n          <p>Sleek, intuitive, and powerful mobile first front-end framework for faster and easier web development.</p>\n        </div>\n      </div>\n\n      <div class=\"footer\">\n        <p>♥ from the Yeoman team</p>\n      </div>\n    </div>\n\n    <!-- build:js scripts/vendor.js -->\n    <!-- bower:js -->\n    <script src=\"/bower_components/jquery/dist/jquery.js\"></script>\n    <script src=\"/bower_components/moment/moment.js\"></script>\n    <script src=\"/bower_components/moment-timezone/builds/moment-timezone-with-data-2010-2020.js\"></script>\n    <script src=\"/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js\"></script>\n    <!-- endbower -->\n    <!-- endbuild -->\n\n    <!-- build:js scripts/plugins.js -->\n    <script src=\"/bower_components/bootstrap/js/affix.js\"></script>\n    <script src=\"/bower_components/bootstrap/js/alert.js\"></script>\n    <script src=\"/bower_components/bootstrap/js/dropdown.js\"></script>\n    <script src=\"/bower_components/bootstrap/js/tooltip.js\"></script>\n    <script src=\"/bower_components/bootstrap/js/modal.js\"></script>\n    <script src=\"/bower_components/bootstrap/js/transition.js\"></script>\n    <script src=\"/bower_components/bootstrap/js/button.js\"></script>\n    <script src=\"/bower_components/bootstrap/js/popover.js\"></script>\n    <script src=\"/bower_components/bootstrap/js/carousel.js\"></script>\n    <script src=\"/bower_components/bootstrap/js/scrollspy.js\"></script>\n    <script src=\"/bower_components/bootstrap/js/collapse.js\"></script>\n    <script src=\"/bower_components/bootstrap/js/tab.js\"></script>\n    <!-- endbuild -->\n\n    <!-- build:js scripts/main.js -->\n    <script src=\"scripts/main.js\"></script>\n    <!-- endbuild -->\n  </body>\n</html>\n",
+			"file": "www/web/app/index.html",
+			"file_size": 3532,
+			"file_write_time": 131134035654519963,
+			"settings":
+			{
+				"buffer_size": 3530,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "www/web/app/manager/layout1.html",
+			"settings":
+			{
+				"buffer_size": 2530,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "www/web/app/manager/statistic_userlist1.html",
+			"settings":
+			{
+				"buffer_size": 4217,
 				"line_ending": "Windows"
 			}
 		}
@@ -571,10 +638,66 @@
 	"build_varint": "",
 	"command_palette":
 	{
-		"height": 490.0,
-		"last_filter": "",
+		"height": 109.0,
+		"last_filter": "install package",
 		"selected_items":
 		[
+			[
+				"install package",
+				"Package Control: Install Package"
+			],
+			[
+				"package",
+				"Package Control: Remove Package"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"markdown",
+				"Set Syntax: Markdown Extended"
+			],
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"list",
+				"Package Control: List Packages"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"pack",
+				"Package Control: List Packages"
+			],
+			[
+				"page list",
+				"Package Control: List Packages"
+			],
+			[
+				"pageinstall",
+				"Package Control: Install Package"
+			],
+			[
+				"pci",
+				"Package Control: Install Package"
+			],
+			[
+				"package ",
+				"Package Control: List Packages"
+			],
+			[
+				"package in",
+				"Package Control: Install Package"
+			],
 			[
 				"",
 				"Build With: Go - Run"
@@ -582,10 +705,6 @@
 			[
 				"remove",
 				"Package Control: Remove Package"
-			],
-			[
-				"install",
-				"Package Control: Install Package"
 			],
 			[
 				"gosublime",
@@ -596,7 +715,7 @@
 				"Package Control: Install Package"
 			]
 		],
-		"width": 593.0
+		"width": 564.0
 	},
 	"console":
 	{
@@ -617,152 +736,181 @@
 	},
 	"expanded_folders":
 	[
-		"/D/go/src/u9",
-		"/D/go/src/u9/api",
-		"/D/go/src/u9/api/channel",
-		"/D/go/src/u9/api/channel/notify",
-		"/D/go/src/u9/api/common"
+		"/D/go/src/u9/www",
+		"/D/go/src/u9/www/conf",
+		"/D/go/src/u9/www/static",
+		"/D/go/src/u9/www/static/scripts",
+		"/D/go/src/u9/www/views/common",
+		"/D/go/src/u9/www/views/manager",
+		"/D/go/src/u9/www/web",
+		"/D/go/src/u9/www/web/bower_components",
+		"/D/go/src/u9/www/web/bower_components/requirejs",
+		"/C/Users/jacky/Desktop/example-multipage-master",
+		"/C/Users/jacky/Desktop/example-multipage-master/www",
+		"/C/Users/jacky/Desktop/example-multipage-master/www/js",
+		"/C/Users/jacky/Desktop/example-multipage-master/www/js/app"
 	],
 	"file_history":
 	[
-		"/D/go/src/u9/api/channel/notify/pay/common-base.go",
-		"/D/go/src/u9/api/channel/notify/pay/qihoo360-334.go",
-		"/D/go/src/u9/api/channel/notify/pay/md5_qihoo360.go",
-		"/D/go/src/u9/api/channel/notify/pay/rsa-oppo.go",
-		"/D/go/src/u9/tool/rsa.go",
-		"/D/go/src/u9/sftp-config.json",
-		"/D/go/src/u9/api/channel/notify/pay/common-crypto.go",
-		"/d/go/src/u9/api/channel/api/loginRequest/anzhi.go",
-		"/D/go/src/u9/api/channel/api/loginRequest/guopan.go",
-		"/D/go/src/u9/api/channel/notify/pay/md5-m4399.go",
-		"/D/go/src/u9/api/channel/notify/pay/md5-guopan.go",
-		"/D/go/src/u9/api/channel/notify/pay/base-coolpad.go",
-		"/D/go/src/u9/tool/url.go",
-		"/C/Users/jacky/Desktop/ou.svg",
-		"/D/go/src/u9/test/test.go",
-		"/D/go/src/u9/api/channel/api/createOrder/coolpad.go",
-		"/D/go/src/u9/api/channel/api/createOrder/base.go",
-		"/D/go/src/u9/api/channel/notify/pay/base-yyh.go",
-		"/c/go/src/encoding/json/encode.go",
-		"/D/go/src/u9/tool/sign.go",
-		"/D/go/src/u9/api/channel/api/api.go",
-		"/d/go/src/u9/api/controllers/pay/payRequest.go",
-		"/c/go/src/net/url/url.go",
-		"/D/go/src/u9/api/controllers/login/lrBefore/base.go",
-		"/D/go/src/u9/api/controllers/login/lrBefore/coolpad.go",
-		"/D/go/src/u9/api/controllers/login/loginRequest.go",
-		"/D/go/src/u9/api/controllers/login/lrBefore/coolpad1.go",
-		"/D/go/src/u9/api/channel/api/loginRequest/yijie.go",
-		"/D/go/src/u9/api/controllers/login/lrBefore/huawei.go",
-		"/D/go/src/u9/models/packageParam.go",
-		"/d/go/src/u9/api/controllers/login/lrBefore/lenovo.go",
-		"/d/go/src/u9/api/controllers/login/lrBefore/xmw.go",
-		"/D/go/src/u9/api/controllers/login/lrBefore/qihoo360.go",
-		"/D/go/src/u9/api/common/request.go",
-		"/D/go/src/u9/api/channel/api/createOrder/amigo.go",
-		"/D/go/src/u9/api/controllers/login/validateLogin.go",
-		"/D/go/src/u9/api/channel/api/loginRequest/oppo.go",
-		"/D/go/src/u9/api/controllers/pay/payRequest.go",
-		"/d/go/src/u9/api/channel/notify/pay/common-base.go",
-		"/D/go/src/u9/api/channel/api/loginRequest/coolpad.go",
-		"/D/go/src/u9/api/channel/notify/pay/pay.go",
-		"/D/go/src/u9/api/channel/api/loginRequest/yyh.go",
-		"/D/go/src/u9/tool/icon.go",
-		"/d/go/src/u9/www/android/icon.go",
-		"/c/go/src/image/image.go",
-		"/c/go/src/image/color/color.go",
-		"/c/go/src/image/png/paeth.go",
-		"/c/go/src/image/png/writer.go",
-		"/c/go/src/compress/zlib/writer.go",
-		"/c/go/src/archive/zip/example_test.go",
-		"/D/go/src/u9/api/channel/api/createOrder/tencent.go",
-		"/D/go/src/u9/api/controllers/login/lrBefore/param.go",
-		"/D/go/src/u9/api/controllers/login/base.go",
-		"/D/go/src/u9/api/channel/notify/pay/base-test.go",
-		"/D/go/src/u9/api/channel/notify/pay/md5-baidu.go",
-		"/D/go/src/u9/api/channel/notify/pay/md5-gfan.go",
-		"/c/go/src/crypto/rsa/example_test.go",
-		"/c/go/src/crypto/tls/handshake_server.go",
-		"/c/go/src/crypto/crypto.go",
-		"/c/go/src/crypto/rsa/pkcs1v15.go",
-		"/c/go/src/crypto/x509/x509.go",
-		"/D/go/src/u9/tool/rsa_test.go",
-		"/D/go/src/u9/api/channel/api/createOrder/huawei.go",
-		"/D/go/src/u9/tool/randomStr_test.go",
-		"/c/go/src/crypto/tls/key_agreement.go",
-		"/c/go/src/crypto/tls/prf.go",
-		"/c/go/src/crypto/tls/common.go",
-		"/c/go/src/crypto/rsa/pkcs1v15_test.go",
-		"/d/go/src/u9/api/channel/notify/pay/base-mumayi.go",
-		"/d/go/src/u9/api/channel/notify/pay/base-tt.go",
-		"/d/go/src/u9/api/channel/notify/pay/base-xiaomi.go",
-		"/D/go/src/u9/api/channel/notify/pay/rsa-lenovo.go",
-		"/C/go/src/crypto/x509/x509.go",
-		"/D/go/src/u9/tool/android/apk.go",
-		"/D/go/src/u9/api/channel/api/loginRequest/base.go",
-		"/D/go/src/u9/api/common/common.go",
-		"/D/go/src/u9/api/channel/notify/pay/md5-yijie.go",
-		"/D/go/src/u9/api/channel/notify/pay/trade-check.go",
-		"/D/go/src/u9/api/channel/notify/pay/trade-parse.go",
+		"/D/go/src/u9/www/web/dist/scripts/main.js",
+		"/D/go/src/u9/www/static/scripts/userList.js",
+		"/D/go/src/u9/www/conf/app.conf",
+		"/D/go/src/u9/www/static/themes/admin/css/admin.css",
+		"/D/go/src/u9/www/web/bower_components/bootstrap/dist/css/bootstrap.css",
+		"/D/go/src/u9/www/web/bower_components/bootstrap/dist/css/bootstrap.css.map",
+		"/D/go/src/u9/www/web/app/styles/main.css",
+		"/D/go/src/u9/www/web/.tmp/styles/main.css",
+		"/D/go/src/u9/www/web/app/scripts/main.js",
+		"/D/go/src/u9/www/static/scripts/common.js",
+		"/D/go/src/u9/www/static/www/js/app.js",
+		"/D/go/src/u9/www/static/www/js/app/main.js",
+		"/D/go/src/u9/www/static/www/app.html",
+		"/D/go/src/u9/www/static/main.js",
+		"/C/Users/jacky/Desktop/example-jquery-shim-master/www/js/app.js",
+		"/C/Users/jacky/Desktop/create-template-master/www/app/messages.js",
+		"/C/Users/jacky/Desktop/example-jquery-cdn-master/www/app.html",
+		"/C/Users/jacky/Desktop/example-jquery-cdn-master/www/js/app/main.js",
+		"/C/Users/jacky/Desktop/example-jquery-cdn-master/www/js/app.js",
+		"/C/Users/jacky/Desktop/example-jquery-cdn-master/www/js/lib/require.js",
+		"/D/go/src/u9/www/views/manager/statistic_userlist.html",
+		"/D/go/src/u9/www/static/bower_components/moment/min/moment-with-locales.js",
+		"/D/go/src/u9/www/static/bower_components/spin.js/spin.js",
+		"/D/go/src/u9/www/static/bootstrap/js/bootstrap-datetimepicker.js",
+		"/D/go/src/u9/www/static/bower_components/moment/min/moment-with-locales.min.js",
+		"/D/go/src/u9/www/static/bower_components/bootstrap/dist/css/bootstrap.min.css",
+		"/D/go/src/u9/www/static/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css",
+		"/D/go/src/u9/www/static/bower_components/font-awesome/css/font-awesome.min.css",
+		"/D/go/src/u9/www/static/node_modules/express/node_modules/connect/lib/middleware/static.js",
+		"/D/go/src/u9/www/static/bower_components/bootstrap-datetimepicker/src/js/bootstrap-datetimepicker.js",
+		"/C/Users/jacky/AppData/Roaming/Sublime Text 3/Packages/User/SFTP.sublime-settings",
+		"/D/go/src/u9/www/static/bower_components/moment-timezone/bower.json",
+		"/D/go/src/u9/www/static/bower_components/moment-timezone/moment-timezone.js",
+		"/D/go/src/u9/www/static/bower_components/bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js",
+		"/D/go/src/u9/www/views/manager/layout.html",
+		"/D/go/src/u9/www/static/bower_components/jquery/dist/jquery.min.js",
+		"/C/Users/jacky/AppData/Roaming/Sublime Text 3/Packages/User/SFTP.errors.log",
+		"/C/Users/jacky/abc/gulpfile.js",
+		"/C/Users/jacky/abc/bower_components/bootstrap-datetimepicker/README.md",
+		"/C/Users/jacky/abc/bower_components/moment/src/moment.js",
+		"/C/Users/jacky/abc/bower_components/bootstrap-datetimepicker/src/js/bootstrap-datetimepicker.js",
+		"/C/Users/jacky/abc/bower_components/bootstrap-datetimepicker/src/js/locales/bootstrap-datetimepicker.zh-CN.js",
+		"/C/Users/jacky/abc/bower_components/bootstrap-datetimepicker/src/js/locales/bootstrap-datetimepicker.th.js",
+		"/C/Users/jacky/abc/bower_components/bootstrap-datetimepicker/src/less/bootstrap-datetimepicker.less",
+		"/C/Users/jacky/abc/bower_components/moment/README.md",
+		"/C/Users/jacky/abc/bower_components/spin.js/spin.js",
+		"/D/go/src/u9/www/static/js/spin.min.js",
+		"/C/Users/jacky/abc/bower_components/spin.js/spin.min.js",
+		"/D/go/src/u9/www/static/bootstrap/js/moment-with-locales.js",
+		"/C/Users/jacky/AppData/Roaming/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/C/Users/jacky/abc/bower.json",
+		"/C/Users/jacky/abc/.yo-rc.json",
+		"/C/Users/jacky/abc/.gitattributes",
+		"/C/Users/jacky/abc/.editorconfig",
+		"/C/Users/jacky/abc/.bowerrc",
+		"/C/Users/jacky/abc/.babelrc",
+		"/C/Users/jacky/test/test/index.html",
+		"/C/Users/jacky/test/test/spec/test.js",
+		"/C/Users/jacky/test/gulpfile.js",
+		"/C/Users/jacky/AppData/Roaming/Sublime Text 3/Packages/User/SideBarEnhancements/Open With/Side Bar.sublime-menu",
+		"/C/Users/jacky/AppData/Roaming/Sublime Text 3/Packages/SublimeCodeIntel/SublimeCodeIntel.sublime-settings",
+		"/C/Users/jacky/AppData/Roaming/Sublime Text 3/Packages/SublimeCodeIntel/.no-sublime-package",
+		"/C/Users/jacky/Desktop/h5bp-html5-boilerplate-3cd1967/doc/js.md",
+		"/C/Users/jacky/Desktop/h5bp-html5-boilerplate-3cd1967/doc/usage.md",
+		"/D/go/src/u9/www/android/asset.go",
+		"/D/go/src/u9/www/controllers/test/base.go",
+		"/D/go/src/u9/www/routers/router.go",
+		"/D/go/src/github.com/astaxie/beego/orm/orm_log.go",
+		"/D/go/src/github.com/astaxie/beego/orm/db.go",
+		"/D/go/src/github.com/astaxie/beego/orm/README.md",
+		"/D/go/src/github.com/astaxie/beego/orm/db_utils.go",
+		"/D/go/src/github.com/astaxie/beego/orm/qb_mysql.go",
+		"/D/go/src/github.com/astaxie/beego/orm/orm_test.go",
+		"/c/go/src/database/sql/sql.go",
+		"/D/go/src/github.com/astaxie/beego/orm/orm_raw.go",
+		"/D/go/src/github.com/astaxie/beego/orm/types.go",
+		"/D/go/src/github.com/astaxie/beego/orm/orm.go",
+		"/D/go/src/u9/www/views/test/test.html",
+		"/D/go/src/u9/www/controllers/manager/base.go",
+		"/D/go/src/u9/www/controllers/manager/index.go",
+		"/D/go/src/github.com/astaxie/beego/template.go",
 		"/D/go/src/github.com/astaxie/beego/controller.go",
-		"/D/go/src/github.com/astaxie/beego/context/input.go",
-		"/D/go/src/u9/api/controllers/pay/channelPayNotify.go",
-		"/D/go/src/u9/api/channel/notify/pay/rsa-htc.go",
-		"/D/go/src/u9/api/controllers/pay/getNewChannel.go",
-		"/D/go/src/u9/api/channel/notify/pay/rsa-wandoujia.go",
-		"/D/go/src/u9/api/channel/notify/pay/md5-qmyx.go",
-		"/D/go/src/u9/api/channel/notify/pay/md5-pengyouwan.go",
-		"/D/go/src/u9/api/channel/notify/pay/md5-jiuyou.go",
-		"/D/go/src/u9/api/channel/notify/pay/md5-c07073.go",
+		"/D/go/src/u9/sftp-config.json",
+		"/D/go/src/github.com/astaxie/beego/log.go",
+		"/D/go/src/github.com/astaxie/beego/logs/log.go",
+		"/D/go/src/github.com/astaxie/beego/logs/console.go",
+		"/c/go/src/runtime/extern.go",
+		"/c/go/src/log/log.go",
+		"/c/go/src/sync/pool.go",
+		"/D/go/src/github.com/astaxie/beego/logs/file_test.go",
+		"/D/go/src/github.com/astaxie/beego/logs/conn.go",
+		"/c/go/src/regexp/regexp.go",
+		"/D/go/src/u9/test/test.go",
+		"/c/go/src/strconv/ftoa.go",
+		"/c/go/src/builtin/builtin.go",
+		"/c/go/src/strconv/quote.go",
+		"/c/go/src/bufio/bufio.go",
+		"/c/go/src/unicode/tables.go",
+		"/c/go/src/unicode/letter.go",
+		"/c/go/src/bufio/scan.go",
+		"/C/go/src/bufio/example_test.go",
+		"/D/go/src/u9/www/views/manager/login.html",
+		"/c/go/src/strconv/itoa.go",
+		"/C/go/src/bytes/bytes.go",
+		"/c/go/src/unicode/utf8/utf8.go",
+		"/c/go/src/strconv/atoi.go",
+		"/c/go/src/strings/strings.go",
+		"/D/go/src/golang.org/x/tools/imports/zstdlib.go",
+		"/c/go/src/fmt/print.go",
 		"/D/go/src/u9/api/channel/notify/pay/base-tencent.go",
-		"/D/go/src/u9/api/channel/notify/pay/base-tt.go",
-		"/D/go/src/u9/api/channel/notify/pay/base-anzhi.go",
-		"/D/go/src/u9/api/channel/notify/pay/md5-letv.go",
-		"/c/go/src/net/http/request.go",
-		"/D/go/src/github.com/astaxie/beego/context/context.go",
-		"/D/go/src/github.com/gin-gonic/gin/binding/form.go",
-		"/D/go/src/u9/api/controllers/base.go",
-		"/D/go/src/u9/tool/log.go",
-		"/D/go/src/u9/api/channel/notify/pay/common-define.go",
-		"/c/go/src/crypto/x509/x509_test.go",
-		"/c/go/src/encoding/pem/pem.go",
-		"/D/go/src/u9/api/channel/api/loginRequest/gfan.go",
-		"/D/go/src/u9/api/channel/notify/pay/md5-zhuoyi.go",
-		"/D/go/src/u9/api/channel/api/loginRequest/mumayi.go",
-		"/D/go/src/u9/api/channel/notify/pay/md5-youlong.go",
-		"/D/go/src/u9/api/channel/notify/pay/rsa-amigo.go",
-		"/D/go/src/u9/api/channel/notify/pay/rsa-huawei.go",
-		"/D/go/src/u9/tool/des.go",
-		"/D/go/src/u9/api/channel/notify/pay/base-mumayi.go",
+		"/D/go/src/u9/www/views/cp/login.html",
+		"/D/go/src/u9/www/views/cp/layout.html",
+		"/D/go/src/u9/www/views/manager/cp_list.html",
+		"/D/go/src/u9/www/views/cp/product_list.html",
+		"/D/go/src/u9/www/views/cp/package_list.html",
+		"/D/go/src/u9/www/static/js/lightGallery.min.js",
+		"/D/go/src/u9/www/static/themes/admin/css/lightGallery.css",
 		"/D/go/src/u9/api/channel/notify/pay/md5-anFeng.go",
-		"/D/go/src/u9/api/channel/notify/pay/md5-ccpay.go",
-		"/D/go/src/u9/api/channel/notify/pay/md5-cygame.go",
-		"/D/go/src/u9/api/channel/notify/pay/md5-dangle.go",
-		"/D/go/src/u9/api/channel/notify/pay/md5-haimawan.go",
-		"/D/go/src/u9/api/channel/notify/pay/md5-kaopu.go",
-		"/D/go/src/u9/api/channel/notify/pay/md5-mango.go",
-		"/D/go/src/u9/api/channel/notify/pay/md5-meizu.go",
-		"/D/go/src/u9/api/channel/notify/pay/md5-mzw.go",
-		"/D/go/src/u9/api/channel/notify/pay/md5-pptv.go",
-		"/D/go/src/u9/api/channel/notify/pay/md5-qikqik.go",
-		"/D/go/src/u9/api/channel/notify/pay/md5-shoumeng.go",
-		"/D/go/src/u9/api/channel/notify/pay/md5-snail.go",
-		"/D/go/src/u9/api/channel/notify/pay/md5-sogou.go",
-		"/D/go/src/u9/api/channel/notify/pay/md5-vivo.go",
-		"/D/go/src/u9/api/channel/notify/pay/md5-xcs.go",
-		"/D/go/src/u9/api/channel/notify/pay/md5-xmw.go",
-		"/D/go/src/u9/api/channel/notify/pay/base-xiaomi.go",
-		"/D/go/src/u9/tool/encrypt.go"
+		"/D/go/src/u9/api/channel/notify/pay/common-base.go",
+		"/D/go/src/u9/api/channel/third/ysdk/pay.go",
+		"/D/go/src/u9/api/channel/notify/pay/base-anzhi.go",
+		"/D/go/src/u9/api/channel/notify/pay/pay.go",
+		"/D/go/src/u9/api/channel/api/api.go",
+		"/D/go/src/u9/www/controllers/cp/product.go",
+		"/D/go/src/u9/www/common/pager.go",
+		"/d/go/src/github.com/astaxie/beego/orm/qb.go",
+		"/D/go/src/u9/www/main.go",
+		"/D/go/src/u9/api/channel/api/createOrder/tencent.go"
 	],
 	"find":
 	{
-		"height": 52.0
+		"height": 55.0
 	},
 	"find_in_files":
 	{
 		"height": 144.0,
 		"where_history":
 		[
+			"D:\\go\\src\\u9\\www\\static\\bower_components",
+			"C:\\Users\\jacky\\abc\\bower_components",
+			"C:\\Users\\jacky\\abc\\bower_components\\bootstrap-datetimepicker",
+			"D:\\go\\src\\u9\\www\\static\\bootstrap",
+			"D:\\go\\src\\github.com\\astaxie\\beego\\",
+			"D:\\go\\src\\github.com\\astaxie\\beego\\logs",
+			"d:\\go\\src\\",
+			"C:\\go\\src\\",
+			"D:\\go\\src\\",
+			"D:\\go\\src\\u9\\api",
+			"D:\\go\\src\\u9",
+			"9\\D:\\go\\src\\u9",
+			"9\\D:\\go\\src\\u9\\www",
+			"D:\\go\\src\\",
+			"D:\\go\\src\\u9\\",
+			"D:\\go\\src\\u9\\www\\",
+			"D:\\go\\src\\u9\\api\\channel\\notify\\pay",
+			"d:\\go\\src\\",
+			"d:\\go\\src\\u9\\api",
+			"d:\\go\\src\\",
+			"d:\\go\\src\\u9\\api\\",
 			"d:\\go\\src\\u9\\api\\channel\\notify\\pay",
 			"d:\\go\\src\\u9\\api\\notify\\pay",
 			"d:\\go\\src\\u9\\api",
@@ -869,28 +1017,7 @@
 			"D:\\go\\src\\github.com\\89hmdys\\toast",
 			"c:\\go\\src\\,D:\\go\\src",
 			"c:\\go\\src\\os\\",
-			"C:\\go\\src\\u9",
-			"C:\\go\\src\\",
-			"C:\\go\\src\\os",
-			"D:\\go\\src\\",
-			"D:\\go\\src\\u9\\www\\android",
-			"D:\\go\\src\\u9",
-			"D:\\go\\",
-			"D:\\go\\src\\",
-			"D:\\go\\src\\u9Svr",
-			"D:\\go\\src\\",
-			"D:\\go\\src\\u9",
-			"D:\\go\\src\\",
-			"D:\\go\\src\\,D:\\go\\src\\github.com",
-			"D:\\go\\src\\",
-			"D:\\go\\src\\u9Svr\\controllers\\api\\channel",
-			"D:\\go\\src\\",
-			"D:\\go\\src\\u9Svr\\",
-			"d:\\go\\src\\",
-			"d:\\go\\src\\github.com\\astaxie\\beego\\orm",
-			"D:\\go\\src\\github.com\\",
-			"D:\\go\\src\\github.com\\jxufeliujj\\blog\\",
-			"D:\\go\\src\\blog"
+			"C:\\go\\src\\u9"
 		]
 	},
 	"find_state":
@@ -898,134 +1025,134 @@
 		"case_sensitive": true,
 		"find_history":
 		[
-			"this.channelParams[\"_payKey\"]",
-			"this.channelParams[\"payKey\"]",
-			"this.channelParams[\\\"payKey\\\"]",
-			"this.channelParams[\"payKey\"]",
-			"payKey",
-			"_payKey",
-			"payKey",
-			"\"_payKey\"",
-			"\"payKey\"",
-			"payKey",
-			"_payKey",
-			"productSignContent",
+			"pipelineId",
+			"plugin",
+			"lib",
+			"static",
+			"queryForm",
+			"submit",
+			"yes",
+			"define",
+			"moment-with-locales.min.js",
+			"define",
+			"moment-timezone",
+			"\\",
+			"dateToDate",
+			"datetimepicker",
+			"now",
+			"min",
+			"getCalendarFormat",
+			"moment",
+			"form-horizontal",
+			"				",
+			"nav-header",
+			"navbar-header",
+			"header",
+			"nav",
+			"nav-header",
+			"header",
+			"display",
+			".pagebar",
+			"clCount",
+			"productList",
+			"UpdateUserList",
+			"RowsAffected",
+			"Prepare",
+			"GetDB",
+			"RunSyncdb",
+			"RowsAffected",
+			"BeeTemplates",
+			"Data[\"",
+			"LayoutContent",
+			".",
+			"Layout",
+			"layoutName",
+			"Index",
+			"colors",
+			"out",
+			"flag",
+			"loggerType",
+			"Async",
+			"startLogger",
+			"logMsgPool",
+			"msgChan",
+			"writeToLoggers",
+			"lg",
+			"Logger",
+			"Register",
+			"adapters",
+			"loggerType",
+			"adapters",
+			"outputs",
+			"Logger",
+			"consoleWriter",
+			"Destroy",
+			"nameLogger",
+			"Logger",
+			"lock",
+			"outputs",
+			"writeToLoggers",
+			"msgChan",
+			"asynchronous",
+			"logMsgPool",
+			"Error",
+			"FullRune",
+			"ScanLines",
+			"advance",
+			"split",
+			"Split",
+			"split",
+			"Split",
+			"NewScanner",
+			"TrimFunc",
+			"ParseInt",
+			"ParseUint",
+			"ParseInt",
+			"unicode",
+			"post",
+			"Where",
+			"exc",
+			"exe",
+			"remember",
+			"bootstrap-datetimepicker.min",
+			"admin.css",
+			"lightGallery",
+			"Amt",
+			"exChangeRatio",
+			"CheckChannelRet",
 			"Dump",
-			"gameKey",
-			"verifyPKCS1v15",
-			"strings.Replace",
-			"YYH_PRIVATEKEY",
-			"Marshal",
-			"coolPadExtParam",
-			"CallCreateOrder",
-			"appId",
-			"GetXmlParam",
-			"rsaPrivateKey",
-			"amigoRsaPrivateKey",
-			"getChannelParam",
-			"parseAppKey",
-			"huaweiExtParam",
-			"extParamStr",
-			"AppExt",
-			"Meizu",
-			"Result",
-			"_gameKey",
-			"YYH",
-			"yyhTradeData_700",
-			"YYH",
-			"channelRet",
-			"writeImage",
-			"writeImage\n",
-			"writeIDATs",
-			"levelToZlib",
-			"BestCompression",
-			"Stride",
-			"Set",
-			"RGBAAt",
-			"ColorModel",
-			"Encode",
-			"png",
-			"beego",
-			"GenerateImage",
-			"parseChannelParam",
-			"Dump",
-			"productKey",
-			"productContent",
-			"signContext",
-			"productKey",
-			"Dump",
-			"productKey",
-			"gameNotifyUrl",
-			"initProductKey",
-			"err_initChannelParam",
-			"VerifyPKCS1v15",
-			"hashFunc",
-			":",
-			"CheckSignature",
-			"checkSignature",
-			"lookupTLSHash",
-			"hashSHA1",
-			"hashFunc",
-			"VerifyPKCS1v15",
-			"gameNotifyUrl",
-			"notifyUrl",
-			"ProductCode",
-			"Base.CheckSign",
-			"MD5withRSA",
-			"Get",
-			"Request.Form",
-			"st",
+			"Subquery",
+			"channelTradeData.Amount",
+			"pay",
+			"clientChannelRet",
+			"cancelPayParam",
 			"channelTradeData",
-			"checkChannelOrderId",
-			"checkPayAmount",
-			"paramKeys",
-			"checkChannelUserId",
-			"checkOrderId",
-			"dumpUrlTradeParam",
-			"publishChannelId",
-			"ParseChannelRet",
-			"json",
-			"channelRet",
-			"json",
-			"publishChannelId",
-			"prepareLoginRequest",
-			"loginRequest",
-			"publishChannelId",
-			"com.snowfish.appid",
-			"beforeHandle",
-			"Input",
-			"gameNotifyUrl",
-			"Input()",
-			"CallPayNotify",
+			"Base.CheckChannelRet",
+			"CheckChannelRet",
+			"cancelPay",
+			",",
+			"clearBalance",
+			"payParam",
+			"payRet",
+			"GetParamName",
+			"tencentTradeData_1",
+			"ChannelUserId",
+			"channelParamKeys",
+			"extParam",
+			"clientExtParam",
+			"GetBalanceRet",
+			"PayRet",
+			"GetGetBalanceUrl",
+			"Header",
+			"defer",
 			"Dump",
-			"Request",
-			"PostForm",
-			"Input",
-			"DumpCtx",
-			"Ctx",
-			"checkPackageParam",
-			"CallCreateOrder",
-			"checkPackageParam",
-			"testChannelId",
-			"checkPackageParam",
-			"BaseController",
-			"handleSpecialToken",
-			"beforeHandle",
-			"code",
-			"initChannelParam",
-			"getChannelParam",
-			"initChannelParam",
-			"ApiVerKeyName",
-			"channelAPIVerion",
-			"_version",
-			"yyhTradeData_620",
-			"SignPKCS1v15",
-			"csrBase64Array",
-			"MD5withRSA",
-			"cporderid",
-			"transtype",
-			"api.appchina.com",
-			"YYH_APPKEY"
+			"channelRet",
+			"channelOrderId",
+			"orderId",
+			"Dump",
+			"appId",
+			"this.payKey",
+			"this.appId"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1171,32 +1298,172 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 3,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "sftp-config.json",
-					"semi_transient": true,
+					"file": "www/controllers/manager/statistic.go",
+					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1459,
+						"buffer_size": 13902,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								344,
-								344
+								6586,
+								6586
 							]
 						],
 						"settings":
 						{
+							"auto_complete_triggers":
+							[
+								{
+									"characters": ".",
+									"selector": "source.go"
+								},
+								{
+									"characters": ".#",
+									"selector": "text.html"
+								}
+							],
+							"color_scheme": "Packages/Monokai Extended/Monokai Extended.tmTheme",
 							"incomplete_sync": null,
 							"remote_loading": false,
 							"synced": false,
-							"syntax": "Packages/JavaScript/JSON.sublime-syntax",
+							"syntax": "Packages/GoSublime/syntax/GoSublime-Go.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 7854.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "www/web/app/static/scripts/admin/main.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 193,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								193,
+								193
+							]
+						],
+						"settings":
+						{
+							"auto_complete_triggers":
+							[
+								{
+									"characters": ".",
+									"selector": "source.go"
+								},
+								{
+									"characters": ".#",
+									"selector": "text.html"
+								}
+							],
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "www/static/scripts/userList.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 166,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								161,
+								161
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"auto_complete_triggers":
+							[
+								{
+									"characters": ".",
+									"selector": "source.go"
+								},
+								{
+									"characters": ".#",
+									"selector": "text.html"
+								}
+							],
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "/C/Users/jacky/Desktop/example-multipage-master/www/js/app/main1.js",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 366,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"auto_complete_triggers":
+							[
+								{
+									"characters": ".",
+									"selector": "source.go"
+								},
+								{
+									"characters": ".#",
+									"selector": "text.html"
+								}
+							],
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
@@ -1205,6 +1472,233 @@
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "www/views/manager/statistic_userlist1.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4034,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2750,
+								2750
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"auto_complete_triggers":
+							[
+								{
+									"characters": ".",
+									"selector": "source.go"
+								},
+								{
+									"characters": ".#",
+									"selector": "text.html"
+								}
+							],
+							"color_scheme": "Packages/Monokai Extended/Monokai Extended.tmTheme",
+							"incomplete_sync": null,
+							"is_xml": false,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "www/views/manager/layout1.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2547,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								216,
+								216
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"auto_complete_triggers":
+							[
+								{
+									"characters": ".",
+									"selector": "source.go"
+								},
+								{
+									"characters": ".#",
+									"selector": "text.html"
+								}
+							],
+							"color_scheme": "Packages/Monokai Extended/Monokai Extended.tmTheme",
+							"incomplete_sync": null,
+							"is_xml": false,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "www/web/app/index.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3530,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2461,
+								2461
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"auto_complete_triggers":
+							[
+								{
+									"characters": ".",
+									"selector": "source.go"
+								},
+								{
+									"characters": ".#",
+									"selector": "text.html"
+								}
+							],
+							"incomplete_sync": null,
+							"is_xml": false,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1836.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "www/web/app/manager/layout1.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2530,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2070,
+								2070
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"auto_complete_triggers":
+							[
+								{
+									"characters": ".",
+									"selector": "source.go"
+								},
+								{
+									"characters": ".#",
+									"selector": "text.html"
+								}
+							],
+							"incomplete_sync": null,
+							"is_xml": false,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1632.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "www/web/app/manager/statistic_userlist1.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4217,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2883,
+								2883
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"auto_complete_triggers":
+							[
+								{
+									"characters": ".",
+									"selector": "source.go"
+								},
+								{
+									"characters": ".#",
+									"selector": "text.html"
+								}
+							],
+							"incomplete_sync": null,
+							"is_xml": false,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/HTML/HTML.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 2244.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
 					"type": "text"
 				}
 			]
@@ -1321,6 +1815,10 @@
 	{
 		"height": 36.0
 	},
+	"output.CSS Extended Completions":
+	{
+		"height": 0.0
+	},
 	"output.GoSublime-main-output":
 	{
 		"height": 40.0
@@ -1335,7 +1833,7 @@
 	},
 	"output.golang_build":
 	{
-		"height": 180.0
+		"height": 307.0
 	},
 	"output.sftp":
 	{
@@ -1359,8 +1857,92 @@
 		"selected_items":
 		[
 			[
+				"asset.go",
+				"www\\android\\asset.go"
+			],
+			[
+				"test.go",
+				"test\\test.go"
+			],
+			[
+				"tencent",
+				"api\\channel\\notify\\pay\\base-tencent.go"
+			],
+			[
 				"common",
 				"api\\channel\\notify\\pay\\common-base.go"
+			],
+			[
+				"common-ba",
+				"api\\channel\\notify\\pay\\common-base.go"
+			],
+			[
+				"noti",
+				"api\\controllers\\pay\\channelPayNotify.go"
+			],
+			[
+				"get",
+				"api\\channel\\third\\ysdk\\getbalance.go"
+			],
+			[
+				"comm",
+				"api\\channel\\notify\\pay\\common-base.go"
+			],
+			[
+				"pay.go",
+				"api\\channel\\notify\\pay\\pay.go"
+			],
+			[
+				"api.go",
+				"api\\channel\\api\\api.go"
+			],
+			[
+				"channelpayn",
+				"api\\controllers\\pay\\channelPayNotify.go"
+			],
+			[
+				"pay",
+				"api\\controllers\\pay\\payRequest.go"
+			],
+			[
+				"api",
+				"api\\channel\\api\\api.go"
+			],
+			[
+				"ysdk",
+				"api\\channel\\third\\ysdk\\common.go"
+			],
+			[
+				"testog",
+				"test\\test.go"
+			],
+			[
+				"base-ten",
+				"api\\channel\\notify\\pay\\base-tencent.go"
+			],
+			[
+				"commbase",
+				"api\\channel\\notify\\pay\\common-base.go"
+			],
+			[
+				"jiu",
+				"api\\channel\\notify\\pay\\md5-jiuyou.go"
+			],
+			[
+				"test.",
+				"test\\test.go"
+			],
+			[
+				"huawei",
+				"api\\channel\\notify\\pay\\rsa-huawei.go"
+			],
+			[
+				"loginre",
+				"api\\controllers\\login\\loginRequest.go"
+			],
+			[
+				"tenent",
+				"api\\channel\\notify\\pay\\base-tencent.go"
 			],
 			[
 				"360",
@@ -1423,10 +2005,6 @@
 				"tool\\icon.go"
 			],
 			[
-				"test.go",
-				"test\\test.go"
-			],
-			[
 				"tencen",
 				"api\\channel\\api\\createOrder\\tencent.go"
 			],
@@ -1439,10 +2017,6 @@
 				"api\\channel\\notify\\pay\\md5-gfan.go"
 			],
 			[
-				"pay.go",
-				"api\\channel\\notify\\pay\\pay.go"
-			],
-			[
 				"amigo.go",
 				"api\\channel\\api\\createOrder\\amigo.go"
 			],
@@ -1453,10 +2027,6 @@
 			[
 				"crypt",
 				"api\\channel\\notify\\pay\\common-crypto.go"
-			],
-			[
-				"comm",
-				"api\\channel\\notify\\pay\\common-base.go"
 			],
 			[
 				"md5-ba",
@@ -1487,10 +2057,6 @@
 				"api\\common\\request.go"
 			],
 			[
-				"api.go",
-				"api\\channel\\api\\api.go"
-			],
-			[
 				"htc",
 				"api\\channel\\notify\\pay\\rsa-htc.go"
 			],
@@ -1499,24 +2065,12 @@
 				"api\\channel\\notify\\pay\\common-base.go"
 			],
 			[
-				"loginre",
-				"api\\controllers\\login\\loginRequest.go"
-			],
-			[
-				"api",
-				"api\\channel\\api\\api.go"
-			],
-			[
 				"oppo",
 				"api\\channel\\notify\\pay\\rsa-oppo.go"
 			],
 			[
 				"pyw",
 				"api\\channel\\notify\\pay\\pyw.go"
-			],
-			[
-				"jiu",
-				"api\\channel\\notify\\pay\\jiuyou.go"
 			],
 			[
 				"jiuyoug.o",
@@ -1547,10 +2101,6 @@
 				"api\\controllers\\pay\\base.go"
 			],
 			[
-				"tencent",
-				"api\\channel\\notify\\pay\\tencent.go"
-			],
-			[
 				"baidu",
 				"api\\channel\\api\\loginRequest\\baidu.go"
 			],
@@ -1565,10 +2115,6 @@
 			[
 				"qihoo",
 				"api\\controllers\\login\\loginRequestHandle\\qihoo360.go"
-			],
-			[
-				"huawei",
-				"api\\controllers\\login\\loginRequestHandle\\huawei.go"
 			],
 			[
 				"vivo",
@@ -1683,7 +2229,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 278.0,
+	"side_bar_width": 248.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

@@ -95,7 +95,7 @@ func (this *Tencent) ParseInputParam(params ...interface{}) (err error) {
 		this.orderId = channelTradeData.Billno
 		this.channelUserId = channelTradeData.ChannelUserId
 		this.channelOrderId = ""
-		amount = channelTradeData.Amt
+		amount = channelTradeData.PayAmount
 	default:
 		channelTradeData := this.channelTradeData.(*tencentTradeData_0)
 		if err = json.Unmarshal([]byte(channelTradeData.ChannelRet), &this.clientChannelRet); err != nil {
@@ -290,7 +290,7 @@ func (this *Tencent) cancelPay() (err error) {
 func (this *Tencent) Handle() (err error) {
 	format := "handle err:%+v, \n\n"
 	defer func() {
-		if err != nil {
+		if err != nil || this.lastError != err_noerror {
 			if this.lastError != err_noerror {
 				this.lastError = err_handleOrder
 			}
@@ -337,6 +337,10 @@ func (this *Tencent) Handle() (err error) {
 			this.cancelPay()
 			return
 		}
+
+		msg := fmt.Sprintf(format, "handle:\n\n") +
+			this.Dump()
+		beego.Trace(msg)
 	default:
 		this.clientExtParam.AppId = this.channelParams["_gameId"]
 		this.clientExtParam.PayKey = this.channelParams["_payKey"]
@@ -414,7 +418,7 @@ func (this *Tencent) Dump() (ret string) {
 	switch this.ver {
 	case "1":
 		format := "ver: %+v,\n\n"
-		ret = fmt.Sprintf(format, this.ver)
+		ret = ret + fmt.Sprintf(format, this.ver)
 	default:
 		format := "ver: %s,\n\nclientExtParam: %+v,\n\n" +
 			"clientChannelRet: %+v,\n\ntencentChannelRet: %+v\n\n"

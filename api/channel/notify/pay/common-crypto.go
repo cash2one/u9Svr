@@ -62,6 +62,7 @@ func (this *Rsa) CheckSign(params ...interface{}) (err error) {
 			this.lastError = err_parseRsaPublicKey
 			rsaFuncName = "parsePKIXPublicKey"
 		} else if err = tool.RsaVerifyPKCS1v15(this.rsaPublicKey, hashType, this.signContent, this.inputSign); err != nil {
+			this.lastError = err_parseRsaPublicKey
 			rsaFuncName = "verifyPKCS1v15"
 		}
 		signState = err == nil

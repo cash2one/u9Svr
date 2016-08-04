@@ -86,6 +86,10 @@ func (this *Manifest) Handle() (err error) {
 	this.merge()
 	this.setMeta()
 	switch this.channelId{
+	case 104:
+		this.setCCpay()
+	case 138:
+		fallthrough
 	case 139:
 		this.setTencent()
 	case 144:
@@ -167,13 +171,17 @@ func (this *Manifest) setMeta() {
 	}else{
 		ctMetaEl.AddAttr("android:value", this.channel.Type)
 	}
-	
+	//调用热云
+	this.setReYun()
+
 	//特殊渠道meta-data 不加 \0
 	for k, v := range this.channelSdkParams {
 		el := this.productAppEl.GetNodeByPathAndAttr("meta-data", "android:name", k)
 		if el != nil {
 			switch this.channelId{
 			case 102://360
+				fallthrough
+			case 104://虫虫
 				fallthrough
 			case 126://乐视
 				fallthrough
@@ -267,7 +275,9 @@ func (this *Manifest) setTencent() {
 	mainActivity := (*jsonParam)["MainActivity"].(string)
 	beego.Trace(mainActivity)
 	ptAppElMain := this.productAppEl.GetNodeByPathAndAttr("activity","android:name",mainActivity)
+	ptAppElMain.AddAttr("android:launchMode","singleTask")
 	ptAppElMain.RemoveNodes("intent-filter")
+
 
 }
 
@@ -347,4 +357,44 @@ func (this *Manifest) setBaidu(){
 	//录屏SDK
 	lpsdk1 := this.productAppEl.GetNodeByPathAndAttr("provider", "android:name","glrecorder.Initializer")
 	lpsdk1.AddAttr("android:authorities",this.packageName+".initializer")
+}
+
+func (this *Manifest) setCCpay(){//虫虫
+	//获取参数
+	jsonParam := new(map[string]interface{})
+		if err := json.Unmarshal([]byte(this.packageParam.XmlParam), jsonParam); err != nil {
+			beego.Error(err)
+		}
+	app_id := (*jsonParam)["app_id"].(string)
+	ccsdk := this.productAppEl.GetNodeByPathAndAttr("activity", "android:name","com.lion.ccpay.app.user.QQPayActivity")
+	ccsdkIf := ccsdk.Node("intent-filter")
+	ccsdkData := ccsdkIf.GetNodeByPathAndAttr("data","android:scheme","qqPay102067")
+	ccsdkData.AddAttr("android:scheme","qqPay"+app_id)
+}
+
+func (this *Manifest) setReYun() (err error){//热云
+	jsonParam := new(map[string]string)
+		if err = json.Unmarshal([]byte(this.packageParam.XmlParam), jsonParam); err != nil {
+			beego.Error(err)
+		}
+		beego.Trace(1)
+
+	app_id := ""
+	ok := false
+	if app_id,ok = (*jsonParam)["TRACK_APPID"]; ok != true {
+		// beego.Error("2")
+		return
+	}
+
+	reMetaEl := this.productAppEl.GetNodeByPathAndAttr("meta-data", "android:name", "TRACK_APPID")
+	if reMetaEl == nil {
+		// panic("Manifest:setMetaData:ctMetaEl is nil.")
+			reMetaElnew := android.NewElement("meta-data","")
+			reMetaElnew.AddAttr("android:name", "TRACK_APPID")
+			reMetaElnew.AddAttr("android:value", app_id)
+			this.productAppEl.AddNode(reMetaElnew)
+	}else{
+		reMetaEl.AddAttr("android:value", app_id)
+	}
+	return 
 }

@@ -21,6 +21,7 @@ type PayParam struct {
 	Amt           string `json:"amt"`    //扣游戏币数量，atn不能为0。
 	Billno        string `json:"billno"` //u9订单号
 	ChannelUserId string `json:"channelUserId"`
+	PayAmount     string `json:"payAmount"`
 }
 
 const payUri = `/mpay/pay_m`

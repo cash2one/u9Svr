@@ -64,12 +64,16 @@ func (this *BuildId) Handle() {
 			this.init()
 			this.ant()
 			this.dex()
+		case 138:
+			this.init()
+			os.RemoveAll(this.buildIdPath+"/res/values/public.xml")
+			this.tencent()
 		case 139:
 			this.init()
 			this.tencent()
 		case 144:
-			// this.init()
-			// this.vivo()
+			this.init()
+			this.vivo()
 		default :
 			
 	}
@@ -111,10 +115,12 @@ func (this *BuildId) tencent() {
 	filePath := strings.Replace(this.packageParam.PackageName + ".wxapi", ".", "/", -1)
 	smaliPath := this.packagePath +"/smali/"+filePath
 	javaPath := this.buildIdPath + "/src/"+filePath
-	classesFile := this.buildIdPath + "/bin/classes/"+filePath + "/WXEntryActivity.class"
-	smaliFile := this.packagePath +"/smali/"+filePath + "/WXEntryActivity.class"
-	tencentJar := this.channelPath+"/YSDK_Android_1.1.1_235.jar"
-	cpTencetnJar := this.buildIdPath + "/libs/YSDK_Android_1.1.1_235.jar"
+	classesFile := this.buildIdPath + "/apk/smali/"+filePath + "/WXEntryActivity.smali"
+	smaliFile := this.packagePath +"/smali/"+filePath + "/WXEntryActivity.smali"
+	tencentJar := this.channelPath+"/YSDK_Android_1.2.1_317.jar"
+	cpTencetnJar := this.buildIdPath + "/libs/YSDK_Android_1.2.1_317.jar"
+	apkFile :=  this.buildIdPath + "/bin/project-release-unsigned.apk"
+	unCompileApkPath := this.buildIdPath + "/apk"
 	content = content + ";\r\npublic class WXEntryActivity extends com.tencent.ysdk.module.user.impl.wx.YSDKWXEntryActivity{ }"
 	d1 := []byte(content)
 	if err = os.MkdirAll(javaPath, 0777);err != nil{
@@ -131,10 +137,15 @@ func (this *BuildId) tencent() {
 		panic(err)
 	}
 	this.ant()
-	if err = os.MkdirAll(smaliPath, 0777);err != nil{
+	beego.Trace("ant ok And MikeDir:" + smaliPath)
+	// os.RemoveAll(smaliPath)
+	android.UnCompileApk(apkFile,unCompileApkPath)
+	if err = os.MkdirAll(smaliPath, 0666);err != nil{
 		beego.Trace(err)
 		panic(err)
 	}
+	beego.Trace("classesFile:" + classesFile)
+	beego.Trace("smaliFile:" + smaliFile)
 	if _,err = tool.CopyFile(classesFile,smaliFile);err != nil {
 		beego.Trace(err)
 		panic(err)

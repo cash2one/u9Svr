@@ -4,9 +4,12 @@ import (
 	"github.com/astaxie/beego"
 	"u9/www/controllers/cp"
 	"u9/www/controllers/manager"
+	"u9/www/controllers/test"
 )
 
 func init() {
+	beego.Router("/test", &test.BaseController{}, "*:Index")
+
 	//manager
 	beego.Router("/manager", &manager.IndexController{}, "*:Index")
 	beego.Router("/manager/login", &manager.LoginController{}, "*:Login")
@@ -23,8 +26,8 @@ func init() {
 	beego.Router("/manager/channel/edit", &manager.ChannelController{}, "*:Edit")
 	beego.Router("/manager/channel/delete", &manager.ChannelController{}, "*:Delete")
 
-	beego.Router("/manager/statistic/payList",&manager.StatisticController{},"*:PayList")
-
+	beego.Router("/manager/statistic/user", &manager.StatUserCtl{})
+	beego.Include(&manager.StatUserCtl{})
 	//cp
 	beego.Router("/cp", &cp.IndexController{}, "*:Index")
 	beego.Router("/cp/login", &cp.LoginController{}, "*:Login")
@@ -42,5 +45,4 @@ func init() {
 	beego.Router("/cp/package/download", &cp.PackageController{}, "*:Download")
 	beego.Router("/cp/package/delete", &cp.PackageController{}, "*:Delete")
 
-	
 }

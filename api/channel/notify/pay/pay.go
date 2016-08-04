@@ -113,6 +113,10 @@ func CallPayNotify(channelId, productId int, ctx *context.Context) (ret string, 
 		pn = new(AnFeng)
 	case 149:
 		pn = new(CoolPad)
+	case 150:
+	 	pn = new(PaoJiao)
+	case 151:
+		pn = new(WeiUU)
 	default:
 		err = errors.New("channelId isn't exist.")
 		return

@@ -70,6 +70,13 @@ func (this *Res) clear() {
 		beego.Trace(err)
 		panic(err)
 	}
+
+	float_activityXml1 := this.packagePath + "/" + layoutPath + "/" + "hy_float_activity.xml"
+	if err := os.RemoveAll(float_activityXml1); err != nil {
+		beego.Trace(err)
+		panic(err)
+	}
+
 	float_activityXml := this.packagePath + "/" + layoutPath + "/" + "hy_demo_float_activity.xml"
 	if err := os.RemoveAll(float_activityXml); err != nil {
 		beego.Trace(err)
@@ -179,6 +186,7 @@ func (this *Res) setPublicXml() {
 
 	resEl.RemoveNode("public", "name", "hy_demo_float")
 	resEl.RemoveNode("public", "name", "hy_demo_activity")
+	resEl.RemoveNode("public", "name", "hy_float_activity")
 	resEl.RemoveNode("public", "name", "hy_demo_float_activity")
 	resEl.RemoveNode("public", "name", "hy_btn1")
 	resEl.RemoveNode("public", "name", "hy_btn2")
@@ -236,6 +244,8 @@ func (this *Res) setStringsXml() {
 
 func (this *Res) setChannel(){
 	switch this.channel.Id{
+	case 138:
+		fallthrough
 	case 139:
 		this.setTencent()
 	}

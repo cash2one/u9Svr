@@ -112,6 +112,8 @@ func CallLoginRequest(mlr *models.LoginRequest) (ret *common.BasicRet) {
 		llr = loginRequest.LrNewQikQik(mlr, jsonParam)
 	case 137:
 		llr = loginRequest.LrNewPPTV(mlr, jsonParam)
+	case 138://腾讯 And 易接 模式走下面
+		fallthrough
 	case 139:
 		llr = loginRequest.LrNewTencent(mlr, jsonParam)
 	case 140:
@@ -122,6 +124,10 @@ func CallLoginRequest(mlr *models.LoginRequest) (ret *common.BasicRet) {
 		llr = loginRequest.LrNewVivo(mlr, jsonParam)
 	case 147:
 		llr = loginRequest.LrNewBaidu(mlr, jsonParam)
+	case 150:
+		llr = loginRequest.LrNewPaoJiao(mlr, jsonParam)
+	case 151:
+		llr = loginRequest.LrNewWeiUU(mlr, jsonParam)
 	default:
 		format := "callLoginRequest: it isn't implement"
 		msg := fmt.Sprintf(format, mlr.ChannelId, mlr.ProductId)
@@ -201,20 +207,28 @@ func CallCreateOrder(
 
 	var co createOrder.CreateOrder
 	switch mlr.ChannelId {
+	case 104: //虫虫(计费点模式)
+		co = new(createOrder.CCPay)
 	case 112: //魅族游戏
 		co = new(createOrder.Meizu)
 	case 120: //金立
 		co = new(createOrder.Amigo)
 	case 123: //熊猫玩
 		co = new(createOrder.Xmw)
+	case 130: //应用汇(计费点模式)
+		co = new(createOrder.YYH)
 	case 136: //小财神
 		co = new(createOrder.Caishen)
 	case 139: //tencent
 		co = new(createOrder.Tencent)
+	case 142: //朋友玩(计费点模式)
+		co = new(createOrder.PYW)
 	case 144: //vivo
 		co = new(createOrder.Vivo)
 	case 145: //huawei
 		co = new(createOrder.Huawei)
+	case 146: //lenovo(计费点模式)
+		co = new(createOrder.Lenovo)
 	case 149: //coolpad
 		co = new(createOrder.CoolPad)
 	default:

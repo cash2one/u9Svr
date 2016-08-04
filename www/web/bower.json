@@ -1,0 +1,29 @@
+{
+  "name": "abc",
+  "private": true,
+  "dependencies": {
+    "bootstrap": "~3.3.5",
+    "eonasdan-bootstrap-datetimepicker": "^4.17.37",
+    "json": "*",
+    "text": "requirejs/text#^2.0.15",
+    "bootstrap-paginator": "^1.0.2",
+    "jquery-mockjax": "^2.2.0"
+  },
+  "overrides": {
+    "bootstrap": {
+      "main": [
+        "less/bootstrap.less",
+        "dist/css/bootstrap.css",
+        "dist/js/bootstrap.js",
+        "dist/fonts/*"
+      ]
+    }
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^2.5.3",
+    "mockjs": "^1.0.0",
+    "html5shiv": "^3.7.3",
+    "es5-shim": "^4.5.9"
+  }
+}
