@@ -10,6 +10,7 @@ require(['common'],function () {
 			showClear:true,
 			showTodayButton:true,
 			showClose:true,
+			useCurrent: false
 		};
 	    $('#startDate').datetimepicker(config);
 	    $('#endDate').datetimepicker(config);
@@ -17,7 +18,8 @@ require(['common'],function () {
 
 	require(['jquery', 'json','mock','mockjax'],
 		function($,_,mock,mockjax) {
-		var queryUrl = 'user/query';
+		var commonQueryUrl = 'user/commonQuery';
+		var groupQueryUrl = 'user/groupQuery';
 		var productUrl = 'user/product';
 		var channelUrl = 'user/channel';
 
@@ -52,7 +54,7 @@ require(['common'],function () {
 
 		function simulateData() {
 			var productList ={data:[{id:1,name:'破阵'},{id:2,name:'大唐'}]};
-			var channelList ={data:[{id:1,name:'苹果'},{id:2,name:'腾讯'}]};
+			var	channelList ={data:[{id:1,name:'苹果'},{id:2,name:'腾讯'}]};
 
 			var productHandle = $.mockjax({
 				url: productUrl,
@@ -71,15 +73,14 @@ require(['common'],function () {
 
 	require(['jquery','common/base', 'json','bootstrap','moment','paginator','mock','mockjax','spin'],
 		function($,base,_,_,moment,_,mock,mockjax,spin) {
-		var queryUrl = 'user/query';
-		simulateData();
+
 		initStatisticData(1,false);
 		initDataTriggerEvent();
 
 		function simulateData() {
 			var jsonValue =
 			{
-				totalPages:2,
+				totalPages:1,
 				data:
 				[
 					{
@@ -89,20 +90,12 @@ require(['common'],function () {
 						newUserCount:1,
 						newMobileCount:1,
 						time:'2013/03/29 19:00:00'
-					},
-					{
-						productName:'病人',
-						channelName:'腾讯',
-						loginRequestIdCount:100,
-						newUserCount:10,
-						newMobileCount:33,
-						time:'2013/03/29 19:00:00'
-					},
+					}
 				]
 			};
 
 			var handle = $.mockjax({
-				url: queryUrl,
+				url: $('#queryType').prop("value"),
 				responseText: JSON.stringify(jsonValue)
 			});
 			$.mockjax.clear(handle);
@@ -116,6 +109,7 @@ require(['common'],function () {
 				endDate:$('#endDate').prop("value"),
 				updateData:updateData,
 				page:page,
+				pageSize:10,
 			};
 			//console.log(param)
 			return param;
@@ -155,6 +149,22 @@ require(['common'],function () {
 		};
 
 		function initTable(data) {
+			var url = $('#queryType').prop("value");
+			$('#thead').empty();
+			$('#thead').append(function(){
+				var result = '<tr>';
+				result += '<th>游戏</th>';
+				result += '<th>渠道</th>';
+				result += '<th>登录用户</th>';
+				result += '<th>新增用户</th>';
+				result += '<th>设备激活</th>';
+				switch (url) {
+				case 'user/commonQuery': result += '<th>日期</th>';
+				}
+				result += '</tr>';
+				return result;
+			});
+
 			$('#content').empty();
 			$.each(data.data, function(index,item) {
 				$('#content').append(function(){
@@ -164,14 +174,31 @@ require(['common'],function () {
 					result += '<td>'+ item.loginRequestIdCount +'</td>';
 					result += '<td>'+ item.newUserCount +'</td>';
 					result += '<td>'+ item.newMobileCount +'</td>';
-					result += '<td>'+ moment(item.time,'YYYY-MM-DD').format('YYYY-MM-DD') +'</td>';
+					switch (url) {
+					case 'user/commonQuery': result += '<td>'+ moment(item.time,'YYYY-MM-DD').format('YYYY-MM-DD') +'</td>';
+					}
 					result += '</tr>';
 					return result;
 				});
 			});
+			if (data.newUserCount < 0) {
+				data = $('#content').prop("data");
+			}
+			$('#content').append(function(){
+				var result = '<tr>';
+				result += '<td>'+ '汇总' +'</td>';
+				result += '<td>' +'</td>';
+				result += '<td>'+ data.loginRequestIdCount +'</td>';
+				result += '<td>'+ data.newUserCount +'</td>';
+				result += '<td>'+ data.newMobileCount +'</td>';
+				result += '</tr>';
+				return result;
+			});
+			$('#content').prop("data",data);
 		};
 
 		function initPaginator(currentPage,totalPages,numberOfPages) {
+			console.log(currentPage+" "+totalPages+" "+numberOfPages)
 		    var container = $('#paginator');
 		    if (totalPages == 0) {
 				container.bootstrapPaginator("destroy");
@@ -204,9 +231,10 @@ require(['common'],function () {
 		};
 
 		function initStatisticData(page,updateData) {
+			simulateData();
 			setUiState('init');
 			$.ajax({
-				url:  queryUrl,
+				url:  $('#queryType').prop("value"),
 				timeout: 5000,
 				data: initParam(page,updateData),
 				type: 'POST',
@@ -229,19 +257,31 @@ require(['common'],function () {
 			});
 		};
 
+		function initExportParam() {
+			var exportUrl = 'user/export';
+			var param = initParam()
+			var url = exportUrl + "?" + "product="+param.product + "&"
+			url = url + "channel="+param.channel + "&"
+			url = url + "startDate="+param.startDate + "&"
+			url = url + "endDate="+param.endDate
+			$('#exportData').prop("href",url)
+		}
+
 		function initDataTriggerEvent(selectObj,postUrl,title) {
+			$('#queryType,#product,#channel').change(function(){
+			   initStatisticData(1,false);
+			});
+
+			$("#startDate,#endDate").on("dp.change", function (e) {
+				initStatisticData(1,false);
+			});
+
 			$('#updateData').click(function(){
 				initStatisticData(1,true);
 			});
 
-			$('#product').change(function(){
-				console.log("b")
-			   initStatisticData(1,false);
-			});
-
-			$('#channel').change(function(){
-				console.log("c")
-			   initStatisticData(1,false);
+			$('#exportData').click(function(){
+				initExportParam();
 			});
 		};
 	});

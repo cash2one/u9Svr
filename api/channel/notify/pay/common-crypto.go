@@ -83,7 +83,7 @@ func (this *Rsa) CheckSign(params ...interface{}) (err error) {
 	if err != nil {
 		format := "CheckSign: %s is error, signMethod:%s, err:%+v, channelId:%d, productId:%d"
 		msg := fmt.Sprintf(format, rsaFuncName, this.signMethod, err, this.channelId, this.productId)
-		beego.Error(msg)
+		beego.Error(msg + ", " + signMsg)
 		return
 	}
 

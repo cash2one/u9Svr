@@ -1,8 +1,12 @@
-<h3>登录统计</h3>
+<h3>用户统计</h3>
 <nav class="navbar navbar-default" role="navigation">
   <div>
     <form id="queryForm" class="navbar-form navbar-left" method="post">
       <div class="form-group">
+        <select id="queryType" class="form-control">
+          <option value="user/commonQuery">普通统计</option>
+          <option value="user/groupQuery">分组统计</option>
+        </select>
         <select id="product" class="form-control"></select>
         <select id="channel" class="form-control"></select>
         <div class="input-group date">
@@ -20,21 +24,13 @@
         <label for="updateData"></label>
         <button type="button" class="btn btn-primary" id="updateData">更新统计</button>
         <label for="exportData"></label>
-        <button type="button" class="btn btn-primary" id="exportData">导出表格</button>
+        <a class="btn btn-primary" id="exportData" href="user/export" target="_blank">导出表格</a>
       </div>
     </form>
   </div>
 </nav>
 <table class="table table-hover table-list">
-  <thead>
-    <tr>
-      <th>游戏名</th>
-      <th>渠道名</th>
-      <th>登录用户</th>
-      <th>新增用户</th>
-      <th>设备激活</th>
-      <th>日期</th>
-    </tr>
+  <thead id="thead">
   </thead>
   <tbody id='content'></tbody>
 </table>

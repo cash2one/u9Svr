@@ -5,36 +5,34 @@ import (
 	"errors"
 	"fmt"
 	"github.com/astaxie/beego"
+	"regexp"
 	"strconv"
-	// "strings"
-	// "net/url"
+	"strings"
+	"u9/tool"
 )
 
 type WeiUU struct {
-	Rsa
+	Base
 }
 
 type weiuuTradeData struct {
 	TransData struct {
-		Extension 	 string    	`json:"extension"`
-		UserID    	 int 		`json:"userID"`
-		OrderID  	 int 		`json:"orderID"`
-		GameID   	 int    	`json:"gameID"`
-		ChannelID    int  	    `json:"channelID"`
-		Money     	 int    	`json:"money"`
-		ServerID     string    	`json:"serverID"`
-		ProductId 	 string 	`json:"productId"`
-		Currency     string    	`json:"currency"`
-		
-		
+		Extension string `json:"extension"`
+		UserID    int    `json:"userID"`
+		OrderID   int    `json:"orderID"`
+		GameID    int    `json:"gameID"`
+		ChannelID int    `json:"channelID"`
+		Money     int    `json:"money"`
+		ServerID  string `json:"serverID"`
+		ProductID string `json:"productID"`
+		Currency  string `json:"currency"`
 	} `json:"data"`
-	State int `json:state`
-	Sign string `json:"sign"`
-
+	State int    `json:state`
+	Sign  string `json:"sign"`
 }
 
 func (this *WeiUU) Init(params ...interface{}) (err error) {
-	if err = this.Rsa.Init(params...); err != nil {
+	if err = this.Base.Init(params...); err != nil {
 		return
 	}
 
@@ -49,12 +47,11 @@ func (this *WeiUU) Init(params ...interface{}) (err error) {
 	this.channelTradeData = new(weiuuTradeData)
 	this.channelRetData = nil
 
-	this.signMode = 0
 	return
 }
 
 func (this *WeiUU) ParseInputParam(params ...interface{}) (err error) {
-	if err = this.Rsa.ParseInputParam(); err != nil {
+	if err = this.Base.ParseInputParam(); err != nil {
 		return
 	}
 
@@ -70,7 +67,6 @@ func (this *WeiUU) ParseInputParam(params ...interface{}) (err error) {
 	}()
 
 	this.channelTradeContent = this.body
-
 	if err = json.Unmarshal([]byte(this.channelTradeContent), &this.channelTradeData); err != nil {
 		return
 	}
@@ -85,36 +81,38 @@ func (this *WeiUU) ParseInputParam(params ...interface{}) (err error) {
 
 func (this *WeiUU) CheckSign(params ...interface{}) (err error) {
 	channelTradeData := this.channelTradeData.(*weiuuTradeData)
- 	var buffer []byte
- 	if buffer, err = json.Marshal(channelTradeData.TransData); err != nil {
- 		beego.Error(err)	
- 	}
- 	signContent := string(buffer)
- 	// signContent = strings.Replace(, "{", "", -1)
- 	// signContent = strings.Replace(signContent, "}", "", -1)
-	this.signContent = signContent
-	beego.Trace(this.signContent)
-	this.inputSign = channelTradeData.Sign
-	return this.Rsa.CheckSign()
+	inputSign := channelTradeData.Sign
+	payKey := this.channelParams["_payKey"]
+
+	reg, _ := regexp.Compile(`"data":({[^\}]*})`)
+	content := reg.FindStringSubmatch(this.channelTradeContent)[1]
+
+	var result string
+	if result, err = tool.IapppayVerify(content, inputSign, payKey); err != nil {
+		format := "IapppayVerify:%v"
+		msg := fmt.Sprintf(format, err)
+		beego.Error(msg)
+	} else {
+		result = strings.TrimSpace(result)
+	}
+
+	signMethod := "CoolPadSign7.0.0(jar)"
+	format := "content:%s, inputSign:%s, result:%s"
+	signMsg := fmt.Sprintf(format, content, inputSign, result)
+	signState := result == "0"
+	return this.Base.CheckSign(signState, signMethod, signMsg)
 }
 
 func (this *WeiUU) CheckChannelRet(params ...interface{}) (err error) {
 	channelTradeData := this.channelTradeData.(*weiuuTradeData)
-
-	// tradeState := channelTradeData.TransData.AppId == this.channelParams["_gameId"]
-	// tradeFailDesc := `channelTradeData.TransData.AppId!=channelParam(_gameId)`
-	// if !tradeState {
-	// 	return this.Rsa.CheckChannelRet(tradeState, tradeFailDesc)
-	// }
-
 	tradeState := channelTradeData.State == 1
 	tradeFailDesc := `cchannelTradeData.State!=1`
-	return this.Rsa.CheckChannelRet(tradeState, tradeFailDesc)
+	return this.Base.CheckChannelRet(tradeState, tradeFailDesc)
 }
 
 func (this *WeiUU) GetResult(params ...interface{}) (ret string) {
 	format := `%s`
 	succMsg := "SUCCESS"
 	failMsg := "FAIL"
-	return this.Rsa.GetResult(format, succMsg, failMsg)
+	return this.Base.GetResult(format, succMsg, failMsg)
 }

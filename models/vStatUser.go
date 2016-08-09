@@ -7,10 +7,10 @@ import (
 
 type VStatUser struct {
 	Id                  int64     `orm:"pk" json:"id"`
-	ChannelId           int       `json:"channelId"`
-	ChannelName         string    `json:"channelName"`
 	ProductId           int       `json:"productId"`
 	ProductName         string    `json:"productName"`
+	ChannelId           int       `json:"channelId"`
+	ChannelName         string    `json:"channelName"`
 	LoginRequestIdCount int       `json:"loginRequestIdCount"`
 	NewUserCount        int       `json:"newUserCount"`
 	NewMobileCount      int       `json:"newMobileCount"`
