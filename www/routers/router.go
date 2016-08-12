@@ -26,6 +26,8 @@ func init() {
 	beego.Router("/manager/channel/edit", &manager.ChannelController{}, "*:Edit")
 	beego.Router("/manager/channel/delete", &manager.ChannelController{}, "*:Delete")
 
+	beego.Router("/manager/statistic/pay", &manager.StatPayCtl{}, "*:Stat")
+
 	beego.Router("/manager/statistic/user", &manager.StatUserCtl{})
 	beego.Include(&manager.StatUserCtl{})
 	//cp

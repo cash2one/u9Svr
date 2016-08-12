@@ -46,28 +46,9 @@ func (this *StatUserCtl) URLMapping() {
 }
 
 func (this *StatUserCtl) Get() {
-	// var err error
-
-	// defer func() {
-	// 	if err != nil {
-	// 		beego.Error(err)
-	// 	}
-	// }()
-
 	this.Layout = "manager/layout2.html"
 	this.TplName = "manager/user_statistic.html"
 	this.updateData()
-	// var productList []*models.Product
-	// if _, err = new(models.Product).Query().OrderBy("id").All(&productList); err != nil {
-	// 	return
-	// }
-	// this.Data["productList"] = productList
-
-	// var channelList []*models.Channel
-	// if _, err = new(models.Channel).Query().OrderBy("id").All(&channelList); err != nil {
-	// 	return
-	// }
-	// this.Data["channelList"] = channelList
 }
 
 func (this *StatUserCtl) update(cond *condition) (num int64, err error) {

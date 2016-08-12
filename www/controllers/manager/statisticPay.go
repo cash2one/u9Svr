@@ -177,5 +177,7 @@ func (this *StatPayCtl) Stat() {
 	this.Data["channelList"] = channelList
 
 	this.updateData()
-	this.display()
+
+	this.Layout = "manager/layout.html"
+	this.TplName = "manager/statistic_paylist.html"
 }
