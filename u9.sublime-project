@@ -6,6 +6,21 @@
 		},
 		{
 			"path": "www\\web"
+		},
+		{
+			"path": "D:\\test\\reading"
+		},
+		{
+			"path": "D:\\test\\App"
+		},
+		{
+			"path": "D:\\test\\demo-app-android\\react_native"
+		},
+		{
+			"path": "D:\\test\\test1"
+		},
+		{
+			"path": "D:\\test\\react-native"
 		}
 	]
 }

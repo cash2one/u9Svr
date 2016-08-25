@@ -128,6 +128,8 @@ func CallLoginRequest(mlr *models.LoginRequest) (ret *common.BasicRet) {
 		llr = loginRequest.LrNewPaoJiao(mlr, jsonParam)
 	case 151:
 		llr = loginRequest.LrNewWeiUU(mlr, jsonParam)
+	case 152:
+		llr = loginRequest.LrNewNubia(mlr, jsonParam)
 	default:
 		format := "callLoginRequest: it isn't implement"
 		msg := fmt.Sprintf(format, mlr.ChannelId, mlr.ProductId)
@@ -231,6 +233,8 @@ func CallCreateOrder(
 		co = new(createOrder.Lenovo)
 	case 149: //coolpad
 		co = new(createOrder.CoolPad)
+	case 152: //努比亚
+		co = new(createOrder.Nubia)
 	default:
 		format := "callCreateOrder: direct return"
 		msg := fmt.Sprintf(format)

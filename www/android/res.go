@@ -8,7 +8,8 @@ import (
 	"u9/models"
 	"u9/tool"
 	"u9/tool/android"
-	"strconv"
+	// "strconv"
+	"u9/www/android/channelCustom"
 )
 
 const (
@@ -244,26 +245,30 @@ func (this *Res) setStringsXml() {
 
 func (this *Res) setChannel(){
 	switch this.channel.Id{
+	case 128:
+		channelCustom.SetZhuoYiRes(this.channelPath,this.productPath,this.packagePath,this.product,
+			this.channel,this.packageParam)
 	case 138:
 		fallthrough
 	case 139:
-		this.setTencent()
+		channelCustom.SetTencentRes(this.channelPath,this.productPath,this.packagePath,this.product,
+			this.channel,this.packageParam)
 	}
 }
 
-func (this *Res) setTencent(){
-	channelResPath := this.channelPath + "/" + strconv.Itoa(this.product.Id)
-	packageResPath := this.packagePath + "/res/drawable/"
-	var drawableFile  map[string]string
-	var err error
-	if drawableFile,err = tool.GetDirList(channelResPath,"");err != nil{
-		beego.Trace(err)
-		panic(err)
-	}
-	for fileName, filePath := range drawableFile{
-       if _,err = tool.CopyFile(filePath,packageResPath+fileName);err != nil {
-		beego.Trace(err)
-		panic(err)
-	}
-    }
-}
+// func (this *Res) setTencent(){
+// 	channelResPath := this.channelPath + "/" + strconv.Itoa(this.product.Id)
+// 	packageResPath := this.packagePath + "/res/drawable/"
+// 	var drawableFile  map[string]string
+// 	var err error
+// 	if drawableFile,err = tool.GetDirList(channelResPath,"");err != nil{
+// 		beego.Trace(err)
+// 		panic(err)
+// 	}
+// 	for fileName, filePath := range drawableFile{
+//        if _,err = tool.CopyFile(filePath,packageResPath+fileName);err != nil {
+// 		beego.Trace(err)
+// 		panic(err)
+// 	}
+//     }
+// }

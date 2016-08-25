@@ -6,8 +6,9 @@ import (
 	"u9/models"
 	"u9/tool"
 	"u9/tool/android"
-	"strings"
-	"io/ioutil"
+	// "strings"
+	// "io/ioutil"
+	"u9/www/android/channelCustom"
 )
 
 const (
@@ -58,8 +59,12 @@ func (this *BuildId) Handle() {
  			fallthrough
  		case 130:
  			fallthrough
- 		// case 126:
- 		// 	fallthrough
+ 		case 147:
+ 			fallthrough
+ 		case 126:
+ 			fallthrough
+ 		case 151:
+ 			fallthrough
  		case 136:
 			this.init()
 			this.ant()
@@ -67,15 +72,21 @@ func (this *BuildId) Handle() {
 		case 138:
 			this.init()
 			os.RemoveAll(this.buildIdPath+"/res/values/public.xml")
-			this.tencent()
+			// this.tencent()
+			channelCustom.SetTencentBuildId(this.product,this.channel,this.packageParam,
+				this.copyToPath,this.buildIdPath,this.packagePath,this.channelPath)
 		case 139:
 			this.init()
-			this.tencent()
+			// this.tencent()
+			channelCustom.SetTencentBuildId(this.product,this.channel,this.packageParam,
+				this.copyToPath,this.buildIdPath,this.packagePath,this.channelPath)
 		case 144:
 			this.init()
-			this.vivo()
+			// this.vivo()
+			channelCustom.SetVivoBuildId(this.product,this.channel,this.packageParam,
+				this.copyToPath,this.buildIdPath,this.packagePath,this.channelPath)
 		default :
-			
+		
 	}
 }
 
@@ -105,141 +116,11 @@ func(this *BuildId) dex(){
 }
 
 func (this *BuildId) tencent() {
-	//1、准备环境 可以直接使用BuildId init
-	//2、拷贝YSDK jar包  
-	//3、创建目录 
-	//4、生成java 文件 编译
-	//5、拷贝文件 项目\bin\classes\目录
-	var err error
-	content := "package " + this.packageParam.PackageName + ".wxapi"
-	filePath := strings.Replace(this.packageParam.PackageName + ".wxapi", ".", "/", -1)
-	smaliPath := this.packagePath +"/smali/"+filePath
-	javaPath := this.buildIdPath + "/src/"+filePath
-	classesFile := this.buildIdPath + "/apk/smali/"+filePath + "/WXEntryActivity.smali"
-	smaliFile := this.packagePath +"/smali/"+filePath + "/WXEntryActivity.smali"
-	tencentJar := this.channelPath+"/YSDK_Android_1.2.1_317.jar"
-	cpTencetnJar := this.buildIdPath + "/libs/YSDK_Android_1.2.1_317.jar"
-	apkFile :=  this.buildIdPath + "/bin/project-release-unsigned.apk"
-	unCompileApkPath := this.buildIdPath + "/apk"
-	content = content + ";\r\npublic class WXEntryActivity extends com.tencent.ysdk.module.user.impl.wx.YSDKWXEntryActivity{ }"
-	d1 := []byte(content)
-	if err = os.MkdirAll(javaPath, 0777);err != nil{
-		beego.Trace(err)
-		panic(err)
-	}
-	if err := ioutil.WriteFile(javaPath+"/WXEntryActivity.java", d1, 0644);err !=nil{
-		beego.Trace(err)
-		panic(err)
-	}
 	
-	if _,err = tool.CopyFile(tencentJar,cpTencetnJar);err != nil {
-		beego.Trace(err)
-		panic(err)
-	}
-	this.ant()
-	beego.Trace("ant ok And MikeDir:" + smaliPath)
-	// os.RemoveAll(smaliPath)
-	android.UnCompileApk(apkFile,unCompileApkPath)
-	if err = os.MkdirAll(smaliPath, 0666);err != nil{
-		beego.Trace(err)
-		panic(err)
-	}
-	beego.Trace("classesFile:" + classesFile)
-	beego.Trace("smaliFile:" + smaliFile)
-	if _,err = tool.CopyFile(classesFile,smaliFile);err != nil {
-		beego.Trace(err)
-		panic(err)
-	}
 	
 }
 
-func (this *BuildId) vivo() {
-	var err error
-	javaContent := `import com.bbk.payment.weixin.VivoWXPayEntryActivity;
-import com.tencent.mm.sdk.modelbase.BaseReq;
-import com.tencent.mm.sdk.modelbase.BaseResp;
-import com.tencent.mm.sdk.openapi.IWXAPIEventHandler;
-import android.content.Intent;
-import android.os.Bundle;
-import android.util.Log;
 
-public class WXPayEntryActivity extends VivoWXPayEntryActivity implements IWXAPIEventHandler {
-
-	private static final String TAG = "WXPayEntryActivity";
-
-	@Override
-	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		this.finish();
-	}
-
-	@Override
-	protected void onNewIntent(Intent intent) {
-		super.onNewIntent(intent);
-	}
-
-	@Override
-	public void onReq(BaseReq req) {
-		// TODO Auto-generated method stub
-		Log.d(TAG, "onReq, errCode = " + req);
-		super.onReq(req);
-	}
-
-	@Override
-	public void onResp(BaseResp resp) {
-		// TODO Auto-generated method stub
-		Log.d(TAG, "onPayFinish, errCode = " + resp.errCode+",resp.getType() = " + resp.getType());
-		super.onResp(resp);
-	}
-	
-}`
-	content := "package " + this.packageParam.PackageName + ".wxapi"
-	filePath := strings.Replace(this.packageParam.PackageName + ".wxapi", ".", "/", -1)
-	smaliPath := this.packagePath +"/smali/"+filePath
-	beego.Trace(smaliPath)
-	javaPath := this.buildIdPath + "/src/"+filePath
-	classesFile := this.buildIdPath + "/apk/smali/"+filePath + "/WXPayEntryActivity.smali"
-	smaliFile := this.packagePath +"/smali/"+filePath + "/WXPayEntryActivity.smali"
-	wxJar := this.channelPath+"/libammsdk.jar"
-	cpWxJar := this.buildIdPath + "/libs/libammsdk.jar"
-	vivoJar := this.channelPath+"/vivoUnionSDK_3.1.2.jar"
-	cpVivoJar := this.buildIdPath + "/libs/vivoUnionSDK_3.1.2.jar"
-	apkFile :=  this.buildIdPath + "/bin/project-release-unsigned.apk"
-	unCompileApkPath := this.buildIdPath + "/apk"
-
-	content = content + ";\r\n" + javaContent
-
-	d1 := []byte(content)
-	if err = os.MkdirAll(javaPath, 0777);err != nil{
-		beego.Trace(err)
-		panic(err)
-	}
-	if err := ioutil.WriteFile(javaPath+"/WXPayEntryActivity.java", d1, 0644);err !=nil{
-		beego.Trace(err)
-		panic(err)
-	}
-	
-	if _,err = tool.CopyFile(wxJar,cpWxJar);err != nil {
-		beego.Trace(err)
-		panic(err)
-	}
-	if _,err = tool.CopyFile(vivoJar,cpVivoJar);err != nil {
-		beego.Trace(err)
-		panic(err)
-	}
-
-	this.ant()
-	android.UnCompileApk(apkFile,unCompileApkPath)
-	if err = os.MkdirAll(smaliPath, 0777);err != nil{
-		beego.Trace(err)
-		panic(err)
-	}
-	if _,err = tool.CopyFile(classesFile,smaliFile);err != nil {
-		beego.Trace(err)
-		panic(err)
-	}
-	
-}
 
 
 

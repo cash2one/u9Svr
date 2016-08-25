@@ -4,6 +4,114 @@
 		"selected_items":
 		[
 			[
+				"Na",
+				"Navigator"
+			],
+			[
+				"new",
+				"NewReader	*bytes.Reader ƒ"
+			],
+			[
+				"un",
+				"UnixNano	int64 ƒ"
+			],
+			[
+				"READ",
+				"Read	n int, err error ƒ"
+			],
+			[
+				"r",
+				"O_RDONLY	 Ɩ"
+			],
+			[
+				"Open",
+				"OpenFile	*os.File, error ƒ"
+			],
+			[
+				"write",
+				"WriteTo	n int64, err error ƒ"
+			],
+			[
+				"New",
+				"NewReader	*bytes.Reader ƒ"
+			],
+			[
+				"for",
+				"formulaFmt	 ν"
+			],
+			[
+				"setf",
+				"SetFormula	 ƒ"
+			],
+			[
+				"C",
+				"Color	string ν"
+			],
+			[
+				"app",
+				"ApplyFill	bool ν"
+			],
+			[
+				"default",
+				"DefaultFill	*xlsx.Fill ƒ"
+			],
+			[
+				"defaultf",
+				"SetDefaultFont	 ƒ"
+			],
+			[
+				"sets",
+				"SetStyle	 ƒ"
+			],
+			[
+				"fun",
+				"function〔keyword〕"
+			],
+			[
+				"set",
+				"SetInt	 ƒ"
+			],
+			[
+				"channel",
+				"channelTradeContent	string ν"
+			],
+			[
+				"n",
+				"NewBuffer	*bytes.Buffer ƒ"
+			],
+			[
+				"io",
+				"bufio	 package ρ"
+			],
+			[
+				"cons",
+				"console.log"
+			],
+			[
+				"cur",
+				"currentPage"
+			],
+			[
+				"product",
+				"productId	int ν"
+			],
+			[
+				"produc",
+				"productId	int ν"
+			],
+			[
+				"g",
+				"global"
+			],
+			[
+				"bower",
+				"bower_components"
+			],
+			[
+				"scrip",
+				"scripts"
+			],
+			[
 				"j",
 				"jquery.beta"
 			],
@@ -20,10 +128,6 @@
 				"NewOrmWithDB	orm.Ormer, error ƒ"
 			],
 			[
-				"new",
-				"NewOrm	orm.Ormer ƒ"
-			],
-			[
 				"B",
 				"Bytes	[]byte ƒ"
 			],
@@ -38,10 +142,6 @@
 			[
 				"cl",
 				"clientExtParam	GetBalanceParam ν"
-			],
-			[
-				"channel",
-				"channelRetData	interface{} ν"
 			],
 			[
 				"Pay",
@@ -414,183 +514,48 @@
 			[
 				"f",
 				"FormValue	string ƒ"
-			],
-			[
-				"t",
-				"Timestamp	time.Time ν"
-			],
-			[
-				"U",
-				"Username	string ν"
-			],
-			[
-				"parseChannel",
-				"parseChannelPayKey	err error ƒ"
-			],
-			[
-				"conte",
-				"content	 ν"
-			],
-			[
-				"cont",
-				"content	 ν"
-			],
-			[
-				"ga",
-				"channelGameKey	string ν"
-			],
-			[
-				"err_fail",
-				"err_callbackFail	 Ɩ"
-			],
-			[
-				"Newh",
-				"NewHuawei	*Huawei ƒ"
-			],
-			[
-				"Res",
-				"RespMsg	string ν"
-			],
-			[
-				"cp",
-				"Cpordernumber	string ν"
-			],
-			[
-				"E",
-				"Error	 ƒ"
-			],
-			[
-				"call",
-				"err_callbackFail	 Ɩ"
-			],
-			[
-				"channelg",
-				"err_parseChannelGameKey	 Ɩ"
-			],
-			[
-				"err_parsega",
-				"err_parseChannelGameKey	 Ɩ"
-			],
-			[
-				"pars",
-				"ParseChannelRet	err error ƒ"
-			],
-			[
-				"client",
-				"clientExtParam	createOrder.TencentExtParam ν"
-			],
-			[
-				"NewT",
-				"NewTencent	*Tencent ƒ"
-			],
-			[
-				"Pa",
-				"Param	string ƒ"
-			],
-			[
-				"time",
-				"timeStamp	string ν"
-			],
-			[
-				"cahnnel",
-				"channelRet	createOrder.TencentChannelRet ν"
-			],
-			[
-				"set",
-				"SetCookie	*httplib.BeegoHTTPRequest ƒ"
-			],
-			[
-				"R",
-				"Request	common.Request ν"
-			],
-			[
-				"init",
-				"InitParam	err error ƒ"
-			],
-			[
-				"chanel",
-				"channelGameKey	string ν"
-			],
-			[
-				"ha",
-				"Handle	err error ƒ"
 			]
 		]
 	},
 	"buffers":
 	[
 		{
-			"file": "www/controllers/manager/statistic.go",
+			"file": "/D/test/demo-app-android/react_native/index.android.js",
 			"settings":
 			{
-				"buffer_size": 13902,
+				"buffer_size": 1721,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "www/web/app/static/scripts/admin/main.js",
+			"file": "/D/test/test1/index.android.js",
 			"settings":
 			{
-				"buffer_size": 193,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "www/static/scripts/userList.js",
-			"settings":
-			{
-				"buffer_size": 166,
+				"buffer_size": 1645,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "/C/Users/jacky/Desktop/example-multipage-master/www/js/app/main1.js",
+			"file": "api/channel/notify/pay/common-base.go",
 			"settings":
 			{
-				"buffer_size": 366,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "www/views/manager/statistic_userlist1.html",
-			"settings":
-			{
-				"buffer_size": 4034,
+				"buffer_size": 15101,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "www/views/manager/layout1.html",
+			"file": "models/payOrder.go",
 			"settings":
 			{
-				"buffer_size": 2547,
+				"buffer_size": 1040,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"contents": "<!doctype html>\n<html lang=\"\">\n  <head>\n    <meta charset=\"utf-8\">\n    <meta name=\"description\" content=\"\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n    <title>abc</title>\n\n    <link rel=\"apple-touch-icon\" href=\"apple-touch-icon.png\">\n    <!-- Place favicon.ico in the root directory -->\n\n    <!-- build:css styles/vendor.css -->\n    <!-- bower:css -->\n    <link rel=\"stylesheet\" href=\"/bower_components/bootstrap/dist/css/bootstrap.css\" />\n    <link rel=\"stylesheet\" href=\"/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css\" />\n    <!-- endbower -->\n    <!-- endbuild -->\n\n    <!-- build:css styles/main.css -->\n    <link rel=\"stylesheet\" href=\"styles/main.css\">\n    <!-- endbuild -->\n    \n  </head>\n  <body>\n    <!--[if lt IE 10]>\n      <p class=\"browserupgrade\">You are using an <strong>outdated</strong> browser. Please <a href=\"http://browsehappy.com/\">upgrade your browser</a> to improve your experience.</p>\n    <![endif]-->\n    \n    <div class=\"container\">\n      <div class=\"header\">\n        <ul class=\"nav nav-pills pull-right\">\n          <li class=\"active\"><a href=\"#\">Home</a></li>\n          <li><a href=\"#\">About</a></li>\n          <li><a href=\"#\">Contact</a></li>\n        </ul>\n        <h3 class=\"text-muted\">abc</h3>\n      </div>\n\n      <div class=\"jumbotron\">\n        <h1>'Allo, 'Allo!</h1>\n        <p class=\"lead\">Always a pleasure scaffolding your apps.</p>\n        <p><a class=\"btn btn-lg btn-success\" href=\"#\">Splendid!</a></p>\n      </div>\n\n      <div class=\"row marketing\">\n        <div class=\"col-lg-6\">\n          <h4>HTML5 Boilerplate</h4>\n          <p>HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites.</p>\n\n          <h4>Bootstrap</h4>\n          <p>Sleek, intuitive, and powerful mobile first front-end framework for faster and easier web development.</p>\n        </div>\n      </div>\n\n      <div class=\"footer\">\n        <p>♥ from the Yeoman team</p>\n      </div>\n    </div>\n\n    <!-- build:js scripts/vendor.js -->\n    <!-- bower:js -->\n    <script src=\"/bower_components/jquery/dist/jquery.js\"></script>\n    <script src=\"/bower_components/moment/moment.js\"></script>\n    <script src=\"/bower_components/moment-timezone/builds/moment-timezone-with-data-2010-2020.js\"></script>\n    <script src=\"/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js\"></script>\n    <!-- endbower -->\n    <!-- endbuild -->\n\n    <!-- build:js scripts/plugins.js -->\n    <script src=\"/bower_components/bootstrap/js/affix.js\"></script>\n    <script src=\"/bower_components/bootstrap/js/alert.js\"></script>\n    <script src=\"/bower_components/bootstrap/js/dropdown.js\"></script>\n    <script src=\"/bower_components/bootstrap/js/tooltip.js\"></script>\n    <script src=\"/bower_components/bootstrap/js/modal.js\"></script>\n    <script src=\"/bower_components/bootstrap/js/transition.js\"></script>\n    <script src=\"/bower_components/bootstrap/js/button.js\"></script>\n    <script src=\"/bower_components/bootstrap/js/popover.js\"></script>\n    <script src=\"/bower_components/bootstrap/js/carousel.js\"></script>\n    <script src=\"/bower_components/bootstrap/js/scrollspy.js\"></script>\n    <script src=\"/bower_components/bootstrap/js/collapse.js\"></script>\n    <script src=\"/bower_components/bootstrap/js/tab.js\"></script>\n    <!-- endbuild -->\n\n    <!-- build:js scripts/main.js -->\n    <script src=\"scripts/main.js\"></script>\n    <!-- endbuild -->\n  </body>\n</html>\n",
-			"file": "www/web/app/index.html",
-			"file_size": 3532,
-			"file_write_time": 131134035654519963,
+			"file": "/D/test/react-native/docs/Performance.md",
 			"settings":
 			{
-				"buffer_size": 3530,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "www/web/app/manager/layout1.html",
-			"settings":
-			{
-				"buffer_size": 2530,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "www/web/app/manager/statistic_userlist1.html",
-			"settings":
-			{
-				"buffer_size": 4217,
+				"buffer_size": 14308,
 				"line_ending": "Windows"
 			}
 		}
@@ -638,10 +603,30 @@
 	"build_varint": "",
 	"command_palette":
 	{
-		"height": 109.0,
-		"last_filter": "install package",
+		"height": 588.0,
+		"last_filter": "instal",
 		"selected_items":
 		[
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"list",
+				"Package Control: List Packages"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"tag",
+				"Emmet: Split\\Join Tag"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
 			[
 				"install package",
 				"Package Control: Install Package"
@@ -651,23 +636,11 @@
 				"Package Control: Remove Package"
 			],
 			[
-				"install",
-				"Package Control: Install Package"
-			],
-			[
 				"markdown",
 				"Set Syntax: Markdown Extended"
 			],
 			[
 				"ins",
-				"Package Control: Install Package"
-			],
-			[
-				"list",
-				"Package Control: List Packages"
-			],
-			[
-				"instal",
 				"Package Control: Install Package"
 			],
 			[
@@ -709,13 +682,9 @@
 			[
 				"gosublime",
 				"GoSublime: Activate 9o"
-			],
-			[
-				"inst",
-				"Package Control: Install Package"
 			]
 		],
-		"width": 564.0
+		"width": 792.0
 	},
 	"console":
 	{
@@ -736,160 +705,185 @@
 	},
 	"expanded_folders":
 	[
-		"/D/go/src/u9/www",
-		"/D/go/src/u9/www/conf",
-		"/D/go/src/u9/www/static",
-		"/D/go/src/u9/www/static/scripts",
-		"/D/go/src/u9/www/views/common",
-		"/D/go/src/u9/www/views/manager",
-		"/D/go/src/u9/www/web",
-		"/D/go/src/u9/www/web/bower_components",
-		"/D/go/src/u9/www/web/bower_components/requirejs",
-		"/C/Users/jacky/Desktop/example-multipage-master",
-		"/C/Users/jacky/Desktop/example-multipage-master/www",
-		"/C/Users/jacky/Desktop/example-multipage-master/www/js",
-		"/C/Users/jacky/Desktop/example-multipage-master/www/js/app"
+		"/D/go/src/u9",
+		"/D/go/src/u9/api",
+		"/D/go/src/u9/api/channel",
+		"/D/go/src/u9/api/channel/api",
+		"/D/go/src/u9/api/channel/notify",
+		"/D/go/src/u9/api/channel/notify/pay",
+		"/D/go/src/u9/tool/android",
+		"/D/test/demo-app-android/react_native/Demo"
 	],
 	"file_history":
 	[
-		"/D/go/src/u9/www/web/dist/scripts/main.js",
-		"/D/go/src/u9/www/static/scripts/userList.js",
-		"/D/go/src/u9/www/conf/app.conf",
-		"/D/go/src/u9/www/static/themes/admin/css/admin.css",
-		"/D/go/src/u9/www/web/bower_components/bootstrap/dist/css/bootstrap.css",
-		"/D/go/src/u9/www/web/bower_components/bootstrap/dist/css/bootstrap.css.map",
-		"/D/go/src/u9/www/web/app/styles/main.css",
-		"/D/go/src/u9/www/web/.tmp/styles/main.css",
-		"/D/go/src/u9/www/web/app/scripts/main.js",
-		"/D/go/src/u9/www/static/scripts/common.js",
-		"/D/go/src/u9/www/static/www/js/app.js",
-		"/D/go/src/u9/www/static/www/js/app/main.js",
-		"/D/go/src/u9/www/static/www/app.html",
-		"/D/go/src/u9/www/static/main.js",
-		"/C/Users/jacky/Desktop/example-jquery-shim-master/www/js/app.js",
-		"/C/Users/jacky/Desktop/create-template-master/www/app/messages.js",
-		"/C/Users/jacky/Desktop/example-jquery-cdn-master/www/app.html",
-		"/C/Users/jacky/Desktop/example-jquery-cdn-master/www/js/app/main.js",
-		"/C/Users/jacky/Desktop/example-jquery-cdn-master/www/js/app.js",
-		"/C/Users/jacky/Desktop/example-jquery-cdn-master/www/js/lib/require.js",
-		"/D/go/src/u9/www/views/manager/statistic_userlist.html",
-		"/D/go/src/u9/www/static/bower_components/moment/min/moment-with-locales.js",
-		"/D/go/src/u9/www/static/bower_components/spin.js/spin.js",
-		"/D/go/src/u9/www/static/bootstrap/js/bootstrap-datetimepicker.js",
-		"/D/go/src/u9/www/static/bower_components/moment/min/moment-with-locales.min.js",
-		"/D/go/src/u9/www/static/bower_components/bootstrap/dist/css/bootstrap.min.css",
-		"/D/go/src/u9/www/static/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css",
-		"/D/go/src/u9/www/static/bower_components/font-awesome/css/font-awesome.min.css",
-		"/D/go/src/u9/www/static/node_modules/express/node_modules/connect/lib/middleware/static.js",
-		"/D/go/src/u9/www/static/bower_components/bootstrap-datetimepicker/src/js/bootstrap-datetimepicker.js",
-		"/C/Users/jacky/AppData/Roaming/Sublime Text 3/Packages/User/SFTP.sublime-settings",
-		"/D/go/src/u9/www/static/bower_components/moment-timezone/bower.json",
-		"/D/go/src/u9/www/static/bower_components/moment-timezone/moment-timezone.js",
-		"/D/go/src/u9/www/static/bower_components/bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js",
-		"/D/go/src/u9/www/views/manager/layout.html",
-		"/D/go/src/u9/www/static/bower_components/jquery/dist/jquery.min.js",
-		"/C/Users/jacky/AppData/Roaming/Sublime Text 3/Packages/User/SFTP.errors.log",
-		"/C/Users/jacky/abc/gulpfile.js",
-		"/C/Users/jacky/abc/bower_components/bootstrap-datetimepicker/README.md",
-		"/C/Users/jacky/abc/bower_components/moment/src/moment.js",
-		"/C/Users/jacky/abc/bower_components/bootstrap-datetimepicker/src/js/bootstrap-datetimepicker.js",
-		"/C/Users/jacky/abc/bower_components/bootstrap-datetimepicker/src/js/locales/bootstrap-datetimepicker.zh-CN.js",
-		"/C/Users/jacky/abc/bower_components/bootstrap-datetimepicker/src/js/locales/bootstrap-datetimepicker.th.js",
-		"/C/Users/jacky/abc/bower_components/bootstrap-datetimepicker/src/less/bootstrap-datetimepicker.less",
-		"/C/Users/jacky/abc/bower_components/moment/README.md",
-		"/C/Users/jacky/abc/bower_components/spin.js/spin.js",
-		"/D/go/src/u9/www/static/js/spin.min.js",
-		"/C/Users/jacky/abc/bower_components/spin.js/spin.min.js",
-		"/D/go/src/u9/www/static/bootstrap/js/moment-with-locales.js",
-		"/C/Users/jacky/AppData/Roaming/Sublime Text 3/Packages/User/Preferences.sublime-settings",
-		"/C/Users/jacky/abc/bower.json",
-		"/C/Users/jacky/abc/.yo-rc.json",
-		"/C/Users/jacky/abc/.gitattributes",
-		"/C/Users/jacky/abc/.editorconfig",
-		"/C/Users/jacky/abc/.bowerrc",
-		"/C/Users/jacky/abc/.babelrc",
-		"/C/Users/jacky/test/test/index.html",
-		"/C/Users/jacky/test/test/spec/test.js",
-		"/C/Users/jacky/test/gulpfile.js",
-		"/C/Users/jacky/AppData/Roaming/Sublime Text 3/Packages/User/SideBarEnhancements/Open With/Side Bar.sublime-menu",
-		"/C/Users/jacky/AppData/Roaming/Sublime Text 3/Packages/SublimeCodeIntel/SublimeCodeIntel.sublime-settings",
-		"/C/Users/jacky/AppData/Roaming/Sublime Text 3/Packages/SublimeCodeIntel/.no-sublime-package",
-		"/C/Users/jacky/Desktop/h5bp-html5-boilerplate-3cd1967/doc/js.md",
-		"/C/Users/jacky/Desktop/h5bp-html5-boilerplate-3cd1967/doc/usage.md",
-		"/D/go/src/u9/www/android/asset.go",
-		"/D/go/src/u9/www/controllers/test/base.go",
-		"/D/go/src/u9/www/routers/router.go",
-		"/D/go/src/github.com/astaxie/beego/orm/orm_log.go",
-		"/D/go/src/github.com/astaxie/beego/orm/db.go",
-		"/D/go/src/github.com/astaxie/beego/orm/README.md",
-		"/D/go/src/github.com/astaxie/beego/orm/db_utils.go",
-		"/D/go/src/github.com/astaxie/beego/orm/qb_mysql.go",
-		"/D/go/src/github.com/astaxie/beego/orm/orm_test.go",
-		"/c/go/src/database/sql/sql.go",
-		"/D/go/src/github.com/astaxie/beego/orm/orm_raw.go",
-		"/D/go/src/github.com/astaxie/beego/orm/types.go",
-		"/D/go/src/github.com/astaxie/beego/orm/orm.go",
-		"/D/go/src/u9/www/views/test/test.html",
-		"/D/go/src/u9/www/controllers/manager/base.go",
-		"/D/go/src/u9/www/controllers/manager/index.go",
-		"/D/go/src/github.com/astaxie/beego/template.go",
+		"/D/test/demo-app-android/react_native/index.ios.js",
+		"/D/test/demo-app-android/react_native/PAFFCommon/PAFFDataFetch.js",
+		"/C/Users/Administrator/Desktop/project/package.txt",
+		"/D/go/src/u9/www/controllers/manager/statisticUser.go",
+		"/C/Users/jacky/test/AwesomeProject/index.android.js",
+		"/C/Users/jacky/test/AwesomeProject/android/app/build.gradle",
+		"/E/backup/sys/vm/index.android.bundle",
+		"/C/Users/jacky/test/AwesomeProject/package.json",
+		"/C/Users/jacky/test/AwesomeProject/android/app/src/main/java/com/awesomeproject/MainActivity.java",
+		"/C/Users/jacky/test/AwesomeProject/android/app/proguard-rules.pro",
+		"/C/Users/jacky/test/AwesomeProject/android/build.gradle",
+		"/C/Users/jacky/test/AwesomeProject/android/gradle.properties",
+		"/C/Users/jacky/test/AwesomeProject/android/gradlew",
+		"/C/Users/jacky/test/AwesomeProject/android/local.properties",
+		"/C/Users/jacky/test/AwesomeProject/android/gradlew.bat",
+		"/D/go/src/github.com/astaxie/beego/context/output.go",
+		"/D/go/src/github.com/astaxie/beego/context/context.go",
 		"/D/go/src/github.com/astaxie/beego/controller.go",
-		"/D/go/src/u9/sftp-config.json",
-		"/D/go/src/github.com/astaxie/beego/log.go",
-		"/D/go/src/github.com/astaxie/beego/logs/log.go",
-		"/D/go/src/github.com/astaxie/beego/logs/console.go",
-		"/c/go/src/runtime/extern.go",
-		"/c/go/src/log/log.go",
-		"/c/go/src/sync/pool.go",
-		"/D/go/src/github.com/astaxie/beego/logs/file_test.go",
-		"/D/go/src/github.com/astaxie/beego/logs/conn.go",
-		"/c/go/src/regexp/regexp.go",
-		"/D/go/src/u9/test/test.go",
-		"/c/go/src/strconv/ftoa.go",
-		"/c/go/src/builtin/builtin.go",
-		"/c/go/src/strconv/quote.go",
-		"/c/go/src/bufio/bufio.go",
-		"/c/go/src/unicode/tables.go",
-		"/c/go/src/unicode/letter.go",
-		"/c/go/src/bufio/scan.go",
-		"/C/go/src/bufio/example_test.go",
-		"/D/go/src/u9/www/views/manager/login.html",
+		"/c/go/src/bytes/buffer.go",
+		"/c/go/src/os/file_plan9.go",
+		"/c/go/src/os/file.go",
+		"/c/go/src/cmd/go/build.go",
+		"/c/go/src/os/file_windows.go",
 		"/c/go/src/strconv/itoa.go",
-		"/C/go/src/bytes/bytes.go",
-		"/c/go/src/unicode/utf8/utf8.go",
-		"/c/go/src/strconv/atoi.go",
-		"/c/go/src/strings/strings.go",
-		"/D/go/src/golang.org/x/tools/imports/zstdlib.go",
-		"/c/go/src/fmt/print.go",
-		"/D/go/src/u9/api/channel/notify/pay/base-tencent.go",
-		"/D/go/src/u9/www/views/cp/login.html",
-		"/D/go/src/u9/www/views/cp/layout.html",
-		"/D/go/src/u9/www/views/manager/cp_list.html",
-		"/D/go/src/u9/www/views/cp/product_list.html",
-		"/D/go/src/u9/www/views/cp/package_list.html",
-		"/D/go/src/u9/www/static/js/lightGallery.min.js",
-		"/D/go/src/u9/www/static/themes/admin/css/lightGallery.css",
-		"/D/go/src/u9/api/channel/notify/pay/md5-anFeng.go",
+		"/c/go/src/net/http/fs.go",
+		"/D/go/src/u9/test/test.go",
+		"/D/go/src/github.com/tealeg/xlsx/lib.go",
+		"/c/go/src/bytes/reader.go",
+		"/c/go/src/bufio/bufio_test.go",
+		"/c/go/src/archive/tar/writer_test.go",
+		"/D/go/src/github.com/tealeg/xlsx/file.go",
+		"/c/go/src/archive/zip/reader.go",
+		"/c/go/src/archive/zip/writer.go",
+		"/c/go/src/net/file_plan9.go",
+		"/c/go/src/bufio/bufio.go",
+		"/c/go/src/archive/tar/reader_test.go",
+		"/c/go/src/io/io.go",
+		"/c/go/src/bytes/buffer_test.go",
+		"/c/go/src/io/multi.go",
+		"/c/go/src/io/ioutil/ioutil.go",
+		"/c/go/src/io/io_test.go",
+		"/c/go/src/archive/zip/example_test.go",
+		"/c/go/src/archive/tar/example_test.go",
+		"/c/go/src/archive/tar/reader.go",
+		"/c/go/src/net/http/sniff.go",
+		"/c/go/src/path/filepath/path.go",
+		"/c/go/src/path/filepath/export_test.go",
+		"/D/go/src/u9/www/static/scripts/manager/user_statistic/main.js",
+		"/D/go/src/u9/www/views/manager/user_statistic.html",
+		"/D/go/src/github.com/tealeg/xlsx/sheet.go",
+		"/D/go/src/github.com/tealeg/xlsx/cell_test.go",
+		"/D/go/src/github.com/tealeg/xlsx/style.go",
+		"/D/go/src/github.com/tealeg/xlsx/cell.go",
+		"/D/go/src/github.com/tealeg/xlsx/file_test.go",
+		"/D/go/src/github.com/tealeg/xlsx/sheet_test.go",
+		"/D/go/src/github.com/tealeg/xlsx/style_test.go",
+		"/D/go/src/github.com/tealeg/xlsx/row.go",
+		"/D/go/src/github.com/tealeg/xlsx/xmlStyle.go",
+		"/D/go/src/github.com/astaxie/beego/orm/types.go",
+		"/D/go/src/github.com/astaxie/beego/orm/qb.go",
+		"/D/go/src/github.com/astaxie/beego/orm/orm_queryset.go",
+		"/D/go/src/u9/models/vStatGroupUser.go",
+		"/D/go/src/u9/models/vStatUser.go",
+		"/D/go/src/github.com/astaxie/beego/orm/orm.go",
+		"/D/go/src/github.com/astaxie/beego/orm/db.go",
+		"/D/go/src/u9/www/web/node_modules/glob-watcher/test/main.js",
+		"/D/go/src/u9/sftp-config.json",
+		"/D/go/src/u9/api/channel/notify/pay/rsa-weiuu.go",
+		"/D/go/src/u9/tool/sign.go",
+		"/c/go/src/strconv/example_test.go",
+		"/c/go/src/strconv/quote.go",
+		"/c/go/src/math/floor.go",
+		"/D/go/src/u9/api/channel/notify/pay/common-crypto.go",
 		"/D/go/src/u9/api/channel/notify/pay/common-base.go",
-		"/D/go/src/u9/api/channel/third/ysdk/pay.go",
-		"/D/go/src/u9/api/channel/notify/pay/base-anzhi.go",
-		"/D/go/src/u9/api/channel/notify/pay/pay.go",
+		"/D/go/src/test/xls.go",
+		"/c/go/src/bytes/reader_test.go",
+		"/c/go/src/os/file_unix.go",
+		"/c/go/src/strings/reader_test.go",
+		"/c/go/src/net/http/internal/chunked_test.go",
+		"/c/go/src/cmd/go/note.go",
+		"/D/go/src/github.com/astaxie/beego/session/sess_file.go",
+		"/D/go/src/9fans.net/go/acme/acme.go",
+		"/D/go/src/9fans.net/go/plan9/client/fid.go",
+		"/c/go/src/os/types.go",
+		"/D/go/src/u9/www/controllers/cp/package.go",
+		"/c/go/src/net/http/doc.go",
+		"/D/go/src/u9/www/controllers/cp/base.go",
+		"/D/go/src/github.com/tealeg/xlsx/fuzzy_test.go",
+		"/D/go/src/github.com/tealeg/xlsx/AUTHORS.txt",
+		"/D/go/src/github.com/tealeg/xlsx/common_test.go",
+		"/D/go/src/github.com/tealeg/xlsx/row_test.go",
+		"/D/go/src/github.com/tealeg/xlsx/write_test.go",
+		"/D/go/src/github.com/tealeg/xlsx/xmlWorkbook_test.go",
+		"/D/go/src/github.com/tealeg/xlsx/xmlWorksheet_test.go",
+		"/D/go/src/u9/www/routers/router.go",
+		"/D/go/src/u9/www/views/manager/layout.html",
+		"/D/go/src/u9/www/views/manager/layout1.html",
+		"/D/go/src/u9/www/views/manager/layout2.html",
+		"/D/go/src/xlsx/README.org",
+		"/D/go/src/u9/models/vProductChannel.go",
+		"/D/go/src/github.com/astaxie/beego/app.go",
+		"/D/go/src/u9/www/controllers/manager/statisticPay.go",
+		"/D/go/src/github.com/astaxie/beego/router.go",
+		"/D/go/src/u9/models/base.go",
+		"/D/go/src/u9/www/controllers/manager/statistic.go",
+		"/D/go/src/u9/www/static/bootstrap/js/moment-with-locales.js",
+		"/c/go/src/time/time.go",
+		"/D/go/src/u9/models/statUserList.go",
+		"/D/go/src/u9/models/statUser.go",
+		"/D/go/src/github.com/astaxie/beego/orm/orm_querym2m.go",
+		"/c/go/src/encoding/json/encode.go",
+		"/D/go/src/u9/api/channel/notify/pay/base-tt.go",
 		"/D/go/src/u9/api/channel/api/api.go",
-		"/D/go/src/u9/www/controllers/cp/product.go",
-		"/D/go/src/u9/www/common/pager.go",
-		"/d/go/src/github.com/astaxie/beego/orm/qb.go",
-		"/D/go/src/u9/www/main.go",
-		"/D/go/src/u9/api/channel/api/createOrder/tencent.go"
+		"/D/go/src/github.com/astaxie/beego/orm/orm_log.go",
+		"/D/go/src/u9/models/productVersion.go",
+		"/D/go/src/u9/www/controllers/test/base.go",
+		"/c/go/src/time/format.go",
+		"/D/go/src/u9/api/channel/notify/pay/rsa-lenovo.go",
+		"/D/go/src/u9/www/views/cp/package_list.html",
+		"/D/go/src/u9/www/static/scripts/common.js",
+		"/D/go/src/u9/api/channel/api/createOrder/amigo.go",
+		"/D/go/src/u9/www/web/dist/static/scripts/common.js",
+		"/D/go/src/u9/www/web/dist/views/manager/layout.html",
+		"/D/go/src/u9/www/web/dist/views/manager/user_statistic.html",
+		"/D/go/src/u9/www/web/dist/views/manager/header.html",
+		"/D/go/src/u9/www/web/dist/views/common/header.html",
+		"/D/go/src/u9/www/web/app/views/manager/header.html",
+		"/D/go/src/u9/www/web/dist/views/common/footer.html"
 	],
 	"find":
 	{
-		"height": 55.0
+		"height": 50.0
 	},
 	"find_in_files":
 	{
 		"height": 144.0,
 		"where_history":
 		[
+			"D:\\test\\react-native\\",
+			"D:\\test\\react-native\\Libraries",
+			"D:\\test\\demo-app-android\\react_native",
+			"c:\\go\\src\\",
+			"D:\\go\\src\\github.com\\tealeg\\xlsx",
+			"D:\\go\\src\\github.com\\astaxie",
+			"c:\\go\\src\\",
+			"D:\\go\\src\\",
+			"D:\\go\\src\\u9",
+			"D:\\go\\src\\u9\\api",
+			"D:\\go\\src\\u9\\api\\channel\\notify\\pay",
+			"D:\\go\\src\\u9\\www\\controllers",
+			"D:\\go\\src\\u9\\api",
+			"D:\\go\\src\\github.com\\astaxie\\beego\\orm",
+			"D:\\go\\src\\u9\\api",
+			"D:\\go\\src\\u9\\www",
+			"D:\\go\\src\\u9\\api",
+			"D:\\go\\src\\u9\\api\\channel",
+			"D:\\go\\src\\u9\\api\\channel\\api",
+			"D:\\go\\src\\u9\\www",
+			"D:\\go\\src\\u9\\tool",
+			"D:\\go\\src\\u9\\api",
+			"D:\\go\\src\\u9",
+			"D:\\go\\src\\u9\\www\\views\\cp",
+			"D:\\go\\src\\u9\\www\\views\\manager",
+			"C:\\Users\\jacky\\Desktop\\requirejs-example-gulpfile-master\\www-built",
+			"C:\\Users\\jacky\\Desktop\\todo-mvc-optimized\\dist\\js",
+			"C:\\Users\\jacky\\Desktop\\todo-mvc-optimized",
+			"C:\\Users\\jacky\\Desktop\\todo-mvc-optimized\\dist",
+			"C:\\Users\\jacky\\Desktop\\todo-mvc\\",
 			"D:\\go\\src\\u9\\www\\static\\bower_components",
 			"C:\\Users\\jacky\\abc\\bower_components",
 			"C:\\Users\\jacky\\abc\\bower_components\\bootstrap-datetimepicker",
@@ -987,172 +981,142 @@
 			"d:\\go\\src\\u9",
 			"C:\\Users\\jacky\\Desktop\\source-archive\\android4me",
 			"c:\\go\\src\\",
-			"d:\\go\\src\\u9",
-			"d:\\go\\src\\",
-			"d:\\go\\src\\U9",
-			"D:\\project\\渠道文档\\小米4.4.33\\MISDKservice4.4.33\\sample src\\MiSdkSampleForAppPaymentMiTalk",
-			"d:\\go\\src\\U9",
-			"d:\\go\\src",
-			"c:\\go\\src",
-			"d:\\go\\src",
-			"c:\\go\\src",
-			"d:\\go\\src",
-			"d:\\go\\src\\u9",
-			"c:\\go\\src\\u9",
-			"c:\\go\\src\\",
-			"c:\\go\\src\\html",
-			"D:\\go\\src\\github.com",
-			"D:\\go\\src\\githubing",
-			"D:\\go\\src\\u9",
-			"c:\\go\\src\\,D:\\go\\src",
-			"c:\\go\\src\\;d:\\go\\src",
-			"d:\\go\\src\\",
-			"d:\\go\\src\\u9\\api",
-			"C:\\go\\src\\runtime\\debug",
-			"d:\\go\\src",
-			"C:\\go\\src\\crypto\\cipher",
-			"d:\\go\\src\\",
-			"c:\\go\\src\\",
-			"c:\\go\\src\\,D:\\go\\src,D:\\go\\src\\github.com\\89hmdys\\toast",
-			"D:\\go\\src\\github.com\\89hmdys\\toast",
-			"c:\\go\\src\\,D:\\go\\src",
-			"c:\\go\\src\\os\\",
-			"C:\\go\\src\\u9"
+			"d:\\go\\src\\u9"
 		]
 	},
 	"find_state":
 	{
-		"case_sensitive": true,
+		"case_sensitive": false,
 		"find_history":
 		[
-			"pipelineId",
-			"plugin",
-			"lib",
-			"static",
-			"queryForm",
-			"submit",
-			"yes",
-			"define",
-			"moment-with-locales.min.js",
-			"define",
-			"moment-timezone",
-			"\\",
-			"dateToDate",
-			"datetimepicker",
-			"now",
-			"min",
-			"getCalendarFormat",
-			"moment",
-			"form-horizontal",
-			"				",
-			"nav-header",
-			"navbar-header",
-			"header",
-			"nav",
-			"nav-header",
-			"header",
-			"display",
-			".pagebar",
-			"clCount",
-			"productList",
-			"UpdateUserList",
-			"RowsAffected",
-			"Prepare",
-			"GetDB",
-			"RunSyncdb",
-			"RowsAffected",
-			"BeeTemplates",
-			"Data[\"",
-			"LayoutContent",
-			".",
-			"Layout",
-			"layoutName",
-			"Index",
-			"colors",
-			"out",
-			"flag",
-			"loggerType",
-			"Async",
-			"startLogger",
-			"logMsgPool",
-			"msgChan",
-			"writeToLoggers",
-			"lg",
-			"Logger",
-			"Register",
-			"adapters",
-			"loggerType",
-			"adapters",
-			"outputs",
-			"Logger",
-			"consoleWriter",
-			"Destroy",
-			"nameLogger",
-			"Logger",
-			"lock",
-			"outputs",
-			"writeToLoggers",
-			"msgChan",
-			"asynchronous",
-			"logMsgPool",
-			"Error",
-			"FullRune",
-			"ScanLines",
-			"advance",
-			"split",
-			"Split",
-			"split",
-			"Split",
-			"NewScanner",
-			"TrimFunc",
-			"ParseInt",
-			"ParseUint",
-			"ParseInt",
-			"unicode",
-			"post",
-			"Where",
-			"exc",
-			"exe",
-			"remember",
-			"bootstrap-datetimepicker.min",
-			"admin.css",
-			"lightGallery",
-			"Amt",
-			"exChangeRatio",
-			"CheckChannelRet",
-			"Dump",
-			"Subquery",
-			"channelTradeData.Amount",
-			"pay",
-			"clientChannelRet",
-			"cancelPayParam",
-			"channelTradeData",
-			"Base.CheckChannelRet",
-			"CheckChannelRet",
-			"cancelPay",
-			",",
-			"clearBalance",
-			"payParam",
-			"payRet",
-			"GetParamName",
-			"tencentTradeData_1",
-			"ChannelUserId",
-			"channelParamKeys",
-			"extParam",
-			"clientExtParam",
-			"GetBalanceRet",
-			"PayRet",
-			"GetGetBalanceUrl",
+			"handleOrder",
+			"notifyProductSvr",
+			"Network",
+			"Navigator",
+			"MyScene",
+			"configureScene",
+			"renderScene",
+			"\nNavigator",
+			"initialRoute",
+			"登录",
+			"welcome",
+			"GRADLE_OPTS",
+			"Read",
+			"perm",
+			"OpenFile",
+			"Open",
+			"NewFile",
+			"MarshallParts",
+			"errors",
+			"MarshallParts",
+			"bytes",
+			"seek",
+			"bytes.NewReader",
+			"serveContent",
+			"bytes.NewBuffer",
+			"seek",
+			"NewBuffer",
+			"Write",
+			"Seek",
+			"Reader",
+			"write",
+			"Seek",
+			"Buffer",
+			"serveContent",
+			"sizeFunc",
+			"redirect",
+			"serveFile",
+			"ServeContent",
+			"serveContent",
+			"output",
+			"close",
+			"SetFormula",
+			"00082E54",
+			"Color",
+			"font.Color",
+			"font",
+			"centerHalign",
+			"Alignment",
+			"beego.Trace",
+			"Count",
+			"Trace",
+			"datepicker",
+			"startDate",
+			"ret",
+			"initPaginator",
+			"groupQuery",
+			"initPaginator",
+			"CommonQuery",
+			"sql",
+			"Exclude",
+			"GroupBy",
+			"Query",
+			"Exclude",
+			"GroupBy",
+			"td",
+			"initTable",
+			"initStatisticData",
+			"simulateData",
+			"commonQueryUrl",
+			"queryUrl",
+			"switch",
+			"startDate",
+			"paramUrl",
+			"initParam",
+			"initStatisticData",
+			"exportData",
+			"updateData",
+			"AddRow",
+			"AddCell",
+			"queryCond",
+			"offset",
+			"dateFormat",
+			"file",
+			"Download",
+			"console",
+			"initTable",
+			"prop",
+			"UnquoteChar",
+			"TotalPages",
+			"productSignContent",
+			"Seeker",
+			"Seek",
+			"Reader",
+			"serveContent",
+			"name",
+			"modtime",
+			"name",
+			"Download",
 			"Header",
-			"defer",
-			"Dump",
-			"channelRet",
-			"channelOrderId",
-			"orderId",
-			"Dump",
-			"appId",
-			"this.payKey",
-			"this.appId"
+			"File",
+			"ServeContent",
+			"serveFile",
+			"save",
+			"initPaginator",
+			"strconv",
+			"AddMethod",
+			"HTTPMETHOD",
+			"mappingMethods",
+			"VStatUser",
+			"label",
+			"moment",
+			"UserStaticData",
+			"statisticPayItem",
+			"statisticUserItem",
+			"productItem",
+			"TitleInfo",
+			"Count",
+			"UpdateUserStat",
+			"updateData",
+			"dateFormat",
+			"format",
+			"initStatisticData",
+			"initPaginator",
+			"UpdateStatUserList",
+			"initStatisticData",
+			"initParam",
+			"302",
+			"UpdateUserStat"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1298,110 +1262,24 @@
 	"groups":
 	[
 		{
-			"selected": 3,
+			"selected": 2,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "www/controllers/manager/statistic.go",
+					"file": "/D/test/demo-app-android/react_native/index.android.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 13902,
+						"buffer_size": 1721,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								6586,
-								6586
-							]
-						],
-						"settings":
-						{
-							"auto_complete_triggers":
-							[
-								{
-									"characters": ".",
-									"selector": "source.go"
-								},
-								{
-									"characters": ".#",
-									"selector": "text.html"
-								}
-							],
-							"color_scheme": "Packages/Monokai Extended/Monokai Extended.tmTheme",
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/GoSublime/syntax/GoSublime-Go.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 7854.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "www/web/app/static/scripts/admin/main.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 193,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								193,
-								193
-							]
-						],
-						"settings":
-						{
-							"auto_complete_triggers":
-							[
-								{
-									"characters": ".",
-									"selector": "source.go"
-								},
-								{
-									"characters": ".#",
-									"selector": "text.html"
-								}
-							],
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "www/static/scripts/userList.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 166,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								161,
-								161
+								95,
+								95
 							]
 						],
 						"settings":
@@ -1418,146 +1296,84 @@
 									"selector": "text.html"
 								}
 							],
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 8,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "/C/Users/jacky/Desktop/example-multipage-master/www/js/app/main1.js",
-					"semi_transient": true,
-					"settings":
-					{
-						"buffer_size": 366,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"auto_complete_triggers":
-							[
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
 								{
-									"characters": ".",
-									"selector": "source.go"
 								},
+								"icon":
 								{
-									"characters": ".#",
-									"selector": "text.html"
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
 								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content"
 							],
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"side_bar_folders_auto_load_folder": 1,
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "www/views/manager/statistic_userlist1.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 4034,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2750,
-								2750
-							]
-						],
-						"settings":
-						{
-							"auto_complete": false,
-							"auto_complete_triggers":
-							[
-								{
-									"characters": ".",
-									"selector": "source.go"
-								},
-								{
-									"characters": ".#",
-									"selector": "text.html"
-								}
-							],
-							"color_scheme": "Packages/Monokai Extended/Monokai Extended.tmTheme",
-							"incomplete_sync": null,
-							"is_xml": false,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/HTML/HTML.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "www/views/manager/layout1.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2547,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								216,
-								216
-							]
-						],
-						"settings":
-						{
-							"auto_complete": false,
-							"auto_complete_triggers":
-							[
-								{
-									"characters": ".",
-									"selector": "source.go"
-								},
-								{
-									"characters": ".#",
-									"selector": "text.html"
-								}
-							],
-							"color_scheme": "Packages/Monokai Extended/Monokai Extended.tmTheme",
-							"incomplete_sync": null,
-							"is_xml": false,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/HTML/HTML.sublime-syntax",
-							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -1567,20 +1383,20 @@
 					"type": "text"
 				},
 				{
-					"buffer": 6,
-					"file": "www/web/app/index.html",
+					"buffer": 1,
+					"file": "/D/test/test1/index.android.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3530,
+						"buffer_size": 1645,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2461,
-								2461
+								242,
+								242
 							]
 						],
 						"settings":
@@ -1597,41 +1413,111 @@
 									"selector": "text.html"
 								}
 							],
-							"incomplete_sync": null,
-							"is_xml": false,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content"
+							],
+							"side_bar_folders_auto_load_folder": 1,
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1836.0,
+						"translation.y": 143.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
-					"buffer": 7,
-					"file": "www/web/app/manager/layout1.html",
+					"buffer": 2,
+					"file": "api/channel/notify/pay/common-base.go",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2530,
+						"buffer_size": 15101,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2070,
-								2070
+								11217,
+								11217
 							]
 						],
 						"settings":
 						{
-							"auto_complete": false,
 							"auto_complete_triggers":
 							[
 								{
@@ -1643,40 +1529,125 @@
 									"selector": "text.html"
 								}
 							],
-							"incomplete_sync": null,
-							"is_xml": false,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+									"1":
+									[
+										11282,
+										11283
+									]
+								},
+								"icon":
+								{
+									"1":
+									[
+										"Packages/BracketHighlighter/icons/curly_bracket.png",
+										"brackethighlighter.default"
+									]
+								},
+								"open":
+								{
+									"1":
+									[
+										11216,
+										11217
+									]
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content"
+							],
+							"side_bar_folders_auto_load_folder": 1,
+							"syntax": "Packages/GoSublime/syntax/GoSublime-Go.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1632.0,
+						"translation.y": 9941.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
-					"buffer": 8,
-					"file": "www/web/app/manager/statistic_userlist1.html",
+					"buffer": 3,
+					"file": "models/payOrder.go",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4217,
+						"buffer_size": 1040,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2883,
-								2883
+								73,
+								73
 							]
 						],
 						"settings":
 						{
-							"auto_complete": false,
 							"auto_complete_triggers":
 							[
 								{
@@ -1688,17 +1659,206 @@
 									"selector": "text.html"
 								}
 							],
-							"incomplete_sync": null,
-							"is_xml": false,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/HTML/HTML.sublime-syntax"
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content"
+							],
+							"side_bar_folders_auto_load_folder": 1,
+							"syntax": "Packages/GoSublime/syntax/GoSublime-Go.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 2244.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "/D/test/react-native/docs/Performance.md",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 14308,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2736,
+								2745
+							]
+						],
+						"settings":
+						{
+							"auto_complete_triggers":
+							[
+								{
+									"characters": ".",
+									"selector": "source.go"
+								},
+								{
+									"characters": ".#",
+									"selector": "text.html"
+								}
+							],
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content"
+							],
+							"is_xml": false,
+							"side_bar_folders_auto_load_folder": 1,
+							"syntax": "Packages/Markdown/Markdown.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 879.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
 					"type": "text"
 				}
 			]
@@ -1706,7 +1866,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 42.0
+		"height": 31.0
 	},
 	"input":
 	{
@@ -1847,7 +2007,7 @@
 	"project": "u9.sublime-project",
 	"replace":
 	{
-		"height": 98.0
+		"height": 58.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -1856,6 +2016,14 @@
 		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"main.js",
+				"web\\node_modules\\glob-watcher\\test\\main.js"
+			],
+			[
+				"notify/rsa-",
+				"u9\\api\\channel\\notify\\pay\\rsa-weiuu.go"
+			],
 			[
 				"asset.go",
 				"www\\android\\asset.go"
@@ -2229,7 +2397,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 248.0,
+	"side_bar_width": 370.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
